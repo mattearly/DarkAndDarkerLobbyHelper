@@ -8,7 +8,7 @@
 
 ; Keybind setup for HitPlay (not commenting this on further down functions, they follow this pattern)
 #HotIf WinActive("Dark and Darker")
-Numpad0::
+^Numpad0::
 {
     GlobalBack()
     HitPlay()
@@ -19,9 +19,7 @@ Numpad0::
 ;      perks and skills (when 2 options) X: 983 | Y: 118
 ; TODO
 
-; stash
-;   button loc X: 880 | Y: 40
-; TODO
+
 
 ; merchants  
 ;   button loc X: 982 | Y: 31
@@ -31,14 +29,14 @@ Numpad0::
 ;     collector loc X: 1201 | Y: 795
 
 #HotIf WinActive("Dark and Darker")
-Numpad1::
+^Numpad1::
 {
     GlobalBack()
     GoToPurchasePotions()
 }
 ; SURGEON
 #HotIf WinActive("Dark and Darker")
-Numpad2::
+^Numpad2::
 {
     GlobalBack()
     MouseClick "left", 982, 31  ; top merchant button
@@ -47,16 +45,40 @@ Numpad2::
 }
 ; SQUIRE
 #HotIf WinActive("Dark and Darker")
-Numpad3::
+^Numpad3::
 {
     GlobalBack()
     MouseClick "left", 982, 31  ; top merchant button
     sleep 250
     MouseClick "left", 214, 752  ; squire location
 }
+
+; STASH
+^Numpad4::
+{
+    GlobalBack()
+    GoToStash()
+}
+
+; EXPRESSMAN GATHER
+^Numpad5::
+{
+    GlobalBack()
+    ExpressmanExpress()
+}
+
+
+; GOBLIN RETRIEVAL
+^Numpad6::
+{
+    GlobalBack()
+    GetAllFromGoblin()
+}
+
+
 ; COLLECTOR
 #HotIf WinActive("Dark and Darker")
-Numpad7::
+^Numpad7::
 {
     GlobalBack()
     MouseClick "left", 982, 31  ; top merchant button
@@ -65,7 +87,7 @@ Numpad7::
 }
 
 #HotIf WinActive("Dark and Darker")
-Numpad8::
+^Numpad8::
 {
     GlobalBack()
     GoToVendor()
@@ -76,7 +98,7 @@ Numpad8::
      marketplace button loc X: 1191 | Y: 247
       leave (use back button loc), then are you sure you want to leave Yes loc X: 1191 | Y: 247
 */
-Numpad9::
+^Numpad9::
 {
     GlobalBack()
     GoToTrade()

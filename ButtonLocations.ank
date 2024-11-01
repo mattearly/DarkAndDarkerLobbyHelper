@@ -1,7 +1,7 @@
 ; required variables
 global WasInTrade := false
 
-; notes - back button (when applicable) loc X: 150 | Y: 45
+; notes - back button (when applicable) loc X: 150 , 45
 GlobalBack() {
     global
     MouseClick "left", 150, 45   ; back button
@@ -14,9 +14,9 @@ GlobalBack() {
 }
 
 ; play insta-queue setup:
-;   top play button loc X: 238 | Y: 35
-;   start button loc X: 181 | Y: 981
-;     under 25 yes button loc X: 765 | Y: 655
+;   top play button loc X: 238 , 35
+;   start button loc X: 181 , 981
+;     under 25 yes button loc X: 765 , 655
 HitPlay() {
     MouseClick "left", 238, 35  ; top play button
     sleep 250
@@ -44,4 +44,36 @@ GoToTrade() {
     sleep 250
     MouseClick "left", 1191, 247  ; marketplace button location
     global WasInTrade := true
+}
+
+GoToStash() {
+    MouseClick "left", 880, 31  ; top stash button
+    sleep 250
+}
+
+ExpressmanExpress() {
+    MouseClick "left", 982, 31  ; top merchant button
+    sleep 250
+    MouseClick "left", 715, 404  ; expressman button
+    sleep 250
+    MouseClick "left", 306, 1011 ; select all button
+    sleep 250
+    MouseClick "left", 947, 896  ; fill all
+    sleep 250
+    MouseClick "left", 954, 964  ; get item
+}
+
+GetAllFromGoblin() {
+    MouseClick "left", 982, 31  ; top merchant button
+    sleep 250
+    MouseClick "left", 1178, 426  ; goblin picture
+    sleep 250
+    MouseClick "left", 296, 139  ; Service button
+    sleep 250
+    MouseClick "left", 306, 1011 ; select all button
+    sleep 250
+    MouseClick "left", 947, 896  ; fill all
+    sleep 250
+    MouseClick "left", 954, 964  ; get item
+
 }
