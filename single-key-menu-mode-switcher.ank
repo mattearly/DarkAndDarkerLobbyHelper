@@ -1,0 +1,109 @@
+; script is designed for designed for Dark and Darker
+; running on 1920x1080 and in the main menu after selection
+; your character. 
+; main use: single hotkey to get to core menu locations
+; written and maintained by matthewjearly@gmail.com
+
+; starting script generalities
+; #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to assist with detecting common errors.
+;SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+;SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+
+; notes - back button (when applicable) loc X: 150 | Y: 45
+GlobalBack() {
+    MouseClick "left", 150, 45   ; back button
+    sleep 250
+    MouseClick "left", 857, 625  ; are you sure market button
+    sleep 250
+}
+
+
+/* play insta-queue setup:
+   top play button loc X: 238 | Y: 35
+   start button loc X: 181 | Y: 981
+   under 25 yes button loc X: 765 | Y: 655
+*/
+#HotIf WinActive("Dark and Darker")
+Numpad0::
+{
+    MouseClick "left", 150, 45   ; back button
+    sleep 250
+    MouseClick "left", 1191, 247  ; are you sure market button
+    sleep 250
+    MouseClick "left", 238, 35  ; top play button
+    sleep 250
+    MouseClick "left", 181, 981  ; start bottom left button
+    sleep 300
+    MouseClick "left", 765, 655  ; timmy yes button  
+}
+
+
+
+/* class
+    button loc X: 720 | Y: 37
+      perks and skills (when 2 options) X: 983 | Y: 118
+*/
+
+/* stash
+   button loc X: 880 | Y: 40
+*/
+
+/* merchant  
+   button loc X: 982 | Y: 31
+     alchemist loc X: 227 | Y: 406  - sell button loc X: 333 | Y: 205
+     surgeon loc X: X: 462 | Y: 790  
+     squire loc X: 214 | Y: 752
+     collector loc X: 1201 | Y: 795
+*/
+;alchemist
+#HotIf WinActive("Dark and Darker")
+Numpad1::
+{
+    MouseClick "left", 150, 45   ; back button
+    sleep 250
+    MouseClick "left", 1191, 247  ; are you sure market button
+    sleep 250
+    MouseClick "left", 982, 31  ; top merchant button
+    sleep 250
+    MouseClick "left", 227, 406  ; alch location
+}
+; SURGEON
+#HotIf WinActive("Dark and Darker")
+Numpad2::
+{
+    MouseClick "left", 150, 45   ; back button
+    sleep 250
+    MouseClick "left", 1191, 247  ; are you sure market button
+    sleep 250
+    MouseClick "left", 982, 31  ; top merchant button
+    sleep 250
+    MouseClick "left", 462, 790  ; surg location
+}
+; SQUIRE
+#HotIf WinActive("Dark and Darker")
+Numpad3::
+{
+    MouseClick "left", 150, 45   ; back button
+    sleep 250
+    MouseClick "left", 1191, 247  ; are you sure market button
+    sleep 250
+    MouseClick "left", 982, 31  ; top merchant button
+    sleep 250
+    MouseClick "left", 214, 752  ; squire location
+}
+; COLLECTOR
+#HotIf WinActive("Dark and Darker")
+Numpad4::
+{
+    GlobalBack()
+    MouseClick "left", 982, 31  ; top merchant button
+    sleep 250
+    MouseClick "left", 1201, 795  ; Collector loc
+}
+
+/* trade
+   button loc X: 1192 | Y: 41
+     marketplace button loc X: 1191 | Y: 247
+      leave (use back button loc), then are you sure you want to leave Yes loc X: 1191 | Y: 247
+*/
