@@ -1,79 +1,147 @@
 ; required variables
 global WasInTrade := false
 
+; short sleep
+SS() {
+    sleep 200
+}
+
+; long sleep
+LS() { 
+    sleep 350
+}
+
 ; notes - back button (when applicable) loc X: 150 , 45
 GlobalBack() {
-    global
-    MouseClick "left", 150, 45   ; back button
-    sleep 250
-    if WasInTrade { 
-      MouseClick "left", 857, 625  ; are you sure market button
-      WasInTrade := false
-      sleep 250
-    }
+  global
+  MouseClick "left", 150, 45   ; back button
+  LS()
+  if WasInTrade { 
+    MouseClick "left", 857, 625  ; are you sure market button
+    WasInTrade := false
+  }
+}
+
+FillAllMakeDeal() {
+  MouseClick "left", 966, 929 ; click on fill all from stash
+  SS()
+  MouseClick "left", 963, 992 ; click make deal
 }
 
 ; play insta-queue setup:
 ;   top play button loc X: 238 , 35
 ;   start button loc X: 181 , 981
-;     under 25 yes button loc X: 765 , 655
+;   under 25 yes button loc X: 765 , 655
 HitPlay() {
-    MouseClick "left", 238, 35  ; top play button
-    sleep 250
-    MouseClick "left", 181, 981  ; start bottom left button
-    sleep 300
-    MouseClick "left", 765, 655  ; timmy yes button  
+  MouseClick "left", 238, 35  ; top play button
+  LS()
+  MouseClick "left", 181, 981  ; start bottom left button
+  LS()
+  MouseClick "left", 765, 655  ; timmy yes button  
 }
 
-GoToPurchasePotions() {
-    MouseClick "left", 982, 31  ; top merchant button
-    sleep 250
-    MouseClick "left", 227, 406  ; alch location
+GoToAlchemist() {
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 227, 406  ; alch location
+}
+GoToSquireAndFill() {
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 214, 752  ; squire location
+  LS()
+  MouseClick "left", 963, 992 ; click make deal
 }
 
 GoToVendor() {
-    MouseClick "left", 982, 31  ; top merchant button
-    sleep 250
-    MouseClick "left", 227, 406  ; alch location
-    sleep 250
-    MouseClick "left", 333, 205  ; sell loc
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 227, 406  ; alch location
+  LS()
+  MouseClick "left", 333, 205  ; sell loc
 }
 
+GoToSurgeon() {
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 462, 790  ; surg location
+}
 GoToTrade() {
-    MouseClick "left", 1192, 31  ; top trade button
-    sleep 250
-    MouseClick "left", 1191, 247  ; marketplace button location
-    global WasInTrade := true
+  MouseClick "left", 1192, 31  ; top trade button
+  LS()
+  MouseClick "left", 1191, 247  ; marketplace button location
+  global WasInTrade := true
 }
 
 GoToStash() {
-    MouseClick "left", 880, 31  ; top stash button
-    sleep 250
+  MouseClick "left", 880, 31  ; top stash button
 }
 
+
 ExpressmanExpress() {
-    MouseClick "left", 982, 31  ; top merchant button
-    sleep 250
-    MouseClick "left", 715, 404  ; expressman button
-    sleep 250
-    MouseClick "left", 306, 1011 ; select all button
-    sleep 250
-    MouseClick "left", 947, 896  ; fill all
-    sleep 250
-    MouseClick "left", 954, 964  ; get item
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 715, 404  ; expressman button
+  LS()
+  MouseClick "left", 306, 1011 ; select all button
+  LS()
+  MouseClick "left", 947, 896  ; fill all
+  LS()
+  MouseClick "left", 954, 964  ; get item
 }
 
 GetAllFromGoblin() {
-    MouseClick "left", 982, 31  ; top merchant button
-    sleep 250
-    MouseClick "left", 1178, 426  ; goblin picture
-    sleep 250
-    MouseClick "left", 296, 139  ; Service button
-    sleep 250
-    MouseClick "left", 306, 1011 ; select all button
-    sleep 250
-    MouseClick "left", 947, 896  ; fill all
-    sleep 250
-    MouseClick "left", 954, 964  ; get item
-
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 1178, 426  ; goblin picture
+  LS()
+  MouseClick "left", 296, 139  ; Service button
+  LS()
+  MouseClick "left", 306, 1011 ; select all button
+  LS()
+  MouseClick "left", 947, 896  ; fill all
+  LS()
+  MouseClick "left", 954, 964  ; get item
 }
+
+Buy8Potions3Bandages() {
+  GoToAlchemist()
+  LS()
+  MouseClick "left", 162, 298 ; click on 3x low quality potion
+  SS()
+  MouseClick "left", 1013, 604 ; click on increase button
+  SS()
+  FillAllMakeDeal()
+  LS()
+  MouseClick "left", 77, 298 ; click on 1x low quality potion
+  SS()
+  MouseClick "left", 1013, 604 ; click on increase button
+  SS()
+  FillAllMakeDeal()
+  LS()
+  GlobalBack()
+  GoToSurgeon()
+  SS()
+  MouseClick "left", 79, 295  ; click crappy bandage
+  SS()
+  FillAllMakeDeal()
+  LS()
+  MouseClick "left", 125, 295  ; click white bandage
+  SS()
+  FillAllMakeDeal()
+  LS()
+  MouseClick "left", 150, 295  ; click green bandage
+  SS()
+  FillAllMakeDeal()
+}
+
+BuyPickaxe() { 
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 213, 1068  ; woodsman button
+  LS()
+  MouseClick "left", 180, 335  ; middle pick
+  SS() 
+  FillAllMakeDeal()
+}
+

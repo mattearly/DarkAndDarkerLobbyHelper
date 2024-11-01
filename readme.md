@@ -28,3 +28,6 @@
     - numpad7 - collector
     - numpad8 - vendor
     - numpad9 - marketplace
+    - numpadAdd - Buy 8 Potions 3 bandages
+    - numpadMulti - Buy Pickaxe
+  

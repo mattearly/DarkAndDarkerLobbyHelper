@@ -10,69 +10,66 @@
 #HotIf WinActive("Dark and Darker")
 ^Numpad0::
 {
-    GlobalBack()
-    HitPlay()
+  GlobalBack()
+  HitPlay()
 }
 
 ; class
-;    button loc X: 720 | Y: 37
-;      perks and skills (when 2 options) X: 983 | Y: 118
+;  button loc X: 720 | Y: 37
+;    perks and skills (when 2 options) X: 983 | Y: 118
 ; TODO
 
 
 
 ; merchants  
 ;   button loc X: 982 | Y: 31
-;     alchemist loc X: 227 | Y: 406  - sell button loc X: 333 | Y: 205
-;     surgeon loc X: X: 462 | Y: 790  
-;     squire loc X: 214 | Y: 752
-;     collector loc X: 1201 | Y: 795
+;   alchemist loc X: 227 | Y: 406  - sell button loc X: 333 | Y: 205
+;   surgeon loc X: X: 462 | Y: 790  
+;   squire loc X: 214 | Y: 752
+;   collector loc X: 1201 | Y: 795
 
 #HotIf WinActive("Dark and Darker")
 ^Numpad1::
 {
-    GlobalBack()
-    GoToPurchasePotions()
+  GlobalBack()
+  GoToAlchemist()
 }
 ; SURGEON
 #HotIf WinActive("Dark and Darker")
 ^Numpad2::
 {
-    GlobalBack()
-    MouseClick "left", 982, 31  ; top merchant button
-    sleep 250
-    MouseClick "left", 462, 790  ; surg location
+  GlobalBack()
+  GoToSurgeon()
+
 }
 ; SQUIRE
 #HotIf WinActive("Dark and Darker")
 ^Numpad3::
 {
-    GlobalBack()
-    MouseClick "left", 982, 31  ; top merchant button
-    sleep 250
-    MouseClick "left", 214, 752  ; squire location
+  GlobalBack()
+GoToSquireAndFill()
 }
 
 ; STASH
 ^Numpad4::
 {
-    GlobalBack()
-    GoToStash()
+  GlobalBack()
+  GoToStash()
 }
 
 ; EXPRESSMAN GATHER
 ^Numpad5::
 {
-    GlobalBack()
-    ExpressmanExpress()
+  GlobalBack()
+  ExpressmanExpress()
 }
 
 
 ; GOBLIN RETRIEVAL
 ^Numpad6::
 {
-    GlobalBack()
-    GetAllFromGoblin()
+  GlobalBack()
+  GetAllFromGoblin()
 }
 
 
@@ -80,26 +77,38 @@
 #HotIf WinActive("Dark and Darker")
 ^Numpad7::
 {
-    GlobalBack()
-    MouseClick "left", 982, 31  ; top merchant button
-    sleep 250
-    MouseClick "left", 1201, 795  ; Collector loc
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  sleep 250
+  MouseClick "left", 1201, 795  ; Collector loc
 }
 
 #HotIf WinActive("Dark and Darker")
 ^Numpad8::
 {
-    GlobalBack()
-    GoToVendor()
+  GlobalBack()
+  GoToVendor()
 }
 
 /* trade
    button loc X: 1192 | Y: 41
-     marketplace button loc X: 1191 | Y: 247
-      leave (use back button loc), then are you sure you want to leave Yes loc X: 1191 | Y: 247
+   marketplace button loc X: 1191 | Y: 247
+    leave (use back button loc), then are you sure you want to leave Yes loc X: 1191 | Y: 247
 */
 ^Numpad9::
 {
-    GlobalBack()
-    GoToTrade()
+  GlobalBack()
+  GoToTrade()
+}
+
+^NumpadAdd::
+{
+  GlobalBack()
+  Buy8Potions3Bandages()
+}
+
+^NumpadMult::
+{
+  GlobalBack()
+  BuyPickaxe()
 }
