@@ -19,5 +19,10 @@
   numpad0 - insta-queue
   numpad1 - alchemist
   numpad2 - surgeon
-  numpad3 - 
+  numpad3 - squire
   numpad4 - 
+  numpad5 - 
+  numpad6 - 
+  numpad7 - collector
+  numpad8 - vendor
+  numpad9 - marketplace

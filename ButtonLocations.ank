@@ -1,0 +1,47 @@
+; required variables
+global WasInTrade := false
+
+; notes - back button (when applicable) loc X: 150 | Y: 45
+GlobalBack() {
+    global
+    MouseClick "left", 150, 45   ; back button
+    sleep 250
+    if WasInTrade { 
+      MouseClick "left", 857, 625  ; are you sure market button
+      WasInTrade := false
+      sleep 250
+    }
+}
+
+; play insta-queue setup:
+;   top play button loc X: 238 | Y: 35
+;   start button loc X: 181 | Y: 981
+;     under 25 yes button loc X: 765 | Y: 655
+HitPlay() {
+    MouseClick "left", 238, 35  ; top play button
+    sleep 250
+    MouseClick "left", 181, 981  ; start bottom left button
+    sleep 300
+    MouseClick "left", 765, 655  ; timmy yes button  
+}
+
+GoToPurchasePotions() {
+    MouseClick "left", 982, 31  ; top merchant button
+    sleep 250
+    MouseClick "left", 227, 406  ; alch location
+}
+
+GoToVendor() {
+    MouseClick "left", 982, 31  ; top merchant button
+    sleep 250
+    MouseClick "left", 227, 406  ; alch location
+    sleep 250
+    MouseClick "left", 333, 205  ; sell loc
+}
+
+GoToTrade() {
+    MouseClick "left", 1192, 31  ; top trade button
+    sleep 250
+    MouseClick "left", 1191, 247  ; marketplace button location
+    global WasInTrade := true
+}
