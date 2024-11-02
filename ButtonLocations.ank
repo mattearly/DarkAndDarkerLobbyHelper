@@ -3,15 +3,14 @@ global WasInTrade := false
 
 ; short sleep
 SS() {
-    sleep 200
+    sleep 190
 }
 
 ; long sleep
 LS() { 
-    sleep 400
+    sleep 390
 }
 
-; notes - back button (when applicable) loc X: 150 , 45
 GlobalBack() {
   global
   MouseClick "left", 150, 45   ; back button
@@ -51,9 +50,36 @@ GoToAlchemist() {
   MouseClick "left", 227, 406  ; alch location
 }
 
-GoToSquireAndFill() {
+GoToLeatherSmithService() { 
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 1686, 414  ; leathersmith
+  SS()
+  MouseClick "left", 303, 141  ;Service button
+}
+
+GoToTailorService() { 
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 712, 778 ;  tailor button
+  SS()
+  MouseClick "left", 303, 141  ; service button
+}
+
+GoToGoblinBuy() {
   GlobalBack()
 
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 1186, 444 ; goblin
+  SS()
+  MouseClick "left", 303, 141  ; service button
+}
+
+GoToSquireAndFill() {
+  GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 214, 752  ; squire location
@@ -152,9 +178,13 @@ Buy8Potions3Bandages() {
   SS()
   MouseClick "left", 79, 295  ; click crappy bandage
   SS()
+  MouseClick "left", 1013, 604 ; click on increase button
+  SS()
   FillAllMakeDeal()
   LS()
   MouseClick "left", 125, 295  ; click white bandage
+  SS()
+  MouseClick "left", 1013, 604 ; click on increase button
   SS()
   FillAllMakeDeal()
   LS()
@@ -174,4 +204,3 @@ BuyPickaxe() {
   SS() 
   FillAllMakeDeal()
 }
-

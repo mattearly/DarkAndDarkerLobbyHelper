@@ -19,15 +19,15 @@
   
   - cntrl +
     - numpad0 - insta-queue
-    - numpad1 - alchemist
-    - numpad2 - surgeon
+    - numpad1 - leathersmithing
+    - numpad2 - tailoring
     - numpad3 - squire
     - numpad4 - stash
     - numpad5 - gather all from expressman
     - numpad6 - gather all from goblin
-    - numpad7 - collector
+    - numpad7 - Sell At Collector
     - numpad8 - vendor
-    - numpad9 - marketplace
+    - numpad9 - Go To Marketplace
     - numpadAdd - Buy 8 Potions 3 bandages
     - numpadMulti - Buy Pickaxe
   

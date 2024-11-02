@@ -24,16 +24,15 @@
 #HotIf WinActive("Dark and Darker")
 ^Numpad1::
 {
-  GlobalBack()
-  GoToAlchemist()
+  GoToLeatherSmithService()
 }
 ; SURGEON
 #HotIf WinActive("Dark and Darker")
 ^Numpad2::
 {
-  GoToSurgeon()
-
+  GoToTailorService()
 }
+
 ; SQUIRE
 #HotIf WinActive("Dark and Darker")
 ^Numpad3::
