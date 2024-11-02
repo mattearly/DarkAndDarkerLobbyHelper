@@ -125,9 +125,17 @@ GoToTrade() {
 GoToCollector() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
-  sleep 250
+  LS()
   MouseClick "left", 1201, 795  ; Collector loc
 }
+
+GoToWoodsman() {
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", 202, 1061  ; woodman loc
+}
+
 
 GoToStash() {
   GlobalBack()
@@ -180,7 +188,6 @@ Buy8Potions3Bandages() {
   SS()
   FillAllMakeDeal()
   LS()
-  GlobalBack()
   GoToSurgeon()
   SS()
   MouseClick "left", 79, 295  ; click crappy bandage
@@ -209,5 +216,30 @@ BuyPickaxe() {
   LS()
   MouseClick "left", 180, 335  ; middle pick
   SS() 
+  FillAllMakeDeal()
+}
+
+BuyRogueArenaKit() {
+  GlobalBack()
+  GoToAlchemist()
+  LS()
+  MouseClick "left", 162, 298 ; click on 3x low quality potion
+  SS()
+  FillAllMakeDeal()
+  LS()
+  GoToSurgeon()
+  SS()
+  MouseClick "left", 150, 295  ; click green bandage
+  SS()
+  MouseClick "left", 1013, 604 ; click on increase button
+  SS()
+  FillAllMakeDeal()
+  LS()
+  GoToWoodsman()
+  SS()
+  MouseClick "left", 75, 837   ; click 5 bolt stack
+  SS()
+  MouseClick "left", 1013, 604 ; click on increase button
+  SS()
   FillAllMakeDeal()
 }

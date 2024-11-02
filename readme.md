@@ -18,17 +18,19 @@
   by default they are numpad keys as follows
   
   - cntrl +
-    - numpad0 - insta-queue
-    - numpad1 - leathersmithing
-    - numpad2 - tailoring
-    - numpad3 - squire
-    - numpad4 - stash
-    - numpad5 - gather all from expressman
-    - numpad6 - gather all from goblin
+    - numpad0 - Insta-queue
+    - numpad1 - Leathersmithing
+    - numpad2 - Tailoring
+    - numpad3 - Squire
+    - numpad4 - Stash
+    - numpad5 - Gather all from expressman
+    - numpad6 - Gather all from goblin
     - numpad7 - Sell at collector
     - numpad8 - Sell at vendor
     - numpad9 - Go To Marketplace
+    - numpadSub - Buy Rogue Arena Kit (3 potions, 2 bandages, 10 bolts)
     - numpadAdd - Buy 8 Potions 3 bandages
     - numpadMulti - Buy Pickaxe
-    - numpadDot - class spec
+    - numpadDot - Class Spec
+    - numpad?? - next seller quickbutton (todo)
   

@@ -79,6 +79,11 @@
   GoToTrade()
 }
 
+^NumpadSub::
+{
+  BuyRogueArenaKit()
+}
+
 ^NumpadAdd::
 {
   Buy8Potions3Bandages()
@@ -93,3 +98,4 @@
 {
   GoToClassSpec()
 }
+
