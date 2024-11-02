@@ -173,36 +173,24 @@ GetAllFromGoblin() {
   MouseClick "left", 954, 964  ; get item
 }
 
-Buy8Potions3Bandages() {
+BuyPotionsAndBandages() {
   GoToAlchemist()
   LS()
   MouseClick "left", 162, 298 ; click on 3x low quality potion
   SS()
-  MouseClick "left", 1013, 604 ; click on increase button
-  SS()
-  FillAllMakeDeal()
-  LS()
-  MouseClick "left", 77, 298 ; click on 1x low quality potion
-  SS()
-  MouseClick "left", 1013, 604 ; click on increase button
+  MouseClick "left", 1013, 604, 2 ; click on increase button twice
   SS()
   FillAllMakeDeal()
   LS()
   GoToSurgeon()
   SS()
-  MouseClick "left", 79, 295  ; click crappy bandage
-  SS()
-  MouseClick "left", 1013, 604 ; click on increase button
+  MouseClick "left", 79, 295, 4  ; click grey bandage
   SS()
   FillAllMakeDeal()
   LS()
   MouseClick "left", 125, 295  ; click white bandage
   SS()
-  MouseClick "left", 1013, 604 ; click on increase button
-  SS()
-  FillAllMakeDeal()
-  LS()
-  MouseClick "left", 150, 295  ; click green bandage
+  MouseClick "left", 1013, 604, 3 ; click on increase button
   SS()
   FillAllMakeDeal()
 }

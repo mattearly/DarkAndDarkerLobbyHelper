@@ -13,24 +13,24 @@
 
 ## how to run
 
+  - change the hotkeys buttons in the code to make your own custom hotkeys and what they map to if you want.
   - run the script
-  - change the buttons in the code to make your own hotkeys if you want
-  by default they are numpad keys as follows
-  
-  - cntrl +
-    - numpad0 - Insta-queue
-    - numpad1 - Leathersmithing
-    - numpad2 - Tailoring
-    - numpad3 - Squire
-    - numpad4 - Stash
-    - numpad5 - Gather all from expressman
-    - numpad6 - Gather all from goblin
-    - numpad7 - Sell at collector
-    - numpad8 - Sell at vendor
-    - numpad9 - Go To Marketplace
-    - numpadSub - Buy Rogue Arena Kit (3 potions, 2 bandages, 10 bolts)
-    - numpadAdd - Buy 8 Potions 3 bandages
-    - numpadMulti - Buy Pickaxe
-    - numpadDot - Class Spec
-    - numpad?? - next seller quickbutton (todo)
+  - you must be logged into a character and in the pre-game lobby (this doesn't work right elsewere)
+  - Default KeyBindings
+    - cntrl +
+      - numpad0 - Insta-Queue - a dangerous but speedy button
+      - numpad1 - Go to Leathersmithing Service
+      - numpad2 - Go to Tailoring Service
+      - numpad3 - Go to Squire and fill
+      - numpad4 - Go to Stash
+      - numpad5 - Gather all from expressman
+      - numpad6 - Gather all from goblin
+      - numpad7 - Sell at Collector
+      - numpad8 - Sell at Vendor
+      - numpad9 - Go To Marketplace
+      - numpadSub - Buy Rogue Arena Kit (3 potions, 2 bandages, 10 bolts)
+      - numpadAdd - Buy Potions and Bandages for a run (9 pots, 5 grey bandage, 4 white bandages)
+      - numpadMulti - Buy Pickaxe
+      - numpadDot - Class Spec
+      - TODO: numpad?? - next market seller quickbutton - all 10 classes to level 20 and market ready assumed
   
