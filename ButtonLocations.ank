@@ -42,6 +42,13 @@ HitPlay() {
   MouseClick "left", 765, 655  ; timmy yes button  
 }
 
+GoToClassSpec() {
+  GlobalBack()
+  MouseClick "left", 720, 35  ; top class button
+  LS()
+  MouseClick "left", 983, 118  ; perks and skills button
+}
+
 GoToAlchemist() {
   GlobalBack()
 

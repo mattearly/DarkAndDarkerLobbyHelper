@@ -88,3 +88,8 @@
 {
   BuyPickaxe()
 }
+
+^NumpadDot::
+{
+  GoToClassSpec()
+}

@@ -25,9 +25,10 @@
     - numpad4 - stash
     - numpad5 - gather all from expressman
     - numpad6 - gather all from goblin
-    - numpad7 - Sell At Collector
-    - numpad8 - vendor
+    - numpad7 - Sell at collector
+    - numpad8 - Sell at vendor
     - numpad9 - Go To Marketplace
     - numpadAdd - Buy 8 Potions 3 bandages
     - numpadMulti - Buy Pickaxe
+    - numpadDot - class spec
   
