@@ -3,12 +3,17 @@ global WasInTrade := false
 
 ; short sleep
 SS() {
-    sleep 190
+    sleep 200
 }
 
 ; long sleep
 LS() { 
-    sleep 390
+    sleep 410
+}
+
+; very long sleep
+VLS() {
+  sleep 4500
 }
 
 GlobalBack() {
@@ -112,13 +117,23 @@ GoToSurgeon() {
   MouseClick "left", 462, 790  ; surg location
 }
 
-GoToTrade() {
+GoToMarketplace() {
   global
   GlobalBack()
-
   MouseClick "left", 1192, 31  ; top trade button
   LS()
   MouseClick "left", 1191, 247  ; marketplace button location
+  WasInTrade := true
+}
+
+GoToSellAtMarket() {
+  global
+  GlobalBack()
+  MouseClick "left", 1192, 31  ; top trade button
+  LS()
+  MouseClick "left", 1191, 247  ; marketplace button location
+  LS()
+  MouseClick "left", 1060, 117  ; My Listings button
   WasInTrade := true
 }
 
@@ -178,37 +193,33 @@ BuyPotionsAndBandages() {
   LS()
   MouseClick "left", 162, 298 ; click on 3x low quality potion
   SS()
-  MouseClick "left", 1013, 604, 2 ; click on increase button twice
+  MouseClick "left", 1013, 604  ; click increase
   SS()
   FillAllMakeDeal()
   LS()
   GoToSurgeon()
   SS()
-  MouseClick "left", 79, 295, 4  ; click grey bandage
+  MouseClick "left", 79, 295  ; click grey bandage
+  SS()
+  MouseClick "left", 1013, 604, 2 ; click on increase button 2x
   SS()
   FillAllMakeDeal()
   LS()
   MouseClick "left", 125, 295  ; click white bandage
   SS()
-  MouseClick "left", 1013, 604, 3 ; click on increase button
+  MouseClick "left", 1013, 604, 2 ; click on increase button 2x
   SS()
   FillAllMakeDeal()
 }
 
 BuyPickaxe() { 
-  GlobalBack()
-
-  MouseClick "left", 982, 31  ; top merchant button
-  LS()
-  MouseClick "left", 213, 1068  ; woodsman button
-  LS()
+  GoToWoodsman()
   MouseClick "left", 180, 335  ; middle pick
-  SS() 
+  SS()
   FillAllMakeDeal()
 }
 
 BuyRogueArenaKit() {
-  GlobalBack()
   GoToAlchemist()
   LS()
   MouseClick "left", 162, 298 ; click on 3x low quality potion
@@ -222,12 +233,29 @@ BuyRogueArenaKit() {
   MouseClick "left", 1013, 604 ; click on increase button
   SS()
   FillAllMakeDeal()
+}
+
+CycleToNextAuctioneer() {
+  GlobalBack()
+  ; log out of character
+  MouseClick "left",  237, 44   ; click play button
+  SS()
+  MouseClick "left", 1858, 1025 ; change class button
   LS()
-  GoToWoodsman()
+  LS()
+  LS()
+  LS()
+
+  ; cycle to page 2
+  MouseClick "left", 1843, 909 ; page right button on char select
+  LS()
+  ; select bottom character (2nd down on page 2)
+  MouseClick "left", 1595, 289  ; click 2nd character down
   SS()
-  MouseClick "left", 75, 837   ; click 5 bolt stack
-  SS()
-  MouseClick "left", 1013, 604 ; click on increase button
-  SS()
-  FillAllMakeDeal()
+  ; click enter the lobby
+  MouseClick "left", 954, 964  ; Enter the lobby button
+  VLS()
+
+  ; go to marketplace
+  GoToSellAtMarket()
 }

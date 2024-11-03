@@ -76,7 +76,7 @@
 ; TRADE
 ^Numpad9::
 {
-  GoToTrade()
+  GoToMarketplace()
 }
 
 ^NumpadSub::
@@ -86,7 +86,7 @@
 
 ^NumpadAdd::
 {
-  Buy8Potions3Bandages()
+  BuyPotionsAndBandages()
 }
 
 ^NumpadMult::
@@ -99,3 +99,7 @@
   GoToClassSpec()
 }
 
+^NumpadDiv::
+{
+  CycleToNextAuctioneer()
+}

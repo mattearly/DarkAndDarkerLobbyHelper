@@ -28,9 +28,9 @@
       - numpad7 - Sell at Collector
       - numpad8 - Sell at Vendor
       - numpad9 - Go To Marketplace
-      - numpadSub - Buy Rogue Arena Kit (3 potions, 2 bandages, 10 bolts)
-      - numpadAdd - Buy Potions and Bandages for a run (9 pots, 5 grey bandage, 4 white bandages)
+      - numpadDiv - next market seller quickbutton - all 9 classes to level 20 and market ready assumed
       - numpadMulti - Buy Pickaxe
+      - numpadSub - Buy Rogue Arena Kit (3 potions, 2 green bandages)
+      - numpadAdd - Buy Potions and Bandages for a run (6 pots, 3 grey bandage, 3 white bandages)
       - numpadDot - Class Spec
-      - TODO: numpad?? - next market seller quickbutton - all 10 classes to level 20 and market ready assumed
   
