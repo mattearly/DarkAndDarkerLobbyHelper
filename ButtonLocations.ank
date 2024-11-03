@@ -3,17 +3,17 @@ global WasInTrade := false
 
 ; short sleep
 SS() {
-    sleep 200
+    sleep 220
 }
 
 ; long sleep
 LS() { 
-    sleep 410
+    sleep 420
 }
 
 ; very long sleep
 VLS() {
-  sleep 4500
+  sleep 6200  ; can take some characters a very long time to load in
 }
 
 GlobalBack() {
@@ -214,6 +214,7 @@ BuyPotionsAndBandages() {
 
 BuyPickaxe() { 
   GoToWoodsman()
+  LS()
   MouseClick "left", 180, 335  ; middle pick
   SS()
   FillAllMakeDeal()
