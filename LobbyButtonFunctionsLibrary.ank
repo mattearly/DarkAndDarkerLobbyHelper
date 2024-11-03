@@ -1,19 +1,28 @@
+; script is designed for designed for "Dark and Darker" Lobby Management
+; essentially it just clicks the screen in certain places as specified
+; designed for 1920x1080 screen in "Dark and Darker" Lobby (log in to your character)
+; this is in development and made for my personal use and testing
+;   as such - there are no warranties or gaurentees
+;           - use at your own risk
+; file main use: define useful clicker functions and definitions
+; written and maintained by matthewjearly@gmail.com
+
 ; required variables
 global WasInTrade := false
 
 ; short sleep
 SS() {
-    sleep 220
+    sleep 159 ; probably needs to be higher for most computers
 }
 
 ; long sleep
 LS() { 
-    sleep 420
+    sleep 289   ; probably needs to be higher for most computers
 }
 
 ; very long sleep
 VLS() {
-  sleep 6200  ; can take some characters a very long time to load in
+  sleep 4299  ; can take some characters a very long time to load in, 4200ms might be too short
 }
 
 GlobalBack() {
@@ -254,9 +263,10 @@ CycleToNextAuctioneer() {
   MouseClick "left", 1595, 289  ; click 2nd character down
   SS()
   ; click enter the lobby
-  MouseClick "left", 954, 964  ; Enter the lobby button
+  MouseClick "left", 954, 979  ; Enter the lobby button
   VLS()
 
   ; go to marketplace
   GoToSellAtMarket()
+  
 }

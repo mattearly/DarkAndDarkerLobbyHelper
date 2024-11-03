@@ -1,16 +1,16 @@
-; script is designed for designed for Dark and Darker
-; running on 1920x1080 and in the main menu after selection
-; your character. 
-; main use: single hotkey to get to core menu locations
+; script is designed for designed for "Dark and Darker" Lobby Management
+; this is in development and made for my personal use and testing
+;   as such - there are no warranties or gaurentees
+;           - use at your own risk
+; file main use: setup main runtime keybinds to functions
 ; written and maintained by matthewjearly@gmail.com
 
-#include ButtonLocations.ank
+#include LobbyButtonFunctionsLibrary.ank
 
-; Keybind setup for HitPlay (not commenting this on further down functions, they follow this pattern)
+; Keybind setup for HitPlay (file structure follows this pattern)
 #HotIf WinActive("Dark and Darker")
 ^Numpad0::
 {
-  GlobalBack()
   HitPlay()
 }
 
