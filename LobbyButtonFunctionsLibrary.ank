@@ -13,12 +13,12 @@ global WasInTrade := false
 
 ; short sleep
 SS() {
-    sleep 210 ; probably needs to be higher 
+    sleep 310 ; probably needs to be higher 
 }
 
 ; long sleep
 LS() { 
-    sleep 395   ; probably needs to be higher 
+    sleep 410   ; probably needs to be higher 
 }
 
 ; very long sleep
