@@ -7,11 +7,39 @@
 
 #include LobbyButtonFunctionsLibrary.ank
 
+global HoldOff := false
+
+; aux function
+; these are to wrap around keybinds so you can't accidently spam
+Lock() {
+  global
+  if HoldOff {
+    return
+  } else {
+    HoldOff := true
+  }
+}
+
+; aux function
+Unlock() {
+  global
+  if HoldOff {
+    HoldOff := false
+  }
+}
+
+
 ; Keybind setup for HitPlay (file structure follows this pattern)
 #HotIf WinActive("Dark and Darker")
 ^Numpad0::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   HitPlay()
+  Unlock()
 }
 
 ; class
@@ -19,44 +47,83 @@
 ;    perks and skills (when 2 options) X: 983 | Y: 118
 ; TODO
 
-
+; -------------
 ; MERCHANTS
+; -------------
+; LEATHERSMITH
 #HotIf WinActive("Dark and Darker")
 ^Numpad1::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   GoToLeatherSmithService()
+  Unlock()
 }
-; SURGEON
+
+; TAILOR SERVICE
 #HotIf WinActive("Dark and Darker")
 ^Numpad2::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   GoToTailorService()
+  Unlock()
 }
 
 ; SQUIRE
 #HotIf WinActive("Dark and Darker")
 ^Numpad3::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   GoToSquireAndFill()
+  Unlock()
 }
 
 ; STASH
 ^Numpad4::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   GoToStash()
+  Unlock()
 }
 
 ; EXPRESSMAN GATHER
 ^Numpad5::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   ExpressmanExpress()
+  Unlock()
 }
 
 
 ; GOBLIN RETRIEVAL
 ^Numpad6::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   GetAllFromGoblin()
+  Unlock()
 }
 
 
@@ -64,42 +131,97 @@
 #HotIf WinActive("Dark and Darker")
 ^Numpad7::
 {
+  
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   GoToCollector()
+  Unlock()
 }
 
 #HotIf WinActive("Dark and Darker")
 ^Numpad8::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   GoToVendor()
+  Unlock()
 }
 
 ; TRADE
 ^Numpad9::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   GoToMarketplace()
+  Unlock()
 }
+
+; ------------
+; Custom Stuff for quick play
+; ------------
+
 
 ^NumpadSub::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   BuyRogueArenaKit()
+  Unlock()
 }
 
 ^NumpadAdd::
 {
+  
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   BuyPotionsAndBandages()
+  Unlock()
 }
 
 ^NumpadMult::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   BuyPickaxe()
+  Unlock()
 }
 
 ^NumpadDot::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   GoToClassSpec()
+  Unlock()
 }
 
 ^NumpadDiv::
 {
+  if HoldOff { 
+    return 
+  } else {
+    Lock()
+  }
   CycleToNextAuctioneer()
+  Unlock()
 }

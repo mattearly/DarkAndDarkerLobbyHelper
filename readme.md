@@ -1,6 +1,7 @@
 # Dark And Darker pre-grame ".ank" scripts
 
 ## goal
+
   improve the functionality and convenience of Dark and Darker's pre-game lobby
 
 ## fuctionality

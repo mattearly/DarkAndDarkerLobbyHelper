@@ -10,21 +10,23 @@
 ; required variables
 global WasInTrade := false
 
+
 ; short sleep
 SS() {
-    sleep 159 ; probably needs to be higher for most computers
+    sleep 210 ; probably needs to be higher 
 }
 
 ; long sleep
 LS() { 
-    sleep 289   ; probably needs to be higher for most computers
+    sleep 395   ; probably needs to be higher 
 }
 
 ; very long sleep
 VLS() {
-  sleep 4299  ; can take some characters a very long time to load in, 4200ms might be too short
+  sleep 4200  ; can take some characters a very long time to load in, 4200ms might be too short
 }
 
+; aux function
 GlobalBack() {
   global
   MouseClick "left", 150, 45   ; back button
@@ -36,27 +38,26 @@ GlobalBack() {
   }
 }
 
+; aux function
 FillAllMakeDeal() {
   MouseClick "left", 966, 929 ; click on fill all from stash
   SS()
   MouseClick "left", 963, 992 ; click make deal
 }
 
-; play insta-queue setup:
-;   top play button loc X: 238 , 35
-;   start button loc X: 181 , 981
-;   under 25 yes button loc X: 765 , 655
+
 HitPlay() {
   GlobalBack()
-
   MouseClick "left", 238, 35  ; top play button
   LS()
   MouseClick "left", 181, 981  ; start bottom left button
   LS()
-  MouseClick "left", 765, 655  ; timmy yes button  
+  MouseClick "left", 765, 655  ; timmy yes button
 }
 
 GoToClassSpec() {
+  
+
   GlobalBack()
   MouseClick "left", 720, 35  ; top class button
   LS()
