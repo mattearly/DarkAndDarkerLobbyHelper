@@ -13,17 +13,17 @@ global WasInTrade := false
 
 ; short sleep
 SS() {
-    sleep 310 ; probably needs to be higher 
+    sleep 320 ; probably needs to be higher 
 }
 
 ; long sleep
 LS() { 
-    sleep 410   ; probably needs to be higher 
+    sleep 420   ; probably needs to be higher 
 }
 
 ; very long sleep
 VLS() {
-  sleep 4200  ; can take some characters a very long time to load in, 4200ms might be too short
+  sleep 4150  ; can take some characters a very long time to load in, 4200ms might be too short
 }
 
 ; aux function
@@ -78,7 +78,7 @@ GoToLeatherSmithService() {
   LS()
   MouseClick "left", 1686, 414  ; leathersmith
   SS()
-  MouseClick "left", 303, 141  ;Service button
+  MouseClick "left", 303, 141  ; Service button
 }
 
 GoToTailorService() { 
@@ -203,7 +203,7 @@ BuyPotionsAndBandages() {
   LS()
   MouseClick "left", 162, 298 ; click on 3x low quality potion
   SS()
-  MouseClick "left", 1013, 604  ; click increase
+  MouseClick "left", 1013, 604, 2  ; click increase
   SS()
   FillAllMakeDeal()
   LS()
@@ -211,13 +211,13 @@ BuyPotionsAndBandages() {
   SS()
   MouseClick "left", 79, 295  ; click grey bandage
   SS()
-  MouseClick "left", 1013, 604, 2 ; click on increase button 2x
+  MouseClick "left", 1013, 604, 3 ; click on increase
   SS()
   FillAllMakeDeal()
   LS()
   MouseClick "left", 125, 295  ; click white bandage
   SS()
-  MouseClick "left", 1013, 604, 2 ; click on increase button 2x
+  MouseClick "left", 1013, 604, 2 ; click on increase
   SS()
   FillAllMakeDeal()
 }
