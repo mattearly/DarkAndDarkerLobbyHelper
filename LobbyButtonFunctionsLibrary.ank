@@ -227,7 +227,7 @@ BuyPotions() {
   LS()
 
   ; default set to buy 9 grey quality potions
-  MouseClick "left", 162, 298, 2  ; double click (first click fails sometimes, idky) on 3x low quality potion
+  MouseClick "left", 162, 298  ; click 3x low quality potion
   LS()
   MouseClick "left", 1013, 604, 2  ; click increase twice
   LS()

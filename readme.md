@@ -18,7 +18,7 @@
 
   0. Have "auto hotkey v2" installed
   1. Run the script "Keybinds.ank"
-  2. Launch "Dark and Darker", Log into a character and be in the Pre-Game Lobby (this doesn't work elsewhere)
+  2. Launch "Dark and Darker", Log into a character and be in the Pre-Game Lobby at 1920x1080p res (this doesn't work elsewhere)
 
 ## default keybinds
 
