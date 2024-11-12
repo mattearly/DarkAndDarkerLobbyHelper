@@ -10,7 +10,7 @@
 global HoldOff := false
 
 ; aux function
-; these are to wrap around keybinds so you can't accidently spam
+; Lock/Unlock are to wrap around keybinds so you can't accidently spam
 Lock() {
   global
   if HoldOff {
@@ -28,7 +28,6 @@ Unlock() {
   }
 }
 
-
 ; Keybind setup for HitPlay (file structure follows this pattern)
 #HotIf WinActive("Dark and Darker")
 ^Numpad0::
@@ -41,11 +40,6 @@ Unlock() {
   HitPlay()
   Unlock()
 }
-
-; class
-;  button loc X: 720 | Y: 37
-;    perks and skills (when 2 options) X: 983 | Y: 118
-; TODO
 
 ; -------------
 ; MERCHANTS
@@ -131,7 +125,6 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad7::
 {
-  
   if HoldOff { 
     return 
   } else {
@@ -177,7 +170,7 @@ Unlock() {
   } else {
     Lock()
   }
-  BuyRogueArenaKit()
+  BuyBandages()
   Unlock()
 }
 
@@ -189,7 +182,7 @@ Unlock() {
   } else {
     Lock()
   }
-  BuyPotionsAndBandages()
+  BuyPotions()
   Unlock()
 }
 

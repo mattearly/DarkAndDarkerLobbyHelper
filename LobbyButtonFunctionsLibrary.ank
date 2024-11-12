@@ -7,18 +7,20 @@
 ; file main use: define useful clicker functions and definitions
 ; written and maintained by matthewjearly@gmail.com
 
+#include LobbyButtonFunctionsLibrary.ank
+
 ; required variables
 global WasInTrade := false
 
 
 ; short sleep
 SS() {
-    sleep 320 ; probably needs to be higher 
+  sleep 350  ; probably needs to be higher 
 }
 
 ; long sleep
 LS() { 
-    sleep 420   ; probably needs to be higher 
+  sleep 500  ; probably needs to be higher 
 }
 
 ; very long sleep
@@ -40,9 +42,9 @@ GlobalBack() {
 
 ; aux function
 FillAllMakeDeal() {
-  MouseClick "left", 966, 929 ; click on fill all from stash
-  SS()
-  MouseClick "left", 963, 992 ; click make deal
+  MouseClick "left", 966, 929  ; click on fill all from stash
+  LS()
+  MouseClick "left", 963, 992  ; click make deal
 }
 
 
@@ -56,8 +58,6 @@ HitPlay() {
 }
 
 GoToClassSpec() {
-  
-
   GlobalBack()
   MouseClick "left", 720, 35  ; top class button
   LS()
@@ -66,10 +66,9 @@ GoToClassSpec() {
 
 GoToAlchemist() {
   GlobalBack()
-
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 227, 406  ; alch location
+  MouseClick "left", 227, 406   ; alch location
 }
 
 GoToLeatherSmithService() { 
@@ -77,7 +76,7 @@ GoToLeatherSmithService() {
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 1686, 414  ; leathersmith
-  SS()
+  LS()
   MouseClick "left", 303, 141  ; Service button
 }
 
@@ -85,18 +84,17 @@ GoToTailorService() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 712, 778 ;  tailor button
-  SS()
+  MouseClick "left", 712, 778  ; tailor button
+  LS()
   MouseClick "left", 303, 141  ; service button
 }
 
 GoToGoblinBuy() {
   GlobalBack()
-
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 1186, 444 ; goblin
-  SS()
+  MouseClick "left", 1186, 444  ; goblin
+  LS()
   MouseClick "left", 303, 141  ; service button
 }
 
@@ -111,17 +109,13 @@ GoToSquireAndFill() {
 
 GoToVendor() {
   GlobalBack()
-
-  MouseClick "left", 982, 31  ; top merchant button
+  GoToAlchemist()
   LS()
-  MouseClick "left", 227, 406  ; alch location
-  LS()
-  MouseClick "left", 333, 205  ; sell loc
+  MouseClick "left", 333, 205, 2  ; sell loc
 }
 
 GoToSurgeon() {
   GlobalBack()
-
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 462, 790  ; surg location
@@ -170,12 +164,11 @@ GoToStash() {
 
 ExpressmanExpress() {
   GlobalBack()
-
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 715, 404  ; expressman button
   LS()
-  MouseClick "left", 306, 1011 ; select all button
+  MouseClick "left", 306, 1011  ; select all button
   LS()
   MouseClick "left", 947, 896  ; fill all
   LS()
@@ -184,65 +177,60 @@ ExpressmanExpress() {
 
 GetAllFromGoblin() {
   GlobalBack()
-
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 1178, 426  ; goblin picture
   LS()
   MouseClick "left", 296, 139  ; Service button
   LS()
-  MouseClick "left", 306, 1011 ; select all button
+  MouseClick "left", 306, 1011  ; select all button
   LS()
   MouseClick "left", 947, 896  ; fill all
   LS()
   MouseClick "left", 954, 964  ; get item
 }
 
-BuyPotionsAndBandages() {
-  GoToAlchemist()
-  LS()
-  MouseClick "left", 162, 298 ; click on 3x low quality potion
-  SS()
-  MouseClick "left", 1013, 604, 2  ; click increase
-  SS()
-  FillAllMakeDeal()
-  LS()
-  GoToSurgeon()
-  SS()
-  MouseClick "left", 79, 295  ; click grey bandage
-  SS()
-  MouseClick "left", 1013, 604, 3 ; click on increase
-  SS()
-  FillAllMakeDeal()
-  LS()
-  MouseClick "left", 125, 295  ; click white bandage
-  SS()
-  MouseClick "left", 1013, 604, 2 ; click on increase
-  SS()
-  FillAllMakeDeal()
-}
-
 BuyPickaxe() { 
   GoToWoodsman()
   LS()
+
+  ; purchase white pickaxe
   MouseClick "left", 180, 335  ; middle pick
-  SS()
+  LS()
   FillAllMakeDeal()
 }
 
-BuyRogueArenaKit() {
-  GoToAlchemist()
+BuyBandages() {
+  GoToSurgeon()
   LS()
-  MouseClick "left", 162, 298 ; click on 3x low quality potion
-  SS()
+
+
+  MouseClick "left", 79, 295  ; click grey bandage
+  LS()
+  MouseClick "left", 1013, 604, 6  ; click on increase
+  LS()
   FillAllMakeDeal()
   LS()
-  GoToSurgeon()
-  SS()
+  MouseClick "left", 125, 295 ; click white bandage
+  LS()
+  MouseClick "left", 1013, 604, 2  ; click on increase
+  LS()
+  FillAllMakeDeal()
+  LS()
   MouseClick "left", 150, 295  ; click green bandage
-  SS()
-  MouseClick "left", 1013, 604 ; click on increase button
-  SS()
+  LS()
+  FillAllMakeDeal()
+}
+
+BuyPotions() {
+  GoToAlchemist()
+  LS()
+
+  ; default set to buy 9 grey quality potions
+  MouseClick "left", 162, 298, 2  ; double click (first click fails sometimes, idky) on 3x low quality potion
+  LS()
+  MouseClick "left", 1013, 604, 2  ; click increase twice
+  LS()
   FillAllMakeDeal()
 }
 
@@ -250,19 +238,19 @@ CycleToNextAuctioneer() {
   GlobalBack()
   ; log out of character
   MouseClick "left",  237, 44   ; click play button
-  SS()
-  MouseClick "left", 1858, 1025 ; change class button
+  LS()
+  MouseClick "left", 1858, 1025  ; change class button
   LS()
   LS()
   LS()
   LS()
 
   ; cycle to page 2
-  MouseClick "left", 1843, 909 ; page right button on char select
+  MouseClick "left", 1843, 909  ; page right button on char select
   LS()
   ; select bottom character (2nd down on page 2)
   MouseClick "left", 1595, 289  ; click 2nd character down
-  SS()
+  LS()
   ; click enter the lobby
   MouseClick "left", 954, 979  ; Enter the lobby button
   VLS()
