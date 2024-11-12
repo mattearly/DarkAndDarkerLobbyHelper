@@ -24,22 +24,22 @@
 
   change these in "Keybinds.ank" to whatever you want
   
-    - cntrl +
-      - numpad0 - Insta-Queue - a dangerous but speedy button
-      - numpad1 - Go to Leathersmithing Service
-      - numpad2 - Go to Tailoring Service
-      - numpad3 - Go to Squire and fill
-      - numpad4 - Go to Stash
-      - numpad5 - Gather all from expressman
-      - numpad6 - Gather all from goblin
-      - numpad7 - Sell at Collector
-      - numpad8 - Sell at Vendor
-      - numpad9 - Go To Marketplace
-      - numpadDiv - next market seller quickbutton - Setup to 9 classes to level 20 and Market Ready (change function if you have less or more)
-      - numpadMulti - Buy White Pickaxe
-      - numpadSub - Buy Bandages
-      - numpadAdd - Buy Potions
-      - numpadDot - Class Spec
+  - cntrl +
+    - numpad0 - Insta-Queue - a dangerous but speedy button
+    - numpad1 - Go to Leathersmithing Service
+    - numpad2 - Go to Tailoring Service
+    - numpad3 - Go to Squire and fill
+    - numpad4 - Go to Stash
+    - numpad5 - Gather all from expressman
+    - numpad6 - Gather all from goblin
+    - numpad7 - Sell at Collector
+    - numpad8 - Sell at Vendor
+    - numpad9 - Go To Marketplace
+    - numpadDiv - next market seller quickbutton - Setup to 9 classes to level 20 and Market Ready (change function if you have less or more)
+    - numpadMulti - Buy White Pickaxe
+    - numpadSub - Buy Bandages
+    - numpadAdd - Buy Potions
+    - numpadDot - Class Spec
 
 ## known issues
 

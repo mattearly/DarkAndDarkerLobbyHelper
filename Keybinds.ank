@@ -2,29 +2,29 @@
 ; this is in development and made for my personal use and testing
 ;   as such - there are no warranties or gaurentees
 ;           - use at your own risk
-; file main use: setup main runtime keybinds to functions
+; file use: setup main runtime keybinds to functions
 ; written and maintained by matthewjearly@gmail.com
 
 #include LobbyButtonFunctionsLibrary.ank
 
-global HoldOff := false
+global isBusy := false
 
 ; aux function
 ; Lock/Unlock are to wrap around keybinds so you can't accidently spam
 Lock() {
   global
-  if HoldOff {
+  if isBusy {
     return
   } else {
-    HoldOff := true
+    isBusy := true
   }
 }
 
 ; aux function
 Unlock() {
   global
-  if HoldOff {
-    HoldOff := false
+  if isBusy {
+    isBusy := false
   }
 }
 
@@ -32,7 +32,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad0::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -48,7 +48,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad1::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -61,7 +61,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad2::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -74,7 +74,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad3::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -86,7 +86,7 @@ Unlock() {
 ; STASH
 ^Numpad4::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -98,7 +98,7 @@ Unlock() {
 ; EXPRESSMAN GATHER
 ^Numpad5::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -111,7 +111,7 @@ Unlock() {
 ; GOBLIN RETRIEVAL
 ^Numpad6::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -125,7 +125,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad7::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -137,7 +137,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad8::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -149,7 +149,7 @@ Unlock() {
 ; TRADE
 ^Numpad9::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -165,7 +165,7 @@ Unlock() {
 
 ^NumpadSub::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -177,7 +177,7 @@ Unlock() {
 ^NumpadAdd::
 {
   
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -188,7 +188,7 @@ Unlock() {
 
 ^NumpadMult::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -199,7 +199,7 @@ Unlock() {
 
 ^NumpadDot::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -210,7 +210,7 @@ Unlock() {
 
 ^NumpadDiv::
 {
-  if HoldOff { 
+  if isBusy { 
     return 
   } else {
     Lock()
