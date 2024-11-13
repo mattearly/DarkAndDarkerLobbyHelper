@@ -16,7 +16,7 @@ global SmithLoc := [1694, 826]
 
 ; short sleep
 SS() {
-  sleep 120  ; probably needs to be higher 
+  sleep 130  ; probably needs to be higher 
 }
 
 ; long sleep
@@ -44,8 +44,10 @@ GlobalBack() {
 ; aux function
 FillAllMakeDeal() {
   MouseClick "left", 966, 929  ; click on fill all from stash
-  LS()
-  MouseClick "left", 963, 992  ; click make deal
+  Loop 2 {
+    SS()
+    MouseClick "left", 963, 992  ; click make deal
+  }
 }
 
 
@@ -155,7 +157,7 @@ GoToMarketplace() {
 
 GoToSellAtMarket() {
   GoToMarketplace()
-  SS()
+  LS()
   MouseClick "left", 1060, 117  ; My Listings button
 }
 
@@ -220,15 +222,19 @@ BuyBandages() {
   GoToSurgeon()
   LS()
 
-  MouseClick "left", 79, 295  ; click grey bandage
-  SS()
-  MouseClick "left", 1013, 604, 5  ; click on increase
+  MouseClick "left", 79, 295  ; click single grey bandage
+  Loop 5 {   ; buy 6
+    SS()
+    MouseClick "left", 1013, 604  ; click on increase
+  }
   SS()
   FillAllMakeDeal()
   LS()
   MouseClick "left", 125, 295 ; click white bandage
-  SS()
-  MouseClick "left", 1013, 604, 2  ; click on increase
+  Loop 2 {  ; buy 3
+    SS()
+    MouseClick "left", 1013, 604, 2  ; click on increase
+  }
   SS()
   FillAllMakeDeal()
 }
@@ -239,8 +245,10 @@ BuyPotions() {
 
   ; default set to buy 9 grey quality potions
   MouseClick "left", 162, 298  ; click 3x low quality potion
-  SS()
-  MouseClick "left", 1013, 604, 2  ; click increase twice
+  Loop 2 {  ; buy 3x3 (9)
+    SS()
+    MouseClick "left", 1013, 604  ; click increase twice
+  }
   SS()
   FillAllMakeDeal()
 }
