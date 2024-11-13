@@ -11,7 +11,8 @@
 
 ; required variables
 global WasInTrade := false
-
+global ArmourerLoc := [474, 430]
+global SmithLoc := [1694, 826]
 
 ; short sleep
 SS() {
@@ -67,7 +68,7 @@ GoToClassSpec() {
 GoToAlchemist() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
-  LS()
+  SS()
   MouseClick "left", 227, 406   ; alch location
 }
 
@@ -76,7 +77,7 @@ GoToLeatherSmithService() {
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 1686, 414  ; leathersmith
-  LS()
+  SS()
   MouseClick "left", 303, 141  ; Service button
 }
 
@@ -85,7 +86,25 @@ GoToTailorService() {
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 712, 778  ; tailor button
+  SS()
+  MouseClick "left", 303, 141  ; service button
+}
+
+GoToWeaponsmithService() { 
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
   LS()
+  MouseClick "left", SmithLoc[1], SmithLoc[2]
+  SS()
+  MouseClick "left", 303, 141  ; Service button
+}
+
+GoToArmorerService() { 
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", ArmourerLoc[1], ArmourerLoc[2]
+  SS()
   MouseClick "left", 303, 141  ; service button
 }
 
@@ -94,7 +113,7 @@ GoToGoblinBuy() {
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 1186, 444  ; goblin
-  LS()
+  SS()
   MouseClick "left", 303, 141  ; service button
 }
 
@@ -103,17 +122,19 @@ GoToSquireAndFill() {
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 214, 752  ; squire location
-  LS()
-  MouseClick "left", 955, 992 ; click Equip Base Gear
+  Loop 2 { ; to make sure this button registers 
+    SS()
+    MouseClick "left", 955, 992 ; click Equip Base Gear
+  }
 }
 
 GoToVendor() {
   GlobalBack()
   GoToAlchemist()
-  LS()
-  MouseClick "left", 333, 205  ; sell loc
-  SS()
-  MouseClick "left", 333, 205  ; sell loc
+  Loop 2 {  ; to make sure this button registers
+    SS()
+    MouseClick "left", 333, 205  ; sell loc
+  }
 }
 
 GoToSurgeon() {
@@ -133,14 +154,9 @@ GoToMarketplace() {
 }
 
 GoToSellAtMarket() {
-  global
-  GlobalBack()
-  MouseClick "left", 1192, 31  ; top trade button
-  LS()
-  MouseClick "left", 1191, 247  ; marketplace button location
-  LS()
+  GoToMarketplace()
+  SS()
   MouseClick "left", 1060, 117  ; My Listings button
-  WasInTrade := true
 }
 
 GoToCollector() {
@@ -157,12 +173,10 @@ GoToWoodsman() {
   MouseClick "left", 202, 1061  ; woodman loc
 }
 
-
 GoToStash() {
   GlobalBack()
   MouseClick "left", 880, 31  ; top stash button
 }
-
 
 ExpressmanExpress() {
   GlobalBack()
@@ -171,9 +185,9 @@ ExpressmanExpress() {
   MouseClick "left", 715, 404  ; expressman button
   LS()
   MouseClick "left", 306, 1011  ; select all button
-  LS()
+  SS()
   MouseClick "left", 947, 896  ; fill all
-  LS()
+  SS()
   MouseClick "left", 954, 964  ; get item
 }
 
@@ -186,9 +200,9 @@ GetAllFromGoblin() {
   MouseClick "left", 296, 139  ; Service button
   LS()
   MouseClick "left", 306, 1011  ; select all button
-  LS()
+  SS()
   MouseClick "left", 947, 896  ; fill all
-  LS()
+  SS()
   MouseClick "left", 954, 964  ; get item
 }
 
@@ -198,7 +212,7 @@ BuyPickaxe() {
 
   ; purchase white pickaxe
   MouseClick "left", 180, 335  ; middle pick
-  LS()
+  SS()
   FillAllMakeDeal()
 }
 
@@ -206,21 +220,16 @@ BuyBandages() {
   GoToSurgeon()
   LS()
 
-
   MouseClick "left", 79, 295  ; click grey bandage
-  LS()
-  MouseClick "left", 1013, 604, 6  ; click on increase
-  LS()
+  SS()
+  MouseClick "left", 1013, 604, 5  ; click on increase
+  SS()
   FillAllMakeDeal()
   LS()
   MouseClick "left", 125, 295 ; click white bandage
-  LS()
+  SS()
   MouseClick "left", 1013, 604, 2  ; click on increase
-  LS()
-  FillAllMakeDeal()
-  LS()
-  MouseClick "left", 150, 295  ; click green bandage
-  LS()
+  SS()
   FillAllMakeDeal()
 }
 
@@ -230,9 +239,9 @@ BuyPotions() {
 
   ; default set to buy 9 grey quality potions
   MouseClick "left", 162, 298  ; click 3x low quality potion
-  LS()
+  SS()
   MouseClick "left", 1013, 604, 2  ; click increase twice
-  LS()
+  SS()
   FillAllMakeDeal()
 }
 
@@ -242,7 +251,6 @@ CycleToNextAuctioneer() {
   MouseClick "left",  237, 44   ; click play button
   LS()
   MouseClick "left", 1858, 1025  ; change class button
-  LS()
   LS()
   LS()
   LS()

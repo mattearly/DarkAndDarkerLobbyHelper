@@ -26,8 +26,10 @@
   
   - cntrl +
     - numpad0 - Insta-Queue - a dangerous but speedy button
-    - numpad1 - Go to Leathersmithing Service
-    - numpad2 - Go to Tailoring Service
+    - 7 - Go to Leathersmithing Service
+    - 8 - Go to Armourer Service
+    - 9 - Go to Tailoring Service
+    - 0 - Go to Weaponsmith Service
     - numpad3 - Go to Squire and fill
     - numpad4 - Go to Stash
     - numpad5 - Gather all from expressman
@@ -35,7 +37,7 @@
     - numpad7 - Sell at Collector
     - numpad8 - Sell at Vendor
     - numpad9 - Go To Marketplace
-    - numpadDiv - next market seller quickbutton - Setup to 9 classes to level 20 and Market Ready (change function if you have less or more)
+    - numpadDiv - next market seller quickbutton - assumes you have 9 toons on char select screen
     - numpadMulti - Buy White Pickaxe
     - numpadSub - Buy Bandages
     - numpadAdd - Buy Potions
