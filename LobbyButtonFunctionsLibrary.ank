@@ -15,7 +15,7 @@ global WasInTrade := false
 
 ; short sleep
 SS() {
-  sleep 350  ; probably needs to be higher 
+  sleep 120  ; probably needs to be higher 
 }
 
 ; long sleep
@@ -111,7 +111,9 @@ GoToVendor() {
   GlobalBack()
   GoToAlchemist()
   LS()
-  MouseClick "left", 333, 205, 2  ; sell loc
+  MouseClick "left", 333, 205  ; sell loc
+  SS()
+  MouseClick "left", 333, 205  ; sell loc
 }
 
 GoToSurgeon() {
