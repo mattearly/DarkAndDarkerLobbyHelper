@@ -146,19 +146,26 @@ GoToSurgeon() {
   MouseClick "left", 462, 790  ; surg location
 }
 
-GoToMarketplace() {
+GoToMarketplaceSearch() {
   global
   GlobalBack()
   MouseClick "left", 1192, 31  ; top trade button
   LS()
   MouseClick "left", 1191, 247  ; marketplace button location
+  LS()
+  MouseClick "left", 117, 203  ; search dropdown button
   WasInTrade := true
 }
 
 GoToSellAtMarket() {
-  GoToMarketplace()
+  global
+  GlobalBack()
+  MouseClick "left", 1192, 31  ; top trade button
+  LS()
+  MouseClick "left", 1191, 247  ; marketplace button location
   LS()
   MouseClick "left", 1060, 117  ; My Listings button
+  WasInTrade := true
 }
 
 GoToCollector() {
@@ -259,6 +266,8 @@ CycleToNextAuctioneer() {
   MouseClick "left",  237, 44   ; click play button
   LS()
   MouseClick "left", 1858, 1025  ; change class button
+  LS()
+  LS()
   LS()
   LS()
   LS()

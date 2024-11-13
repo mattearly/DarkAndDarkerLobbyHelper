@@ -180,7 +180,7 @@ Unlock() {
   } else {
     Lock()
   }
-  GoToMarketplace()
+  GoToMarketplaceSearch()
   Unlock()
 }
 
