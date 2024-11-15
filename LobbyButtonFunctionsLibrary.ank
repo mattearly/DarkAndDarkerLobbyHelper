@@ -11,6 +11,8 @@
 
 ; required variables
 global WasInTrade := false
+
+; all locations should probably be defined like this for ease of updating (todo)
 global ArmourerLoc := [474, 430]
 global SmithLoc := [1694, 826]
 
@@ -43,7 +45,10 @@ GlobalBack() {
 
 ; aux function
 FillAllMakeDeal() {
-  MouseClick "left", 966, 929  ; click on fill all from stash
+  Loop 2 {
+    MouseClick "left", 966, 929  ; click on fill all from stash
+    SS()
+  }
   Loop 2 {
     SS()
     MouseClick "left", 963, 992  ; click make deal
@@ -221,7 +226,7 @@ BuyPickaxe() {
 
   ; purchase white pickaxe
   MouseClick "left", 180, 335  ; middle pick
-  SS()
+  LS()
   FillAllMakeDeal()
 }
 
@@ -240,7 +245,7 @@ BuyBandages() {
   MouseClick "left", 125, 295 ; click white bandage
   Loop 2 {  ; buy 3
     SS()
-    MouseClick "left", 1013, 604, 2  ; click on increase
+    MouseClick "left", 1013, 604  ; click on increase
   }
   SS()
   FillAllMakeDeal()
