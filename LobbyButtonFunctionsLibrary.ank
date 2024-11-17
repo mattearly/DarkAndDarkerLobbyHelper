@@ -129,19 +129,19 @@ GoToSquireAndFill() {
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 214, 752  ; squire location
-  Loop 2 { ; to make sure this button registers 
-    SS()
-    MouseClick "left", 955, 992 ; click Equip Base Gear
-  }
+  SS()
+  MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
+  SS()
+  MouseClick "left", 955, 992 ; click Equip Base Gear
 }
 
 GoToVendor() {
   GlobalBack()
   GoToAlchemist()
-  Loop 2 {  ; to make sure this button registers
-    SS()
-    MouseClick "left", 333, 205  ; sell loc
-  }
+  SS()
+  MouseClick "left", 433, 205  ; click to the right first because sometimes it bugs the button is unclickable until you click somewhere else
+  SS()
+  MouseClick "left", 333, 205  ; sell loc
 }
 
 GoToSurgeon() {

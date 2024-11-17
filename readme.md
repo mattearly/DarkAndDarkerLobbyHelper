@@ -43,7 +43,12 @@
     - numpadAdd - Buy Potions
     - numpadDot - Class Spec
 
+## todo
+  - goblin buy
+  - jacko buy
+
 ## known issues
 
   - there can be issues with the lobby being slower than expected, in which case the delays between clicks must be increased
-  - there is an issue with the dungeon changing notification blocking some of the clicks.
+  - there is an issue with the dungeon changing notification blocking some of the clicks. (Ironmace UI problem)
+  - there is an issue with some buttons occasionally not functioning until you click somewhere else on the screen first. (Ironmace UI problem)
