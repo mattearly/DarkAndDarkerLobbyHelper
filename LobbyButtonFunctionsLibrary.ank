@@ -18,12 +18,12 @@ global SmithLoc := [1694, 826]
 
 ; short sleep
 SS() {
-  sleep 130  ; probably needs to be higher 
+  sleep 140  ; probably needs to be higher 
 }
 
 ; long sleep
 LS() { 
-  sleep 500  ; probably needs to be higher 
+  sleep 510  ; probably needs to be higher 
 }
 
 ; very long sleep
@@ -139,7 +139,7 @@ GoToVendor() {
   GlobalBack()
   GoToAlchemist()
   SS()
-  MouseClick "left", 433, 205  ; click to the right first because sometimes it bugs the button is unclickable until you click somewhere else
+  MouseClick "left", 463, 205  ; click to the right first because sometimes it bugs the button is unclickable until you click somewhere else
   SS()
   MouseClick "left", 333, 205  ; sell loc
 }
@@ -156,8 +156,10 @@ GoToMarketplaceSearch() {
   GlobalBack()
   MouseClick "left", 1192, 31  ; top trade button
   LS()
+  SS()
   MouseClick "left", 1191, 247  ; marketplace button location
   LS()
+  SS()
   MouseClick "left", 117, 203  ; search dropdown button
   WasInTrade := true
 }
@@ -235,9 +237,10 @@ BuyBandages() {
   LS()
 
   MouseClick "left", 79, 295  ; click single grey bandage
-  Loop 5 {   ; buy 6
-    SS()
+  LS()
+  Loop 6 {   ; buy 7
     MouseClick "left", 1013, 604  ; click on increase
+    SS()
   }
   SS()
   FillAllMakeDeal()
@@ -257,11 +260,11 @@ BuyPotions() {
 
   ; default set to buy 9 grey quality potions
   MouseClick "left", 162, 298  ; click 3x low quality potion
-  Loop 2 {  ; buy 3x3 (9)
+  LS()
+  Loop 2 {  ; click increase twice
+    MouseClick "left", 1013, 604 
     SS()
-    MouseClick "left", 1013, 604  ; click increase twice
   }
-  SS()
   FillAllMakeDeal()
 }
 

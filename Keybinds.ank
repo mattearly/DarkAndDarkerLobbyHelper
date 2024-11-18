@@ -5,6 +5,8 @@
 ; file use: setup main runtime keybinds to functions
 ; written and maintained by matthewjearly@gmail.com
 
+#SingleInstance Force
+
 #include LobbyButtonFunctionsLibrary.ank
 
 global isBusy := false

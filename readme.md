@@ -24,7 +24,7 @@
 
   change these in "Keybinds.ank" to whatever you want
   
-  - cntrl +
+  - Cntrl +
     - numpad0 - Insta-Queue - a dangerous but speedy button
     - 7 - Go to Leathersmithing Service
     - 8 - Go to Armourer Service
@@ -36,7 +36,7 @@
     - numpad6 - Gather all from goblin
     - numpad7 - Sell at Collector
     - numpad8 - Sell at Vendor
-    - numpad9 - Go To Marketplace
+    - numpad9 - Go To Marketplace Search
     - numpadDiv - next market seller quickbutton - assumes you have 9 toons on char select screen
     - numpadMulti - Buy White Pickaxe
     - numpadSub - Buy Bandages
