@@ -236,7 +236,7 @@ BuyBandages() {
   GoToSurgeon()
   LS()
 
-  MouseClick "left", 79, 295  ; click single grey bandage
+  MouseClick "left", 70, 300  ; click single grey bandage
   LS()
   Loop 6 {   ; buy 7
     MouseClick "left", 1013, 604  ; click on increase
@@ -259,9 +259,9 @@ BuyPotions() {
   LS()
 
   ; default set to buy 9 grey quality potions
-  MouseClick "left", 162, 298  ; click 3x low quality potion
+  MouseClick "left", 70, 300  ; click low quality potion
   LS()
-  Loop 2 {  ; click increase twice
+  Loop 6 {  ; click increase
     MouseClick "left", 1013, 604 
     SS()
   }
