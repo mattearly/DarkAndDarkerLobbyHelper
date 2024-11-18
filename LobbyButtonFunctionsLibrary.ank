@@ -235,7 +235,6 @@ BuyPickaxe() {
 BuyBandages() {
   GoToSurgeon()
   LS()
-
   MouseClick "left", 70, 300  ; click single grey bandage
   LS()
   Loop 6 {   ; buy 7
@@ -246,11 +245,11 @@ BuyBandages() {
   FillAllMakeDeal()
   LS()
   MouseClick "left", 125, 295 ; click white bandage
+  LS()
   Loop 2 {  ; buy 3
-    SS()
     MouseClick "left", 1013, 604  ; click on increase
+    SS()
   }
-  SS()
   FillAllMakeDeal()
 }
 
