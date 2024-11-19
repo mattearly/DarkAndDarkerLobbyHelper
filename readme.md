@@ -26,6 +26,7 @@
   
   - Cntrl +
     - numpad0 - Insta-Queue - a dangerous but speedy button
+    - 6 - Go To Alchemist Service
     - 7 - Go to Leathersmithing Service
     - 8 - Go to Armourer Service
     - 9 - Go to Tailoring Service
@@ -44,9 +45,9 @@
     - numpadDot - Class Spec
 
 ## todo
+
   - goblin buy
   - jacko buy
-  - alchemist service
 
 ## known issues
 

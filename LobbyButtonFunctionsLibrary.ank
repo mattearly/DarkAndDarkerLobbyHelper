@@ -88,6 +88,14 @@ GoToLeatherSmithService() {
   MouseClick "left", 303, 141  ; Service button
 }
 
+GoToAlchemistService() { 
+  GoToAlchemist()
+  
+
+  SS()
+  MouseClick "left", 303, 141  ; Service button
+}
+
 GoToTailorService() { 
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
