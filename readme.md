@@ -26,6 +26,8 @@
   
   - Cntrl +
     - numpad0 - Insta-Queue - a dangerous but speedy button
+    - 4 - Go To Jack O' Lantern Purchase
+    - 5 - Go To Goblin Purchase
     - 6 - Go To Alchemist Service
     - 7 - Go to Leathersmithing Service
     - 8 - Go to Armourer Service

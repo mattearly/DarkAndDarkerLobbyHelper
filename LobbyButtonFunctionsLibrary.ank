@@ -15,6 +15,7 @@ global WasInTrade := false
 ; all locations should probably be defined like this for ease of updating (todo)
 global ArmourerLoc := [474, 430]
 global SmithLoc := [1694, 826]
+global JackoLoc := [1436,335]
 
 ; short sleep
 SS() {
@@ -45,16 +46,10 @@ GlobalBack() {
 
 ; aux function
 FillAllMakeDeal() {
-  Loop 2 {
-    MouseClick "left", 966, 929  ; click on fill all from stash
-    SS()
-  }
-  Loop 2 {
-    SS()
-    MouseClick "left", 963, 992  ; click make deal
-  }
+  MouseClick "left", 966, 929  ; click on fill all from stash
+  LS()
+  MouseClick "left", 963, 992  ; click make deal
 }
-
 
 HitPlay() {
   GlobalBack()
@@ -79,6 +74,14 @@ GoToAlchemist() {
   MouseClick "left", 227, 406   ; alch location
 }
 
+GoToJackoBuy() {
+  global
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  SS()
+  MouseClick "left", JackoLoc[1], JackoLoc[2]
+}
+
 GoToLeatherSmithService() { 
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
@@ -90,8 +93,6 @@ GoToLeatherSmithService() {
 
 GoToAlchemistService() { 
   GoToAlchemist()
-  
-
   SS()
   MouseClick "left", 303, 141  ; Service button
 }
@@ -128,8 +129,6 @@ GoToGoblinBuy() {
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", 1186, 444  ; goblin
-  SS()
-  MouseClick "left", 303, 141  ; service button
 }
 
 GoToSquireAndFill() {
@@ -144,7 +143,6 @@ GoToSquireAndFill() {
 }
 
 GoToVendor() {
-  GlobalBack()
   GoToAlchemist()
   SS()
   MouseClick "left", 463, 205  ; click to the right first because sometimes it bugs the button is unclickable until you click somewhere else
@@ -164,10 +162,8 @@ GoToMarketplaceSearch() {
   GlobalBack()
   MouseClick "left", 1192, 31  ; top trade button
   LS()
-  SS()
   MouseClick "left", 1191, 247  ; marketplace button location
   LS()
-  SS()
   MouseClick "left", 117, 203  ; search dropdown button
   WasInTrade := true
 }
@@ -177,7 +173,9 @@ GoToSellAtMarket() {
   GlobalBack()
   MouseClick "left", 1192, 31  ; top trade button
   LS()
+  LS()
   MouseClick "left", 1191, 247  ; marketplace button location
+  LS()
   LS()
   MouseClick "left", 1060, 117  ; My Listings button
   WasInTrade := true
@@ -216,10 +214,7 @@ ExpressmanExpress() {
 }
 
 GetAllFromGoblin() {
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
-  LS()
-  MouseClick "left", 1178, 426  ; goblin picture
+  GoToGoblinBuy()
   LS()
   MouseClick "left", 296, 139  ; Service button
   LS()
