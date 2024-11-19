@@ -46,6 +46,7 @@
 ## todo
   - goblin buy
   - jacko buy
+  - alchemist service
 
 ## known issues
 
