@@ -25,7 +25,6 @@
   change these in "Keybinds.ank" to whatever you want
   
   - Cntrl +
-    - numpad0 - Insta-Queue - a dangerous but speedy button
     - 4 - Go To Jack O' Lantern Purchase
     - 5 - Go To Goblin Purchase
     - 6 - Go To Alchemist Service
@@ -33,6 +32,9 @@
     - 8 - Go to Armourer Service
     - 9 - Go to Tailoring Service
     - 0 - Go to Weaponsmith Service
+    - numpad0 - Insta-Queue - a dangerous but speedy button
+    - numpad1 - unassigned
+    - numpad2 - unassigned
     - numpad3 - Go to Squire and fill
     - numpad4 - Go to Stash
     - numpad5 - Gather all from expressman
@@ -40,7 +42,7 @@
     - numpad7 - Sell at Collector
     - numpad8 - Sell at Vendor
     - numpad9 - Go To Marketplace Search
-    - numpadDiv - next market seller quickbutton - assumes you have 9 toons on char select screen
+    - numpadDiv - go to next market seller (9 lvl 20+ characters assumption)
     - numpadMulti - Buy White Pickaxe
     - numpadSub - Buy Bandages
     - numpadAdd - Buy Potions
@@ -48,11 +50,10 @@
 
 ## todo
 
-  - goblin buy
-  - jacko buy
+  - add hotswap (swap between 2 latest characters)
 
 ## known issues
 
-  - there can be issues with the lobby being slower than expected, in which case the delays between clicks must be increased
-  - there is an issue with the dungeon changing notification blocking some of the clicks. (Ironmace UI problem)
-  - there is an issue with some buttons occasionally not functioning until you click somewhere else on the screen first. (Ironmace UI problem)
+  - there can be issues with the lobby being slower than expected, in which case the delays between clicks must be increased, adjust making delays faster with prejudice as it can exacerbate this problem
+  - there is an issue with the dungeon changing notification blocking some of the clicks. (appears to be a native game UI problem)
+  - there is an issue with some buttons occasionally not functioning. (appears to be an native game UI problem)

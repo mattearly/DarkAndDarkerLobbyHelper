@@ -75,7 +75,6 @@ Unlock() {
   Unlock()
 }
 
-
 ; ALCHEMIST SERVICE 
 #HotIf WinActive("Dark and Darker")
 ^6::
@@ -88,8 +87,6 @@ Unlock() {
   GoToAlchemistService()
   Unlock()
 }
-
-
 
 
 ; LEATHERSMITH SERVICE 
@@ -158,6 +155,7 @@ Unlock() {
 }
 
 ; STASH
+#HotIf WinActive("Dark and Darker")
 ^Numpad4::
 {
   if isBusy { 
@@ -170,6 +168,7 @@ Unlock() {
 }
 
 ; EXPRESSMAN GATHER
+#HotIf WinActive("Dark and Darker")
 ^Numpad5::
 {
   if isBusy { 
@@ -183,6 +182,7 @@ Unlock() {
 
 
 ; GOBLIN RETRIEVAL
+#HotIf WinActive("Dark and Darker")
 ^Numpad6::
 {
   if isBusy { 
@@ -216,11 +216,12 @@ Unlock() {
   } else {
     Lock()
   }
-  GoToVendor()
+  GoToSellAtVendor()
   Unlock()
 }
 
 ; TRADE
+#HotIf WinActive("Dark and Darker")
 ^Numpad9::
 {
   if isBusy { 
@@ -232,11 +233,8 @@ Unlock() {
   Unlock()
 }
 
-; ------------
-; Custom Stuff for quick play
-; ------------
-
-
+; PURCHASE BANDAGES
+#HotIf WinActive("Dark and Darker")
 ^NumpadSub::
 {
   if isBusy { 
@@ -248,6 +246,8 @@ Unlock() {
   Unlock()
 }
 
+; PURCHASE POTIONS
+#HotIf WinActive("Dark and Darker")
 ^NumpadAdd::
 {
   
@@ -260,6 +260,8 @@ Unlock() {
   Unlock()
 }
 
+; BUY WHITE PICKAXE
+#HotIf WinActive("Dark and Darker")
 ^NumpadMult::
 {
   if isBusy { 
@@ -271,6 +273,8 @@ Unlock() {
   Unlock()
 }
 
+; CLASS SPEC
+#HotIf WinActive("Dark and Darker")
 ^NumpadDot::
 {
   if isBusy { 
@@ -282,6 +286,8 @@ Unlock() {
   Unlock()
 }
 
+; NEXT MARKETPLACE TRADER
+#HotIf WinActive("Dark and Darker")
 ^NumpadDiv::
 {
   if isBusy { 

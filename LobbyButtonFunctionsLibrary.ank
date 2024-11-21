@@ -17,6 +17,11 @@ global ArmourerLoc := [474, 430]
 global SmithLoc := [1694, 826]
 global JackoLoc := [1436,335]
 
+; mini sleep
+MS() {
+  sleep 15 ; to help with speeding up tool
+}
+
 ; short sleep
 SS() {
   sleep 140  ; probably needs to be higher 
@@ -142,12 +147,24 @@ GoToSquireAndFill() {
   MouseClick "left", 955, 992 ; click Equip Base Gear
 }
 
-GoToVendor() {
+GoToSellAtVendor() {
   GoToAlchemist()
   SS()
+
+  ;  DISCLAIMER IF UR READING THIS CODE
+  ;  I don't know what is wrong with this dang "sell" button, but it just won't register sometimes.
+  ;  that being the case, and there being no logical reason that I can see, we are trying all kinds of things
+  ;  and seeing what works.
+  ;    -matt
+
   MouseClick "left", 463, 205  ; click to the right first because sometimes it bugs the button is unclickable until you click somewhere else
+  MS()
+  MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
   SS()
-  MouseClick "left", 333, 205  ; sell loc
+  Loop 10 {  ; tihs button doesn't register all the time, trying clicking it more (maybe 10 times and it will register???) 
+    MouseClick "left", 333, 205  ; sell loc
+    MS()
+  }
 }
 
 GoToSurgeon() {
@@ -242,7 +259,7 @@ BuyBandages() {
   LS()
   Loop 6 {   ; buy 7
     MouseClick "left", 1013, 604  ; click on increase
-    SS()
+    MS()
   }
   SS()
   FillAllMakeDeal()
@@ -251,7 +268,7 @@ BuyBandages() {
   LS()
   Loop 2 {  ; buy 3
     MouseClick "left", 1013, 604  ; click on increase
-    SS()
+    MS()
   }
   FillAllMakeDeal()
 }
@@ -265,7 +282,7 @@ BuyPotions() {
   LS()
   Loop 6 {  ; click increase
     MouseClick "left", 1013, 604 
-    SS()
+    MS()
   }
   FillAllMakeDeal()
 }
