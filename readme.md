@@ -33,7 +33,7 @@
     - 9 - Go to Tailoring Service
     - 0 - Go to Weaponsmith Service
     - numpad0 - Insta-Queue - a dangerous but speedy button
-    - numpad1 - unassigned
+    - numpad1 - Purchase Lockpicks
     - numpad2 - unassigned
     - numpad3 - Go to Squire and fill
     - numpad4 - Go to Stash

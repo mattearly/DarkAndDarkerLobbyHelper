@@ -313,3 +313,20 @@ CycleToNextAuctioneer() {
   GoToSellAtMarket()
   
 }
+
+; this will buy the top result of "lock" on the marketplace
+PurchaseLockpicks() {
+  GoToMarketplaceSearch()
+  LS()
+  Send "Lock"
+  SS()
+  MouseClick "left", 57, 280  ; location of first thing in search
+  SS()
+  MouseClick "left", 1790, 277  ; search button
+  LS()
+  MouseClick "left", 1789, 357   ; buy button of first (cheapest) item
+  LS()
+  MouseClick "left", 954, 763  ; fill all button
+  SS()
+  MouseClick "left", 959, 843  ; complete trade button
+}
