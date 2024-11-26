@@ -25,16 +25,16 @@
   change these in "Keybinds.ank" to whatever you want
   
   - Cntrl +
-    - 4 - Go To Jack O' Lantern Purchase
     - 5 - Go To Goblin Purchase
     - 6 - Go To Alchemist Service
     - 7 - Go to Leathersmithing Service
     - 8 - Go to Armourer Service
     - 9 - Go to Tailoring Service
     - 0 - Go to Weaponsmith Service
+    - minus - Go To Jack O' Lantern Purchase
     - numpad0 - Insta-Queue - a dangerous but speedy button
     - numpad1 - Purchase Lockpicks
-    - numpad2 - unassigned
+    - numpad2 - Hotswap Characters (go to prev character)
     - numpad3 - Go to Squire and fill
     - numpad4 - Go to Stash
     - numpad5 - Gather all from expressman

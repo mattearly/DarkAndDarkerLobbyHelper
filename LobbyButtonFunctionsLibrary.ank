@@ -314,6 +314,23 @@ CycleToNextAuctioneer() {
   
 }
 
+; this will attempt to switch to your previous character
+HotswapCharacters() {
+  GlobalBack()
+  ; log out of character
+  MouseClick "left",  237, 44   ; click play button
+  LS()
+  MouseClick "left", 1858, 1025  ; change class button
+  LS()
+  LS()
+  LS()
+  LS()
+  LS()
+  MouseClick "left", 1605, 280  ; click on 2nd character down
+  LS()
+  MouseClick "left", 954, 979  ; Enter the lobby button
+}
+
 ; this will buy the top result of "lock" on the marketplace
 PurchaseLockpicks() {
   GoToMarketplaceSearch()
