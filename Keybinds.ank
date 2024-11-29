@@ -257,7 +257,20 @@ Unlock() {
 
 ; PURCHASE BANDAGES
 #HotIf WinActive("Dark and Darker")
-^NumpadSub::
+<^NumpadSub::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  BuyALotOfBandages()
+  Unlock()
+}
+
+; PURCHASE LESS BANDAGES
+#HotIf WinActive("Dark and Darker")
+>^NumpadSub::
 {
   if isBusy { 
     return 
@@ -270,7 +283,21 @@ Unlock() {
 
 ; PURCHASE POTIONS
 #HotIf WinActive("Dark and Darker")
-^NumpadAdd::
+<^NumpadAdd::
+{
+  
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  BuyALotOfPotions()
+  Unlock()
+}
+
+; PURCHASE LESS POTIONS
+#HotIf WinActive("Dark and Darker")
+>^NumpadAdd::
 {
   
   if isBusy { 
@@ -281,6 +308,8 @@ Unlock() {
   BuyPotions()
   Unlock()
 }
+
+
 
 ; BUY WHITE PICKAXE
 #HotIf WinActive("Dark and Darker")
