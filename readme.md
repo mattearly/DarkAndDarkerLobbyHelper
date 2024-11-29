@@ -33,7 +33,7 @@
     - 0 - Go to Weaponsmith Service
     - minus - Go To Jack O' Lantern Purchase
     - numpad0 - Insta-Queue - a dangerous but speedy button
-    - numpad1 - Purchase Lockpicks
+    - numpad1 - unassigned
     - numpad2 - Hotswap Characters (go to prev character)
     - numpad3 - Go to Squire and fill
     - numpad4 - Go to Stash
@@ -43,10 +43,16 @@
     - numpad8 - Sell at Vendor
     - numpad9 - Go To Marketplace Search
     - numpadDiv - go to next market seller (9 lvl 20+ characters assumption)
-    - numpadMulti - Buy White Pickaxe
-    - numpadSub - Buy Bandages
-    - numpadAdd - Buy Potions
+    - numpadMulti - unassigned
+    - numpadSub - Buy A Lot Of Bandages
+    - numpadAdd - Buy 10 Potions
     - numpadDot - Class Spec
+
+  - Right Cntrl + 
+    - numpadSub - Buy 4 Bandages
+    - numpadAdd - Buy 3 Potions
+    - L - Purchase Lockpicks
+    - P - Purchase Pickaxe
 
 ## todo
 
