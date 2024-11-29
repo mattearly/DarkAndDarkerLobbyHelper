@@ -11,7 +11,7 @@
 
 ; required variables
 global WasInTrade := false
-global AlwaysAssumeInTrade_TEST := true     ; change to false to go back to prev behavior
+global AlwaysAssumeInTrade_TEST := false     ; must be false or the tavern master gets clicked
 
 ; all locations should probably be defined like this for ease of updating (todo)
 global ArmourerLoc := [474, 430]
