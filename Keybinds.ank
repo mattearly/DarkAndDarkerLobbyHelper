@@ -30,21 +30,32 @@ Unlock() {
   }
 }
 
-; MERCHANTS
-
-; JACK-O BUY (HALLOWEEN) 
 #HotIf WinActive("Dark and Darker")
-^-::
+>^l::
 {
   if isBusy { 
     return 
   } else {
     Lock()
   }
-  GoToJackoBuy()
+  PurchaseLockpicks()
   Unlock()
 }
 
+#HotIf WinActive("Dark and Darker")
+>^p::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  BuyPickaxe()
+  Unlock()
+}
+
+
+; MERCHANTS
 ; GOBLIN BUY 
 #HotIf WinActive("Dark and Darker")
 ^5::
@@ -66,6 +77,7 @@ Unlock() {
     return 
   } else {
     Lock()
+
   }
   GoToAlchemistService()
   Unlock()
@@ -121,6 +133,19 @@ Unlock() {
     Lock()
   }
   GoToWeaponsmithService()
+  Unlock()
+}
+
+; JACK-O BUY (HALLOWEEN) 
+#HotIf WinActive("Dark and Darker")
+^-::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToJackoBuy()
   Unlock()
 }
 
@@ -352,24 +377,229 @@ Unlock() {
   Unlock()
 }
 
->^l::
+; ALT VERSION HOTKEYS (IN CASE USER HAS NO NUMPAD)
+
+; Keybind setup for HitPlay (file structure follows this pattern)
+#HotIf WinActive("Dark and Darker")
+>^q::
 {
   if isBusy { 
     return 
   } else {
     Lock()
   }
-  PurchaseLockpicks()
+  HitPlay()
   Unlock()
 }
 
->^p::
+/*
+#HotIf WinActive("Dark and Darker")
+^Numpad1::
 {
   if isBusy { 
     return 
   } else {
     Lock()
   }
-  BuyPickaxe()
+  ; do something here
+  Unlock()
+}
+*/
+
+; hotswap to prev character
+#HotIf WinActive("Dark and Darker")
+>^h::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  HotswapCharacters()
+  Unlock()
+}
+
+; SQUIRE
+#HotIf WinActive("Dark and Darker")
+>^k::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToSquireAndFill()
+  Unlock()
+}
+
+; STASH
+#HotIf WinActive("Dark and Darker")
+>^s::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToStash()
+  Unlock()
+}
+
+; EXPRESSMAN GATHER
+#HotIf WinActive("Dark and Darker")
+>^e::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  ExpressmanExpress()
+  Unlock()
+}
+
+
+; GOBLIN RETRIEVAL
+#HotIf WinActive("Dark and Darker")
+>^g::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GetAllFromGoblin()
+  Unlock()
+}
+
+
+; COLLECTOR
+#HotIf WinActive("Dark and Darker")
+>^j::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToCollector()
+  Unlock()
+}
+
+#HotIf WinActive("Dark and Darker")
+>^v::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToSellAtVendor()
+  Unlock()
+}
+
+; TRADE
+#HotIf WinActive("Dark and Darker")
+>^m::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToMarketplaceSearch()
+  Unlock()
+}
+
+; PURCHASE BANDAGES
+#HotIf WinActive("Dark and Darker")
+<^b::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  BuyALotOfBandages()
+  Unlock()
+}
+
+; PURCHASE LESS BANDAGES
+#HotIf WinActive("Dark and Darker")
+>^b::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  BuyBandages()
+  Unlock()
+}
+
+; PURCHASE POTIONS
+#HotIf WinActive("Dark and Darker")
+<^o::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  BuyALotOfPotions()
+  Unlock()
+}
+
+; PURCHASE LESS POTIONS
+#HotIf WinActive("Dark and Darker")
+>^o::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  BuyPotions()
+  Unlock()
+}
+
+/*
+; unassigned
+#HotIf WinActive("Dark and Darker")
+^NumpadMult::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  ; do something here
+  Unlock()
+}
+*/
+
+; CLASS SPEC
+#HotIf WinActive("Dark and Darker")
+>^c::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToClassSpec()
+  Unlock()
+}
+
+; NEXT MARKETPLACE TRADER
+#HotIf WinActive("Dark and Darker")
+>^n::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  CycleToNextAuctioneer()
   Unlock()
 }

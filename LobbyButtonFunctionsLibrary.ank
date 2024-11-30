@@ -385,7 +385,9 @@ PurchaseLockpicks() {
   LS()
   MouseClick "left", 57, 280  ; location of first thing in search
   SS()
-  MouseClick "left", 57, 280  ; lets click it again bc half the time the ui is not responsive
+  MouseClick "left", 57, 281  ; lets click it again bc half the time the ui is not responsive
+  SS()
+  MouseClick "left", 56, 280  ; lets click it again bc half the time the ui is not responsive
   LS()
   MouseClick "left", 1790, 277  ; search button
   VLS()

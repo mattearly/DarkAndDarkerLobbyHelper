@@ -44,8 +44,10 @@
     - numpad9 - Go To Marketplace Search
     - numpadDiv - go to next market seller (9 lvl 20+ characters assumption)
     - numpadMulti - unassigned
-    - numpadSub - Buy A Lot Of Bandages
+    - numpadSub - Buy a Lot of Bandages
+    - B - Buy a Lot of Bandages
     - numpadAdd - Buy 10 Potions
+    - O - Buy 10 Potions
     - numpadDot - Class Spec
 
   - Right Cntrl + 
@@ -53,6 +55,20 @@
     - numpadAdd - Buy 3 Potions
     - L - Purchase Lockpicks
     - P - Purchase Pickaxe
+    - Q - Insta-Queue
+    - H - Hotswap characters
+    - K - Squire Kit
+    - S - Stash
+    - E - Expressman Gather
+    - G - Goblin Retrieval
+    - J - Go To Jewel Collector
+    - V - Go To Vendor
+    - M - Marketplace
+    - B - Buy 4 Bandages
+    - O - Buy 3 Potions
+    - C - Go To Class Spec
+    - N - Go To Next Auctioneer
+
 
 ## todo
 
