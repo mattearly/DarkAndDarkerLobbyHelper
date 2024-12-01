@@ -67,7 +67,7 @@ HitPlay() {
   LS()
   MouseClick "left", 181, 981  ; start bottom left button
   LS()
-  MouseClick "left", 765, 655  ; timmy yes button
+  MouseClick "left", 780, 655  ; timmy yes button
 }
 
 GoToClassSpec() {
@@ -150,6 +150,9 @@ GoToSquireAndFill() {
   MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
   SS()
   MouseClick "left", 955, 992 ; click Equip Base Gear
+  MS()
+  MouseClick "left", 953, 991 ; click Equip Base Gear again
+
 }
 
 GoToSellAtVendor() {

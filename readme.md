@@ -69,11 +69,6 @@
     - C - Go To Class Spec
     - N - Go To Next Auctioneer
 
-
-## todo
-
-  - add hotswap (swap between 2 latest characters)
-
 ## known issues
 
   - there can be issues with the lobby being slower than expected, in which case the delays between clicks must be increased, adjust making delays faster with prejudice as it can exacerbate this problem
