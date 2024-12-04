@@ -189,6 +189,8 @@ GoToMarketplaceSearch() {
   LS()
   MouseClick "left", 1191, 247  ; marketplace button location
   LS()
+  MouseClick "left", 219, 203  ; click again in a slightly different location because it doesn't always register
+  MS()
   MouseClick "left", 117, 203  ; search dropdown button
   WasInTrade := true
 }
