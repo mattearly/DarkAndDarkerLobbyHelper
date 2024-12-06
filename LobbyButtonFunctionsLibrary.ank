@@ -22,6 +22,7 @@ global TailorLoc := [460, 800]
 global CollectorLoc := [960, 800]
 global TreasurerLoc := [1200, 800]
 global SmithLoc := [1440, 826]
+global LeathersmithLoc := [660, 420]
 
 
 ; mini sleep
@@ -102,7 +103,7 @@ GoToLeatherSmithService() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 1686, 414  ; leathersmith
+  MouseClick "left", LeathersmithLoc[1], LeathersmithLoc[2]
   SS()
   MouseClick "left", 303, 141  ; Service button
 }
