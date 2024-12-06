@@ -151,8 +151,8 @@ GoToSquireAndFill() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 214, SquireLoc[1], SquireLoc[2]
-  SS()
+  MouseClick "left", SquireLoc[1], SquireLoc[2]
+  LS()
   MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
   SS()
   MouseClick "left", 955, 992 ; click Equip Base Gear
