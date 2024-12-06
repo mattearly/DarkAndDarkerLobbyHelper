@@ -22,7 +22,7 @@ global TailorLoc := [460, 800]
 global CollectorLoc := [960, 800]
 global TreasurerLoc := [1200, 800]
 global SmithLoc := [1440, 826]
-global LeathersmithLoc := [660, 420]
+global LeathersmithLoc := [1440, 420]
 
 
 ; mini sleep
