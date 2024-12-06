@@ -136,6 +136,7 @@ Unlock() {
   Unlock()
 }
 
+/* off season
 ; JACK-O BUY (HALLOWEEN) 
 #HotIf WinActive("Dark and Darker")
 ^-::
@@ -148,6 +149,7 @@ Unlock() {
   GoToJackoBuy()
   Unlock()
 }
+*/
 
 ; Keybind setup for HitPlay (file structure follows this pattern)
 #HotIf WinActive("Dark and Darker")

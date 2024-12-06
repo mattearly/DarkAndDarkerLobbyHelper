@@ -15,8 +15,14 @@ global AlwaysAssumeInTrade_TEST := false     ; must be false or the tavern maste
 
 ; all locations should probably be defined like this for ease of updating (todo)
 global ArmourerLoc := [474, 430]
-global SmithLoc := [1694, 826]
-global JackoLoc := [1436,335]
+global JackoLoc := [1436, 335]
+global SurgeonLoc := [220, 800]
+global SquireLoc := [1675, 400]
+global TailorLoc := [460, 800]
+global CollectorLoc := [960, 800]
+global TreasurerLoc := [1200, 800]
+global SmithLoc := [1440, 826]
+
 
 ; mini sleep
 MS() {
@@ -111,7 +117,7 @@ GoToTailorService() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 712, 778  ; tailor button
+  MouseClick "left", TailorLoc[1], TailorLoc[2]
   SS()
   MouseClick "left", 303, 141  ; service button
 }
@@ -145,7 +151,7 @@ GoToSquireAndFill() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 214, 752  ; squire location
+  MouseClick "left", 214, SquireLoc[1], SquireLoc[2]
   SS()
   MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
   SS()
@@ -179,7 +185,7 @@ GoToSurgeon() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 462, 790  ; surg location
+  MouseClick "left", SurgeonLoc[1], SurgeonLoc[2]
 }
 
 GoToMarketplaceSearch() {
@@ -211,7 +217,7 @@ GoToCollector() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 1201, 795  ; Collector loc
+  MouseClick "left", CollectorLoc[1], CollectorLoc[2]
 }
 
 GoToWoodsman() {
@@ -272,6 +278,7 @@ BuyBandages() {
   }
   SS()
   FillAllMakeDeal()
+
   /*  commented out, white bandage option
   LS()
   MouseClick "left", 125, 295 ; click white bandage
@@ -281,7 +288,7 @@ BuyBandages() {
     MS()
   }
   FillAllMakeDeal()
-*/
+  */
 
 }
 
