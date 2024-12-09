@@ -23,6 +23,7 @@ global CollectorLoc := [960, 800]
 global TreasurerLoc := [1200, 800]
 global SmithLoc := [1440, 826]
 global LeathersmithLoc := [1440, 420]
+global WoodsmanLoc := [900, 600]
 
 
 ; mini sleep
@@ -225,7 +226,7 @@ GoToWoodsman() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 202, 1061  ; woodman loc
+  MouseClick "left", WoodsmanLoc[1], WoodsmanLoc[2]
 }
 
 GoToStash() {
