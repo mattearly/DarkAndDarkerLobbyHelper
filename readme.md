@@ -68,9 +68,14 @@
     - O - Buy 3 Potions
     - C - Go To Class Spec
     - N - Go To Next Auctioneer
+    - R - Next Grimmy Crafter
 
 ## known issues
 
   - there can be issues with the lobby being slower than expected, in which case the delays between clicks must be increased, adjust making delays faster with prejudice as it can exacerbate this problem
   - there is an issue with the dungeon changing notification blocking some of the clicks. (appears to be a native game UI problem)
   - there is an issue with some buttons occasionally not functioning. (appears to be an native game UI problem)
+
+## todo
+
+  - add service rotator

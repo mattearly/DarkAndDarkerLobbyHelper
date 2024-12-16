@@ -605,3 +605,19 @@ Unlock() {
   CycleToNextAuctioneer()
   Unlock()
 }
+
+
+
+; NEXT Grimsmile Ring Crafter
+#HotIf WinActive("Dark and Darker")
+>^r::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  NextGrimmy()
+  Unlock()
+}
+
