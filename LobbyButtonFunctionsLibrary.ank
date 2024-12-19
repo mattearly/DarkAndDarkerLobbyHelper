@@ -14,16 +14,15 @@ global WasInTrade := false
 global AlwaysAssumeInTrade_TEST := false     ; must be false or the tavern master gets clicked
 
 ; all locations should probably be defined like this for ease of updating (todo)
-global ArmourerLoc := [474, 430]
-global JackoLoc := [1436, 335]
-global SurgeonLoc := [220, 800]
-global SquireLoc := [1675, 400]
+global ArmourerLoc := [600, 300]
+global HolidayMerchantLoc := [380, 620]
+global SurgeonLoc := [840, 620]
+global SquireLoc := [600, 600]
 global TailorLoc := [460, 800]
-global CollectorLoc := [960, 800]
-global TreasurerLoc := [1200, 800]
-global SmithLoc := [1440, 826]
-global LeathersmithLoc := [1440, 420]
-global WoodsmanLoc := [900, 600]
+global CollectorLoc := [1525, 620]
+global SmithLoc := [630, 900]
+global LeathersmithLoc := [1540, 330]
+global WoodsmanLoc := [850, 900]
 
 
 ; mini sleep
@@ -97,7 +96,7 @@ GoToJackoBuy() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   SS()
-  MouseClick "left", JackoLoc[1], JackoLoc[2]
+  MouseClick "left", HolidayMerchantLoc[1], HolidayMerchantLoc[2]
 }
 
 GoToLeatherSmithService() { 

@@ -11,7 +11,7 @@
 ## requirements
 
   auto-hotkey v2
-  dark and darker v69-2
+  dark and darker v73
     - Have most quests done (as some button locations change for things at different affinity levels)
 
 ## how to run
