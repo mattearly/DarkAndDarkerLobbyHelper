@@ -23,6 +23,7 @@ global CollectorLoc := [1525, 620]
 global SmithLoc := [630, 900]
 global LeathersmithLoc := [1540, 330]
 global WoodsmanLoc := [850, 900]
+global AlchemistLoc := [380,340]
 
 
 ; mini sleep
@@ -88,7 +89,7 @@ GoToAlchemist() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   SS()
-  MouseClick "left", 227, 406   ; alch location
+  MouseClick "left", AlchemistLoc[1], AlchemistLoc[2]
 }
 
 GoToJackoBuy() {
@@ -176,7 +177,7 @@ GoToSellAtVendor() {
   MS()
   MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
   SS()
-  Loop 5 {  ; tihs button doesn't register all the time, trying clicking it more (maybe 10 times and it will register???) 
+  Loop 5 {  ; this button doesn't register all the time, trying clicking it more (maybe 6 times and it will register???) 
     MouseClick "left", 333, 205  ; sell loc
     MS()
   }
@@ -260,18 +261,20 @@ GetAllFromGoblin() {
 
 BuyPickaxe() { 
   GoToWoodsman()
+
+/* commented out
   LS()
 
   ; purchase white pickaxe
   MouseClick "left", 180, 335  ; middle pick
   LS()
   FillAllMakeDeal()
+  */
 }
 
 BuyBandages() {
   GoToSurgeon()
 
-  /*  commented out, only white bandage for now
   LS()
   MouseClick "left", 70, 300  ; click single grey bandage
   LS()
@@ -281,9 +284,9 @@ BuyBandages() {
   }
   SS()
   FillAllMakeDeal()
-  */
 
 
+/* commented out
   LS()
   MouseClick "left", 125, 295 ; click white bandage
   LS()
@@ -292,7 +295,7 @@ BuyBandages() {
     MS()
   }
   FillAllMakeDeal()
-
+*/
 
 }
 
@@ -307,6 +310,8 @@ BuyALotOfBandages() {
   }
   SS()
   FillAllMakeDeal()
+
+  /* commented out, greys only
   LS()
   MouseClick "left", 125, 295 ; click white bandage
   LS()
@@ -315,14 +320,14 @@ BuyALotOfBandages() {
     MS()
   }
   FillAllMakeDeal()
-
+  */
 }
 
 BuyPotions() {
   GoToAlchemist()
   LS()
 
-  ; default set to buy 9 grey quality potions
+  ; default set to buy 3 grey quality potions
   MouseClick "left", 70, 300  ; click low quality potion
   LS()
   Loop 2 {  ; click increase
@@ -363,8 +368,8 @@ CycleToNextAuctioneer() {
   ; cycle to page 2
   MouseClick "left", 1843, 909  ; page right button on char select
   LS()
-  ; select bottom character (2nd down on page 2)
-  MouseClick "left", 1595, 289  ; click 2nd character down
+  ; select bottom character
+  MouseClick "left", 1595, 370  ; click 3RD character down
   LS()
   ; click enter the lobby
   MouseClick "left", 954, 979  ; Enter the lobby button
