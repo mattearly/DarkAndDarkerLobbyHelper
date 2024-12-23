@@ -31,7 +31,6 @@
     - 8 - Go to Armourer Service
     - 9 - Go to Tailoring Service
     - 0 - Go to Weaponsmith Service
-    - minus - Go To Jack O' Lantern Purchase
     - numpad0 - Insta-Queue - a dangerous but speedy button
     - numpad1 - unassigned
     - numpad2 - Hotswap Characters (go to prev character)
@@ -69,6 +68,8 @@
     - C - Go To Class Spec
     - N - Go To Next Auctioneer
     - R - Next Grimmy Crafter
+    - X - Vendor All Collector
+    - Z - Vender All Non-Collector
 
 ## known issues
 

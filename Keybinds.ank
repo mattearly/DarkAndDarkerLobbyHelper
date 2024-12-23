@@ -621,3 +621,25 @@ Unlock() {
   Unlock()
 }
 
+>^x::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  VendorEntireInventoryOfCollectables()
+  Unlock()
+}
+
+>^z::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  VendorEntireInventoryOfNonCollectables()
+  Unlock()
+
+}
