@@ -28,22 +28,22 @@ global AlchemistLoc := [380,340]
 
 ; mini sleep
 MS() {
-  sleep 20 ; to help with speeding up tool
+  sleep 15 ; to help with speeding up tool
 }
 
 ; short sleep
 SS() {
-  sleep 147 ; probably needs to be higher 
+  sleep 145 ; probably needs to be higher 
 }
 
 ; long sleep
 LS() { 
-  sleep 527  ; probably needs to be higher 
+  sleep 515  ; probably needs to be higher 
 }
 
 ; very long sleep
 VLS() {
-  sleep 4140  ; can take some characters a very long time to load in, 4200ms might be too short
+  sleep 3999  ; can take some characters a very long time to load in, 4200ms might be too short
 }
 
 ; aux function
@@ -522,52 +522,43 @@ VendorEntireKit() {
   MouseClick "right", 1530, 445  ; ring left
   MS() 
   MouseClick "right", 1700, 445  ; ring rt
+  MS()
 
 
-  leftx := 1400
+  ; variables to help with the below loops to click toolbelt
+  toolbelt_leftx := 1400
   toolbelt_top_y := 455
-  inc_size := 63
-  rightx := 1830
+  toolbelt_inc_size := 63
+  toolbelt_rightx := 1830
 
   Loop 3 { ; Rt Toolbelt
-    MouseClick "right", rightx, toolbelt_top_y + inc_size * (A_Index-1)
+    MouseClick "right", toolbelt_rightx, toolbelt_top_y + toolbelt_inc_size * (A_Index-1)
     MS() 
   }
   Loop 3 { ; Left Toolbelt
-    MouseClick "right", leftx,  toolbelt_top_y + inc_size * (A_Index-1)
+    MouseClick "right", toolbelt_leftx,  toolbelt_top_y + toolbelt_inc_size * (A_Index-1)
     MS()
   }
-
 
   VendorEntireInventoryOfNonCollectables()
   SS()
   MouseClick "left", 963, 992  ; click make deal
-
 }
 
 ; this does a full squire reset
 FullSquireReset() {
-
   DoubleSellInventoryFullConfirm()
-
+  SS()
   VendorEntireKit()
-  
-
-
-
   LS()
   GoToSquireAndFill()
-   
-   
-    /* TESTING HOLD POINT
 
+  /* TESTING HOLD POINT
   SS()
   BuyPotions()
   SS()
   BuyBandages()
   SS()
   HitPlay()
-
-
   */
 }
