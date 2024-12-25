@@ -33,17 +33,17 @@ MS() {
 
 ; short sleep
 SS() {
-  sleep 150  ; probably needs to be higher 
+  sleep 147 ; probably needs to be higher 
 }
 
 ; long sleep
 LS() { 
-  sleep 530  ; probably needs to be higher 
+  sleep 527  ; probably needs to be higher 
 }
 
 ; very long sleep
 VLS() {
-  sleep 4150  ; can take some characters a very long time to load in, 4200ms might be too short
+  sleep 4140  ; can take some characters a very long time to load in, 4200ms might be too short
 }
 
 ; aux function
@@ -67,7 +67,7 @@ ClickEntireInventory() {
 
   ; click every cell
   BeforeFirstCell := [1420, 600]
-  CellSize := 40
+  CellSize := 41
   Loop 10 {
     val1 := BeforeFirstCell[1] + A_Index * CellSize
     Loop 5 {
@@ -181,6 +181,7 @@ GoToSquireAndFill() {
 }
 
 GoToSellAtVendor() {
+  GlobalBack()
   GoToAlchemist()
   SS()
 
@@ -321,7 +322,7 @@ BuyALotOfBandages() {
   LS()
   MouseClick "left", 70, 300  ; click single grey bandage
   LS()
-  Loop 4 {   ; buy this+1
+  Loop 7 {   ; buy this+1
     MouseClick "left", 1013, 604  ; click on increase
     MS()
   }
@@ -461,19 +462,112 @@ NextGrimmy() {
 }
 
 VendorEntireInventoryOfCollectables() {
-  GlobalBack()
-  GoToCollector()
+  GoToCollector()  ; starts with GlobalBack
   SS()
-
   ClickEntireInventory()
-
 }
 
 VendorEntireInventoryOfNonCollectables() {
-  GlobalBack()
+  GoToSellAtVendor()
+  SS()
+  ClickEntireInventory()
+} 
+
+; Sells your inventory with NO confirmation (Dangerous)
+; this dumps your inventory to vendors
+; does not process silver
+DoubleSellInventoryFullConfirm() {
+  ; step 1: get rid of collectables
+  VendorEntireInventoryOfCollectables()
+  SS()
+  MouseClick "left", 963, 992  ; click make deal
+  LS()
+
+  ; step 2: get ride of everything else
+  VendorEntireInventoryOfNonCollectables()
+  SS()
+  MouseClick "left", 963, 992  ; click make deal
+}
+
+
+
+; aux function
+VendorEntireKit() {
   GoToSellAtVendor()
   SS()
 
-  ClickEntireInventory()
+  ; de-equip routine while at vendor
+  MouseClick "right", 1400,250  ; weapon 1 left side
+  MS()
+  MouseClick "right", 1500,250  ; weapon 1 right side
+  MS()
+  MouseClick "right", 1760,250  ; weapon 2 left side
+  MS()
+  MouseClick "right", 1860,250  ; weapon 2 right side
+  MS() 
+  MouseClick "right", 1600, 350  ; chest
+  MS() 
+  MouseClick "right", 1720, 375  ; back
+  MS() 
+  MouseClick "right", 1620, 500  ; legs
+  MS() 
+  MouseClick "right", 1720, 520  ; feet
+  MS() 
+  MouseClick "right", 1510, 377  ; hands
+  MS() 
+  MouseClick "right", 1600, 220  ; head
+  MS() 
+  MouseClick "right", 1685, 240  ; neckpeice   
+  MS() 
+  MouseClick "right", 1530, 445  ; ring left
+  MS() 
+  MouseClick "right", 1700, 445  ; ring rt
 
-} 
+
+  leftx := 1400
+  toolbelt_top_y := 455
+  inc_size := 63
+  rightx := 1830
+
+  Loop 3 { ; Rt Toolbelt
+    MouseClick "right", rightx, toolbelt_top_y + inc_size * (A_Index-1)
+    MS() 
+  }
+  Loop 3 { ; Left Toolbelt
+    MouseClick "right", leftx,  toolbelt_top_y + inc_size * (A_Index-1)
+    MS()
+  }
+
+
+  VendorEntireInventoryOfNonCollectables()
+  SS()
+  MouseClick "left", 963, 992  ; click make deal
+
+}
+
+; this does a full squire reset
+FullSquireReset() {
+
+  DoubleSellInventoryFullConfirm()
+
+  VendorEntireKit()
+  
+
+
+
+  LS()
+  GoToSquireAndFill()
+   
+   
+    /* TESTING HOLD POINT
+
+  SS()
+  BuyPotions()
+  SS()
+  BuyBandages()
+  SS()
+  HitPlay()
+
+
+  */
+}

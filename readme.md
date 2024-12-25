@@ -22,7 +22,7 @@
 
 ## default keybinds
 
-  change these in "Keybinds.ank" to whatever you want
+  These are set up in "Keybinds.ank"
   
   - Cntrl +
     - 5 - Go To Goblin Purchase
@@ -57,11 +57,13 @@
     - Q - Insta-Queue
     - H - Hotswap characters
     - K - Squire Kit
+    - ALT+K - Full Service-ResquireKit Full Auto
     - S - Stash
     - E - Expressman Gather
     - G - Goblin Retrieval
     - J - Go To Jewel Collector
     - V - Go To Vendor
+    - ALT+V - Vendor ALL Full Auto
     - M - Marketplace
     - B - Buy 4 Bandages
     - O - Buy 3 Potions
@@ -79,4 +81,4 @@
 
 ## todo
 
-  - add service rotator
+  - add full service Super-Key (sell jewels, sell extras, re-squire, buy bandages, buy potions, insta-queue)

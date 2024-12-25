@@ -606,8 +606,6 @@ Unlock() {
   Unlock()
 }
 
-
-
 ; NEXT Grimsmile Ring Crafter
 #HotIf WinActive("Dark and Darker")
 >^r::
@@ -621,6 +619,7 @@ Unlock() {
   Unlock()
 }
 
+; Vender All Collectables Soft Non Destructive
 >^x::
 {
   if isBusy { 
@@ -632,6 +631,7 @@ Unlock() {
   Unlock()
 }
 
+; Vender All Non-Collectables Soft Non Destructive
 >^z::
 {
   if isBusy { 
@@ -641,5 +641,37 @@ Unlock() {
   }
   VendorEntireInventoryOfNonCollectables()
   Unlock()
+}
 
+
+; THIS FUNCTION IS DANGEROUS AND IT DOESN'T PROMPT CONFIRM FOR SELLING YOUR INVENTORY
+; HENCE WHY IT IS RIGHTCNTRL+ALT+v TO DO IT
+; 
+>^!v::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+
+  DoubleSellInventoryFullConfirm()
+
+  Unlock()
+}
+
+; THIS FUNCTION IS DANGEROUS AND IT DOESN'T PROMPT CONFIRM FOR SELLING YOUR INVENTORY AND KIT
+; HENCE WHY IT IS RIGHTCNTRL+ALT+k TO DO IT
+; 
+>^!k::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+
+  FullSquireReset()
+
+  Unlock()
 }
