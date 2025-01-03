@@ -675,3 +675,18 @@ Unlock() {
 
   Unlock()
 }
+
+>^!i::
+{
+    if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+
+  VendorEntireKit()
+
+  Unlock()
+
+
+}

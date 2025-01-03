@@ -486,6 +486,7 @@ DoubleSellInventoryFullConfirm() {
   ; step 2: get ride of everything else
   VendorEntireInventoryOfNonCollectables()
   SS()
+  SS()
   MouseClick "left", 963, 992  ; click make deal
 }
 

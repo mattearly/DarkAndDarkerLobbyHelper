@@ -58,12 +58,13 @@
     - H - Hotswap characters
     - K - Squire Kit
     - ALT+K - Full Service-ResquireKit Full Auto
+    - ALT+I - Vendor Kit Full Auto
     - S - Stash
     - E - Expressman Gather
     - G - Goblin Retrieval
     - J - Go To Jewel Collector
     - V - Go To Vendor
-    - ALT+V - Vendor ALL Full Auto
+    - ALT+V - Vendor Inventory Full Auto
     - M - Marketplace
     - B - Buy 4 Bandages
     - O - Buy 3 Potions
@@ -79,6 +80,3 @@
   - there is an issue with the dungeon changing notification blocking some of the clicks. (appears to be a native game UI problem)
   - there is an issue with some buttons occasionally not functioning. (appears to be an native game UI problem)
 
-## todo
-
-  - add full service Super-Key (sell jewels, sell extras, re-squire, buy bandages, buy potions, insta-queue)
