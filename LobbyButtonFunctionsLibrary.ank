@@ -43,7 +43,7 @@ LS() {
 
 ; very long sleep
 VLS() {
-  sleep 3999  ; can take some characters a very long time to load in, 4200ms might be too short
+  sleep 4999  ; can take some characters a very long time to load in, 4200ms might be too short
 }
 
 ; aux function
@@ -187,18 +187,23 @@ GoToSellAtVendor() {
 
   ;  DISCLAIMER IF UR READING THIS CODE
   ;  I don't know what is wrong with this dang "sell" button, but it just won't register sometimes.
-  ;  that being the case, and there being no logical reason that I can see, we are trying all kinds of things
-  ;  and seeing what works.
-  ;    -matt
+  ;  That is why we click all over the screen here, trying to get it to realize that the sell button is clickable afterall. 
+  ;  This problem seems to be a bug with the game's interface
 
+  ; Various non-sense clicks to try to fix ironmace bug
   MouseClick "left", 463, 205  ; click to the right first because sometimes it bugs the button is unclickable until you click somewhere else
   MS()
+  MouseClick "left", 462, 204  ; and again because wut is wrong with this thing
+  MS()   
   MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
   SS()
-  Loop 5 {  ; this button doesn't register all the time, trying clicking it more (maybe 6 times and it will register???) 
-    MouseClick "left", 333, 205  ; sell loc
-    MS()
-  }
+  
+  
+  
+  MouseClick "left", 333, 205  ; sell loc
+
+
+
 }
 
 GoToSurgeon() {
@@ -502,9 +507,11 @@ VendorEntireKit() {
   MS()
   MouseClick "right", 1500,250  ; weapon 1 right side
   MS()
+  MS()
+  MS()
   MouseClick "right", 1760,250  ; weapon 2 left side
   MS()
-  MouseClick "right", 1860,250  ; weapon 2 right side
+  MouseClick "right", 1820, 250  ; weapon 2 right side
   MS() 
   MouseClick "right", 1600, 350  ; chest
   MS() 
@@ -524,6 +531,7 @@ VendorEntireKit() {
   MS() 
   MouseClick "right", 1700, 445  ; ring rt
   MS()
+  MS()
 
 
   ; variables to help with the below loops to click toolbelt
@@ -534,10 +542,12 @@ VendorEntireKit() {
 
   Loop 3 { ; Rt Toolbelt
     MouseClick "right", toolbelt_rightx, toolbelt_top_y + toolbelt_inc_size * (A_Index-1)
+    MS()
     MS() 
   }
   Loop 3 { ; Left Toolbelt
     MouseClick "right", toolbelt_leftx,  toolbelt_top_y + toolbelt_inc_size * (A_Index-1)
+    MS()
     MS()
   }
 
@@ -553,13 +563,14 @@ FullSquireReset() {
   VendorEntireKit()
   LS()
   GoToSquireAndFill()
+}
 
-  /* TESTING HOLD POINT
+FullSquireResetAndReQueue() {
+  FullSquireReset()
   SS()
   BuyPotions()
   SS()
   BuyBandages()
   SS()
   HitPlay()
-  */
 }

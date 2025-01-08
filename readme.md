@@ -58,6 +58,7 @@
     - H - Hotswap characters
     - K - Squire Kit
     - ALT+K - Full Service-ResquireKit Full Auto
+    - ALT+Q - Full Sell, Resquire, small med buy, and Queue Game
     - ALT+I - Vendor Kit Full Auto
     - S - Stash
     - E - Expressman Gather

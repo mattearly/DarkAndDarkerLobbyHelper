@@ -683,10 +683,17 @@ Unlock() {
   } else {
     Lock()
   }
-
   VendorEntireKit()
-
   Unlock()
+}
 
-
+>^!q::
+{
+    if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  FullSquireResetAndReQueue()
+  Unlock()
 }
