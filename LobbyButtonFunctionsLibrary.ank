@@ -18,12 +18,13 @@ global ArmourerLoc := [600, 300]
 global HolidayMerchantLoc := [380, 620]
 global SurgeonLoc := [840, 620]
 global SquireLoc := [600, 600]
-global TailorLoc := [460, 800]
+global TailorLoc := [1070, 625]
 global CollectorLoc := [1525, 620]
 global SmithLoc := [630, 900]
 global LeathersmithLoc := [1540, 330]
 global WoodsmanLoc := [850, 900]
 global AlchemistLoc := [380,340]
+global ThirdCharDownLoc := [1595, 370]
 
 
 ; mini sleep
@@ -43,7 +44,7 @@ LS() {
 
 ; very long sleep
 VLS() {
-  sleep 4999  ; can take some characters a very long time to load in, 4200ms might be too short
+  sleep 4499  ; can take some characters a very long time to load in, 4200ms might be too short
 }
 
 ; aux function
@@ -284,20 +285,16 @@ GetAllFromGoblin() {
 
 BuyPickaxe() { 
   GoToWoodsman()
-
-/* commented out
   LS()
-
-  ; purchase white pickaxe
-  MouseClick "left", 180, 335  ; middle pick
+  MouseClick "left", 180, 335  ; second pick over
   LS()
   FillAllMakeDeal()
-  */
 }
 
 BuyBandages() {
   GoToSurgeon()
 
+/* commented out
   LS()
   MouseClick "left", 70, 300  ; click single grey bandage
   LS()
@@ -307,18 +304,15 @@ BuyBandages() {
   }
   SS()
   FillAllMakeDeal()
+*/
 
-
-/* commented out
   LS()
   MouseClick "left", 125, 295 ; click white bandage
   LS()
-  Loop 5 {  ; buy 6
-    MouseClick "left", 1013, 604  ; click on increase
-    MS()
-  }
+  ; buy 2
+  MouseClick "left", 1013, 604  ; click on increase
+  MS()
   FillAllMakeDeal()
-*/
 
 }
 
@@ -327,23 +321,21 @@ BuyALotOfBandages() {
   LS()
   MouseClick "left", 70, 300  ; click single grey bandage
   LS()
-  Loop 7 {   ; buy this+1
-    MouseClick "left", 1013, 604  ; click on increase
-    MS()
-  }
+ ; Loop 1 {   ; buy this+1
+ ;   MouseClick "left", 1013, 604  ; click on increase
+ ;   MS()
+ ; }
   SS()
   FillAllMakeDeal()
 
-  /* commented out, greys only
   LS()
   MouseClick "left", 125, 295 ; click white bandage
   LS()
-  Loop 5 {  ; buy this+1
+  Loop 3 {  ; buy this+1
     MouseClick "left", 1013, 604  ; click on increase
     MS()
   }
   FillAllMakeDeal()
-  */
 }
 
 BuyPotions() {
@@ -353,7 +345,7 @@ BuyPotions() {
   ; default set to buy 3 grey quality potions
   MouseClick "left", 70, 300  ; click low quality potion
   LS()
-  Loop 2 {  ; click increase
+  Loop 3 {  ; click increase
     MouseClick "left", 1013, 604 
     MS()
   }
@@ -390,7 +382,7 @@ Loop 4 {
   MouseClick "left", 1843, 909  ; page right button on char select
   LS()
   ; select bottom character
-  MouseClick "left", 1595, 370  ; click 3RD character down
+  MouseClick "left", ThirdCharDownLoc[1], ThirdCharDownLoc[2]
   LS()
   ; click enter the lobby
   MouseClick "left", 954, 979  ; Enter the lobby button
@@ -400,6 +392,32 @@ Loop 4 {
   ; go to marketplace
   GoToSellAtMarket()
   
+}
+
+CycleToNextGoblin() {
+  GlobalBack()
+  ; log out of character
+  MouseClick "left",  237, 44   ; click play button
+  LS()
+  MouseClick "left", 1858, 1025  ; change class button
+Loop 4 {
+   LS() 
+   }
+
+  ; cycle to page 2
+  MouseClick "left", 1843, 909  ; page right button on char select
+  LS()
+  ; select bottom character
+  MouseClick "left", 1595, 370  ; click 3RD character down
+  LS()
+  ; click enter the lobby
+  MouseClick "left", 954, 979  ; Enter the lobby button
+  
+  
+  VLS()
+
+  GoToGoblinBuy()
+
 }
 
 ; this will attempt to switch to your previous character
@@ -455,8 +473,7 @@ NextGrimmy() {
   ; cycle to page 2
   MouseClick "left", 1843, 909  ; page right button on char select
   LS()
-  ; select bottom character (2nd down on page 2)
-  MouseClick "left", 1595, 289  ; click 2nd character down
+  MouseClick "left", ThirdCharDownLoc[1], ThirdCharDownLoc[2]
   LS()
   ; click enter the lobby
   MouseClick "left", 954, 979  ; Enter the lobby button
@@ -505,13 +522,19 @@ VendorEntireKit() {
   ; de-equip routine while at vendor
   MouseClick "right", 1400,250  ; weapon 1 left side
   MS()
+  MS()
+  MS()
   MouseClick "right", 1500,250  ; weapon 1 right side
   MS()
   MS()
   MS()
   MouseClick "right", 1760,250  ; weapon 2 left side
   MS()
+  MS()
+  MS()
   MouseClick "right", 1820, 250  ; weapon 2 right side
+  MS()
+  MS()
   MS() 
   MouseClick "right", 1600, 350  ; chest
   MS() 
@@ -565,12 +588,14 @@ FullSquireReset() {
   GoToSquireAndFill()
 }
 
-FullSquireResetAndReQueue() {
+FullSquireResetAndReBuy() {
   FullSquireReset()
   SS()
   BuyPotions()
   SS()
   BuyBandages()
   SS()
-  HitPlay()
+  BuyPickaxe()
+  SS()
+  PurchaseLockpicks()
 }

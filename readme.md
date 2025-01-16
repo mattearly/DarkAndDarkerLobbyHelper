@@ -61,7 +61,6 @@
     - ALT+Q - Full Sell, Resquire, small med buy, and Queue Game
     - ALT+I - Vendor Kit Full Auto
     - S - Stash
-    - E - Expressman Gather
     - G - Goblin Retrieval
     - J - Go To Jewel Collector
     - V - Go To Vendor
@@ -74,6 +73,7 @@
     - R - Next Grimmy Crafter
     - X - Vendor All Collector
     - Z - Vender All Non-Collector
+    - ALT+5 - Next Goblin Buy
 
 ## known issues
 

@@ -447,20 +447,6 @@ Unlock() {
   Unlock()
 }
 
-; EXPRESSMAN GATHER
-#HotIf WinActive("Dark and Darker")
->^e::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  ExpressmanExpress()
-  Unlock()
-}
-
-
 ; GOBLIN RETRIEVAL
 #HotIf WinActive("Dark and Darker")
 >^g::
@@ -694,6 +680,16 @@ Unlock() {
   } else {
     Lock()
   }
-  FullSquireResetAndReQueue()
+  FullSquireResetAndReBuy()
+  Unlock()
+}
+
+>^!5::{
+    if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  CycleToNextGoblin()
   Unlock()
 }
