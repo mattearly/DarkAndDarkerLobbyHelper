@@ -693,3 +693,13 @@ Unlock() {
   CycleToNextGoblin()
   Unlock()
 }
+
+>^T:: {
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  TransferInventory()
+  Unlock()
+}

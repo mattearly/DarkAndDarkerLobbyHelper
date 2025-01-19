@@ -599,3 +599,21 @@ FullSquireResetAndReBuy() {
   SS()
   PurchaseLockpicks()
 }
+
+TransferInventory() {
+
+    ; click every cell
+  TransferInventory_LocBeforeFirstCell := [667, 601]
+  TransferInventory_CellSize := 41
+  Send "{Shift down}"
+  Loop 10 {
+    val1 := TransferInventory_LocBeforeFirstCell[1] + A_Index * TransferInventory_CellSize
+    Loop 5 {
+      val2 := TransferInventory_LocBeforeFirstCell[2] + A_Index * TransferInventory_CellSize
+      MouseClick "right", val1, val2
+      MS()
+      MS()
+    }
+  }
+  Send "{Shift up}"
+}

@@ -74,10 +74,12 @@
     - X - Vendor All Collector
     - Z - Vender All Non-Collector
     - ALT+5 - Next Goblin Buy
+    - T - Transfer Inventory To Stash Page (hold shift)
 
 ## known issues
 
   - there can be issues with the lobby being slower than expected, in which case the delays between clicks must be increased, adjust making delays faster with prejudice as it can exacerbate this problem
   - there is an issue with the dungeon changing notification blocking some of the clicks. (appears to be a native game UI problem)
   - there is an issue with some buttons occasionally not functioning. (appears to be an native game UI problem)
+  - the de-equip routine will sometimes throw things in your stash (especially if you are holding down alt)
 
