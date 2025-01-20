@@ -10,8 +10,8 @@
 
 ## requirements
 
-  auto-hotkey v2
-  dark and darker v73
+  - auto-hotkey v2
+  - dark and darker v77  
     - Have most quests done (as some button locations change for things at different affinity levels)
 
 ## how to run
@@ -65,7 +65,7 @@
     - J - Go To Jewel Collector
     - V - Go To Vendor
     - ALT+V - Vendor Inventory Full Auto
-    - M - Marketplace
+    - M - Go To Search Marketplace
     - B - Buy 4 Bandages
     - O - Buy 3 Potions
     - C - Go To Class Spec
