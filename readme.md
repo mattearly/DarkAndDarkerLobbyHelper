@@ -57,8 +57,8 @@
     - Q - Insta-Queue
     - H - Hotswap characters
     - K - Squire Kit
-    - ALT+K - Full Service-ResquireKit Full Auto
-    - ALT+Q - Full Sell, Resquire, small med buy, and Queue Game
+    - ALT+K - Full Sell (Full Auto), Resquire Kit
+    - ALT+Q - Full Sell (Full Auto), Resquire, Small med buy, buy pickaxe, buy lockpicks
     - ALT+I - Vendor Kit Full Auto
     - S - Stash
     - G - Goblin Retrieval
