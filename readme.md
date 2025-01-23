@@ -82,4 +82,5 @@
   - there is an issue with the dungeon changing notification blocking some of the clicks. (appears to be a native game UI problem)
   - there is an issue with some buttons occasionally not functioning. (appears to be an native game UI problem)
   - the de-equip routine will sometimes throw things in your stash (especially if you are holding down alt (or have that longstanding native bug were DaD thinks you are pressing alt until you tap it again))
+  - there is an issue with not backing out of the marketplace correctly if you hadn't previously gone there with a hotkey (as the program doesn't know to set the flag if you go there manually)
 
