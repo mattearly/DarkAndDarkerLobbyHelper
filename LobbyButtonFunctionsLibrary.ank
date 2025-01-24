@@ -11,7 +11,7 @@
 
 ; required variables
 global WasInTrade := false
-global AlwaysAssumeInTrade_TEST := false     ; must be false or the tavern master gets clicked
+global AlwaysAssumeInTrade_TEST := true     ; must be false or the tavern master gets clicked
 
 ; all locations should probably be defined like this for ease of updating (todo)
 global AlchemistLoc := [380, 340]
@@ -57,8 +57,12 @@ GlobalBack() {
     WasInTrade := false
     LS()
   } else if AlwaysAssumeInTrade_TEST {
-    MouseClick "left", 858, 617  ; are you sure market button
+    MouseClick "left", 858, 617  ; are you sure market button (might click tavern guy)
     WasInTrade := false
+    LS()
+
+    ; double back in case was in trade but not flagged
+    MouseClick "left", 150, 45   ; back button
     LS()
   }
 }
