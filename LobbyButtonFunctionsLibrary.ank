@@ -14,16 +14,16 @@ global WasInTrade := false
 global AlwaysAssumeInTrade_TEST := false     ; must be false or the tavern master gets clicked
 
 ; all locations should probably be defined like this for ease of updating (todo)
+global AlchemistLoc := [380, 340]
 global ArmourerLoc := [600, 300]
-global HolidayMerchantLoc := [380, 620]
-global SurgeonLoc := [840, 620]
-global SquireLoc := [600, 600]
+global HolidayMerchantLoc := [380, 620]  ;update when its avail
+global SurgeonLoc := [610, 620]
+global SquireLoc := [380, 600]
 global TailorLoc := [1070, 625]
-global CollectorLoc := [1525, 620]
+global CollectorLoc := [830, 620]
 global SmithLoc := [630, 900]
 global LeathersmithLoc := [1540, 330]
-global WoodsmanLoc := [850, 900]
-global AlchemistLoc := [380,340]
+global WoodsmanLoc := [600, 900]
 global ThirdCharDownLoc := [1595, 370]
 
 
