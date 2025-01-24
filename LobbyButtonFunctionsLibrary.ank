@@ -39,7 +39,7 @@ SS() {
 
 ; long sleep
 LS() { 
-  sleep 515  ; probably needs to be higher 
+  sleep 525  ; probably needs to be higher 
 }
 
 ; very long sleep
@@ -57,12 +57,12 @@ GlobalBack() {
     WasInTrade := false
     LS()
   } else if AlwaysAssumeInTrade_TEST {
-    MouseClick "left", 858, 617  ; are you sure market button (might click tavern guy)
-    WasInTrade := false
+    MouseClick "left", 858, 617  ; are you sure market button
     LS()
 
-    ; double back in case was in trade but not flagged
+    ; in case merchant was clicked
     MouseClick "left", 150, 45   ; back button
+    WasInTrade := false
     LS()
   }
 }
