@@ -548,7 +548,7 @@ VendorEntireKit() {
   MS() 
   MouseClick "right", 1720, 520  ; feet
   MS() 
-  MouseClick "right", 1510, 377  ; hands
+  MouseClick "right", 1510, 530  ; hands
   MS() 
   MouseClick "right", 1600, 220  ; head
   MS() 
