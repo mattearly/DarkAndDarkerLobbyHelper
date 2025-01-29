@@ -703,3 +703,13 @@ Unlock() {
   TransferInventory()
   Unlock()
 }
+
+>^!G:: {
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  FullGamble()
+  Unlock()
+}

@@ -621,3 +621,16 @@ TransferInventory() {
   }
   Send "{Shift up}"
 }
+
+FullGamble() {
+  GoToGoblinBuy()
+  LS()
+  MouseClick "left", 71, 290  ; THROW AWAY CLICK / ENABLE INTERFACE CLICK
+  MS()
+  loop 10 {
+    MouseClick "left", 73, 291
+    LS()
+    FillAllMakeDeal()
+    LS()
+  }
+}

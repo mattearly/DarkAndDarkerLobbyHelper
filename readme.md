@@ -75,6 +75,7 @@
     - Z - Vender All Non-Collector
     - ALT+5 - Next Goblin Buy
     - T - Transfer Inventory To Stash Page
+    - ALT+G - Full Gamble at Goblin (buy 10)
 
 ## known issues
 
