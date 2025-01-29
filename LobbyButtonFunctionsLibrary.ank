@@ -10,8 +10,12 @@
 #include LobbyButtonFunctionsLibrary.ank
 
 ; required variables
+; only sets to true when the user pressess a key to go to the marketplace
 global WasInTrade := false
-global AlwaysAssumeInTrade_TEST := true     ; must be false or the tavern master gets clicked
+
+; this is used in development testing to try to find a better global back method
+; will try to account for the case that the user manually went to the marketplace
+global AlwaysAssumeInTrade_TEST := false     ; must be false or the tavern master gets clicked
 
 ; all locations should probably be defined like this for ease of updating (todo)
 global AlchemistLoc := [380, 340]
@@ -52,17 +56,14 @@ GlobalBack() {
   global
   MouseClick "left", 150, 45   ; back button
   LS()
-  if WasInTrade { 
+  if WasInTrade {  ; we know how to back out correctly
     MouseClick "left", 858, 617  ; are you sure market button
     WasInTrade := false
     LS()
   } else if AlwaysAssumeInTrade_TEST {
-    MouseClick "left", 858, 617  ; are you sure market button
+    MouseClick "left", 858, 617  ; click 'are you sure' market button (or some merchant possibly)
     LS()
-
-    ; in case merchant was clicked
-    MouseClick "left", 150, 45   ; back button
-    WasInTrade := false
+    MouseClick "left", 150, 45   ; back button again in case merchant was clicked 
     LS()
   }
 }
@@ -202,12 +203,8 @@ GoToSellAtVendor() {
   MS()   
   MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
   SS()
-  
-  
-  
+    
   MouseClick "left", 333, 205  ; sell loc
-
-
 
 }
 
@@ -378,9 +375,9 @@ CycleToNextAuctioneer() {
   MouseClick "left",  237, 44   ; click play button
   LS()
   MouseClick "left", 1858, 1025  ; change class button
-Loop 4 {
-   LS() 
-   }
+  Loop 4 {
+    LS() 
+  }
 
   ; cycle to page 2
   MouseClick "left", 1843, 909  ; page right button on char select
@@ -404,9 +401,9 @@ CycleToNextGoblin() {
   MouseClick "left",  237, 44   ; click play button
   LS()
   MouseClick "left", 1858, 1025  ; change class button
-Loop 4 {
-   LS() 
-   }
+  Loop 4 {
+    LS() 
+  }
 
   ; cycle to page 2
   MouseClick "left", 1843, 909  ; page right button on char select
@@ -508,12 +505,13 @@ DoubleSellInventoryFullConfirm() {
   SS()
   MouseClick "left", 963, 992  ; click make deal
   LS()
-
+  
   ; step 2: get ride of everything else
   VendorEntireInventoryOfNonCollectables()
   SS()
   SS()
   MouseClick "left", 963, 992  ; click make deal
+
 }
 
 
@@ -525,6 +523,7 @@ VendorEntireKit() {
 
   ; de-equip routine while at vendor
   MouseClick "right", 1400,250  ; weapon 1 left side
+  MS()
   MS()
   MS()
   MS()
@@ -577,8 +576,8 @@ VendorEntireKit() {
     MS()
     MS()
   }
-
   VendorEntireInventoryOfNonCollectables()
+
   SS()
   MouseClick "left", 963, 992  ; click make deal
 }
@@ -605,8 +604,7 @@ FullSquireResetAndReBuy() {
 }
 
 TransferInventory() {
-
-    ; click every cell
+  ; click every cell
   TransferInventory_LocBeforeFirstCell := [667, 601]
   TransferInventory_CellSize := 41
   Send "{Shift down}"
