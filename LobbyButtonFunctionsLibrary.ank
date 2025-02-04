@@ -310,8 +310,11 @@ BuyBandages() {
   LS()
   MouseClick "left", 125, 295 ; click white bandage
   LS()
-  ; buy 2
+  ; buy 4
+  Loop 3 {   ; buy this+1
   MouseClick "left", 1013, 604  ; click on increase
+MS()
+  }
   MS()
   FillAllMakeDeal()
 
