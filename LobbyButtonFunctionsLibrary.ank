@@ -20,14 +20,14 @@ global AlwaysAssumeInTrade_TEST := false     ; must be false or the tavern maste
 ; all locations should probably be defined like this for ease of updating (todo)
 global AlchemistLoc := [380, 340]
 global ArmourerLoc := [600, 300]
-global HolidayMerchantLoc := [380, 620]  ;update when its avail
+global HolidayMerchantLoc := [380, 900]  ;update when its avail
 global SurgeonLoc := [610, 620]
 global SquireLoc := [380, 600]
 global TailorLoc := [850, 625]
 global CollectorLoc := [1310, 620]
-global SmithLoc := [390, 900]
+global SmithLoc := [610, 900]
 global LeathersmithLoc := [1540, 330]
-global WoodsmanLoc := [600, 900]
+global WoodsmanLoc := [835, 900]
 global ThirdCharDownLoc := [1595, 370]
 
 
@@ -335,7 +335,7 @@ BuyALotOfBandages() {
   LS()
   MouseClick "left", 125, 295 ; click white bandage
   LS()
-  Loop 3 {  ; buy this+1
+  Loop 5 {  ; buy this+1
     MouseClick "left", 1013, 604  ; click on increase
     MS()
   }
