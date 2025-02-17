@@ -704,12 +704,12 @@ Unlock() {
   Unlock()
 }
 
->^!G:: {
+>^1:: {
   if isBusy {
     return
   } else {
     Lock()
   }
-  FullGamble()
+  GoToSets()
   Unlock()
 }

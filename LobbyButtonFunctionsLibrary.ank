@@ -623,6 +623,8 @@ TransferInventory() {
   Send "{Shift up}"
 }
 
+
+; nothing is bound to this
 FullGamble() {
   GoToGoblinBuy()
   LS()
@@ -634,4 +636,14 @@ FullGamble() {
     FillAllMakeDeal()
     LS()
   }
+}
+
+GoToSets() {
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", SquireLoc[1], SquireLoc[2]
+  LS()
+  MouseClick "left", 358, 201  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
+  SS()
 }
