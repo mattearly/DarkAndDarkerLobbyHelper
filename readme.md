@@ -56,6 +56,7 @@
     - P - Purchase Pickaxe
     - Q - Insta-Queue
     - H - Hotswap characters
+    - 1 - Go To Sets
     - K - Squire Kit
     - ALT+K - Full Sell (Full Auto), Resquire Kit
     - ALT+Q - Full Sell (Full Auto), Resquire, Small med buy, buy pickaxe, buy lockpicks
@@ -75,7 +76,6 @@
     - Z - Vender All Non-Collector
     - ALT+5 - Next Goblin Buy
     - T - Transfer Inventory To Stash Page
-    - ALT+G - Full Gamble at Goblin (buy 10)
 
 ## known issues
 
