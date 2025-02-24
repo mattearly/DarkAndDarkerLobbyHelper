@@ -182,6 +182,29 @@ GoToSquireAndFill() {
   LS()
   MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
   SS()
+ 
+  ; unequip tool slots
+  MouseClick "right", 1400, 456
+  MS()
+  MouseClick "right", 1400, 518
+  MS()
+  MouseClick "right", 1400, 575
+  MS()
+  MouseClick "right", 1830, 456
+  MS()
+  MouseClick "right", 1830, 518
+  MS()
+  MouseClick "right", 1830, 575
+    MS()
+
+  ; unequip right weapon right side
+  ;  - the point is to unequip a bow so that it gives you more arrows/bolts
+  ;  - not for all characters maybe change it or add another button option
+  ; MouseClick "right", 1823, 250
+  ; MS()
+
+
+  SS()
   MouseClick "left", 955, 992 ; click Equip Base Gear
   MS()
   MouseClick "left", 953, 991 ; click Equip Base Gear again
