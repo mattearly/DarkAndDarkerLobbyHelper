@@ -59,9 +59,7 @@
     - 1 - Go To Sets
     - K - Squire Kit
     - ALT+K - Full Sell (Full Auto), Resquire Kit
-    - ALT+Q - Full Sell (Full Auto), Resquire, Small med buy, buy pickaxe, buy lockpicks
-    - ALT+I - Vendor Kit Full Auto
-    - S - Stash
+    - ALT+Q - ToolBelt Reset and Requeue (designed for arena)
     - G - Goblin Retrieval
     - J - Go To Jewel Collector
     - V - Go To Vendor
@@ -74,7 +72,6 @@
     - R - Next Grimmy Crafter
     - X - Vendor All Collector
     - Z - Vender All Non-Collector
-    - ALT+5 - Next Goblin Buy
     - T - Transfer Inventory To Stash Page
 
 ## known issues

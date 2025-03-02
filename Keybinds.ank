@@ -434,18 +434,7 @@ Unlock() {
   Unlock()
 }
 
-; STASH
-#HotIf WinActive("Dark and Darker")
->^s::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToStash()
-  Unlock()
-}
+
 
 ; GOBLIN RETRIEVAL
 #HotIf WinActive("Dark and Darker")
@@ -606,6 +595,8 @@ Unlock() {
 }
 
 ; Vender All Collectables Soft Non Destructive
+
+#HotIf WinActive("Dark and Darker")
 >^x::
 {
   if isBusy { 
@@ -618,6 +609,8 @@ Unlock() {
 }
 
 ; Vender All Non-Collectables Soft Non Destructive
+
+#HotIf WinActive("Dark and Darker")
 >^z::
 {
   if isBusy { 
@@ -632,7 +625,8 @@ Unlock() {
 
 ; THIS FUNCTION IS DANGEROUS AND IT DOESN'T PROMPT CONFIRM FOR SELLING YOUR INVENTORY
 ; HENCE WHY IT IS RIGHTCNTRL+ALT+v TO DO IT
-; 
+
+#HotIf WinActive("Dark and Darker")
 >^!v::
 {
   if isBusy { 
@@ -649,6 +643,7 @@ Unlock() {
 ; THIS FUNCTION IS DANGEROUS AND IT DOESN'T PROMPT CONFIRM FOR SELLING YOUR INVENTORY AND KIT
 ; HENCE WHY IT IS RIGHTCNTRL+ALT+k TO DO IT
 ; 
+#HotIf WinActive("Dark and Darker")
 >^!k::
 {
   if isBusy { 
@@ -662,17 +657,8 @@ Unlock() {
   Unlock()
 }
 
->^!i::
-{
-    if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  VendorEntireKit()
-  Unlock()
-}
 
+#HotIf WinActive("Dark and Darker")
 >^!q::
 {
     if isBusy { 
@@ -680,10 +666,11 @@ Unlock() {
   } else {
     Lock()
   }
-  FullSquireResetAndReBuy()
+  ToolBeltAndRequeue()
   Unlock()
 }
 
+#HotIf WinActive("Dark and Darker")
 >^!5::{
     if isBusy { 
     return 
@@ -694,6 +681,8 @@ Unlock() {
   Unlock()
 }
 
+
+#HotIf WinActive("Dark and Darker")
 >^T:: {
   if isBusy {
     return
@@ -704,6 +693,20 @@ Unlock() {
   Unlock()
 }
 
+
+#HotIf WinActive("Dark and Darker")
+>^S:: {
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  FullRebuy()
+  Unlock()
+}
+
+
+#HotIf WinActive("Dark and Darker")
 >^1:: {
   if isBusy {
     return
@@ -713,3 +716,4 @@ Unlock() {
   GoToSets()
   Unlock()
 }
+

@@ -350,7 +350,7 @@ BuyALotOfBandages() {
   LS()
   MouseClick "left", 70, 300  ; click single grey bandage
   LS()
- ; Loop 1 {   ; buy this+1
+ ; Loop 2 {   ; buy this+1
  ;   MouseClick "left", 1013, 604  ; click on increase
  ;   MS()
  ; }
@@ -360,7 +360,7 @@ BuyALotOfBandages() {
   LS()
   MouseClick "left", 125, 295 ; click white bandage
   LS()
-  Loop 5 {  ; buy this+1
+  Loop 8 {  ; buy this+1
     MouseClick "left", 1013, 604  ; click on increase
     MS()
   }
@@ -371,10 +371,10 @@ BuyPotions() {
   GoToAlchemist()
   LS()
 
-  ; default set to buy 3 grey quality potions
+  ; default set to buy 6 grey quality potions
   MouseClick "left", 70, 300  ; click low quality potion
   LS()
-  Loop 3 {  ; click increase
+  Loop 5 {  ; click increase
     MouseClick "left", 1013, 604 
     MS()
   }
@@ -387,10 +387,10 @@ BuyALotOfPotions() {
   GoToAlchemist()
   LS()
 
-  ; default set to buy 9 grey quality potions
-  MouseClick "left", 70, 300  ; click low quality potion
+  ; default set to buy 15 grey quality potions
+  MouseClick "left", 200, 300  ; click 3x low quality potion
   LS()
-  Loop 9 {  ; click increase
+  Loop 4 {  ; click increase
     MouseClick "left", 1013, 604 
     MS()
   }
@@ -584,26 +584,10 @@ VendorEntireKit() {
   MouseClick "right", 1530, 445  ; ring left
   MS() 
   MouseClick "right", 1700, 445  ; ring rt
-  MS()
-  MS()
+  SS()
 
 
-  ; variables to help with the below loops to click toolbelt
-  toolbelt_leftx := 1400
-  toolbelt_top_y := 455
-  toolbelt_inc_size := 63
-  toolbelt_rightx := 1830
 
-  Loop 3 { ; Rt Toolbelt
-    MouseClick "right", toolbelt_rightx, toolbelt_top_y + toolbelt_inc_size * (A_Index-1)
-    MS()
-    MS() 
-  }
-  Loop 3 { ; Left Toolbelt
-    MouseClick "right", toolbelt_leftx,  toolbelt_top_y + toolbelt_inc_size * (A_Index-1)
-    MS()
-    MS()
-  }
   VendorEntireInventoryOfNonCollectables()
 
   SS()
@@ -619,14 +603,13 @@ FullSquireReset() {
   GoToSquireAndFill()
 }
 
-FullSquireResetAndReBuy() {
-  FullSquireReset()
-  SS()
+; purchase potions, bandages, a pickaxe, and lockpicks
+FullReBuy() {
   BuyPotions()
   SS()
   BuyBandages()
-  SS()
-  BuyPickaxe()
+ ; SS()
+  ;BuyPickaxe()
   SS()
   PurchaseLockpicks()
 }
@@ -671,4 +654,11 @@ GoToSets() {
   LS()
   MouseClick "left", 358, 201  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
   SS()
+}
+
+ToolBeltAndRequeue() {
+  GoToSquireAndFill()
+  LS()
+  HitPlay()
+
 }
