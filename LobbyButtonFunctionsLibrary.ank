@@ -15,7 +15,7 @@ global WasInTrade := false
 
 ; this is used in development testing to try to find a better global back method
 ; will try to account for the case that the user manually went to the marketplace
-global AlwaysAssumeInTrade_TEST := false     ; must be false or the tavern master gets clicked
+global AlwaysAssumeInTrade_TEST := true     ; must be false or the tavern master gets clicked
 
 ; all locations should probably be defined like this for ease of updating (todo)
 global AlchemistLoc := [380, 340]
@@ -56,8 +56,6 @@ GlobalBack() {
   global
   MouseClick "left", 150, 45   ; back button
   SS()
-  MouseClick "left", 232, 45   ; play button
-  LS()
   if WasInTrade {  ; we know how to back out correctly
     MouseClick "left", 858, 617  ; are you sure market button
     WasInTrade := false
@@ -68,6 +66,8 @@ GlobalBack() {
     MouseClick "left", 150, 45   ; back button again in case merchant was clicked 
     LS()
   }
+  MouseClick "left", 232, 45   ; play button
+  LS()
 }
 
 ; aux function
