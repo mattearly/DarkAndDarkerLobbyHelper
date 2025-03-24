@@ -100,7 +100,7 @@ HitPlay() {
   LS()
   MouseClick "left", 181, 981  ; start bottom left button
   LS()
-  MouseClick "left", 780, 655  ; timmy yes button
+  MouseClick "left", 780, 675  ; timmy yes button
 }
 
 GoToClassSpec() {
