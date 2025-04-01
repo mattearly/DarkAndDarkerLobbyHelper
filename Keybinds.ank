@@ -581,9 +581,11 @@ Unlock() {
   Unlock()
 }
 
+
+
 ; NEXT Grimsmile Ring Crafter
 #HotIf WinActive("Dark and Darker")
->^r::
+>^!6::
 {
   if isBusy { 
     return 
@@ -594,8 +596,59 @@ Unlock() {
   Unlock()
 }
 
-; Vender All Collectables Soft Non Destructive
+; NEXT Leathersmith Crafter
+#HotIf WinActive("Dark and Darker")
+>^!7::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  NextLeathersmith()
+  Unlock()
+}
 
+; NEXT Armorer Crafter
+#HotIf WinActive("Dark and Darker")
+>^!8::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  NextArmorer()
+  Unlock()
+}
+
+; NEXT Tailor Crafter
+#HotIf WinActive("Dark and Darker")
+>^!9::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  NextTailor()
+  Unlock()
+}
+
+; NEXT Weapon Crafter
+#HotIf WinActive("Dark and Darker")
+>^!0::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToWeaponsmithService()
+  Unlock()
+}
+
+; Vender All Collectables Soft Non Destructive
 #HotIf WinActive("Dark and Darker")
 >^x::
 {
@@ -621,42 +674,6 @@ Unlock() {
   VendorEntireInventoryOfNonCollectables()
   Unlock()
 }
-
-
-; THIS FUNCTION IS DANGEROUS AND IT DOESN'T PROMPT CONFIRM FOR SELLING YOUR INVENTORY
-; HENCE WHY IT IS RIGHTCNTRL+ALT+v TO DO IT
-
-#HotIf WinActive("Dark and Darker")
->^!v::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-
-  DoubleSellInventoryFullConfirm()
-
-  Unlock()
-}
-
-; THIS FUNCTION IS DANGEROUS AND IT DOESN'T PROMPT CONFIRM FOR SELLING YOUR INVENTORY AND KIT
-; HENCE WHY IT IS RIGHTCNTRL+ALT+k TO DO IT
-; 
-#HotIf WinActive("Dark and Darker")
->^!k::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-
-  FullSquireReset()
-
-  Unlock()
-}
-
 
 #HotIf WinActive("Dark and Darker")
 >^!q::

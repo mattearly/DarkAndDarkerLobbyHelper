@@ -57,19 +57,23 @@
     - Q - Insta-Queue
     - H - Hotswap characters
     - 1 - Go To Sets
+    - ALT+5 - Next Character Goblin Gamble
+    - ALT+6 - Next Character Grimmy Crafter
+    - ALT+7 - Next Character Leather Crafter
+    - ALT+8 - Next Character Armor Crafter
+    - ALT+9 - Next Character Tailor Crafter
+    - ALT+0 - Next Character Weapon Crafter
     - K - Squire Kit
-    - ALT+K - Full Sell (Full Auto), Resquire Kit
     - ALT+Q - ToolBelt Reset and Requeue (designed for arena)
     - G - Goblin Retrieval
     - J - Go To Jewel Collector
     - V - Go To Vendor
-    - ALT+V - Vendor Inventory Full Auto
     - M - Go To Search Marketplace
     - B - Buy 4 Bandages
     - O - Buy 3 Potions
     - C - Go To Class Spec
     - N - Go To Next Auctioneer
-    - R - Next Grimmy Crafter
+
     - X - Vendor All Collector
     - Z - Vender All Non-Collector
     - T - Transfer Inventory To Stash Page
