@@ -11,7 +11,7 @@
 ## requirements
 
   - auto-hotkey v2
-  - dark and darker v79 
+  - dark and darker v80-2
     - Have most quests done (as some button locations change for things at different affinity levels)
 
 ## how to run
@@ -51,7 +51,9 @@
 
   - Right Cntrl + 
     - numpadSub - Buy 4 Bandages
-    - numpadAdd - Buy 3 Potions
+    - B - Buy 4 Bandages
+    - numpadAdd - Buy 6 Potions
+    - O - Buy 6 Potions
     - L - Purchase Lockpicks
     - P - Purchase Pickaxe
     - Q - Insta-Queue
@@ -69,11 +71,8 @@
     - J - Go To Jewel Collector
     - V - Go To Vendor
     - M - Go To Search Marketplace
-    - B - Buy 4 Bandages
-    - O - Buy 3 Potions
     - C - Go To Class Spec
     - N - Go To Next Auctioneer
-
     - X - Vendor All Collector
     - Z - Vender All Non-Collector
     - T - Transfer Inventory To Stash Page
