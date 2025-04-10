@@ -136,21 +136,6 @@ Unlock() {
   Unlock()
 }
 
-/* off season
-; JACK-O BUY (HALLOWEEN) 
-#HotIf WinActive("Dark and Darker")
-^-::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToJackoBuy()
-  Unlock()
-}
-*/
-
 ; Keybind setup for HitPlay (file structure follows this pattern)
 #HotIf WinActive("Dark and Darker")
 ^Numpad0::
@@ -163,20 +148,6 @@ Unlock() {
   HitPlay()
   Unlock()
 }
-
-/*
-#HotIf WinActive("Dark and Darker")
-^Numpad1::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  ; do something here
-  Unlock()
-}
-*/
 
 ; hotswap to prev character
 #HotIf WinActive("Dark and Darker")
@@ -204,19 +175,6 @@ Unlock() {
   Unlock()
 }
 
-; STASH
-#HotIf WinActive("Dark and Darker")
-^Numpad4::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToStash()
-  Unlock()
-}
-
 ; EXPRESSMAN GATHER
 #HotIf WinActive("Dark and Darker")
 ^Numpad5::
@@ -230,7 +188,6 @@ Unlock() {
   Unlock()
 }
 
-
 ; GOBLIN RETRIEVAL
 #HotIf WinActive("Dark and Darker")
 ^Numpad6::
@@ -243,7 +200,6 @@ Unlock() {
   GetAllFromGoblin()
   Unlock()
 }
-
 
 ; COLLECTOR
 #HotIf WinActive("Dark and Darker")
@@ -313,7 +269,6 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 <^NumpadAdd::
 {
-  
   if isBusy { 
     return 
   } else {
@@ -327,7 +282,6 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^NumpadAdd::
 {
-  
   if isBusy { 
     return 
   } else {
@@ -394,20 +348,6 @@ Unlock() {
   Unlock()
 }
 
-/*
-#HotIf WinActive("Dark and Darker")
-^Numpad1::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  ; do something here
-  Unlock()
-}
-*/
-
 ; hotswap to prev character
 #HotIf WinActive("Dark and Darker")
 >^h::
@@ -435,7 +375,6 @@ Unlock() {
 }
 
 
-
 ; GOBLIN RETRIEVAL
 #HotIf WinActive("Dark and Darker")
 >^g::
@@ -448,7 +387,6 @@ Unlock() {
   GetAllFromGoblin()
   Unlock()
 }
-
 
 ; COLLECTOR
 #HotIf WinActive("Dark and Darker")
@@ -540,21 +478,6 @@ Unlock() {
   Unlock()
 }
 
-/*
-; unassigned
-#HotIf WinActive("Dark and Darker")
-^NumpadMult::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  ; do something here
-  Unlock()
-}
-*/
-
 ; CLASS SPEC
 #HotIf WinActive("Dark and Darker")
 >^c::
@@ -565,86 +488,6 @@ Unlock() {
     Lock()
   }
   GoToClassSpec()
-  Unlock()
-}
-
-; NEXT MARKETPLACE TRADER
-#HotIf WinActive("Dark and Darker")
->^n::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  CycleToNextAuctioneer()
-  Unlock()
-}
-
-
-
-; NEXT Grimsmile Ring Crafter
-#HotIf WinActive("Dark and Darker")
->^!6::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  NextGrimmy()
-  Unlock()
-}
-
-; NEXT Leathersmith Crafter
-#HotIf WinActive("Dark and Darker")
->^!7::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  NextLeathersmith()
-  Unlock()
-}
-
-; NEXT Armorer Crafter
-#HotIf WinActive("Dark and Darker")
->^!8::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  NextArmorer()
-  Unlock()
-}
-
-; NEXT Tailor Crafter
-#HotIf WinActive("Dark and Darker")
->^!9::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  NextTailor()
-  Unlock()
-}
-
-; NEXT Weapon Crafter
-#HotIf WinActive("Dark and Darker")
->^!0::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToWeaponsmithService()
   Unlock()
 }
 
@@ -687,17 +530,6 @@ Unlock() {
   Unlock()
 }
 
-#HotIf WinActive("Dark and Darker")
->^!5::{
-    if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  CycleToNextGoblin()
-  Unlock()
-}
-
 
 #HotIf WinActive("Dark and Darker")
 >^T:: {
@@ -710,19 +542,6 @@ Unlock() {
   Unlock()
 }
 
-
-#HotIf WinActive("Dark and Darker")
->^S:: {
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  FullRebuy()
-  Unlock()
-}
-
-
 #HotIf WinActive("Dark and Darker")
 >^1:: {
   if isBusy {
@@ -733,4 +552,3 @@ Unlock() {
   GoToSets()
   Unlock()
 }
-

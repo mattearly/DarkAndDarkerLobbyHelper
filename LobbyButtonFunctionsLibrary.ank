@@ -21,13 +21,13 @@ global AlwaysAssumeInTrade_TEST := true     ; must be false or the tavern master
 global AlchemistLoc := [380, 340]
 global ArmourerLoc := [600, 300]
 global HolidayMerchantLoc := [380, 900]  ;update when its avail
-global SurgeonLoc := [610, 620]
-global SquireLoc := [380, 600]
-global TailorLoc := [850, 625]
+global SurgeonLoc := [1100, 620]
+global SquireLoc := [850, 620]
+global TailorLoc := [1300, 620]
 global CollectorLoc := [1310, 620]
-global SmithLoc := [610, 900]
+global SmithLoc := [620, 620]
 global LeathersmithLoc := [1540, 330]
-global WoodsmanLoc := [835, 900]
+global WoodsmanLoc := [1060, 900]
 global ThirdCharDownLoc := [1595, 370]
 
 
@@ -320,28 +320,29 @@ BuyPickaxe() {
 BuyBandages() {
   GoToSurgeon()
 
-/* commented out
+
   LS()
   MouseClick "left", 70, 300  ; click single grey bandage
   LS()
-  Loop 3 {   ; buy this+1
+  Loop 4 {   ; buy this+1
     MouseClick "left", 1013, 604  ; click on increase
     MS()
   }
   SS()
   FillAllMakeDeal()
-*/
 
+/*
   LS()
   MouseClick "left", 125, 295 ; click white bandage
   LS()
   ; buy 4
   Loop 3 {   ; buy this+1
-  MouseClick "left", 1013, 604  ; click on increase
-MS()
+    MouseClick "left", 1013, 604  ; click on increase
+    MS()
   }
   MS()
   FillAllMakeDeal()
+  */
 
 }
 
@@ -349,22 +350,15 @@ BuyALotOfBandages() {
   GoToSurgeon()
   LS()
   MouseClick "left", 70, 300  ; click single grey bandage
-  LS()
- ; Loop 2 {   ; buy this+1
- ;   MouseClick "left", 1013, 604  ; click on increase
- ;   MS()
- ; }
-  SS()
-  FillAllMakeDeal()
-
-  LS()
-  MouseClick "left", 125, 295 ; click white bandage
-  LS()
-  Loop 8 {  ; buy this+1
-    MouseClick "left", 1013, 604  ; click on increase
-    MS()
+  Loop 2 {
+    SS()
+    Loop 5 {   ; buy this+1
+      MouseClick "left", 1013, 604  ; click on increase
+      MS()
+    }
+    SS()
+    FillAllMakeDeal()
   }
-  FillAllMakeDeal()
 }
 
 BuyPotions() {
@@ -387,14 +381,17 @@ BuyALotOfPotions() {
   GoToAlchemist()
   LS()
 
-  ; default set to buy 15 grey quality potions
-  MouseClick "left", 200, 300  ; click 3x low quality potion
+  ; default set to buy 12 grey quality potions
+  MouseClick "left", 70, 300  ; click low quality potion
   LS()
-  Loop 4 {  ; click increase
-    MouseClick "left", 1013, 604 
-    MS()
+  Loop 2 {
+    SS()
+    Loop 5 {  ; click increase
+      MouseClick "left", 1013, 604 
+      MS()
+    }
+    FillAllMakeDeal()
   }
-  FillAllMakeDeal()
 }
 
 CycleToNextAuctioneer() {
@@ -737,4 +734,38 @@ ToolBeltAndRequeue() {
   LS()
   HitPlay()
 
+}
+
+BuyGreenPotionsAndBandages() {
+  ; PART 1, BUY ALL GREEN POTIONS
+  GoToAlchemist()
+  LS()
+  MouseClick "left", 281, 302 ; set of triple green potions
+  LS()
+  FillAllMakeDeal()
+  LS()
+  MouseClick "left", 157, 302 ; set of single green potions
+  LS()
+  Loop 2 {  ; click increase
+    MouseClick "left", 1013, 604 
+    MS()
+  }
+  FillAllMakeDeal()
+  LS()
+
+  ; PART 2, BUY ALL GREEN BANDAGES
+  GoToSurgeon()
+  LS()
+  MouseClick "left", 281, 302 ; set of triple green Bandages
+  LS()
+  FillAllMakeDeal()
+  LS()
+
+  MouseClick "left", 157, 302 ; set of single green Bandages
+  LS()
+  Loop 2 {  ; click increase
+    MouseClick "left", 1013, 604 
+    MS()
+  }
+  FillAllMakeDeal()
 }
