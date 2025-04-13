@@ -30,31 +30,6 @@ Unlock() {
   }
 }
 
-#HotIf WinActive("Dark and Darker")
->^l::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  PurchaseLockpicks()
-  Unlock()
-}
-
-#HotIf WinActive("Dark and Darker")
->^p::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  BuyPickaxe()
-  Unlock()
-}
-
-
 ; MERCHANTS
 ; GOBLIN BUY 
 #HotIf WinActive("Dark and Darker")

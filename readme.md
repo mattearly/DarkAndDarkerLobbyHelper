@@ -11,7 +11,7 @@
 ## requirements
 
   - auto-hotkey v2
-  - dark and darker v80-2
+  - dark and darker v82
     - Have most quests done (as some button locations change for things at different affinity levels)
 
 ## how to run
@@ -24,7 +24,7 @@
 
   These are set up in "Keybinds.ank"
   
-  - Cntrl +
+  - **Cntrl** +
     - 5 - Go To Goblin Purchase
     - 6 - Go To Alchemist Service
     - 7 - Go to Leathersmithing Service
@@ -32,7 +32,6 @@
     - 9 - Go to Tailoring Service
     - 0 - Go to Weaponsmith Service
     - numpad0 - Insta-Queue - a dangerous but speedy button
-    - numpad1 - unassigned
     - numpad2 - Hotswap Characters (go to prev character)
     - numpad3 - Go to Squire and fill
     - numpad4 - Go to Stash
@@ -42,29 +41,20 @@
     - numpad8 - Sell at Vendor
     - numpad9 - Go To Marketplace Search
     - numpadDiv - go to next market seller (9 lvl 20+ characters assumption)
-    - numpadMulti - unassigned
     - numpadSub - Buy a Lot of Bandages
     - B - Buy a Lot of Bandages
-    - numpadAdd - Buy 10 Potions
-    - O - Buy 10 Potions
+    - numpadAdd - Buy 12 Potions
+    - O - Buy 12 Potions
     - numpadDot - Class Spec
 
-  - Right Cntrl + 
+  - **Right Cntrl** + 
     - numpadSub - Buy 4 Bandages
     - B - Buy 4 Bandages
     - numpadAdd - Buy 6 Potions
     - O - Buy 6 Potions
-    - L - Purchase Lockpicks
-    - P - Purchase Pickaxe
     - Q - Insta-Queue
     - H - Hotswap characters
-    - 1 - Go To Sets
-    - ALT+5 - Next Character Goblin Gamble
-    - ALT+6 - Next Character Grimmy Crafter
-    - ALT+7 - Next Character Leather Crafter
-    - ALT+8 - Next Character Armor Crafter
-    - ALT+9 - Next Character Tailor Crafter
-    - ALT+0 - Next Character Weapon Crafter
+    - 1 - Go To Squire Sets
     - K - Squire Kit
     - ALT+Q - ToolBelt Reset and Requeue (designed for arena)
     - G - Goblin Retrieval
@@ -72,7 +62,6 @@
     - V - Go To Vendor
     - M - Go To Search Marketplace
     - C - Go To Class Spec
-    - N - Go To Next Auctioneer
     - X - Vendor All Collector
     - Z - Vender All Non-Collector
     - T - Transfer Inventory To Stash Page
