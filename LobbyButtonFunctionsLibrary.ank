@@ -380,16 +380,15 @@ BuyPotions() {
 BuyALotOfPotions() {
   GoToAlchemist()
   LS()
-
   ; default set to buy 12 grey quality potions
   MouseClick "left", 70, 300  ; click low quality potion
-  LS()
-  Loop 2 {
-    SS()
-    Loop 5 {  ; click increase
+  SS()
+  Loop 5 {  ; click increase
       MouseClick "left", 1013, 604 
       MS()
-    }
+  }
+  Loop 2 {
+    SS()
     FillAllMakeDeal()
   }
 }
