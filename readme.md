@@ -40,16 +40,15 @@
     - numpad7 - Sell at Collector
     - numpad8 - Sell at Vendor
     - numpad9 - Go To Marketplace Search
-    - numpadDiv - go to next market seller (9 lvl 20+ characters assumption)
-    - numpadSub - Buy a Lot of Bandages
-    - B - Buy a Lot of Bandages
+    - numpadSub - Buy 12 Bandages
+    - B - Buy 12 Bandages
     - numpadAdd - Buy 12 Potions
     - O - Buy 12 Potions
     - numpadDot - Class Spec
 
   - **Right Cntrl** + 
-    - numpadSub - Buy 4 Bandages
-    - B - Buy 4 Bandages
+    - numpadSub - Buy 6 Bandages
+    - B - Buy 6 Bandages
     - numpadAdd - Buy 6 Potions
     - O - Buy 6 Potions
     - Q - Insta-Queue
@@ -69,8 +68,7 @@
 ## known issues
 
   - there can be issues with the lobby being slower than expected, in which case the delays between clicks must be increased, adjust making delays faster with prejudice as it can exacerbate this problem
-  - there is an issue with the dungeon changing notification blocking some of the clicks. (appears to be a native game UI problem)
-  - there is an issue with some buttons occasionally not functioning. (appears to be an native game UI problem)
+  - there is an issue with some DaD UI buttons occasionally not functioning. (appears to be an native game UI problem)
   - the de-equip routine will sometimes throw things in your stash (especially if you are holding down alt (or have that longstanding native bug were DaD thinks you are pressing alt until you tap it again))
-  - there is an issue with not backing out of the marketplace correctly if you hadn't previously gone there with a hotkey (as the program doesn't know to set the flag if you go there manually)
+  - Moving your mouse while something is active may cause it to click the wrong place or fail, take hand off mouse while pressing a hotkey for best results
 

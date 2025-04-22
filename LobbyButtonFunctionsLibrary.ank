@@ -30,7 +30,6 @@ global LeathersmithLoc := [1540, 330]
 global WoodsmanLoc := [1060, 900]
 global ThirdCharDownLoc := [1595, 370]
 
-
 ; mini sleep
 MS() {
   sleep 15 ; to help with speeding up tool
@@ -195,7 +194,7 @@ GoToSquireAndFill() {
   MouseClick "right", 1830, 518
   MS()
   MouseClick "right", 1830, 575
-    MS()
+  MS()
 
   ; unequip right weapon right side
   ;  - the point is to unequip a bow so that it gives you more arrows/bolts
@@ -207,7 +206,7 @@ GoToSquireAndFill() {
   SS()
   MouseClick "left", 955, 992 ; click Equip Base Gear
   MS()
-  MouseClick "left", 953, 991 ; click Equip Base Gear again
+  MouseClick "left", 953, 991 ; click Equip Base Gear again (sometimes doesn't register first time)
 
 }
 
@@ -230,7 +229,6 @@ GoToSellAtVendor() {
   SS()
     
   MouseClick "left", 333, 205  ; sell loc
-
 }
 
 GoToSurgeon() {
@@ -319,43 +317,28 @@ BuyPickaxe() {
 
 BuyBandages() {
   GoToSurgeon()
-
-
   LS()
   MouseClick "left", 70, 300  ; click single grey bandage
   LS()
-  Loop 4 {   ; buy this+1
+  Loop 5 {   ; buy this+1
     MouseClick "left", 1013, 604  ; click on increase
     MS()
   }
   SS()
   FillAllMakeDeal()
-
-/*
-  LS()
-  MouseClick "left", 125, 295 ; click white bandage
-  LS()
-  ; buy 4
-  Loop 3 {   ; buy this+1
-    MouseClick "left", 1013, 604  ; click on increase
-    MS()
-  }
-  MS()
-  FillAllMakeDeal()
-  */
-
 }
 
 BuyALotOfBandages() {
   GoToSurgeon()
   LS()
   MouseClick "left", 70, 300  ; click single grey bandage
+  LS()
+  Loop 5 {   ; buy this+1
+    MouseClick "left", 1013, 604  ; click on increase
+    MS()
+    MS()
+  }
   Loop 2 {
-    SS()
-    Loop 5 {   ; buy this+1
-      MouseClick "left", 1013, 604  ; click on increase
-      MS()
-    }
     SS()
     FillAllMakeDeal()
   }
@@ -375,17 +358,16 @@ BuyPotions() {
   FillAllMakeDeal()
 }
 
-
-
 BuyALotOfPotions() {
   GoToAlchemist()
   LS()
   ; default set to buy 12 grey quality potions
   MouseClick "left", 70, 300  ; click low quality potion
-  SS()
-  Loop 5 {  ; click increase
-      MouseClick "left", 1013, 604 
-      MS()
+  LS()
+  Loop 5 {   ; buy this+1
+    MouseClick "left", 1013, 604  ; click on increase
+    MS()
+    MS()
   }
   Loop 2 {
     SS()
