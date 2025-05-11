@@ -13,22 +13,20 @@
 ; only sets to true when the user pressess a key to go to the marketplace
 global WasInTrade := false
 
-; this is used in development testing to try to find a better global back method
-; will try to account for the case that the user manually went to the marketplace
-global AlwaysAssumeInTrade_TEST := true     ; must be false or the tavern master gets clicked
-
 ; all locations should probably be defined like this for ease of updating (todo)
-global AlchemistLoc := [380, 340]
-global ArmourerLoc := [600, 300]
+global AlchemistLoc       := [380, 300]
+global ArmourerLoc        := [600, 300]
 global HolidayMerchantLoc := [380, 900]  ;update when its avail
-global SurgeonLoc := [1100, 620]
-global SquireLoc := [850, 620]
-global TailorLoc := [1300, 620]
-global CollectorLoc := [380, 900]
-global SmithLoc := [620, 620]
-global LeathersmithLoc := [1540, 330]
-global WoodsmanLoc := [1060, 900]
-global ThirdCharDownLoc := [1595, 370]
+global SurgeonLoc         := [1100, 600]
+global SquireLoc          := [850, 600]
+global TailorLoc          := [1300, 600]
+global CollectorLoc       := [380, 900]
+global SmithLoc           := [850, 900]
+global LeathersmithLoc    := [600, 600]
+global WoodsmanLoc        := [1060, 900]
+global ThirdCharDownLoc   := [1595, 300]
+global ExpressmanLoc      := [1070, 300]
+global GoldsmithLoc       := [380, 600]
 
 ; mini sleep
 MS() {
@@ -59,7 +57,7 @@ GlobalBack() {
     MouseClick "left", 858, 617  ; are you sure market button
     WasInTrade := false
     LS()
-  } else if AlwaysAssumeInTrade_TEST {
+  } else {
     MouseClick "left", 858, 617  ; click 'are you sure' market button (or some merchant possibly)
     LS()
     MouseClick "left", 150, 45   ; back button again in case merchant was clicked 
@@ -241,6 +239,7 @@ GoToSurgeon() {
 GoToMarketplaceSearch() {
   global
   GlobalBack()
+
   MouseClick "left", 1192, 31  ; top trade button
   LS()
   MouseClick "left", 1191, 247  ; marketplace button location
