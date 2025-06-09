@@ -24,9 +24,10 @@ global CollectorLoc       := [380, 900]
 global SmithLoc           := [850, 900]
 global LeathersmithLoc    := [600, 600]
 global WoodsmanLoc        := [1060, 900]
-global ThirdCharDownLoc   := [1595, 300]
+global ThirdCharDownLoc   := [1600, 300]
 global ExpressmanLoc      := [1070, 300]
 global GoldsmithLoc       := [380, 600]
+global GoblinLoc          := [1530, 300]
 
 ; mini sleep
 MS() {
@@ -57,7 +58,7 @@ GlobalBack() {
     MouseClick "left", 858, 617  ; are you sure market button
     WasInTrade := false
     LS()
-  } else {
+  } else { 
     MouseClick "left", 858, 617  ; click 'are you sure' market button (or some merchant possibly)
     LS()
     MouseClick "left", 150, 45   ; back button again in case merchant was clicked 
@@ -168,7 +169,7 @@ GoToGoblinBuy() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 1186, 444  ; goblin
+  MouseClick "left", GoblinLoc[1], GoblinLoc[2]  ; goblin
 }
 
 GoToSquireAndFill() {
@@ -285,7 +286,7 @@ ExpressmanExpress() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", 715, 404  ; expressman button
+  MouseClick "left", ExpressmanLoc[1], ExpressmanLoc[2]  ; expressman button
   LS()
   MouseClick "left", 306, 1011  ; select all button
   SS()
@@ -457,7 +458,32 @@ PurchaseLockpicks() {
   LS()
   LS()
   LS()
-  MouseClick "left", 1789, 357   ; buy button of first (cheapest) item
+  MouseClick "left", 1789, 487  ; buy button of third (cheapest) item
+  LS()
+  MouseClick "left", 954, 763  ; fill all button
+  ; LS()
+  ; MouseClick "left", 959, 843  ; complete trade button
+}
+
+PurchaseSurgicalKit() {
+  GoToMarketplaceSearch()
+  LS()
+  Send "Surgical"
+  LS()
+  MouseClick "left", 56, 280  ; location of third thing in search
+
+   ; because the DaD ui can be unresponsive, try clicking slightly offset and more 
+  SS()
+  MouseClick "left", 57, 281  ; lets click it again bc half the time the ui is not responsive
+  SS()
+  MouseClick "left", 56, 280  ; lets click it again bc half the time the ui is not responsive
+  
+  SS()
+  MouseClick "left", 1790, 277  ; search button
+  LS()
+  LS()
+  LS()
+  MouseClick "left", 1789, 487   ; buy button of thrid (cheapest) item
   LS()
   MouseClick "left", 954, 763  ; fill all button
   ; LS()
@@ -747,4 +773,44 @@ BuyGreenPotionsAndBandages() {
     MS()
   }
   FillAllMakeDeal()
+}
+
+; press esc first and then this
+SetVolumeToZero() {
+
+; click options 200, 600
+    MouseClick "left", 200, 600 
+    MS()
+; click audio 1030, 40
+    MouseClick "left", 1030, 40 
+    MS() 
+    MS()
+; click zero area 890, 212
+    MouseClick "left", 890, 212 
+    MS() 
+    MS()
+    ; click apply
+    MouseClick "left", 1060, 1040 
+    MS() 
+    MS()
+}
+
+; press escape first and then this
+SetVolumeToFifty() {
+; click options 200, 600
+    MouseClick "left", 200, 600 
+    MS() 
+    MS()
+; click audio 1030, 40
+    MouseClick "left", 1030, 40 
+    MS() 
+    MS()
+; click fifty area 998, 215
+    MouseClick "left", 998, 215 
+    MS() 
+    MS()
+        ; click apply
+    MouseClick "left", 1060, 1040 
+    MS() 
+    MS()
 }

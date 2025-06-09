@@ -45,8 +45,10 @@
     - numpadAdd - Buy 12 Potions
     - O - Buy 12 Potions
     - numpadDot - Class Spec
+    - U - Set vol to Zero (press esc first)
 
   - **Right Cntrl** + 
+    - U - Set vol to fifty (press esc first)
     - numpadSub - Buy 6 Bandages
     - B - Buy 6 Bandages
     - numpadAdd - Buy 6 Potions
@@ -56,7 +58,8 @@
     - 1 - Go To Squire Sets
     - K - Squire Kit
     - ALT+Q - ToolBelt Reset and Requeue (designed for arena)
-    - G - Goblin Retrieval
+    - E - Expressman Full Retrieval
+    - G - Goblin Full Retrieval
     - J - Go To Jewel Collector
     - V - Go To Vendor
     - M - Go To Search Marketplace

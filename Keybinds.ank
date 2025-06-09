@@ -44,6 +44,32 @@ Unlock() {
   Unlock()
 }
 
+; GOBLIN RETRIEVAL
+#HotIf WinActive("Dark and Darker")
+^Numpad6::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GetAllFromGoblin()
+  Unlock()
+}
+
+#HotIf WinActive("Dark and Darker")
+>^g::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GetAllFromGoblin()
+  Unlock()
+}
+
+
 ; ALCHEMIST SERVICE 
 #HotIf WinActive("Dark and Darker")
 ^6::
@@ -163,16 +189,15 @@ Unlock() {
   Unlock()
 }
 
-; GOBLIN RETRIEVAL
 #HotIf WinActive("Dark and Darker")
-^Numpad6::
+>^E::
 {
   if isBusy { 
     return 
   } else {
     Lock()
   }
-  GetAllFromGoblin()
+  ExpressmanExpress()
   Unlock()
 }
 
@@ -350,19 +375,6 @@ Unlock() {
 }
 
 
-; GOBLIN RETRIEVAL
-#HotIf WinActive("Dark and Darker")
->^g::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GetAllFromGoblin()
-  Unlock()
-}
-
 ; COLLECTOR
 #HotIf WinActive("Dark and Darker")
 >^j::
@@ -538,5 +550,52 @@ Unlock() {
     Lock()
   }
   GoToSets()
+  Unlock()
+}
+
+
+#HotIf WinActive("Dark and Darker")
+>^;:: {
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  PurchaseSurgicalKit()
+  Unlock()
+}
+
+#HotIf WinActive("Dark and Darker")
+>^p:: {
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  BuyPickaxe()
+  Unlock()
+}
+
+
+; LEFT SHIFT + U - set volume to zero (u must have menu open, press esc first)
+#HotIf WinActive("Dark and Darker")
+<^u:: {
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  SetVolumeToZero()
+  Unlock()
+}
+
+#HotIf WinActive("Dark and Darker")
+>^u:: {
+    if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  SetVolumeToFifty()
   Unlock()
 }
