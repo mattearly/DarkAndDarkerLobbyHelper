@@ -16,18 +16,20 @@ global WasInTrade := false
 ; all locations should probably be defined like this for ease of updating (todo)
 global AlchemistLoc       := [380, 300]
 global ArmourerLoc        := [600, 300]
+global CockatriceLoc      := [840, 300]
 global HolidayMerchantLoc := [380, 900]  ;update when its avail
-global SurgeonLoc         := [1100, 600]
-global SquireLoc          := [850, 600]
-global TailorLoc          := [1300, 600]
-global CollectorLoc       := [380, 900]
-global SmithLoc           := [850, 900]
+global SurgeonLoc         := [1540, 600]
+global SquireLoc          := [1300, 600]
+global TailorLoc          := [380, 900]
+global CollectorLoc       := [840, 900]
+global SmithLoc           := [1300, 900]
 global LeathersmithLoc    := [600, 600]
-global WoodsmanLoc        := [1060, 900]
+global WoodsmanLoc        := [1540, 900]
 global ThirdCharDownLoc   := [1600, 300]
 global ExpressmanLoc      := [1070, 300]
 global GoldsmithLoc       := [380, 600]
-global GoblinLoc          := [1530, 300]
+global GoblinLoc          := [1540, 300]
+global OptionsLoc         := [219, 609]
 
 ; mini sleep
 MS() {
@@ -172,6 +174,13 @@ GoToGoblinBuy() {
   MouseClick "left", GoblinLoc[1], GoblinLoc[2]  ; goblin
 }
 
+GoToCockatrice(){
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", CockatriceLoc[1], CockatriceLoc[2] 
+}
+
 GoToSquireAndFill() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
@@ -298,6 +307,18 @@ ExpressmanExpress() {
 GetAllFromGoblin() {
   GoToGoblinBuy()
   LS()
+  MouseClick "left", 296, 139  ; Service button
+  LS()
+  MouseClick "left", 306, 1011  ; select all button
+  SS()
+  MouseClick "left", 947, 896  ; fill all
+  SS()
+  MouseClick "left", 954, 964  ; get item
+}
+
+CockatriceGather() {
+  GoToCockatrice()
+    LS()
   MouseClick "left", 296, 139  ; Service button
   LS()
   MouseClick "left", 306, 1011  ; select all button
@@ -778,8 +799,8 @@ BuyGreenPotionsAndBandages() {
 ; press esc first and then this
 SetVolumeToZero() {
 
-; click options 200, 600
-    MouseClick "left", 200, 600 
+; click options
+    MouseClick "left", optionsloc[1], optionsloc[2] 
     MS()
 ; click audio 1030, 40
     MouseClick "left", 1030, 40 
@@ -797,8 +818,8 @@ SetVolumeToZero() {
 
 ; press escape first and then this
 SetVolumeToFifty() {
-; click options 200, 600
-    MouseClick "left", 200, 600 
+; click options
+    MouseClick "left", optionsloc[1], optionsloc[2] 
     MS() 
     MS()
 ; click audio 1030, 40

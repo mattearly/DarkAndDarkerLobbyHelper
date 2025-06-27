@@ -201,6 +201,18 @@ Unlock() {
   Unlock()
 }
 
+#HotIf WinActive("Dark and Darker")
+>^C::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  CockatriceGather()
+  Unlock()
+}
+
 ; COLLECTOR
 #HotIf WinActive("Dark and Darker")
 ^Numpad7::
@@ -467,7 +479,7 @@ Unlock() {
 
 ; CLASS SPEC
 #HotIf WinActive("Dark and Darker")
->^c::
+^p::
 {
   if isBusy { 
     return 
