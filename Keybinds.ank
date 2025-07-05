@@ -373,7 +373,6 @@ Unlock() {
   Unlock()
 }
 
-; SQUIRE
 #HotIf WinActive("Dark and Darker")
 >^k::
 {
@@ -383,6 +382,19 @@ Unlock() {
     Lock()
   }
   GoToSquireAndFill()
+  Unlock()
+}
+
+
+#HotIf WinActive("Dark and Darker")
+>^!k::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  FullSquireReset()
   Unlock()
 }
 

@@ -84,7 +84,6 @@ ClickEntireInventory() {
       MS()
     }
   }
-
 }
 
 ; aux function
@@ -92,6 +91,31 @@ FillAllMakeDeal() {
   MouseClick "left", 966, 929  ; click on fill all from stash
   LS()
   MouseClick "left", 963, 992  ; click make deal
+}
+
+; aux function
+UnequipKit() {
+  MouseClick "right", 650, 250 ; primary 1
+  MS()
+  MouseClick "right", 715, 250 ; primary 2
+  MS()
+  MouseClick "right", 1015, 250  ; secondary 1
+  MS()
+  MouseClick "right", 1066, 250   ; secondary 2
+  MS()
+  MouseClick "right", 860, 350   ; chest
+  MS()
+  MouseClick "right", 860, 500   ; legs
+  MS()
+  MouseClick "right", 958, 380   ; back
+  MS()
+  MouseClick "right", 855, 230   ; helm
+  MS()
+  MouseClick "right", 760, 525   ; gloves
+  MS()
+  MouseClick "right", 960, 524   ; feet
+
+    ; rings and ammy? leave it for now i guess
 }
 
 HitPlay() {
@@ -218,6 +242,30 @@ GoToSquireAndFill() {
 
 }
 
+FullSquireReset() {
+  ; get ride of inventory
+  DoubleSellInventoryFullConfirm()
+  
+  LS()
+
+  ; unequip kit 
+  GoToStash()
+  UnequipKit()
+
+  LS()
+
+  ; sell kit
+  VendorEntireInventoryOfNonCollectables()
+  LS()
+  MouseClick "left", 963, 992  ; click make deal
+
+  LS()
+  
+
+  GoToSquireAndFill()
+}
+
+
 GoToSellAtVendor() {
   GlobalBack()
   GoToAlchemist()
@@ -288,7 +336,7 @@ GoToWoodsman() {
 
 GoToStash() {
   GlobalBack()
-  MouseClick "left", 880, 31  ; top stash button
+  MouseClick "left", 877, 44  ; top stash button
 }
 
 ExpressmanExpress() {
@@ -629,77 +677,15 @@ VendorEntireInventoryOfNonCollectables() {
 DoubleSellInventoryFullConfirm() {
   ; step 1: get rid of collectables
   VendorEntireInventoryOfCollectables()
-  SS()
+  LS()
   MouseClick "left", 963, 992  ; click make deal
   LS()
   
   ; step 2: get ride of everything else
   VendorEntireInventoryOfNonCollectables()
-  SS()
-  SS()
-  MouseClick "left", 963, 992  ; click make deal
-
-}
-
-
-
-; aux function
-VendorEntireKit() {
-  GoToSellAtVendor()
-  SS()
-
-  ; de-equip routine while at vendor
-  MouseClick "right", 1400,250  ; weapon 1 left side
-  MS()
-  MS()
-  MS()
-  MS()
-  MouseClick "right", 1500,250  ; weapon 1 right side
-  MS()
-  MS()
-  MS()
-  MouseClick "right", 1760,250  ; weapon 2 left side
-  MS()
-  MS()
-  MS()
-  MouseClick "right", 1820, 250  ; weapon 2 right side
-  MS()
-  MS()
-  MS() 
-  MouseClick "right", 1600, 350  ; chest
-  MS() 
-  MouseClick "right", 1720, 375  ; back
-  MS() 
-  MouseClick "right", 1620, 500  ; legs
-  MS() 
-  MouseClick "right", 1720, 520  ; feet
-  MS() 
-  MouseClick "right", 1510, 530  ; hands
-  MS() 
-  MouseClick "right", 1600, 220  ; head
-  MS() 
-  MouseClick "right", 1685, 240  ; neckpeice   
-  MS() 
-  MouseClick "right", 1530, 445  ; ring left
-  MS() 
-  MouseClick "right", 1700, 445  ; ring rt
-  SS()
-
-
-
-  VendorEntireInventoryOfNonCollectables()
-
-  SS()
-  MouseClick "left", 963, 992  ; click make deal
-}
-
-; this does a full squire reset
-FullSquireReset() {
-  DoubleSellInventoryFullConfirm()
-  SS()
-  VendorEntireKit()
   LS()
-  GoToSquireAndFill()
+  MouseClick "left", 963, 992  ; click make deal
+  
 }
 
 ; purchase potions, bandages, a pickaxe, and lockpicks

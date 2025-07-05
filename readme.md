@@ -11,7 +11,7 @@
 ## requirements
 
   - auto-hotkey v2
-  - dark and darker v88
+  - dark and darker v89
     - Have most quests done (as some button locations change for things at different affinity levels)
   - 1920x1080 screen res
   - in Character Lobby
@@ -58,6 +58,7 @@
     - U - Set Volume to Fifty (press Esc first)
     - 1 - Go To Squire Sets
     - K - Refill Squire Kit
+    - Alt+K - Full Squire Reset (DANGER: sells entire inventory and equipped kit)
     - M - Go To Search Marketplace
     - Q - Insta-Queue
     - ALT+Q - ToolBelt Reset and Requeue (designed for arena)
