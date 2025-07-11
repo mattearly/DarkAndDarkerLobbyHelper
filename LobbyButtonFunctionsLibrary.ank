@@ -23,13 +23,13 @@ global SquireLoc          := [1300, 600]
 global TailorLoc          := [380, 900]
 global CollectorLoc       := [840, 900]
 global SmithLoc           := [1300, 900]
-global LeathersmithLoc    := [600, 600]
+global LeathersmithLoc    := [840, 600]
 global WoodsmanLoc        := [1540, 900]
 global ThirdCharDownLoc   := [1600, 300]
 global ExpressmanLoc      := [1070, 300]
 global GoldsmithLoc       := [380, 600]
 global GoblinLoc          := [1540, 300]
-global OptionsLoc         := [219, 609]
+global OptionsLoc         := [219, 599]
 
 ; mini sleep
 MS() {
