@@ -33,22 +33,22 @@ global OptionsLoc         := [219, 599]
 
 ; mini sleep
 MS() {
-  sleep 15 ; to help with speeding up tool
+  sleep 17 ; to help with speeding up tool
 }
 
 ; short sleep
 SS() {
-  sleep 145 ; probably needs to be higher 
+  sleep 155 ; probably needs to be higher 
 }
 
 ; long sleep
 LS() { 
-  sleep 525  ; probably needs to be higher 
+  sleep 545  ; probably needs to be higher 
 }
 
 ; very long sleep
 VLS() {
-  sleep 4499  ; can take some characters a very long time to load in, 4200ms might be too short
+  sleep 4799  ; can take some characters a very long time to load in, 4200ms might be too short
 }
 
 ; aux function
@@ -250,6 +250,7 @@ FullSquireReset() {
 
   ; unequip kit 
   GoToStash()
+  LS()
   UnequipKit()
 
   LS()
