@@ -1,0 +1,12 @@
+Set 1 (Longsword Fighter):
+Hounskull, 0, str, agi
+Peace, 0, action speed, physcial damage reduction
+Grand Brig, 0, vig, str
+Light Gaunt, 0, action, dex
+Mercurial, 0, health bonus, armor pen
+Ring of Vitality, 0, health bonus, armor pen
+Ring of Vitality, 0, health bonus, armor pen
+longsword, 0, true, action
+crossbow, 0, true, action
+
+Set 2:

@@ -623,3 +623,139 @@ Unlock() {
   SetVolumeToFifty()
   Unlock()
 }
+
+; [I]nvest- buys things from traders that have good resale value
+;  - green potions and bandages
+#HotIf WinActive("Dark and Darker")
+>^!i:: {
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  BuyGreenPotionsAndBandages()
+  Unlock()
+}
+
+/*
+; Gear Up from Market Search: RightControl+Alt+g
+; in testing DON'T USE YET
+#HotIf WinActive("Dark and Darker")
+>^!g:: {
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+
+  BuyGearOffMarketFromFile("GearBuyingSettings.txt")
+  
+  /* BARBARIAN SAMPLE GEAR
+  gear := [
+    "barbu", "adventurer tunic", 
+    "adventurer cloak", "ring of quickness", 
+    "fox pendant", "bardiche",
+    "ring of courage", "lightfoot boots",
+    "loose trousers",
+    "quarterstaff",
+    "reinforced gloves"
+   ]
+    END BARBARIAN SAMPLE GEAR */
+
+   /* WARLOCK SAMPLE GEAR (Banshee/GHOST KING HUNTING)
+  gear := [
+    "leather cap", 
+    "Occultist Tunic", 
+    "adventurer cloak",
+    "ring of quickness", 
+    "fox pendant",
+    "longsword",
+    "ring of courage",
+    "lightfoot boots",
+    "occultist pants",
+    "spellbook",
+    "reinforced gloves"
+  ]
+    END WARLOCK SAMPLE GEAR */
+
+    /* FIGHTER SAMPLE GEAR
+      gear := [
+      "Hounskull",
+      "Peace",
+      "Grand Brig",
+      "Padded Leg",
+      "Light Gaunt",
+      "Buckled Boots",
+      "Mercurial",
+      "Ring of Vitality",
+      "Ring of Vitality",
+      "Longsword",
+      "Recurve"
+   ]
+   END Fighter */
+
+   /* CLERIC SMITE/HEALER HYBRID SAMPLE GEAR
+      gear := [
+   ;   "spangen",
+      "arcane garb",
+   ;   "Padded Leg",
+    ;  "Light Gaunt",
+    ;  "Lightfoot Boots",
+    ;  "Mercurial",
+    ;  "MONKEY",
+     ; "Ring of Quickness",
+     ; "Ring of Quickness",
+    ;  "Morning Star",
+    ;  "Ceremonial Staff"
+   ]
+  */
+
+ /* MODIFIER TEST CODE
+  modifier1 := [
+  ;  "vig",
+    "vig",
+   ; "str",
+  ;  "vig",
+  ;  "vig",
+  ;  "max health bonus",
+  ;  "max health bonus",
+  ;  "max health bonus",
+  ;  "max health bonus",
+  ;  "true phys",
+  ;  "mem"
+    ]
+    
+    modifier2 := [
+    ;  "str",
+      "str",
+    ;  "str",
+   ;   "dex",
+     ; "dex",
+    ;  "action",
+    ;  "all",
+    ;  "all",
+    ;  "all",
+    ;  "action",
+     ; "mem"
+    ]
+    */
+
+/* WORKER CODE
+  if (
+    gear.Length = modifier1.Length and
+    gear.Length = modifier2.Length
+    )        ; confirm same size
+  {
+    Loop gear.Length{
+      PurchaseFromMarket(gear[A_Index], 3, modifier1[A_Index], modifier2[A_Index])
+      Loop 10 { 
+        LS()
+      }
+    }
+  }
+
+  */
+
+  Unlock()
+}
+*/

@@ -63,6 +63,7 @@
     - Q - Insta-Queue
     - ALT+Q - ToolBelt Reset and Requeue (designed for arena)
     - H - Hotswap characters (go to last selected character)
+    - Alt+I - Invest in green pots and bandages (buy out, check availablity  first)
     - E - Gather All From Expressman
     - G - Gather All From Goblin
     - C - Gather All From Cockatrice

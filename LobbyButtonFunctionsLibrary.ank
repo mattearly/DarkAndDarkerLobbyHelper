@@ -31,24 +31,41 @@ global GoldsmithLoc       := [380, 600]
 global GoblinLoc          := [1540, 300]
 global OptionsLoc         := [219, 599]
 
+
 ; mini sleep
 MS() {
-  sleep 17 ; to help with speeding up tool
+  sleep 19 ; to help with speeding up tool
 }
 
 ; short sleep
 SS() {
-  sleep 155 ; probably needs to be higher 
+  sleep 175 ; probably needs to be higher 
 }
 
 ; long sleep
 LS() { 
-  sleep 545  ; probably needs to be higher 
+  sleep 555  ; probably needs to be higher 
 }
 
 ; very long sleep
 VLS() {
-  sleep 4799  ; can take some characters a very long time to load in, 4200ms might be too short
+  sleep 4899  ; can take some characters a very long time to load in, 4200ms might be too short
+}
+
+; aux function  : todo: this is not perfect and still bugs sometimes
+TripleOffsetLeftClick_dnd_ui_bug(loc1, loc2) {
+  MouseClick "left", loc1, loc2
+  MS()
+  MouseClick "left", loc1, loc2 - 1
+  MS()
+  MouseClick "left", loc1 - 1, loc2
+}
+
+; aux function  : todo: this is not perfect and still bugs sometimes
+DoubleOffsetLeftClick_dnd_ui_bug(loc1, loc2) {
+  MouseClick "left", loc1 + 2, loc2 - 2
+  MS()
+  MouseClick "left", loc1, loc2
 }
 
 ; aux function
@@ -84,6 +101,15 @@ ClickEntireInventory() {
       MS()
     }
   }
+}
+
+; aux function
+MarketplaceBuyCheapest() {
+  MouseClick "left", 1789, 350  ; buy first (cheapest) item
+  Loop 2 {
+    LS()
+  }
+  MouseClick "left", 954, 763  ; fill all button
 }
 
 ; aux function
@@ -298,27 +324,21 @@ GoToSurgeon() {
 GoToMarketplaceSearch() {
   global
   GlobalBack()
-
   MouseClick "left", 1192, 31  ; top trade button
   LS()
   MouseClick "left", 1191, 247  ; marketplace button location
-  LS()
-  LS()
+  Loop 2 {
+    LS()
+  }
   MouseClick "left", 117, 203  ; search dropdown button
-  WasInTrade := true
 }
 
-GoToSellAtMarket() {
+GoToMarketplace() {
   global
   GlobalBack()
   MouseClick "left", 1192, 31  ; top trade button
   LS()
-  LS()
   MouseClick "left", 1191, 247  ; marketplace button location
-  LS()
-  LS()
-  MouseClick "left", 1060, 117  ; My Listings button
-  WasInTrade := true
 }
 
 GoToCollector() {
@@ -466,7 +486,7 @@ CycleToNextAuctioneer() {
     LS()
   }
   ; go to marketplace
-  GoToSellAtMarket()
+  ;GoToSellAtMarket()
   
 }
 
@@ -518,11 +538,7 @@ PurchaseLockpicks() {
   LS()
   Send "Lock"
   LS()
-  MouseClick "left", 57, 280  ; location of first thing in search
-  SS()
-  MouseClick "left", 57, 281  ; lets click it again bc half the time the ui is not responsive
-  SS()
-  MouseClick "left", 56, 280  ; lets click it again bc half the time the ui is not responsive
+  TripleOffsetLeftClick_dnd_ui_bug(57, 280)  ; location of second thing in search
   LS()
   MouseClick "left", 1790, 277  ; search button
   LS()
@@ -700,6 +716,7 @@ FullReBuy() {
   PurchaseLockpicks()
 }
 
+; use when in stash to move entire inventory in one go
 TransferInventory() {
   ; click every cell
   TransferInventory_LocBeforeFirstCell := [667, 601]
@@ -718,7 +735,7 @@ TransferInventory() {
 }
 
 
-; nothing is bound to this
+; nothing is bound to this, probably don't use it, it just buys everything from the goblin
 FullGamble() {
   GoToGoblinBuy()
   LS()
@@ -732,13 +749,14 @@ FullGamble() {
   }
 }
 
+; squire sets
 GoToSets() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", SquireLoc[1], SquireLoc[2]
   LS()
-  MouseClick "left", 358, 201  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
+  MouseClick "left", 420, 201  ; click My Gear Sets area
   SS()
 }
 
@@ -817,8 +835,116 @@ SetVolumeToFifty() {
     MouseClick "left", 998, 215 
     MS() 
     MS()
-        ; click apply
+; click apply
     MouseClick "left", 1060, 1040 
     MS() 
     MS()
+}
+
+  ; 0 no preference, 1 rare, 2 epic, 3 legendary, 4 unique, 5 artifact
+SetMarketPlaceSearchRarityLevel(itemrarity:=0) {
+  MouseClick "left", 365, 203  ; search rarity button
+  Loop 3 {
+    SS()
+  }
+  switch itemrarity 
+  {
+    Case 1:
+      TripleOffsetLeftClick_dnd_ui_bug(294, 356) ; rare location
+    Case 2:
+      TripleOffsetLeftClick_dnd_ui_bug(294, 382)  ; epic button
+    Case 3:
+      TripleOffsetLeftClick_dnd_ui_bug(294, 408)  ; legendary
+    Case 4:
+      TripleOffsetLeftClick_dnd_ui_bug(294, 434)  ; unique
+    Case 5:
+      TripleOffsetLeftClick_dnd_ui_bug(294, 460)  ; artifact
+  }  
+}
+
+global isQualitySpecified := 0   ; for a click fixing hax that we have to do - due to a ui bug in the game
+PurchaseFromMarket(itemname:="goat", itemrarity:=0, modifier1:="", modifier2:="") {
+  global
+  GoToMarketplace()
+  ; *** RARITY
+  LS()
+  if (itemrarity > 1 and itemrarity < 6){ 
+    SetMarketPlaceSearchRarityLevel(itemrarity)
+    isQualitySpecified := 1
+    SS()
+  }
+
+ ; *** NAME
+  MouseClick "left", 117, 203  ; search dropdown button (already clicked if we didn't set rarity first)
+  Loop 3 {
+    SS()
+  }
+  Send itemname 
+  Loop 3 {
+    SS()
+  }
+  TripleOffsetLeftClick_dnd_ui_bug(60, 279)
+  SS()
+  ; *** MODIFIER1
+  if (modifier1 != "") 
+  {
+    MouseClick "left", 1551, 206 ; random attribute location
+    SS()
+    Send modifier1
+    LS()
+    if (isQualitySpecified) ; this determines how bugged the ui usually is (ironmace issue)
+      MouseClick "left", 1480, 279 ; location of first thing in attribute SetMarketPlaceSearchRarityLevel
+    else
+      DoubleOffsetLeftClick_dnd_ui_bug(1480, 279)
+ 
+  }
+  LS()
+  ; *** MODIFIER2
+  if (modifier2 != "") 
+  {
+    MouseClick "left", 1551, 246 ; random attribute location
+    SS()
+    Send modifier2
+    Loop 3 {
+      SS()
+    }
+    MouseClick "left", 1480, 304   ; location of second thing in attribute search
+  }
+  Loop 3 {
+    SS()
+  }
+  MouseClick "left", 1790, 277  ; search button
+  Loop 2 {
+    LS()
+  }
+  MarketplaceBuyCheapest()
+  Loop 5 {
+    LS()
+  }
+  MouseClick "left", 959, 843  ; complete trade button
+
+  ; reset globals
+  isQualitySpecified := 0
+}
+
+
+
+BuyGearOffMarketFromFile(filepath) 
+{
+  try
+    FileObj := FileOpen(filepath, "r")
+  catch as Err
+  {
+    MsgBox "Can't open '" filepath "' for reading." "`n`n" Type(Err) ": " Err.Message
+    return
+  }
+
+  ; popup that asks for file
+
+  ; fill arrays
+
+  ; check arrays for accurracy
+
+  ; start the buying process
+
 }
