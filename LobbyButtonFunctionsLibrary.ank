@@ -63,7 +63,7 @@ TripleOffsetLeftClick_dnd_ui_bug(loc1, loc2) {
 
 ; aux function  : todo: this is not perfect and still bugs sometimes
 DoubleOffsetLeftClick_dnd_ui_bug(loc1, loc2) {
-  MouseClick "left", loc1 + 2, loc2 - 2
+  MouseClick "left", loc1 + 1, loc2 - 1
   MS()
   MouseClick "left", loc1, loc2
 }
@@ -863,7 +863,7 @@ SetMarketPlaceSearchRarityLevel(itemrarity:=0) {
 }
 
 global isQualitySpecified := 0   ; for a click fixing hax that we have to do - due to a ui bug in the game
-PurchaseFromMarket(itemname:="goat", itemrarity:=0, modifier1:="", modifier2:="") {
+PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", modifier2:="") {
   global
   GoToMarketplace()
   ; *** RARITY
@@ -874,16 +874,26 @@ PurchaseFromMarket(itemname:="goat", itemrarity:=0, modifier1:="", modifier2:=""
     SS()
   }
 
- ; *** NAME
-  MouseClick "left", 117, 203  ; search dropdown button (already clicked if we didn't set rarity first)
-  Loop 3 {
-    SS()
+  if (itemname == "*Ring") {
+    ; *** Slot:Ring for +all on any ring searchs
+    MouseClick "left", 768, 203
+    Send "Ring"
+    LS()
+    TripleOffsetLeftClick_dnd_ui_bug(768, 277)
   }
-  Send itemname 
-  Loop 3 {
-    SS()
+  else {
+    ; *** NAME
+    MouseClick "left", 117, 203  ; search dropdown button (already clicked if we didn't set rarity first)
+    LS()
+    Send itemname 
+    LS()
+    ; a fix for search results not being first ever, such as hounskull search always has golden version first
+    searchoffsetMod := 26 * searchoffset
+    TripleOffsetLeftClick_dnd_ui_bug(60, 279 + searchoffsetMod)
   }
-  TripleOffsetLeftClick_dnd_ui_bug(60, 279)
+  
+
+
   SS()
   ; *** MODIFIER1
   if (modifier1 != "") 
@@ -891,30 +901,40 @@ PurchaseFromMarket(itemname:="goat", itemrarity:=0, modifier1:="", modifier2:=""
     MouseClick "left", 1551, 206 ; random attribute location
     SS()
     Send modifier1
-    LS()
-    if (isQualitySpecified) ; this determines how bugged the ui usually is (ironmace issue)
-      MouseClick "left", 1480, 279 ; location of first thing in attribute SetMarketPlaceSearchRarityLevel
-    else
-      DoubleOffsetLeftClick_dnd_ui_bug(1480, 279)
- 
+    Loop 2 {
+      LS()
+    }
+    TripleOffsetLeftClick_dnd_ui_bug(1580, 259) ; special offset click to enable interface
+    SS()
+    TripleOffsetLeftClick_dnd_ui_bug(1575, 259) ; special offset click to enable interface
+    SS()
+    TripleOffsetLeftClick_dnd_ui_bug(1585, 259) ; special offset click to enable interface
+    SS()
+    DoubleOffsetLeftClick_dnd_ui_bug(1480, 279) ; location of first thing in attribute
+
   }
-  LS()
+  Loop 3 {
+    LS()
+  }
   ; *** MODIFIER2
   if (modifier2 != "") 
   {
     MouseClick "left", 1551, 246 ; random attribute location
     SS()
     Send modifier2
-    Loop 3 {
-      SS()
-    }
-    MouseClick "left", 1480, 304   ; location of second thing in attribute search
+    LS()
+    TripleOffsetLeftClick_dnd_ui_bug(1580, 259)   ; special offset click to enable interface
+    SS()
+    TripleOffsetLeftClick_dnd_ui_bug(1575, 259) ; special offset click to enable interface
+    SS()
+    DoubleOffsetLeftClick_dnd_ui_bug(1480, 303)   ; location of second thing in attribute search
   }
   Loop 3 {
     SS()
   }
   MouseClick "left", 1790, 277  ; search button
-  Loop 2 {
+  ; dependent on search lag
+  Loop 4 {
     LS()
   }
   MarketplaceBuyCheapest()
@@ -927,8 +947,7 @@ PurchaseFromMarket(itemname:="goat", itemrarity:=0, modifier1:="", modifier2:=""
   isQualitySpecified := 0
 }
 
-
-
+; worker for filepath
 BuyGearOffMarketFromFile(filepath) 
 {
   try
@@ -939,12 +958,33 @@ BuyGearOffMarketFromFile(filepath)
     return
   }
 
-  ; popup that asks for file
+  ; EAT TITLE LINE  
+  Line := FileObj.ReadLine()
 
-  ; fill arrays
+  ; TRADE FOR THIS LINE
+  While (0 = FileObj.AtEOF)
+  {
+    NewLine := FileObj.ReadLine()
+    Array := StrSplit(NewLine, ",")
+    size := Array.Length
+    if (size = 5)
+      PurchaseFromMarket(Array[1], Array[2], Array[3], Array[4], Array[5])
+    else if (size = 4)
+      PurchaseFromMarket(Array[1], Array[2], Array[3], Array[4])
+    else if (size = 3)
+      PurchaseFromMarket(Array[1], Array[2], Array[3])
+    else if (size = 2)
+      PurchaseFromMarket(Array[1], Array[2])
+    else if (size = 1)
+      PurchaseFromMarket(Array[1])
+    else
+      continue
 
-  ; check arrays for accurracy
+    Loop 6 {
+      LS()
+    }
+  }
 
-  ; start the buying process
+  FileObj.Close()
 
 }

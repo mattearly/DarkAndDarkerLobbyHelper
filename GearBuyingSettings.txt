@@ -1,12 +1,3 @@
-Set 1 (Longsword Fighter):
-Hounskull, 0, str, agi
-Peace, 0, action speed, physcial damage reduction
-Grand Brig, 0, vig, str
-Light Gaunt, 0, action, dex
-Mercurial, 0, health bonus, armor pen
-Ring of Vitality, 0, health bonus, armor pen
-Ring of Vitality, 0, health bonus, armor pen
-longsword, 0, true, action
-crossbow, 0, true, action
+Set Line Guide: ItemName,ResultOffsetHack(0=none|1=down one|...),Qaultiy(0=any|1=rare|2=epic|...),Mod1,Mod2 
+short sword,1,0,physical damage bonus,true p
 
-Set 2:
