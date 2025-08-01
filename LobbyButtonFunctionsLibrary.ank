@@ -936,9 +936,14 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   isQualitySpecified := 0
 }
 
-; worker for filepath
+; Starter Func to buy from filepath
+; halt buying gives us an option to stop an otherwise very long routine
+global haltBuyingFromMarket := false  
 BuyGearOffMarketFromFile(filepath) 
 {
+  global
+  haltBuyingFromMarket := false
+
   try
     FileObj := FileOpen(filepath, "r")
   catch as Err
@@ -951,21 +956,21 @@ BuyGearOffMarketFromFile(filepath)
   Line := FileObj.ReadLine()
 
   ; TRADE FOR THIS LINE
-  While (0 = FileObj.AtEOF)
+  While (0 = FileObj.AtEOF and haltBuyingFromMarket = false)
   {
     NewLine := FileObj.ReadLine()
-    Array := StrSplit(NewLine, ",")
-    size := Array.Length
+    PartOfLine := StrSplit(NewLine, ",")
+    size := PartOfLine.Length
     if (size = 5)
-      PurchaseFromMarket(Array[1], Array[2], Array[3], Array[4], Array[5])
+      PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4], PartOfLine[5])
     else if (size = 4)
-      PurchaseFromMarket(Array[1], Array[2], Array[3], Array[4])
+      PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4])
     else if (size = 3)
-      PurchaseFromMarket(Array[1], Array[2], Array[3])
+      PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3])
     else if (size = 2)
-      PurchaseFromMarket(Array[1], Array[2])
+      PurchaseFromMarket(PartOfLine[1], PartOfLine[2])
     else if (size = 1)
-      PurchaseFromMarket(Array[1])
+      PurchaseFromMarket(PartOfLine[1])
     else
       continue
 
@@ -975,5 +980,9 @@ BuyGearOffMarketFromFile(filepath)
   }
 
   FileObj.Close()
+}
 
+HaltGearBuying() {
+  global
+  haltBuyingFromMarket := true
 }
