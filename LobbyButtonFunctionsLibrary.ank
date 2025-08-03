@@ -861,13 +861,23 @@ SetMarketPlaceSearchRarityLevel(itemrarity:=0) {
   }  
 }
 
-global isQualitySpecified := 0   ; for a click fixing hax that we have to do - due to a ui bug in the game
+global isQualitySpecified := false   ; for a click fixing hax that we have to do - due to a ui bug in the game
+global isMidBulkBuying := false
 PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", modifier2:="") {
   global
-  GoToMarketplace()
+  if (isMidBulkBuying) {
+    ; back once
+    ; MouseClick "left", 150, 45   ; back button
+    ; LS()
+    ; press reset filters
+    MouseClick "left", 1800, 200
+  }
+  else {
+    GoToMarketplace()
+  }
   ; *** RARITY
   LS()
-  if (itemrarity > 1 and itemrarity < 6){ 
+  if (itemrarity > 0){ 
     SetMarketPlaceSearchRarityLevel(itemrarity)
     isQualitySpecified := 1
     SS()
@@ -877,6 +887,13 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     ; *** Slot:Ring for +all on any ring searchs
     MouseClick "left", 768, 203
     Send "Ring"
+    LS()
+    TripleOffsetLeftClick_dnd_ui_bug(768, 277)
+  }
+  else if (itemname == "*Neck") {
+    ; *** Slot:Ring for +all on any neck piece searchs
+    MouseClick "left", 768, 203
+    Send "Neck"
     LS()
     TripleOffsetLeftClick_dnd_ui_bug(768, 277)
   }
@@ -974,11 +991,13 @@ BuyGearOffMarketFromFile(filepath)
     else
       continue
 
+    isMidBulkBuying := true
     Loop 6 {
       LS()
     }
   }
 
+  isMidBulkBuying := false
   FileObj.Close()
 }
 
