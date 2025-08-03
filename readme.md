@@ -67,7 +67,7 @@
     - E - Gather All From Expressman
     - G - Gather All From Goblin
     - Alt+G - Buy Kit Off Market from GearBuyingSettings File
-    - Alt+H (when its in the process of buying) - Stop the buying process on next iteration
+    - Alt+H - Halt(when buying) Stop the buying process on next iteration
     - C - Gather All From Cockatrice
     - J - Go To Jewel Collector
     - X - Vendor All Collector Items (waits for confirm)
