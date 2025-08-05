@@ -883,17 +883,24 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     SS()
   }
 
-  if (itemname == "*Ring") {
-    ; *** Slot:Ring for +all on any ring searchs
+  if (itemname == "*Ring" or itemname == "*ring") {
+    ; Slot:Ring - for any ring searches
     MouseClick "left", 768, 203
     Send "Ring"
     LS()
     TripleOffsetLeftClick_dnd_ui_bug(768, 277)
   }
-  else if (itemname == "*Neck") {
-    ; *** Slot:Ring for +all on any neck piece searchs
+  else if (itemname == "*Neck" or itemname == "*neck") {
+    ; Slot:neck - for any neck searches
     MouseClick "left", 768, 203
     Send "Neck"
+    LS()
+    TripleOffsetLeftClick_dnd_ui_bug(768, 277)
+  }
+  else if (itemname == "*Back" or itemname == "*back") {
+    ; Slot:back - for any back searches
+    MouseClick "left", 768, 203
+    Send "Back"
     LS()
     TripleOffsetLeftClick_dnd_ui_bug(768, 277)
   }
