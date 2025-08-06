@@ -303,22 +303,6 @@ Unlock() {
   Unlock()
 }
 
-
-/*
-; unassigned
-#HotIf WinActive("Dark and Darker")
-^NumpadMult::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  ; do something here
-  Unlock()
-}
-*/
-
 ; CLASS SPEC
 #HotIf WinActive("Dark and Darker")
 ^NumpadDot::
@@ -329,19 +313,6 @@ Unlock() {
     Lock()
   }
   GoToClassSpec()
-  Unlock()
-}
-
-; NEXT MARKETPLACE TRADER
-#HotIf WinActive("Dark and Darker")
-^NumpadDiv::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  CycleToNextAuctioneer()
   Unlock()
 }
 

@@ -463,58 +463,6 @@ BuyALotOfPotions() {
   }
 }
 
-CycleToNextAuctioneer() {
-  GlobalBack()
-  ; log out of character
-  MouseClick "left",  237, 44   ; click play button
-  LS()
-  MouseClick "left", 1858, 1025  ; change class button
-  Loop 4 {
-    LS() 
-  }
-
-  ; cycle to page 2
-  MouseClick "left", 1843, 909  ; page right button on char select
-  LS()
-  ; select bottom character
-  MouseClick "left", ThirdCharDownLoc[1], ThirdCharDownLoc[2]
-  LS()
-  ; click enter the lobby
-  MouseClick "left", 954, 979  ; Enter the lobby button
-  Loop 8 { 
-    LS()
-  }
-  ; go to marketplace
-  ;GoToSellAtMarket()
-  
-}
-
-CycleToNextGoblin() {
-  GlobalBack()
-  ; log out of character
-  MouseClick "left",  237, 44   ; click play button
-  LS()
-  MouseClick "left", 1858, 1025  ; change class button
-  Loop 4 {
-    LS() 
-  }
-
-  ; cycle to page 2
-  MouseClick "left", 1843, 909  ; page right button on char select
-  LS()
-  ; select bottom character
-  MouseClick "left", 1595, 370  ; click 3RD character down
-  LS()
-  ; click enter the lobby
-  MouseClick "left", 954, 979  ; Enter the lobby button
-  
-  
-  VLS()
-
-  GoToGoblinBuy()
-
-}
-
 ; this will attempt to switch to your previous character
 HotswapCharacters() {
   GlobalBack()
@@ -595,86 +543,6 @@ NextGrimmy() {
   GoToAlchemistService()
 }
 
-NextLeathersmith() { 
-  GlobalBack()
-  ; log out of character
-  LS()
-  MouseClick "left", 1858, 1025  ; change class button
-  LS()
-  LS()
-  LS()
-  LS()
-  ; cycle to page 2
-  MouseClick "left", 1843, 909  ; page right button on char select
-  LS()
-  MouseClick "left", ThirdCharDownLoc[1], ThirdCharDownLoc[2]
-  LS()
-  ; click enter the lobby
-  MouseClick "left", 954, 979  ; Enter the lobby button
-  VLS()
-  GoToLeatherSmithService()
-}
-
-NextArmorer() { 
-  GlobalBack()
-  ; log out of character
-  LS()
-  MouseClick "left", 1858, 1025  ; change class button
-  LS()
-  LS()
-  LS()
-  LS()
-  ; cycle to page 2
-  MouseClick "left", 1843, 909  ; page right button on char select
-  LS()
-  MouseClick "left", ThirdCharDownLoc[1], ThirdCharDownLoc[2]
-  LS()
-  ; click enter the lobby
-  MouseClick "left", 954, 979  ; Enter the lobby button
-  VLS()
-  GoToArmorerService()
-}
-
-NextTailor() { 
-  GlobalBack()
-  ; log out of character
-  LS()
-  MouseClick "left", 1858, 1025  ; change class button
-  LS()
-  LS()
-  LS()
-  LS()
-  ; cycle to page 2
-  MouseClick "left", 1843, 909  ; page right button on char select
-  LS()
-  MouseClick "left", ThirdCharDownLoc[1], ThirdCharDownLoc[2]
-  LS()
-  ; click enter the lobby
-  MouseClick "left", 954, 979  ; Enter the lobby button
-  VLS()
-  GoToTailorService()
-}
-
-NextWeaponsmith() { 
-  GlobalBack()
-  ; log out of character
-  LS()
-  MouseClick "left", 1858, 1025  ; change class button
-  LS()
-  LS()
-  LS()
-  LS()
-  ; cycle to page 2
-  MouseClick "left", 1843, 909  ; page right button on char select
-  LS()
-  MouseClick "left", ThirdCharDownLoc[1], ThirdCharDownLoc[2]
-  LS()
-  ; click enter the lobby
-  MouseClick "left", 954, 979  ; Enter the lobby button
-  VLS()
-  GoToWeaponsmithService()
-}
-
 VendorEntireInventoryOfCollectables() {
   GoToCollector()  ; starts with GlobalBack
   SS()
@@ -709,8 +577,6 @@ FullReBuy() {
   BuyPotions()
   SS()
   BuyBandages()
- ; SS()
-  ;BuyPickaxe()
   SS()
   PurchaseLockpicks()
 }
@@ -763,7 +629,6 @@ ToolBeltAndRequeue() {
   GoToSquireAndFill()
   LS()
   HitPlay()
-
 }
 
 BuyGreenPotionsAndBandages() {
@@ -840,7 +705,7 @@ SetVolumeToFifty() {
     MS()
 }
 
-  ; 0 no preference, 1 rare, 2 epic, 3 legendary, 4 unique, 5 artifact
+; 0 no preference, 1 rare, 2 epic, 3 legendary, 4 unique, 5 artifact
 SetMarketPlaceSearchRarityLevel(itemrarity:=0) {
   MouseClick "left", 365, 203  ; search rarity button
   Loop 3 {
@@ -861,28 +726,31 @@ SetMarketPlaceSearchRarityLevel(itemrarity:=0) {
   }  
 }
 
-global isQualitySpecified := false   ; for a click fixing hax that we have to do - due to a ui bug in the game
+; aux Worker func for buying from file
+; called from BuyGearOffMarketFromFile
+global isQualitySpecified := false
 global isMidBulkBuying := false
 PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", modifier2:="") {
   global
+
+  ; STEP 1 - Reset Filters or Go To Market
   if (isMidBulkBuying) {
-    ; back once
-    ; MouseClick "left", 150, 45   ; back button
-    ; LS()
-    ; press reset filters
-    MouseClick "left", 1800, 200
+    MouseClick "left", 1800, 200  ; Click 'Reset Filters'
   }
   else {
     GoToMarketplace()
   }
-  ; *** RARITY
+
   LS()
+
+  ; STEP 2 - Set Rarity (optional)
   if (itemrarity > 0){ 
     SetMarketPlaceSearchRarityLevel(itemrarity)
     isQualitySpecified := 1
     SS()
   }
 
+  ; STEP 3 - Search by Item Name or Any Ring/Neck/Back
   if (itemname == "*Ring" or itemname == "*ring") {
     ; Slot:Ring - for any ring searches
     MouseClick "left", 768, 203
@@ -905,7 +773,6 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     TripleOffsetLeftClick_dnd_ui_bug(768, 277)
   }
   else {
-    ; *** NAME
     MouseClick "left", 117, 203  ; search dropdown button (already clicked if we didn't set rarity first)
     LS()
     Send itemname 
@@ -915,10 +782,9 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     TripleOffsetLeftClick_dnd_ui_bug(60, 279 + searchoffsetMod)
   }
   
-
-
-  SS()
-  ; *** MODIFIER1
+  LS()
+  
+  ; STEP 4 - Add Modifier (optional)
   if (modifier1 != "") 
   {
     MouseClick "left", 1551, 206 ; random attribute location
@@ -929,11 +795,14 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     }
     HoverMouseThenClick(1480, 279)
 
+    Loop 3 {
+      LS()
+    }
   }
-  Loop 3 {
-    LS()
-  }
-  ; *** MODIFIER2
+
+
+
+  ; STEP 5 - Add Second Modifier (optional)
   if (modifier2 != "") 
   {
     MouseClick "left", 1551, 246 ; random attribute location
@@ -941,15 +810,16 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     Send modifier2
     LS()
     HoverMouseThenClick(1480, 303)   ; location of second thing in attribute search
-  }
-  Loop 3 {
-    SS()
-  }
-  MouseClick "left", 1790, 277  ; search button
-  ; dependent on search lag
-  Loop 4 {
+
     LS()
   }
+
+  MouseClick "left", 1790, 277  ; search button
+
+  Loop 4 {
+    LS()     ; wait on search lag
+  }
+
   MarketplaceBuyCheapest()
   Loop 5 {
     LS()
