@@ -303,22 +303,6 @@ Unlock() {
   Unlock()
 }
 
-
-/*
-; unassigned
-#HotIf WinActive("Dark and Darker")
-^NumpadMult::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  ; do something here
-  Unlock()
-}
-*/
-
 ; CLASS SPEC
 #HotIf WinActive("Dark and Darker")
 ^NumpadDot::
@@ -329,19 +313,6 @@ Unlock() {
     Lock()
   }
   GoToClassSpec()
-  Unlock()
-}
-
-; NEXT MARKETPLACE TRADER
-#HotIf WinActive("Dark and Darker")
-^NumpadDiv::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  CycleToNextAuctioneer()
   Unlock()
 }
 
@@ -373,6 +344,7 @@ Unlock() {
   Unlock()
 }
 
+; RESQUIRE
 #HotIf WinActive("Dark and Darker")
 >^k::
 {
@@ -385,7 +357,7 @@ Unlock() {
   Unlock()
 }
 
-
+; SELL ALL INVENTORY AND KIT AND RESQUIRE (warning: spam esc to halt sales)
 #HotIf WinActive("Dark and Darker")
 >^!k::
 {
@@ -398,8 +370,7 @@ Unlock() {
   Unlock()
 }
 
-
-; COLLECTOR
+; GO TO COLLECTOR
 #HotIf WinActive("Dark and Darker")
 >^j::
 {
@@ -412,6 +383,7 @@ Unlock() {
   Unlock()
 }
 
+; GO TO VENDOR
 #HotIf WinActive("Dark and Darker")
 >^v::
 {
@@ -424,7 +396,7 @@ Unlock() {
   Unlock()
 }
 
-; TRADE
+; GO TO MARKETPLACE
 #HotIf WinActive("Dark and Darker")
 >^m::
 {
@@ -502,7 +474,7 @@ Unlock() {
   Unlock()
 }
 
-; Vender All Collectables Soft Non Destructive
+; Vender All Collectables - Soft Non Destructive
 #HotIf WinActive("Dark and Darker")
 >^x::
 {
@@ -515,8 +487,7 @@ Unlock() {
   Unlock()
 }
 
-; Vender All Non-Collectables Soft Non Destructive
-
+; Vender All Non-Collectables - Soft Non Destructive
 #HotIf WinActive("Dark and Darker")
 >^z::
 {
@@ -541,7 +512,6 @@ Unlock() {
   Unlock()
 }
 
-
 #HotIf WinActive("Dark and Darker")
 >^T:: {
   if isBusy {
@@ -552,7 +522,6 @@ Unlock() {
   TransferInventory()
   Unlock()
 }
-
 
 #HotIf WinActive("Dark and Darker")
 >^l:: {
@@ -565,7 +534,6 @@ Unlock() {
   Unlock()
 }
 
-
 #HotIf WinActive("Dark and Darker")
 >^1:: {
   if isBusy {
@@ -576,7 +544,6 @@ Unlock() {
   GoToSets()
   Unlock()
 }
-
 
 #HotIf WinActive("Dark and Darker")
 >^;:: {
@@ -599,7 +566,6 @@ Unlock() {
   BuyPickaxe()
   Unlock()
 }
-
 
 ; LEFT SHIFT + U - set volume to zero (u must have menu open, press esc first)
 #HotIf WinActive("Dark and Darker")
@@ -648,22 +614,17 @@ global gearBuyingInProgress := false
   } else {
     Lock()
   }
- 
   gearBuyingInProgress := true
   BuyGearOffMarketFromFile("GearBuyingSettings.txt")
   gearBuyingInProgress := false
-
   Unlock()
 }
 
 ; stop buying gear from market
 #HotIf WinActive("Dark and Darker")
 >^!h:: {
-  
   global
   if gearBuyingInProgress {
     HaltGearBuying()
   }
-
-
 }
