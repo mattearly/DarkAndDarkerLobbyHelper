@@ -474,6 +474,19 @@ Unlock() {
   Unlock()
 }
 
+; Go To Goldsmith - Right Control + a
+#HotIf WinActive("Dark and Darker")
+>^a::
+{
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToGoldSmith()
+  Unlock()
+}
+
 ; Vender All Collectables - Soft Non Destructive
 #HotIf WinActive("Dark and Darker")
 >^x::

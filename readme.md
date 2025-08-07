@@ -11,7 +11,7 @@
 ## requirements
 
   - auto-hotkey v2
-  - dark and darker v89
+  - Dark and Darker patch 94
     - Have most quests done (as some button locations change for things at different affinity levels)
   - 1920x1080 screen res
   - in Character Lobby
@@ -66,6 +66,7 @@
     - Alt+I - Invest in green pots and bandages (buy out, check availablity  first)
     - E - Gather All From Expressman
     - G - Gather All From Goblin
+    - A - Go To Goldsmith
     - Alt+G - Buy Kit Off Market from GearBuyingSettings File
     - Alt+H - Halt(when buying) Stop the buying process on next iteration
     - C - Gather All From Cockatrice
