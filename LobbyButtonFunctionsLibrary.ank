@@ -14,21 +14,22 @@
 global WasInTrade := false
 
 ; all locations should probably be defined like this for ease of updating (todo)
-global AlchemistLoc       := [380, 300]
-global ArmourerLoc        := [600, 300]
-global CockatriceLoc      := [840, 300]
-global HolidayMerchantLoc := [380, 900]  ;update when its avail
-global SurgeonLoc         := [1540, 600]
-global SquireLoc          := [1300, 600]
-global TailorLoc          := [380, 900]
-global CollectorLoc       := [840, 900]
-global SmithLoc           := [1300, 900]
-global LeathersmithLoc    := [840, 600]
-global WoodsmanLoc        := [1540, 900]
+global AlchemistLoc       := [270, 300]
+global ArmourerLoc        := [500, 300]
+global CockatriceLoc      := [730, 300]
+global ExpressmanLoc      := [960, 300]
+global GoblinLoc          := [1420, 300]
+global GoldsmithLoc       := [1640, 300]
+global LeathersmithLoc    := [500, 600]
+global SquireLoc          := [1200, 600]
+global SurgeonLoc         := [1420, 600]
+global TailorLoc          := [1650, 600]
+global CollectorLoc       := [507, 900]
+global SmithLoc           := [970, 900]
+global WoodsmanLoc        := [1200, 900]
+
 global ThirdCharDownLoc   := [1600, 300]
-global ExpressmanLoc      := [1070, 300]
-global GoldsmithLoc       := [380, 600]
-global GoblinLoc          := [1540, 300]
+
 global OptionsLoc         := [219, 599]
 
 
@@ -159,19 +160,18 @@ GoToClassSpec() {
   MouseClick "left", 983, 118  ; perks and skills button
 }
 
+GoToGoldSmith() {
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  SS()
+  MouseClick "left", GoldsmithLoc[1], GoldsmithLoc[2]
+}
+
 GoToAlchemist() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   SS()
   MouseClick "left", AlchemistLoc[1], AlchemistLoc[2]
-}
-
-GoToJackoBuy() {
-  global
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
-  SS()
-  MouseClick "left", HolidayMerchantLoc[1], HolidayMerchantLoc[2]
 }
 
 GoToLeatherSmithService() { 
@@ -799,8 +799,6 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
       LS()
     }
   }
-
-
 
   ; STEP 5 - Add Second Modifier (optional)
   if (modifier2 != "") 
