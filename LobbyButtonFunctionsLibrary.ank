@@ -9,10 +9,6 @@
 
 #include LobbyButtonFunctionsLibrary.ank
 
-; required variables
-; only sets to true when the user pressess a key to go to the marketplace
-global WasInTrade := false
-
 ; all locations should probably be defined like this for ease of updating (todo)
 global AlchemistLoc       := [270, 300]
 global ArmourerLoc        := [500, 300]
@@ -71,20 +67,12 @@ HoverMouseThenClick(loc1, loc2) {
 ; aux function
 GlobalBack() {
   global
-  MouseClick "left", 150, 45   ; back button
-  SS()
-  if WasInTrade {  ; we know how to back out correctly
-    MouseClick "left", 858, 617  ; are you sure market button
-    WasInTrade := false
-    LS()
-  } else { 
-    MouseClick "left", 858, 617  ; click 'are you sure' market button (or some merchant possibly)
-    LS()
-    MouseClick "left", 150, 45   ; back button again in case merchant was clicked 
+  Loop 2 {
+    MouseClick "left", 200, 40   ; play or leave trade button, twice to double back some menus
     LS()
   }
-  MouseClick "left", 232, 45   ; play button
-  LS()
+  MouseClick "left", 858, 617  ; click 'are you sure' market button (or some merchant possibly)
+  SS()
 }
 
 ; aux function
