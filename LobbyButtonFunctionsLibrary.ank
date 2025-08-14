@@ -72,7 +72,7 @@ GlobalBack() {
     LS()
   }
   MouseClick "left", 858, 617  ; click 'are you sure' market button (or some merchant possibly)
-  SS()
+  LS()
 }
 
 ; aux function
