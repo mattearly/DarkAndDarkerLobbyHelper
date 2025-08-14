@@ -35,6 +35,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^5::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -48,6 +49,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad6::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -60,6 +62,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^g::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -74,11 +77,11 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^6::
 {
+  global
   if isBusy { 
     return 
   } else {
     Lock()
-
   }
   GoToAlchemistService()
   Unlock()
@@ -89,6 +92,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^7::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -102,6 +106,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^8::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -115,6 +120,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^9::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -128,6 +134,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^0::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -141,6 +148,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad0::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -154,6 +162,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad2::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -167,6 +176,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad3::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -180,6 +190,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad5::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -192,6 +203,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^E::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -204,6 +216,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^C::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -217,6 +230,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad7::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -229,6 +243,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad8::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -242,6 +257,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^Numpad9::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -255,6 +271,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 <^NumpadSub::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -268,6 +285,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^NumpadSub::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -294,6 +312,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^NumpadAdd::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -307,6 +326,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^NumpadDot::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -316,12 +336,11 @@ Unlock() {
   Unlock()
 }
 
-; ALT VERSION HOTKEYS (IN CASE USER HAS NO NUMPAD)
-
 ; Keybind setup for HitPlay (file structure follows this pattern)
 #HotIf WinActive("Dark and Darker")
 >^q::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -335,6 +354,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^h::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -348,6 +368,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^k::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -361,6 +382,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^!k::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -374,6 +396,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^j::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -387,6 +410,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^v::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -400,6 +424,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^m::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -413,6 +438,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 <^b::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -426,6 +452,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^b::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -439,6 +466,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 <^o::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -452,6 +480,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^o::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -465,6 +494,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 ^p::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -478,6 +508,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^a::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -491,6 +522,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^x::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -504,6 +536,7 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^z::
 {
+  global
   if isBusy { 
     return 
   } else {
@@ -516,7 +549,8 @@ Unlock() {
 #HotIf WinActive("Dark and Darker")
 >^!q::
 {
-    if isBusy { 
+  global
+  if isBusy { 
     return 
   } else {
     Lock()
@@ -527,6 +561,7 @@ Unlock() {
 
 #HotIf WinActive("Dark and Darker")
 >^T:: {
+  global
   if isBusy {
     return
   } else {
@@ -536,19 +571,10 @@ Unlock() {
   Unlock()
 }
 
-#HotIf WinActive("Dark and Darker")
->^l:: {
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  PurchaseLockpicks()
-  Unlock()
-}
 
 #HotIf WinActive("Dark and Darker")
 >^1:: {
+  global
   if isBusy {
     return
   } else {
@@ -558,31 +584,10 @@ Unlock() {
   Unlock()
 }
 
-#HotIf WinActive("Dark and Darker")
->^;:: {
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  PurchaseSurgicalKit()
-  Unlock()
-}
-
-#HotIf WinActive("Dark and Darker")
->^p:: {
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  BuyPickaxe()
-  Unlock()
-}
-
 ; LEFT SHIFT + U - set volume to zero (u must have menu open, press esc first)
 #HotIf WinActive("Dark and Darker")
 <^u:: {
+  global
   if isBusy {
     return
   } else {
@@ -594,7 +599,8 @@ Unlock() {
 
 #HotIf WinActive("Dark and Darker")
 >^u:: {
-    if isBusy {
+  global
+  if isBusy {
     return
   } else {
     Lock()
@@ -607,6 +613,7 @@ Unlock() {
 ;  - green potions and bandages
 #HotIf WinActive("Dark and Darker")
 >^!i:: {
+  global
   if isBusy {
     return
   } else {
