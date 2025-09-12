@@ -41,12 +41,12 @@ SS() {
 
 ; long sleep
 LS() { 
-  sleep 555  ; probably needs to be higher 
+  sleep 455  ; probably needs to be higher 
 }
 
 ; very long sleep
 VLS() {
-  sleep 4899  ; can take some characters a very long time to load in, 4200ms might be too short
+  sleep 1899  ; can take some characters a very long time to load in, 4200ms might be too short
 }
 
 ; aux function  : todo: this is not perfect and still bugs sometimes
@@ -778,14 +778,9 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     MouseClick "left", 1551, 206 ; random attribute location
     SS()
     Send modifier1
-    Loop 2 {
-      LS()
-    }
+    LS()
     HoverMouseThenClick(1480, 279)
-
-    Loop 3 {
-      LS()
-    }
+    LS()
   }
 
   ; STEP 5 - Add Second Modifier (optional)
@@ -796,21 +791,16 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     Send modifier2
     LS()
     HoverMouseThenClick(1480, 303)   ; location of second thing in attribute search
-
     LS()
   }
 
   MouseClick "left", 1790, 277  ; search button
-
-  Loop 4 {
-    LS()     ; wait on search lag
-  }
+  VLS()     ; wait on search lag
 
   MarketplaceBuyCheapest()
-  Loop 5 {
-    LS()
-  }
+  VLS()    ; cancel time for user delay
   MouseClick "left", 959, 843  ; complete trade button
+  VLS()   ; wait on completion lag
 
   ; reset globals
   isQualitySpecified := 0
@@ -855,9 +845,6 @@ BuyGearOffMarketFromFile(filepath)
       continue
 
     isMidBulkBuying := true
-    Loop 6 {
-      LS()
-    }
   }
 
   isMidBulkBuying := false
