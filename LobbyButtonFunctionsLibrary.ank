@@ -800,7 +800,14 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   MarketplaceBuyCheapest()
   VLS()    ; cancel time for user delay
   MouseClick "left", 959, 843  ; complete trade button
+  LS()
+  ; todo, case of non-avaiable item and it not autobacking
+  MouseClick "left", 246, 35   ; back button
+  
+
+
   VLS()   ; wait on completion lag
+
 
   ; reset globals
   isQualitySpecified := 0
