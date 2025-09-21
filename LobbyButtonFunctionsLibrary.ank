@@ -452,83 +452,19 @@ BuyALotOfPotions() {
 }
 
 ; this will attempt to switch to your previous character
+; in other words, it will go to the character you last previously selected before the one you are currently on
 HotswapCharacters() {
   GlobalBack()
   ; log out of character
   MouseClick "left",  237, 44   ; click play button
   LS()
   MouseClick "left", 1858, 1025  ; change class button
-  LS()
-  LS()
-  LS()
-  LS()
+  Loop 2 {
+    VLS()
+  }
   MouseClick "left", 1605, 280  ; click on 2nd character down
   LS()
   MouseClick "left", 954, 979  ; Enter the lobby button
-}
-
-; this will buy the top result of "lock" on the marketplace
-PurchaseLockpicks() {
-  GoToMarketplaceSearch()
-  LS()
-  Send "Lock"
-  LS()
-  TripleOffsetLeftClick_dnd_ui_bug(57, 280)  ; location of second thing in search
-  LS()
-  MouseClick "left", 1790, 277  ; search button
-  LS()
-  LS()
-  LS()
-  MouseClick "left", 1789, 487  ; buy button of third (cheapest) item
-  LS()
-  MouseClick "left", 954, 763  ; fill all button
-  ; LS()
-  ; MouseClick "left", 959, 843  ; complete trade button
-}
-
-PurchaseSurgicalKit() {
-  GoToMarketplaceSearch()
-  LS()
-  Send "Surgical"
-  LS()
-  MouseClick "left", 56, 280  ; location of third thing in search
-
-   ; because the DaD ui can be unresponsive, try clicking slightly offset and more 
-  SS()
-  MouseClick "left", 57, 281  ; lets click it again bc half the time the ui is not responsive
-  SS()
-  MouseClick "left", 56, 280  ; lets click it again bc half the time the ui is not responsive
-  
-  SS()
-  MouseClick "left", 1790, 277  ; search button
-  LS()
-  LS()
-  LS()
-  MouseClick "left", 1789, 487   ; buy button of thrid (cheapest) item
-  LS()
-  MouseClick "left", 954, 763  ; fill all button
-  ; LS()
-  ; MouseClick "left", 959, 843  ; complete trade button
-}
-
-NextGrimmy() { 
-  GlobalBack()
-  ; log out of character
-  LS()
-  MouseClick "left", 1858, 1025  ; change class button
-  LS()
-  LS()
-  LS()
-  LS()
-  ; cycle to page 2
-  MouseClick "left", 1843, 909  ; page right button on char select
-  LS()
-  MouseClick "left", ThirdCharDownLoc[1], ThirdCharDownLoc[2]
-  LS()
-  ; click enter the lobby
-  MouseClick "left", 954, 979  ; Enter the lobby button
-  VLS()
-  GoToAlchemistService()
 }
 
 VendorEntireInventoryOfCollectables() {
@@ -558,15 +494,6 @@ DoubleSellInventoryFullConfirm() {
   LS()
   MouseClick "left", 963, 992  ; click make deal
   
-}
-
-; purchase potions, bandages, a pickaxe, and lockpicks
-FullReBuy() {
-  BuyPotions()
-  SS()
-  BuyBandages()
-  SS()
-  PurchaseLockpicks()
 }
 
 ; use when in stash to move entire inventory in one go
@@ -801,13 +728,15 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   VLS()    ; cancel time for user delay
   MouseClick "left", 959, 843  ; complete trade button
   LS()
+
+
   ; todo, case of non-avaiable item and it not autobacking
-  MouseClick "left", 246, 35   ; back button
+  MouseClick "left", 246, 35   ; back button(good) or leave trade button(bad)
+  ; base case correction
+  SS()
+  MouseClick "left", 1054, 611  ; press no to leave trade button
   
-
-
   VLS()   ; wait on completion lag
-
 
   ; reset globals
   isQualitySpecified := 0
