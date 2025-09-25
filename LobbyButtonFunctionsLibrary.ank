@@ -586,6 +586,8 @@ BuyGreenPotionsAndBandagesAndLuckPotion() {
 
     ; PART 3, BUY LUCK POTION
 
+    ; todo
+
 }
 
 ; press esc first and then this

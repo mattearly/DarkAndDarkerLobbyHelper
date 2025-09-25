@@ -610,18 +610,18 @@ Unlock() {
 }
 
 ; [I]nvest- buys things from traders that have good resale value
-;  - green potions and bandages
-#HotIf WinActive("Dark and Darker")
->^!i:: {
-  global
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  BuyGreenPotionsAndBandages()
-  Unlock()
-}
+;  - green potions and bandages and fortune potion
+; #HotIf WinActive("Dark and Darker")
+; >^!i:: {
+;   global
+;   if isBusy {
+;     return
+;   } else {
+;     Lock()
+;   }
+;   BuyGreenPotionsAndBandagesAndLuckPotion()
+;   Unlock()
+; }
 
 ; Gear Up from Market Search: RightControl+Alt+g
 ; in testing DON'T USE YET
