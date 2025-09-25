@@ -10,12 +10,14 @@
 #include LobbyButtonFunctionsLibrary.ank
 
 ; all locations should probably be defined like this for ease of updating (todo)
-; merchant loc notes: 300 row 1, 600 row 2, 900 row 3
+; merchant loc notes:
+;    270 column 1, 500 col 2, 730, 970, 1200, 1420, 1650
+;    300 row 1, 600 row 2, 900 
 
 global AlchemistLoc       := [270, 300]
 global ArmourerLoc        := [500, 300]
 global CockatriceLoc      := [730, 300]
-global ExpressmanLoc      := [960, 300]
+global ExpressmanLoc      := [1200, 300]
 global GoblinLoc          := [1650, 300]
 global GoldsmithLoc       := [270, 600]
 global LeathersmithLoc    := [740, 600]
