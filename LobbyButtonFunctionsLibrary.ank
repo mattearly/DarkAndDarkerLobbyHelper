@@ -27,6 +27,7 @@ global TailorLoc          := [1650, 600]
 global CollectorLoc       := [507, 900]
 global SmithLoc           := [970, 900]
 global WoodsmanLoc        := [1200, 900]
+global FortuneTellerLoc   := [1420, 300]
 
 
 global ThirdCharDownLoc   := [1600, 300]
@@ -164,6 +165,13 @@ GoToAlchemist() {
   MouseClick "left", 982, 31  ; top merchant button
   SS()
   MouseClick "left", AlchemistLoc[1], AlchemistLoc[2]
+}
+
+GoToFortuneTeller() {
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  SS()
+  MouseClick "left", FortuneTellerLoc[1], FortuneTellerLoc[2]
 }
 
 GoToLeatherSmithService() { 
@@ -583,10 +591,13 @@ BuyGreenPotionsAndBandagesAndLuckPotion() {
     MS()
   }
   FillAllMakeDeal()
+  LS()
 
-    ; PART 3, BUY LUCK POTION
-
-    ; todo
+  ; PART 3, BUY LUCK POTION
+  GoToFortuneTeller()
+  LS()
+  MouseClick "left", 72, 290
+  FillAllMakeDeal()
 
 }
 
