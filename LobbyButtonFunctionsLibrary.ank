@@ -10,43 +10,48 @@
 #include LobbyButtonFunctionsLibrary.ank
 
 ; all locations should probably be defined like this for ease of updating (todo)
+; merchant loc notes:
+;    270 column 1, 500 col 2, 730, 970, 1200, 1420, 1650
+;    300 row 1, 600 row 2, 900 
+
 global AlchemistLoc       := [270, 300]
 global ArmourerLoc        := [500, 300]
 global CockatriceLoc      := [730, 300]
-global ExpressmanLoc      := [960, 300]
-global GoblinLoc          := [1420, 300]
-global GoldsmithLoc       := [1640, 300]
-global LeathersmithLoc    := [500, 600]
+global ExpressmanLoc      := [1200, 300]
+global GoblinLoc          := [1650, 300]
+global GoldsmithLoc       := [270, 600]
+global LeathersmithLoc    := [740, 600]
 global SquireLoc          := [1200, 600]
 global SurgeonLoc         := [1420, 600]
 global TailorLoc          := [1650, 600]
 global CollectorLoc       := [507, 900]
 global SmithLoc           := [970, 900]
 global WoodsmanLoc        := [1200, 900]
+global FortuneTellerLoc   := [1420, 300]
+
 
 global ThirdCharDownLoc   := [1600, 300]
-
 global OptionsLoc         := [219, 599]
 
 
 ; mini sleep
 MS() {
-  sleep 19 ; to help with speeding up tool
+  sleep 21 ; to help with speeding up tool
 }
 
 ; short sleep
 SS() {
-  sleep 175 ; probably needs to be higher 
+  sleep 179 ; probably needs to be higher 
 }
 
 ; long sleep
 LS() { 
-  sleep 555  ; probably needs to be higher 
+  sleep 459  ; probably needs to be higher 
 }
 
 ; very long sleep
 VLS() {
-  sleep 4899  ; can take some characters a very long time to load in, 4200ms might be too short
+  sleep 1999  ; can take some characters a very long time to load in, 4200ms might be too short
 }
 
 ; aux function  : todo: this is not perfect and still bugs sometimes
@@ -160,6 +165,13 @@ GoToAlchemist() {
   MouseClick "left", 982, 31  ; top merchant button
   SS()
   MouseClick "left", AlchemistLoc[1], AlchemistLoc[2]
+}
+
+GoToFortuneTeller() {
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  SS()
+  MouseClick "left", FortuneTellerLoc[1], FortuneTellerLoc[2]
 }
 
 GoToLeatherSmithService() { 
@@ -452,83 +464,19 @@ BuyALotOfPotions() {
 }
 
 ; this will attempt to switch to your previous character
+; in other words, it will go to the character you last previously selected before the one you are currently on
 HotswapCharacters() {
   GlobalBack()
   ; log out of character
   MouseClick "left",  237, 44   ; click play button
   LS()
   MouseClick "left", 1858, 1025  ; change class button
-  LS()
-  LS()
-  LS()
-  LS()
+  Loop 2 {
+    VLS()
+  }
   MouseClick "left", 1605, 280  ; click on 2nd character down
   LS()
   MouseClick "left", 954, 979  ; Enter the lobby button
-}
-
-; this will buy the top result of "lock" on the marketplace
-PurchaseLockpicks() {
-  GoToMarketplaceSearch()
-  LS()
-  Send "Lock"
-  LS()
-  TripleOffsetLeftClick_dnd_ui_bug(57, 280)  ; location of second thing in search
-  LS()
-  MouseClick "left", 1790, 277  ; search button
-  LS()
-  LS()
-  LS()
-  MouseClick "left", 1789, 487  ; buy button of third (cheapest) item
-  LS()
-  MouseClick "left", 954, 763  ; fill all button
-  ; LS()
-  ; MouseClick "left", 959, 843  ; complete trade button
-}
-
-PurchaseSurgicalKit() {
-  GoToMarketplaceSearch()
-  LS()
-  Send "Surgical"
-  LS()
-  MouseClick "left", 56, 280  ; location of third thing in search
-
-   ; because the DaD ui can be unresponsive, try clicking slightly offset and more 
-  SS()
-  MouseClick "left", 57, 281  ; lets click it again bc half the time the ui is not responsive
-  SS()
-  MouseClick "left", 56, 280  ; lets click it again bc half the time the ui is not responsive
-  
-  SS()
-  MouseClick "left", 1790, 277  ; search button
-  LS()
-  LS()
-  LS()
-  MouseClick "left", 1789, 487   ; buy button of thrid (cheapest) item
-  LS()
-  MouseClick "left", 954, 763  ; fill all button
-  ; LS()
-  ; MouseClick "left", 959, 843  ; complete trade button
-}
-
-NextGrimmy() { 
-  GlobalBack()
-  ; log out of character
-  LS()
-  MouseClick "left", 1858, 1025  ; change class button
-  LS()
-  LS()
-  LS()
-  LS()
-  ; cycle to page 2
-  MouseClick "left", 1843, 909  ; page right button on char select
-  LS()
-  MouseClick "left", ThirdCharDownLoc[1], ThirdCharDownLoc[2]
-  LS()
-  ; click enter the lobby
-  MouseClick "left", 954, 979  ; Enter the lobby button
-  VLS()
-  GoToAlchemistService()
 }
 
 VendorEntireInventoryOfCollectables() {
@@ -558,15 +506,6 @@ DoubleSellInventoryFullConfirm() {
   LS()
   MouseClick "left", 963, 992  ; click make deal
   
-}
-
-; purchase potions, bandages, a pickaxe, and lockpicks
-FullReBuy() {
-  BuyPotions()
-  SS()
-  BuyBandages()
-  SS()
-  PurchaseLockpicks()
 }
 
 ; use when in stash to move entire inventory in one go
@@ -619,7 +558,8 @@ ToolBeltAndRequeue() {
   HitPlay()
 }
 
-BuyGreenPotionsAndBandages() {
+; invest from merchants function (level alch and surgeon first)
+BuyGreenPotionsAndBandagesAndLuckPotion() {
   ; PART 1, BUY ALL GREEN POTIONS
   GoToAlchemist()
   LS()
@@ -651,6 +591,15 @@ BuyGreenPotionsAndBandages() {
     MS()
   }
   FillAllMakeDeal()
+  LS()
+
+  ; PART 3, BUY LUCK POTION
+  GoToFortuneTeller()
+  LS()
+  MouseClick "left", 72, 290
+  LS()
+  FillAllMakeDeal()
+
 }
 
 ; press esc first and then this
@@ -717,12 +666,12 @@ SetMarketPlaceSearchRarityLevel(itemrarity:=0) {
 ; aux Worker func for buying from file
 ; called from BuyGearOffMarketFromFile
 global isQualitySpecified := false
-global isMidBulkBuying := false
+global isMidBuyCycleFromFile := false
 PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", modifier2:="") {
   global
 
   ; STEP 1 - Reset Filters or Go To Market
-  if (isMidBulkBuying) {
+  if (isMidBuyCycleFromFile) {
     MouseClick "left", 1800, 200  ; Click 'Reset Filters'
   }
   else {
@@ -778,14 +727,9 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     MouseClick "left", 1551, 206 ; random attribute location
     SS()
     Send modifier1
-    Loop 2 {
-      LS()
-    }
+    LS()
     HoverMouseThenClick(1480, 279)
-
-    Loop 3 {
-      LS()
-    }
+    LS()
   }
 
   ; STEP 5 - Add Second Modifier (optional)
@@ -796,21 +740,49 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     Send modifier2
     LS()
     HoverMouseThenClick(1480, 303)   ; location of second thing in attribute search
-
     LS()
   }
 
   MouseClick "left", 1790, 277  ; search button
-
-  Loop 4 {
-    LS()     ; wait on search lag
-  }
+  VLS()     ; wait on search lag
 
   MarketplaceBuyCheapest()
-  Loop 5 {
-    LS()
-  }
+  VLS()    ; cancel time for user delay
   MouseClick "left", 959, 843  ; complete trade button
+  LS()
+
+
+  ; todo, case of non-avaiable item and it not autobacking
+  MouseClick "left", 246, 35   ; back button(good) or leave trade button(bad)
+  ; base case correction
+  SS()
+  MouseClick "left", 1054, 611  ; press no to leave trade button
+  
+  VLS()   ; wait on completion lag
+
+  ; reset globals
+  isQualitySpecified := 0
+}
+
+
+global lastSearchedItem := "na"
+RepurchaseAgain() {
+    MouseClick "left", 1790, 277  ; search button
+  VLS()     ; wait on search lag
+
+  MarketplaceBuyCheapest()
+  VLS()    ; cancel time for user delay
+  MouseClick "left", 959, 843  ; complete trade button
+  LS()
+
+
+  ; todo, case of non-avaiable item and it not autobacking
+  MouseClick "left", 246, 35   ; back button(good) or leave trade button(bad)
+  ; base case correction
+  SS()
+  MouseClick "left", 1054, 611  ; press no to leave trade button
+  
+  VLS()   ; wait on completion lag
 
   ; reset globals
   isQualitySpecified := 0
@@ -818,7 +790,7 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
 
 ; Starter Func to buy from filepath
 ; halt buying gives us an option to stop an otherwise very long routine
-global haltBuyingFromMarket := false  
+global haltBuyingFromMarket := false
 BuyGearOffMarketFromFile(filepath) 
 {
   global
@@ -841,6 +813,15 @@ BuyGearOffMarketFromFile(filepath)
     NewLine := FileObj.ReadLine()
     PartOfLine := StrSplit(NewLine, ",")
     size := PartOfLine.Length
+    
+    if (size > 0 and StrCompare(lastSearchedItem,PartOfLine[1]) = 0 and isMidBuyCycleFromFile) {
+      RepurchaseAgain()
+      lastSearchedItem := PartOfLine[1]
+      continue
+    } else {
+
+    }
+
     if (size = 5)
       PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4], PartOfLine[5])
     else if (size = 4)
@@ -854,13 +835,12 @@ BuyGearOffMarketFromFile(filepath)
     else
       continue
 
-    isMidBulkBuying := true
-    Loop 6 {
-      LS()
-    }
+    isMidBuyCycleFromFile := true
+    lastSearchedItem := PartOfLine[1]
+  
   }
 
-  isMidBulkBuying := false
+  isMidBuyCycleFromFile := false
   FileObj.Close()
 }
 

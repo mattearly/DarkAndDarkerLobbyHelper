@@ -421,18 +421,18 @@ Unlock() {
 }
 
 ; GO TO MARKETPLACE
-#HotIf WinActive("Dark and Darker")
->^m::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToMarketplaceSearch()
-  Unlock()
-}
+; #HotIf WinActive("Dark and Darker")
+; >^m::
+; {
+;   global
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   GoToMarketplaceSearch()
+;   Unlock()
+; }
 
 ; PURCHASE BANDAGES
 #HotIf WinActive("Dark and Darker")
@@ -610,7 +610,7 @@ Unlock() {
 }
 
 ; [I]nvest- buys things from traders that have good resale value
-;  - green potions and bandages
+;  - green potions and bandages and fortune potion
 #HotIf WinActive("Dark and Darker")
 >^!i:: {
   global
@@ -619,26 +619,26 @@ Unlock() {
   } else {
     Lock()
   }
-  BuyGreenPotionsAndBandages()
+  BuyGreenPotionsAndBandagesAndLuckPotion()
   Unlock()
 }
 
 ; Gear Up from Market Search: RightControl+Alt+g
 ; in testing DON'T USE YET
 global gearBuyingInProgress := false
-#HotIf WinActive("Dark and Darker")
->^!g:: {
-  global
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  gearBuyingInProgress := true
-  BuyGearOffMarketFromFile("GearBuyingSettings.txt")
-  gearBuyingInProgress := false
-  Unlock()
-}
+; #HotIf WinActive("Dark and Darker")
+; >^!g:: {
+;   global
+;   if isBusy {
+;     return
+;   } else {
+;     Lock()
+;   }
+;   gearBuyingInProgress := true
+;   BuyGearOffMarketFromFile("GearBuyingSettings.txt")
+;   gearBuyingInProgress := false
+;   Unlock()
+; }
 
 ; stop buying gear from market
 #HotIf WinActive("Dark and Darker")
