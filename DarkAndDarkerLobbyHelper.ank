@@ -1,0 +1,14 @@
+; script is designed for designed for "Dark and Darker" Lobby Management
+; essentially it just clicks the screen in certain places as specified
+; designed for 1920x1080 screen in "Dark and Darker" Lobby (log in to your character)
+; this is in development and made for my personal use and testing
+;   as such - there are no warranties or gaurentees
+;           - use at your own risk
+; file main use: define useful clicker functions and definitions
+; written and maintained by matthewjearly@gmail.com
+; ----------------------------------------------------------------------
+
+#SingleInstance Force
+
+#include src/Keybinds.ank
+
