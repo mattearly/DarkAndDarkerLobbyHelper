@@ -1,11 +1,13 @@
 ; script is designed for designed for "Dark and Darker" Lobby Management
+; essentially it just clicks the screen in certain places as specified
+; designed for 1920x1080 screen in "Dark and Darker" Lobby (log in to your character)
 ; this is in development and made for my personal use and testing
 ;   as such - there are no warranties or gaurentees
 ;           - use at your own risk
-; file use: setup main runtime keybinds to functions
+; file main use: define useful clicker functions and definitions
 ; written and maintained by matthewjearly@gmail.com
+; ----------------------------------------------------------------------
 
-#SingleInstance Force
 
 #include LobbyButtonFunctionsLibrary.ank
 
@@ -619,26 +621,26 @@ Unlock() {
   } else {
     Lock()
   }
-  BuyGreenPotionsAndBandagesAndLuckPotion()
+  BuyOutGreenMeds()
   Unlock()
 }
 
 ; Gear Up from Market Search: RightControl+Alt+g
 ; in testing DON'T USE YET
 global gearBuyingInProgress := false
-; #HotIf WinActive("Dark and Darker")
-; >^!g:: {
-;   global
-;   if isBusy {
-;     return
-;   } else {
-;     Lock()
-;   }
-;   gearBuyingInProgress := true
-;   BuyGearOffMarketFromFile("GearBuyingSettings.txt")
-;   gearBuyingInProgress := false
-;   Unlock()
-; }
+#HotIf WinActive("Dark and Darker")
+>^!g:: {
+  global
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  gearBuyingInProgress := true
+  BuyGearOffMarketFromFile("GearBuyingSettings.txt")
+  gearBuyingInProgress := false
+  Unlock()
+}
 
 ; stop buying gear from market
 #HotIf WinActive("Dark and Darker")

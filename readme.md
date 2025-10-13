@@ -19,14 +19,15 @@
 ## how to run
 
   0. Have "auto hotkey v2" installed 
-  1. Clone/download this repo, Run the script "Keybinds.ank"
+  1. Clone/download this repo, Run the script "DarkAndDarkerLobbyHelper.ank"
   2. Launch "Dark and Darker", Log into a character and be in the Pre-Game Lobby at 1920x1080p res (this doesn't work elsewhere)
 
 ## default keybinds
 
-  These are set up in "Keybinds.ank"
+  These are set up in "src/Keybinds.ank"
   
   - **Left Cntrl** (Or Right Cntrl if there is no overlap (see Right Cntrl below)) +
+    - U - Set Volume to Zero (press Esc first)
     - numpad0 - Insta-Queue - a dangerous but speedy button
     - numpad2 - Hotswap Characters (go to prev character)
     - numpad3 - Go to Squire and fill
@@ -41,7 +42,6 @@
     - numpadAdd - Buy 12 Potions
     - B - Buy 12 Bandages
     - O - Buy 12 Potions
-    - U - Set Volume to Zero (press Esc first)
     - P - Go To Class Spec
     - 5 - Go To Goblin Purchase
     - 6 - Go To Alchemist Service
@@ -51,11 +51,11 @@
     - 0 - Go to Weaponsmith Service
 
   - **Right Cntrl** + 
+    - U - Set Volume to Fifty (press Esc first)
     - numpadSub - Buy 6 Bandages
     - numpadAdd - Buy 6 Potions
     - B - Buy 6 Bandages
     - O - Buy 6 Potions
-    - U - Set Volume to Fifty (press Esc first)
     - 1 - Go To Squire Sets
     - K - Refill Squire Kit
     - Alt+K - Full Squire Reset (DANGER: sells entire inventory and equipped kit)
@@ -82,4 +82,4 @@
   - there is an issue with some DaD UI buttons occasionally not functioning. (appears to be an native game UI problem)
   - the de-equip routine will sometimes throw things in your stash (especially if you are holding down alt (or have that longstanding native bug were DaD thinks you are pressing alt until you tap it again))
   - Moving your mouse while something is active may cause it to click the wrong place or fail, take hand off mouse while pressing a hotkey for best results
-
+  - there is an issue with Set Volume were it doesn't work for all lobbies (adventure and arena I've noticed, the left side buttons are apparently in a different location on those modes). 
