@@ -628,19 +628,19 @@ Unlock() {
 ; Gear Up from Market Search: RightControl+Alt+g
 ; in testing DON'T USE YET
 global gearBuyingInProgress := false
-; #HotIf WinActive("Dark and Darker")
-; >^!g:: {
-;   global
-;   if isBusy {
-;     return
-;   } else {
-;     Lock()
-;   }
-;   gearBuyingInProgress := true
-;   BuyGearOffMarketFromFile("GearBuyingSettings.txt")
-;   gearBuyingInProgress := false
-;   Unlock()
-; }
+#HotIf WinActive("Dark and Darker")
+>^!g:: {
+  global
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  gearBuyingInProgress := true
+  BuyGearOffMarketFromFile("GearBuyingSettings.txt")
+  gearBuyingInProgress := false
+  Unlock()
+}
 
 ; stop buying gear from market
 #HotIf WinActive("Dark and Darker")
