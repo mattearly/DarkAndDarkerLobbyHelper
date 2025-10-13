@@ -661,7 +661,6 @@ SetMarketPlaceSearchRarityLevel(itemrarity:=0) {
 
 ; aux Worker func for buying from file
 ; called from BuyGearOffMarketFromFile
-global isQualitySpecified := false
 global isMidBuyCycleFromFile := false
 PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", modifier2:="") {
   global
@@ -679,33 +678,31 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   ; STEP 2 - Set Rarity (optional)
   if (itemrarity > 0){ 
     SetMarketPlaceSearchRarityLevel(itemrarity)
-    isQualitySpecified := 1
     SS()
   }
 
   ; STEP 3 - Search by Item Name or Any Ring/Neck/Back
-  if (itemname == "*Ring" or itemname == "*ring") {
+  if (itemname == "*ring") {
     ; Slot:Ring - for any ring searches
     MouseClick "left", 768, 203
     Send "Ring"
     LS()
     TripleOffsetLeftClick_dnd_ui_bug(768, 277)
   }
-  else if (itemname == "*Neck" or itemname == "*neck") {
+  else if (itemname == "*neck") {
     ; Slot:neck - for any neck searches
     MouseClick "left", 768, 203
     Send "Neck"
     LS()
     TripleOffsetLeftClick_dnd_ui_bug(768, 277)
   }
-  else if (itemname == "*Back" or itemname == "*back") {
+  else if (itemname == "*back") {
     ; Slot:back - for any back searches
     MouseClick "left", 768, 203
     Send "Back"
     LS()
     TripleOffsetLeftClick_dnd_ui_bug(768, 277)
-  }
-  else {
+  } else {
     MouseClick "left", 117, 203  ; search dropdown button (already clicked if we didn't set rarity first)
     LS()
     Send itemname 
@@ -756,21 +753,98 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   
   VLS()   ; wait on completion lag
 
-  ; reset globals
-  isQualitySpecified := 0
 }
 
 
 global lastSearchedItem := "na"
 RepurchaseAgain() {
-    MouseClick "left", 1790, 277  ; search button
+  MouseClick "left", 1790, 277  ; search button
+  VLS()     ; wait on search lag
+  MarketplaceBuyCheapest()
+  VLS()    ; cancel time for user delay
+  MouseClick "left", 959, 843  ; complete trade button
+  LS()
+  ; todo, case of non-avaiable item and it not autobacking
+  MouseClick "left", 246, 35   ; back button(good) or leave trade button(bad)
+  ; base case correction
+  SS()
+  MouseClick "left", 1054, 611  ; press no to leave trade button
+  VLS()   ; wait on completion lag
+}
+
+; a subroutine to search up via class/slot
+PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="",modifier1:="",modifier2:="") {
+  global
+
+  ; STEP 1 - Reset Filters or Go To Market
+  if (isMidBuyCycleFromFile) {
+    MouseClick "left", 1800, 200  ; Click 'Reset Filters'
+  }
+  else {
+    GoToMarketplace()
+  }
+
+  LS()
+
+  ; STEP 2 - Set Rarity (optional)
+  if (item_rarity > 0){ 
+    SetMarketPlaceSearchRarityLevel(item_rarity)
+    SS()
+  }
+
+  ; STEP 3 - Set Class
+  MouseClick "left", 688, 203
+  SS()
+  Send class_name
+  SS()
+  HoverMouseThenClick(531, 277)
+  SS()
+
+  ; STEP 4 - Set Slot
+  MouseClick "left", 921, 203
+  SS()
+  Send slot_name
+  SS()
+  HoverMouseThenClick(766, 277)
+  SS()
+
+  ; STEP 5 - Set Static Attribute
+  MouseClick "left", 1398, 203
+  SS()
+  Send static_stat
+  SS()
+  HoverMouseThenClick(1241, 277)
+  SS()
+
+  ; STEP 6 - mods
+
+  if (modifier1 != "") 
+  {
+    MouseClick "left", 1551, 206 ; random attribute location
+    SS()
+    Send modifier1
+    LS()
+    HoverMouseThenClick(1480, 279)
+    LS()
+  }
+
+  if (modifier2 != "") 
+  {
+    MouseClick "left", 1551, 246 ; random attribute location
+    SS()
+    Send modifier2
+    LS()
+    HoverMouseThenClick(1480, 303)   ; location of second thing in attribute search
+    LS()
+  }
+
+  MouseClick "left", 1790, 277  ; search button
   VLS()     ; wait on search lag
 
   MarketplaceBuyCheapest()
   VLS()    ; cancel time for user delay
   MouseClick "left", 959, 843  ; complete trade button
   LS()
-
 
   ; todo, case of non-avaiable item and it not autobacking
   MouseClick "left", 246, 35   ; back button(good) or leave trade button(bad)
@@ -779,10 +853,8 @@ RepurchaseAgain() {
   MouseClick "left", 1054, 611  ; press no to leave trade button
   
   VLS()   ; wait on completion lag
-
-  ; reset globals
-  isQualitySpecified := 0
 }
+
 
 ; Starter Func to buy from filepath
 ; halt buying gives us an option to stop an otherwise very long routine
@@ -806,30 +878,65 @@ BuyGearOffMarketFromFile(filepath)
   ; TRADE FOR THIS LINE
   While (0 = FileObj.AtEOF and haltBuyingFromMarket = false)
   {
+    ; get next line in file
     NewLine := FileObj.ReadLine()
-    PartOfLine := StrSplit(NewLine, ",")
+    ; make it all lower case
+    NewStringLowerCase := StrLower(NewLine)
+    PartOfLine := StrSplit(NewStringLowerCase, ",")
     size := PartOfLine.Length
-    
-    if (size > 0 and StrCompare(lastSearchedItem,PartOfLine[1]) = 0 and isMidBuyCycleFromFile) {
-      RepurchaseAgain()
-      lastSearchedItem := PartOfLine[1]
+
+    ; skip if blank line
+    if (size = 0) 
       continue
+    
+    ; do a quick repurchase routine instead searching same item again
+    ; todo: consider case of same item different mods (bug right now, thus disabling)
+    ; if (StrCompare(lastSearchedItem,PartOfLine[1]) = 0 and isMidBuyCycleFromFile) {
+    ;   RepurchaseAgain()
+    ;   lastSearchedItem := PartOfLine[1]
+    ;   continue
+    ; }
+
+
+    if (
+      PartOfLine[1] == "fighter" or
+      PartOfLine[1] == "barbarian" or
+      PartOfLine[1] == "rogue" or
+      PartOfLine[1] == "ranger" or 
+      PartOfLine[1] == "wizard" or 
+      PartOfLine[1] == "cleric" or 
+      PartOfLine[1] == "bard" or 
+      PartOfLine[1] == "warlock" or 
+      PartOfLine[1] == "druid" or 
+      PartOfLine[1] == "sorcerer") {
+      ; format should be: class_name, slot_name, item_rarity, static_stat, modifier1, modifier2
+      if (size = 6) 
+        PurchasClassSpecific(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4], PartOfLine[5], PartOfLine[6])
+      else if (size = 5)
+        PurchasClassSpecific(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4], PartOfLine[5])
+      else if (size = 4) 
+        PurchasClassSpecific(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4])
+      else 
+        continue
+
     } else {
 
-    }
+      ; todo: consider removing leading and trailing whitespace of each part
 
-    if (size = 5)
-      PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4], PartOfLine[5])
-    else if (size = 4)
-      PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4])
-    else if (size = 3)
-      PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3])
-    else if (size = 2)
-      PurchaseFromMarket(PartOfLine[1], PartOfLine[2])
-    else if (size = 1)
-      PurchaseFromMarket(PartOfLine[1])
-    else
-      continue
+      if (size = 5)
+        PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4], PartOfLine[5])
+      else if (size = 4)
+        PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4])
+      else if (size = 3)
+        PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3])
+      else if (size = 2)
+        PurchaseFromMarket(PartOfLine[1], PartOfLine[2])
+      else if (size = 1)
+        PurchaseFromMarket(PartOfLine[1])
+      else
+        continue
+
+    }
 
     isMidBuyCycleFromFile := true
     lastSearchedItem := PartOfLine[1]
@@ -837,6 +944,7 @@ BuyGearOffMarketFromFile(filepath)
   }
 
   isMidBuyCycleFromFile := false
+  lastSearchedItem := "na"
   FileObj.Close()
 }
 
