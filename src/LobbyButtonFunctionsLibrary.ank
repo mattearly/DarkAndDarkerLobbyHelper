@@ -38,7 +38,7 @@ MS() {
 
 ; short sleep
 SS() {
-  sleep 179 ; probably needs to be higher 
+  sleep 191 ; probably needs to be higher 
 }
 
 ; long sleep
@@ -703,7 +703,7 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     LS()
     TripleOffsetLeftClick_dnd_ui_bug(768, 277)
   } else {
-    MouseClick "left", 117, 203  ; search dropdown button (already clicked if we didn't set rarity first)
+    HoverMouseThenClick(117, 203)  ; search dropdown button
     LS()
     Send itemname 
     LS()
