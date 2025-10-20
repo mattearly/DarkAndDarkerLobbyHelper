@@ -38,7 +38,7 @@ MS() {
 
 ; short sleep
 SS() {
-  sleep 191 ; probably needs to be higher 
+  sleep 179 ; probably needs to be higher 
 }
 
 ; long sleep
@@ -681,22 +681,24 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     SS()
   }
 
+  item_name_leftspaceremoved := LTrim(itemname)
+
   ; STEP 3 - Search by Item Name or Any Ring/Neck/Back
-  if (itemname == "*ring") {
+  if (item_name_leftspaceremoved == "*ring") {
     ; Slot:Ring - for any ring searches
     MouseClick "left", 768, 203
     Send "Ring"
     LS()
     TripleOffsetLeftClick_dnd_ui_bug(768, 277)
   }
-  else if (itemname == "*neck") {
+  else if (item_name_leftspaceremoved == "*neck") {
     ; Slot:neck - for any neck searches
     MouseClick "left", 768, 203
     Send "Neck"
     LS()
     TripleOffsetLeftClick_dnd_ui_bug(768, 277)
   }
-  else if (itemname == "*back") {
+  else if (item_name_leftspaceremoved == "*back") {
     ; Slot:back - for any back searches
     MouseClick "left", 768, 203
     Send "Back"
@@ -705,7 +707,7 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   } else {
     HoverMouseThenClick(117, 203)  ; search dropdown button
     LS()
-    Send itemname 
+    Send item_name_leftspaceremoved 
     LS()
     ; a fix for search results not being first ever, such as hounskull search always has golden version first
     searchoffsetMod := 26 * searchoffset
@@ -717,9 +719,11 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   ; STEP 4 - Add Modifier (optional)
   if (modifier1 != "") 
   {
+    modifier1_leftspaceremoved := LTrim(modifier1)
+
     MouseClick "left", 1551, 206 ; random attribute location
     SS()
-    Send modifier1
+    Send modifier1_leftspaceremoved
     LS()
     HoverMouseThenClick(1480, 279)
     LS()
@@ -728,9 +732,10 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   ; STEP 5 - Add Second Modifier (optional)
   if (modifier2 != "") 
   {
+    modifier2_leftspaceremoved := LTrim(modifier2)
     MouseClick "left", 1551, 246 ; random attribute location
     SS()
-    Send modifier2
+    Send modifier2_leftspaceremoved
     LS()
     HoverMouseThenClick(1480, 303)   ; location of second thing in attribute search
     LS()
