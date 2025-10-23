@@ -11,7 +11,7 @@
 ## requirements
 
   - auto-hotkey v2
-  - Dark and Darker patch 94
+  - Dark and Darker patch 98
     - Have most quests done (as some button locations change for things at different affinity levels)
   - 1920x1080 screen res
   - in Character Lobby
