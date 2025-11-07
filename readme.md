@@ -1,30 +1,30 @@
-# Dark And Darker pre-grame ".ank" scripts
+# Dark And Darker Lobby Helper
 
-## goal
+## Goal
 
   Improve the functionality and convenience of Dark and Darker's pre-game lobby.
 
-## fuctionality
+## Fuctionality
 
-  Use hotkeys to do common things in the pre-game lobby such as buy, sell, market, craft, queue, and more...
+Use hotkeys to do common things in the pre-game lobby such as vendor treasure, transfer inventory, execute buy list on market, reqsuire, go to common crafters, ... and more.
 
-## requirements
+## Requirements
 
-  - auto-hotkey v2
-  - Dark and Darker patch 98
-    - Have most quests done (as some button locations change for things at different affinity levels)
-  - 1920x1080 screen res
-  - in Character Lobby
+  - This version is made for 1920x1080 screen res
+  - Install auto-hotkey v2 productivity tool (this is just what I happend to code it in, but in theory could be done with any coding language).
+  - This version updated for Dark and Darker patch 99
+  - Some fuctions require a minimum in-game Merchant reputation (do your alch/surgeon quests).
+  - Functions are designed to work when logged into a character and in the pre-game lobby.
 
-## how to run
+## How to Run
 
-  0. Have "auto hotkey v2" installed 
+  0. 
   1. Clone/download this repo, Run the script "DarkAndDarkerLobbyHelper.ank"
   2. Launch "Dark and Darker", Log into a character and be in the Pre-Game Lobby at 1920x1080p res (this doesn't work elsewhere)
 
-## default keybinds
+## Dfault Keybinds
 
-  These are set up in "src/Keybinds.ank"
+  These are set up in "src/Keybinds.ank". You can change them if you like in that code file.
   
   - **Left Cntrl** (Or Right Cntrl if there is no overlap (see Right Cntrl below)) +
     - U - Set Volume to Zero (press Esc first)
@@ -76,10 +76,9 @@
     - Z - Vender All Non-Collector Items (waits for confirm)
     - T - Move All Inventory To Stash Routine
 
-## known issues
+## Known Issues
 
-  - there can be issues with the lobby being slower than expected, in which case the delays between clicks must be increased, adjust making delays faster with prejudice as it can exacerbate this problem
+  - there can be issues with the lobby being slower than expected, in which case the delay globals constants need increased in [src/LobbyButtonFunctionsLibrary.ank](src/LobbyButtonFunctionsLibrary.ank)
   - there is an issue with some DaD UI buttons occasionally not functioning. (appears to be an native game UI problem)
-  - the de-equip routine will sometimes throw things in your stash (especially if you are holding down alt (or have that longstanding native bug were DaD thinks you are pressing alt until you tap it again))
-  - Moving your mouse while something is active may cause it to click the wrong place or fail, take hand off mouse while pressing a hotkey for best results
-  - there is an issue with Set Volume were it doesn't work for all lobbies (adventure and arena I've noticed, the left side buttons are apparently in a different location on those modes). 
+  - the de-equip routine will sometimes throw things in your stash (especially if you are holding down alt (or have that longstanding native bug were DaD thinks you are holding alt until you tap it again))
+  - Moving your mouse while a routine is active may click the wrong place or fail, Take hand off mouse after pressing a hotkey for best results

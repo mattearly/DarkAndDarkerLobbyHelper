@@ -30,7 +30,11 @@ Fill each line with a syntax. Market search and purchase based on these setting 
 
 `*neck,0,0,all`
 
-- buys cheapest amulet with +1 all
+- buys cheapest amulet with +1 all 
+
+ `frost am,0,2`
+
+- buys the cheapest epic frost amulet
 
 `fighter,hand,0,dex,true p`
 
@@ -39,3 +43,7 @@ Fill each line with a syntax. Market search and purchase based on these setting 
 `fighter,ches,0,vig,max health`
 
 - buys cheapest fighter chestpiece with white vigor stat and max health enchant
+
+`sturdy boots,0,2`
+
+- buys the cheapest epic sturdy boots

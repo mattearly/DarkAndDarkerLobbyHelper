@@ -650,3 +650,4 @@ global gearBuyingInProgress := false
     HaltGearBuying()
   }
 }
+
