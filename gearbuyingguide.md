@@ -28,4 +28,22 @@ Fill each line with a syntax. Market search and purchase based on these setting 
 
 - buys cheapest ring with +1 all and true physical damage
 
+`*neck,0,0,all`
 
+- buys cheapest amulet with +1 all 
+
+ `frost am,0,2`
+
+- buys the cheapest epic frost amulet
+
+`fighter,hand,0,dex,true p`
+
+- buys cheapest fighter gloves with white dex stat and true physical damage enchant
+
+`fighter,ches,0,vig,max health`
+
+- buys cheapest fighter chestpiece with white vigor stat and max health enchant
+
+`sturdy boots,0,2`
+
+- buys the cheapest epic sturdy boots

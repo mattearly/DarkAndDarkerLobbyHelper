@@ -517,7 +517,6 @@ TransferInventory() {
       val2 := TransferInventory_LocBeforeFirstCell[2] + A_Index * TransferInventory_CellSize
       MouseClick "right", val1, val2
       MS()
-      MS()
     }
   }
   Send "{Shift up}"
@@ -760,8 +759,7 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
 
 }
 
-
-global lastSearchedItem := "na"
+; a subroutine to buy another of the same item you are already on in the trade
 RepurchaseAgain() {
   MouseClick "left", 1790, 277  ; search button
   VLS()     ; wait on search lag
@@ -788,11 +786,10 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
   else {
     GoToMarketplace()
   }
-
   LS()
 
   ; STEP 2 - Set Rarity (optional)
-  if (item_rarity > 0){ 
+  if (item_rarity > 0) {
     SetMarketPlaceSearchRarityLevel(item_rarity)
     SS()
   }
@@ -902,7 +899,7 @@ BuyGearOffMarketFromFile(filepath)
     ;   continue
     ; }
 
-
+    ; CLASS CASE
     if (
       PartOfLine[1] == "fighter" or
       PartOfLine[1] == "barbarian" or
@@ -924,10 +921,8 @@ BuyGearOffMarketFromFile(filepath)
       else 
         continue
 
+    ; ITEM NAME CASE
     } else {
-
-      ; todo: consider removing leading and trailing whitespace of each part
-
       if (size = 5)
         PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4], PartOfLine[5])
       else if (size = 4)
@@ -944,12 +939,10 @@ BuyGearOffMarketFromFile(filepath)
     }
 
     isMidBuyCycleFromFile := true
-    lastSearchedItem := PartOfLine[1]
   
   }
 
   isMidBuyCycleFromFile := false
-  lastSearchedItem := "na"
   FileObj.Close()
 }
 
