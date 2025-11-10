@@ -12,13 +12,10 @@ Use hotkeys to do common things in the pre-game lobby such as vendor treasure, t
 
   - This version is made for 1920x1080 screen res
   - Install auto-hotkey v2 productivity tool (this is just what I happend to code it in, but in theory could be done with any coding language).
-  - This version updated for Dark and Darker patch 99
-  - Some fuctions require a minimum in-game Merchant reputation (do your alch/surgeon quests).
   - Functions are designed to work when logged into a character and in the pre-game lobby.
 
 ## How to Run
 
-  0. 
   1. Clone/download this repo, Run the script "DarkAndDarkerLobbyHelper.ank"
   2. Launch "Dark and Darker", Log into a character and be in the Pre-Game Lobby at 1920x1080p res (this doesn't work elsewhere)
 
@@ -82,3 +79,4 @@ Use hotkeys to do common things in the pre-game lobby such as vendor treasure, t
   - there is an issue with some DaD UI buttons occasionally not functioning. (appears to be an native game UI problem)
   - the de-equip routine will sometimes throw things in your stash (especially if you are holding down alt (or have that longstanding native bug were DaD thinks you are holding alt until you tap it again))
   - Moving your mouse while a routine is active may click the wrong place or fail, Take hand off mouse after pressing a hotkey for best results
+  - Some fuctions require a minimum in-game Merchant reputation (do your alch/surgeon quests to get the green potion and bandage unlock for the invest med buying func)
