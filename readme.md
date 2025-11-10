@@ -19,7 +19,7 @@ Use hotkeys to do common things in the pre-game lobby such as vendor treasure, t
   1. Clone/download this repo, Run the script "DarkAndDarkerLobbyHelper.ank"
   2. Launch "Dark and Darker", Log into a character and be in the Pre-Game Lobby at 1920x1080p res (this doesn't work elsewhere)
 
-## Dfault Keybinds
+## Default Keybinds
 
 These are set up in "src/Keybinds.ank". You can change them if you like in that code file.
   
