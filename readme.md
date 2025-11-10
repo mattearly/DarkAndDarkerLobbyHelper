@@ -2,7 +2,7 @@
 
 ## Goal
 
-  Improve the functionality and convenience of Dark and Darker's pre-game lobby.
+Improve the functionality and convenience of Dark and Darker's pre-game lobby.
 
 ## Fuctionality
 
@@ -21,7 +21,7 @@ Use hotkeys to do common things in the pre-game lobby such as vendor treasure, t
 
 ## Dfault Keybinds
 
-  These are set up in "src/Keybinds.ank". You can change them if you like in that code file.
+These are set up in "src/Keybinds.ank". You can change them if you like in that code file.
   
   - **Left Cntrl** (Or Right Cntrl if there is no overlap (see Right Cntrl below)) +
     - U - Set Volume to Zero (press Esc first)
