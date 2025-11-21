@@ -34,11 +34,10 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - numpad7 - Sell at Collector
     - numpad8 - Sell at Vendor
     - numpad9 - Go To Marketplace Search
-    - numpadSub - Buy 12 Bandages
-    - numpadAdd - Buy 12 Potions
-    - numpadAdd - Buy 12 Potions
-    - B - Buy 12 Bandages
-    - O - Buy 12 Potions
+    - numpadSub - Buy 15 Bandages
+    - numpadAdd - Buy 15 Potions
+    - B - Buy 15 Bandages
+    - O - Buy 15 Potions
     - P - Go To Class Spec
     - 5 - Go To Goblin Purchase
     - 6 - Go To Alchemist Service

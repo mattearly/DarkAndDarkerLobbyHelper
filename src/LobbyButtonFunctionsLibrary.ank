@@ -10,9 +10,9 @@
 
 
 ; all locations should probably be defined like this for ease of updating (todo)
-; merchant loc notes:
-;    270 column 1, 500 col 2, 730, 970, 1200, 1420, 1650
-;    300 row 1, 600 row 2, 900 
+; merchant loc notes for their 1920x1080 grid:
+;    col1: 270, col2: 500, col3:730, col4:970, col5:1200, col6:1420, col7:1650
+;    row1: 300, row2: 600, row3: 900 
 
 global AlchemistLoc       := [270, 300]
 global ArmourerLoc        := [500, 300]
@@ -28,12 +28,15 @@ global CollectorLoc       := [720, 900]
 global SmithLoc           := [1200, 900]
 global WoodsmanLoc        := [1420, 900]
 global FortuneTellerLoc   := [1420, 300]
+
+; other locations
 global ThirdCharDownLoc   := [1600, 300]
 global OptionsLoc         := [219, 550]
+global QuickFillLoc       := [950, 930]
 
 ; mini sleep
 MS() {
-  sleep 21 ; to help with speeding up tool
+  sleep 23 ; to help with speeding up tool
 }
 
 ; short sleep
@@ -77,9 +80,9 @@ GlobalBack() {
   LS()
 }
 
-; aux function
+; aux function 
+; note: likely not needed since patch 100 added a fill button which we will probably just use instead
 ClickEntireInventory() {
-
   ; click every cell
   BeforeFirstCell := [1420, 600]
   CellSize := 41
@@ -293,21 +296,7 @@ GoToSellAtVendor() {
   GlobalBack()
   GoToAlchemist()
   SS()
-
-  ;  DISCLAIMER IF UR READING THIS CODE
-  ;  I don't know what is wrong with this dang "sell" button, but it just won't register sometimes.
-  ;  That is why we click all over the screen here, trying to get it to realize that the sell button is clickable afterall. 
-  ;  This problem seems to be a bug with the game's interface
-
-  ; Various non-sense clicks to try to fix ironmace bug
-  MouseClick "left", 463, 205  ; click to the right first because sometimes it bugs the button is unclickable until you click somewhere else
-  MS()
-  MouseClick "left", 462, 204  ; and again because wut is wrong with this thing
-  MS()   
-  MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
-  SS()
-    
-  MouseClick "left", 333, 205  ; sell loc
+  HoverMouseThenClick(333, 205)   ; sell tab button location
 }
 
 GoToSurgeon() {
@@ -383,7 +372,7 @@ GetAllFromGoblin() {
 
 CockatriceGather() {
   GoToCockatrice()
-    LS()
+  LS()
   MouseClick "left", 296, 139  ; Service button
   LS()
   MouseClick "left", 306, 1011  ; select all button
@@ -423,7 +412,7 @@ BuyALotOfBandages() {
     MouseClick "left", 1013, 604  ; click on increase
     MS()
   }
-  Loop 2 { 
+  Loop 3 { 
     SS()
     FillAllMakeDeal()
   }
@@ -454,7 +443,7 @@ BuyALotOfPotions() {
     MS()
     MS()
   }
-  Loop 2 {
+  Loop 3 {
     SS()
     FillAllMakeDeal()
   }
@@ -479,13 +468,13 @@ HotswapCharacters() {
 VendorEntireInventoryOfCollectables() {
   GoToCollector()  ; starts with GlobalBack
   SS()
-  ClickEntireInventory()
+  HoverMouseThenClick(QuickFillLoc[1],QuickFillLoc[2])
 }
 
 VendorEntireInventoryOfNonCollectables() {
   GoToSellAtVendor()
   SS()
-  ClickEntireInventory()
+  HoverMouseThenClick(QuickFillLoc[1],QuickFillLoc[2])
 } 
 
 ; Sells your inventory with NO confirmation (Dangerous)
@@ -502,7 +491,6 @@ DoubleSellInventoryFullConfirm() {
   VendorEntireInventoryOfNonCollectables()
   LS()
   MouseClick "left", 963, 992  ; click make deal
-  
 }
 
 ; use when in stash to move entire inventory in one go
@@ -594,20 +582,18 @@ BuyOutGreenMeds() {
   ; MouseClick "left", 72, 290
   ; LS()
   ; FillAllMakeDeal()
-
 }
 
-; press esc first and then this
+; press ESC first and then this
 SetVolumeToZero() {
-
-; click options
+    ; click options
     MouseClick "left", optionsloc[1], optionsloc[2] 
     MS()
-; click audio 1030, 40
+    ; click audio 1030, 40
     MouseClick "left", 1030, 40 
     MS() 
     MS()
-; click zero area 890, 212
+    ; click zero area 890, 212
     MouseClick "left", 890, 212 
     MS() 
     MS()
@@ -619,19 +605,19 @@ SetVolumeToZero() {
 
 ; press escape first and then this
 SetVolumeToFifty() {
-; click options
+    ; click options
     MouseClick "left", optionsloc[1], optionsloc[2] 
     MS() 
     MS()
-; click audio 1030, 40
+    ; click audio 1030, 40
     MouseClick "left", 1030, 40 
     MS() 
     MS()
-; click fifty area 998, 215
+    ; click fifty area 998, 215
     MouseClick "left", 998, 215 
     MS() 
     MS()
-; click apply
+    ; click apply
     MouseClick "left", 1060, 1040 
     MS() 
     MS()
@@ -756,7 +742,6 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   MouseClick "left", 1054, 611  ; press no to leave trade button
   
   VLS()   ; wait on completion lag
-
 }
 
 ; a subroutine to buy another of the same item you are already on in the trade
@@ -857,12 +842,10 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
   VLS()   ; wait on completion lag
 }
 
-
 ; Starter Func to buy from filepath
 ; halt buying gives us an option to stop an otherwise very long routine
 global haltBuyingFromMarket := false
-BuyGearOffMarketFromFile(filepath) 
-{
+BuyGearOffMarketFromFile(filepath) {
   global
   haltBuyingFromMarket := false
 
