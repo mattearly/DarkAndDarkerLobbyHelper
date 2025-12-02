@@ -468,13 +468,21 @@ HotswapCharacters() {
 VendorEntireInventoryOfCollectables() {
   GoToCollector()  ; starts with GlobalBack
   SS()
-  HoverMouseThenClick(QuickFillLoc[1],QuickFillLoc[2])
+
+  ; HoverMouseThenClick(QuickFillLoc[1],QuickFillLoc[2])
+
+  ; faster than quickfill after patch 100
+  ClickEntireInventory()
 }
 
 VendorEntireInventoryOfNonCollectables() {
   GoToSellAtVendor()
   SS()
-  HoverMouseThenClick(QuickFillLoc[1],QuickFillLoc[2])
+  
+  ; HoverMouseThenClick(QuickFillLoc[1],QuickFillLoc[2])
+
+  ; faster than quickfill after patch 100
+  ClickEntireInventory()
 } 
 
 ; Sells your inventory with NO confirmation (Dangerous)
@@ -653,12 +661,13 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   ; STEP 1 - Reset Filters or Go To Market
   if (isMidBuyCycleFromFile) {
     MouseClick "left", 1800, 200  ; Click 'Reset Filters'
+    LS()
   }
   else {
     GoToMarketplace()
+    LS()
+    LS()
   }
-
-  LS()
 
   ; STEP 2 - Set Rarity (optional)
   if (itemrarity > 0){ 
@@ -849,11 +858,8 @@ BuyGearOffMarketFromFile(filepath) {
   global
   haltBuyingFromMarket := false
 
-  ; these variables are for a repeated search function for
-  ; if the item search
-  ; was a single item name search with no modifiers
+  ; these variables are for a repeated buy function if search is exact same
   lastSearchedItem := ""
-  lastWasSingle := false
 
   try
     FileObj := FileOpen(filepath, "r")
@@ -871,17 +877,33 @@ BuyGearOffMarketFromFile(filepath) {
   {
     ; get next line in file
     NewLine := FileObj.ReadLine()
+
+    ; skip to next line if this one was blank
+    if (NewLine = "")   
+      continue
+
     ; make it all lower case
     NewStringLowerCase := StrLower(NewLine)
+    
+
+    ; re-do last buy option if same as last search
+    ; repeated buy
+    if (StrCompare(lastSearchedItem,NewStringLowerCase) = 0 and isMidBuyCycleFromFile) {
+      RepurchaseAgain()
+      continue
+    }
+
+    lastSearchedItem := NewStringLowerCase
+
+    ; split to parts for processing
     PartOfLine := StrSplit(NewStringLowerCase, ",")
     size := PartOfLine.Length
 
-    ; skip if blank line
+    ; skip to next line if there is nothing to process (might be redundant)
     if (size = 0) 
       continue
-    
-    ; CLASS CASE
-    if (
+
+    if (  
       PartOfLine[1] == "fighter" or
       PartOfLine[1] == "barbarian" or
       PartOfLine[1] == "rogue" or
@@ -891,7 +913,8 @@ BuyGearOffMarketFromFile(filepath) {
       PartOfLine[1] == "bard" or 
       PartOfLine[1] == "warlock" or 
       PartOfLine[1] == "druid" or 
-      PartOfLine[1] == "sorcerer") {
+      PartOfLine[1] == "sorcerer") {       ; CLASS CASE
+
       ; format should be: class_name, slot_name, item_rarity, static_stat, modifier1, modifier2
       if (size = 6) 
         PurchasClassSpecific(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4], PartOfLine[5], PartOfLine[6])
@@ -902,11 +925,9 @@ BuyGearOffMarketFromFile(filepath) {
       else 
         continue
 
-    ; ITEM NAME CASE
-    } else {
+    } else {          ; ITEM NAME CASE
 
-
-
+      ; format should be: item_name, name_offset, item_rarity, modifier1, modifier2
       if (size = 5)
         PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3], PartOfLine[4], PartOfLine[5])
       else if (size = 4)
@@ -915,29 +936,13 @@ BuyGearOffMarketFromFile(filepath) {
         PurchaseFromMarket(PartOfLine[1], PartOfLine[2], PartOfLine[3])
       else if (size = 2)
         PurchaseFromMarket(PartOfLine[1], PartOfLine[2])
-      else if (size = 1) {
-
-        ; repeated search for size 1 searches only
-        if (StrCompare(lastSearchedItem,PartOfLine[1]) = 0 and isMidBuyCycleFromFile and lastWasSingle) {
-          RepurchaseAgain()
-        } else {
-          PurchaseFromMarket(PartOfLine[1])
-          lastSearchedItem := PartOfLine[1]
-          lastWasSingle := true
-        }
-
-
-      }
+      else if (size = 1)
+        PurchaseFromMarket(PartOfLine[1])
       else
         continue
     }
     isMidBuyCycleFromFile := true
-    if (size != 1) {
-      lastWasSingle := false
-      lastSearchedItem := ""
-    }
   }
-
   isMidBuyCycleFromFile := false
   FileObj.Close()
 }

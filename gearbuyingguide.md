@@ -15,6 +15,7 @@ Fill each line with a syntax. Market search and purchase based on these setting 
 ## definitions
 
 ### item_rarity
+
 - 0 = none specified
 - 1 = rare
 - 2 = epic
