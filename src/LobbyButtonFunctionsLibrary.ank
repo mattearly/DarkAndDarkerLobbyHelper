@@ -661,7 +661,7 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   ; STEP 1 - Reset Filters or Go To Market
   if (isMidBuyCycleFromFile) {
     MouseClick "left", 1800, 200  ; Click 'Reset Filters'
-    LS()
+    SS()
   }
   else {
     GoToMarketplace()
@@ -672,7 +672,7 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   ; STEP 2 - Set Rarity (optional)
   if (itemrarity > 0){ 
     SetMarketPlaceSearchRarityLevel(itemrarity)
-    SS()
+    MS()
   }
 
   item_name_leftspaceremoved := LTrim(itemname)
@@ -682,30 +682,30 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     ; Slot:Ring - for any ring searches
     MouseClick "left", 768, 203
     Send "Ring"
-    LS()
-    TripleOffsetLeftClick_dnd_ui_bug(768, 277)
+    SS()
+    HoverMouseThenClick(768, 277)
   }
   else if (item_name_leftspaceremoved == "*neck") {
     ; Slot:neck - for any neck searches
     MouseClick "left", 768, 203
     Send "Neck"
-    LS()
-    TripleOffsetLeftClick_dnd_ui_bug(768, 277)
+    SS()
+    HoverMouseThenClick(768, 277)
   }
   else if (item_name_leftspaceremoved == "*back") {
     ; Slot:back - for any back searches
     MouseClick "left", 768, 203
     Send "Back"
-    LS()
-    TripleOffsetLeftClick_dnd_ui_bug(768, 277)
+    SS()
+    HoverMouseThenClick(768, 277)
   } else {
     HoverMouseThenClick(117, 203)  ; search dropdown button
-    LS()
+    SS()
     Send item_name_leftspaceremoved 
-    LS()
+    SS()
     ; a fix for search results not being first ever, such as hounskull search always has golden version first
     searchoffsetMod := 26 * searchoffset
-    TripleOffsetLeftClick_dnd_ui_bug(60, 279 + searchoffsetMod)
+    HoverMouseThenClick(60, 279 + searchoffsetMod)
   }
   
   LS()
@@ -718,9 +718,9 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     MouseClick "left", 1551, 206 ; random attribute location
     SS()
     Send modifier1_leftspaceremoved
-    LS()
+    SS()
     HoverMouseThenClick(1480, 279)
-    LS()
+    SS()
   }
 
   ; STEP 5 - Add Second Modifier (optional)
@@ -730,9 +730,9 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     MouseClick "left", 1551, 246 ; random attribute location
     SS()
     Send modifier2_leftspaceremoved
-    LS()
+    SS()
     HoverMouseThenClick(1480, 303)   ; location of second thing in attribute search
-    LS()
+    SS()
   }
 
   MouseClick "left", 1790, 277  ; search button
@@ -741,16 +741,16 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   MarketplaceBuyCheapest()
   VLS()    ; cancel time for user delay
   MouseClick "left", 959, 843  ; complete trade button
-  LS()
+  SS()
 
 
   ; todo, case of non-avaiable item and it not autobacking
   MouseClick "left", 246, 35   ; back button(good) or leave trade button(bad)
   ; base case correction
-  SS()
+  MS()
   MouseClick "left", 1054, 611  ; press no to leave trade button
   
-  VLS()   ; wait on completion lag
+  LS()   ; wait on completion lag
 }
 
 ; a subroutine to buy another of the same item you are already on in the trade
