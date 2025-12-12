@@ -24,7 +24,7 @@ Use hotkeys to do common things in the pre-game lobby such as vendor treasure, t
 These are set up in "src/Keybinds.ank". You can change them if you like in that code file.
   
   - **Left Cntrl** (Or Right Cntrl if there is no overlap (see Right Cntrl below)) +
-    - U - Set Volume to Zero (press Esc first)
+    - U - Set Volume to 1 (press Esc first)
     - numpad0 - Insta-Queue - a dangerous but speedy button
     - numpad2 - Hotswap Characters (go to prev character)
     - numpad3 - Go to Squire and fill
@@ -47,7 +47,7 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - 0 - Go to Weaponsmith Service
 
   - **Right Cntrl** + 
-    - U - Set Volume to Fifty (press Esc first)
+    - U - Set Volume to 100 (press Esc first)
     - numpadSub - Buy 6 Bandages
     - numpadAdd - Buy 6 Potions
     - B - Buy 6 Bandages

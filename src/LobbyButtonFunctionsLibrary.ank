@@ -601,8 +601,8 @@ SetVolumeToZero() {
     MouseClick "left", 1030, 40 
     MS() 
     MS()
-    ; click zero area 890, 212
-    MouseClick "left", 890, 212 
+    ; click ONE area 890, 212
+    MouseClick "left", 909, 212 
     MS() 
     MS()
     ; click apply
@@ -621,8 +621,8 @@ SetVolumeToFifty() {
     MouseClick "left", 1030, 40 
     MS() 
     MS()
-    ; click fifty area 998, 215
-    MouseClick "left", 998, 215 
+    ; click ONEHUNDRED area 998, 215
+    MouseClick "left", 1092, 215 
     MS() 
     MS()
     ; click apply
@@ -805,12 +805,12 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
   SS()
 
   ; STEP 5 - Set Static Attribute
-  MouseClick "left", 1398, 203
-  SS()
-  Send static_stat
-  SS()
-  HoverMouseThenClick(1241, 277)
-  SS()
+    MouseClick "left", 1398, 203
+    SS()
+    Send static_stat
+    SS()
+    HoverMouseThenClick(1241, 277)
+    SS()
 
   ; STEP 6 - mods
 
