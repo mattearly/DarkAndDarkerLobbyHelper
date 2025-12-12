@@ -804,13 +804,15 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
   HoverMouseThenClick(766, 277)
   SS()
 
-  ; STEP 5 - Set Static Attribute
+  ; STEP 5 - Set Static Attribute (optional)
+  if (static_stat != "") {
     MouseClick "left", 1398, 203
     SS()
     Send static_stat
     SS()
     HoverMouseThenClick(1241, 277)
     SS()
+  }
 
   ; STEP 6 - mods
 
