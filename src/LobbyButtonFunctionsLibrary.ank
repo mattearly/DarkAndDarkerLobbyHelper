@@ -24,10 +24,11 @@ global LeathersmithLoc    := [950, 600]
 global SquireLoc          := [1420, 600]
 global SurgeonLoc         := [1650, 600]
 global TailorLoc          := [270, 900]
-global CollectorLoc       := [720, 900]
+global CollectorLoc       := [730, 900]
 global SmithLoc           := [1200, 900]
 global WoodsmanLoc        := [1420, 900]
 global FortuneTellerLoc   := [1420, 300]
+global HolidayMerchantLoc := [730, 600]
 
 ; other locations
 global ThirdCharDownLoc   := [1600, 300]
@@ -159,6 +160,14 @@ GoToGoldSmith() {
   SS()
   MouseClick "left", GoldsmithLoc[1], GoldsmithLoc[2]
 }
+
+GoToJacko() {
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  SS()
+  MouseClick "left", HolidayMerchantLoc[1], HolidayMerchantLoc[2]
+}
+
 
 GoToAlchemist() {
   GlobalBack()
@@ -590,6 +599,9 @@ BuyOutGreenMeds() {
   ; MouseClick "left", 72, 290
   ; LS()
   ; FillAllMakeDeal()
+
+  ; bonus: end on jackolantern
+  GoToJacko()
 }
 
 ; press ESC first and then this
@@ -665,8 +677,7 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   }
   else {
     GoToMarketplace()
-    LS()
-    LS()
+    VLS()
   }
 
   ; STEP 2 - Set Rarity (optional)
