@@ -651,3 +651,17 @@ global gearBuyingInProgress := false
   }
 }
 
+; make a crystal frost ring (full)
+; rightcntrl + alt + c
+#HotIf WinActive("Dark and Darker")
+>^!c:: {
+  global
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  CraftACrystalFrostRingFromScratch()
+  Unlock()
+}
+

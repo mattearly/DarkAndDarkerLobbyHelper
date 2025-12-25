@@ -71,6 +71,7 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - V - Go To Vendor
     - Z - Vender All Non-Collector Items (waits for confirm)
     - T - Move All Inventory To Stash Routine
+    - Alt+C - One button to Crystal Frost Ring. Full craft routine. Buys from market all required mats(3.5k gold cost, varies on market) and performs required crafting. (arena sff helper testing case example)
 
 ## Known Issues
 

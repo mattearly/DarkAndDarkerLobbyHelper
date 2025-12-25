@@ -168,7 +168,6 @@ GoToJacko() {
   MouseClick "left", HolidayMerchantLoc[1], HolidayMerchantLoc[2]
 }
 
-
 GoToAlchemist() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
@@ -239,6 +238,13 @@ GoToCockatrice(){
   MouseClick "left", CockatriceLoc[1], CockatriceLoc[2] 
 }
 
+GoToCollector() {
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", CollectorLoc[1], CollectorLoc[2]
+}
+
 GoToSquireAndFill() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
@@ -273,7 +279,6 @@ GoToSquireAndFill() {
   MouseClick "left", 955, 992 ; click Equip Base Gear
   MS()
   MouseClick "left", 953, 991 ; click Equip Base Gear again (sometimes doesn't register first time)
-
 }
 
 FullSquireReset() {
@@ -299,7 +304,6 @@ FullSquireReset() {
 
   GoToSquireAndFill()
 }
-
 
 GoToSellAtVendor() {
   GlobalBack()
@@ -335,12 +339,6 @@ GoToMarketplace() {
   MouseClick "left", 1191, 247  ; marketplace button location
 }
 
-GoToCollector() {
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
-  LS()
-  MouseClick "left", CollectorLoc[1], CollectorLoc[2]
-}
 
 GoToWoodsman() {
   GlobalBack()
@@ -492,6 +490,39 @@ VendorEntireInventoryOfNonCollectables() {
   ; faster than quickfill after patch 100
   ClickEntireInventory()
 } 
+
+; aux function
+MakeCobaltIngot(num_to_craft) {
+  GoToArmorerService()
+  LS()
+  HoverMouseThenClick(98, 275)  ; click cobalt
+  LS()
+
+  loop(num_to_craft) {
+    if (A_Index > 1)   ; sleep if on multi iteration, rather than always trailing sleep (faster)
+      LS()
+    HoverMouseThenClick(950, 900) ; click fill
+    LS()
+    HoverMouseThenClick(950, 975) ; click make
+  }
+}
+
+; aux function
+MakeCrystalFrostRing(num_to_craft) {
+  GoToAlchemistService()   ; comes up blank for some reason
+  VLS()
+  HoverMouseThenClick(490, 260)  ; click crystalfrostring
+  LS()
+
+  loop(num_to_craft) {
+    if (A_Index > 1)   ; sleep if on multi iteration, rather than always trailing sleep (faster)
+      LS()
+    HoverMouseThenClick(950, 900) ; click fill
+    LS()
+    HoverMouseThenClick(950, 975) ; click make
+  }
+}
+
 
 ; Sells your inventory with NO confirmation (Dangerous)
 ; this dumps your inventory to vendors
@@ -962,4 +993,21 @@ BuyGearOffMarketFromFile(filepath) {
 HaltGearBuying() {
   global
   haltBuyingFromMarket := true
+}
+
+; arena helper
+CraftACrystalFrostRingFromScratch() {
+  ; buy needed stuff
+  GoToMarketplace()
+  PurchaseFromMarket("frozen heart")
+  PurchaseFromMarket("cobalt ore")
+
+  ; make ore into ignot
+  MakeCobaltIngot(2)
+  
+  VLS()
+  
+  ; make ring
+  MakeCrystalFrostRing(1)
+
 }
