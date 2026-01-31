@@ -15,23 +15,24 @@
 ;    row1: 300, row2: 600, row3: 900 
 
 global AlchemistLoc       := [270, 300]
-global ArmourerLoc        := [500, 300]
-global CockatriceLoc      := [730, 300]
+global SurgeonLoc         := [490, 300]
+global CollectorLoc       := [730, 300]
+global SquireLoc          := [950, 300]
 global ExpressmanLoc      := [1200, 300]
 global GoblinLoc          := [1650, 300]
-global GoldsmithLoc       := [270, 600]
-global LeathersmithLoc    := [950, 600]
-global SquireLoc          := [1420, 600]
-global SurgeonLoc         := [1650, 600]
-global TailorLoc          := [270, 900]
-global CollectorLoc       := [730, 900]
-global SmithLoc           := [1200, 900]
-global WoodsmanLoc        := [1420, 900]
-global FortuneTellerLoc   := [1420, 300]
-global HolidayMerchantLoc := [730, 600]
+
+global ArmourerLoc        := [270, 600]
+global SmithLoc           := [490, 600]
+global WoodsmanLoc        := [730, 600]
+global TailorLoc          := [970, 600]
+global LeathersmithLoc    := [1200, 600]
+
+global GoldsmithLoc       := [270, 900]
+global FortuneTellerLoc   := [490, 900]
+global CockatriceLoc      := [1660, 900]
 
 ; other locations
-global ThirdCharDownLoc   := [1600, 300]
+global SecondCharDownLoc   := [1600, 300]
 global OptionsLoc         := [219, 550]
 global QuickFillLoc       := [950, 930]
 
@@ -159,13 +160,6 @@ GoToGoldSmith() {
   MouseClick "left", 982, 31  ; top merchant button
   SS()
   MouseClick "left", GoldsmithLoc[1], GoldsmithLoc[2]
-}
-
-GoToJacko() {
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
-  SS()
-  MouseClick "left", HolidayMerchantLoc[1], HolidayMerchantLoc[2]
 }
 
 GoToAlchemist() {
