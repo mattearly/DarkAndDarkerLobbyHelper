@@ -15,23 +15,24 @@
 ;    row1: 300, row2: 600, row3: 900 
 
 global AlchemistLoc       := [270, 300]
-global ArmourerLoc        := [500, 300]
-global CockatriceLoc      := [730, 300]
+global SurgeonLoc         := [490, 300]
+global CollectorLoc       := [730, 300]
+global SquireLoc          := [950, 300]
 global ExpressmanLoc      := [1200, 300]
 global GoblinLoc          := [1650, 300]
-global GoldsmithLoc       := [270, 600]
-global LeathersmithLoc    := [950, 600]
-global SquireLoc          := [1420, 600]
-global SurgeonLoc         := [1650, 600]
-global TailorLoc          := [270, 900]
-global CollectorLoc       := [730, 900]
-global SmithLoc           := [1200, 900]
-global WoodsmanLoc        := [1420, 900]
-global FortuneTellerLoc   := [1420, 300]
-global HolidayMerchantLoc := [730, 600]
+
+global ArmourerLoc        := [270, 600]
+global SmithLoc           := [490, 600]
+global WoodsmanLoc        := [730, 600]
+global TailorLoc          := [970, 600]
+global LeathersmithLoc    := [1200, 600]
+
+global GoldsmithLoc       := [270, 900]
+global FortuneTellerLoc   := [490, 900]
+global CockatriceLoc      := [1660, 900]
 
 ; other locations
-global ThirdCharDownLoc   := [1600, 300]
+global SecondCharDownLoc   := [1600, 300]
 global OptionsLoc         := [219, 550]
 global QuickFillLoc       := [950, 930]
 
@@ -161,14 +162,6 @@ GoToGoldSmith() {
   MouseClick "left", GoldsmithLoc[1], GoldsmithLoc[2]
 }
 
-GoToJacko() {
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
-  SS()
-  MouseClick "left", HolidayMerchantLoc[1], HolidayMerchantLoc[2]
-}
-
-
 GoToAlchemist() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
@@ -239,6 +232,13 @@ GoToCockatrice(){
   MouseClick "left", CockatriceLoc[1], CockatriceLoc[2] 
 }
 
+GoToCollector() {
+  GlobalBack()
+  MouseClick "left", 982, 31  ; top merchant button
+  LS()
+  MouseClick "left", CollectorLoc[1], CollectorLoc[2]
+}
+
 GoToSquireAndFill() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
@@ -273,7 +273,6 @@ GoToSquireAndFill() {
   MouseClick "left", 955, 992 ; click Equip Base Gear
   MS()
   MouseClick "left", 953, 991 ; click Equip Base Gear again (sometimes doesn't register first time)
-
 }
 
 FullSquireReset() {
@@ -299,7 +298,6 @@ FullSquireReset() {
 
   GoToSquireAndFill()
 }
-
 
 GoToSellAtVendor() {
   GlobalBack()
@@ -335,12 +333,6 @@ GoToMarketplace() {
   MouseClick "left", 1191, 247  ; marketplace button location
 }
 
-GoToCollector() {
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
-  LS()
-  MouseClick "left", CollectorLoc[1], CollectorLoc[2]
-}
 
 GoToWoodsman() {
   GlobalBack()
@@ -492,6 +484,39 @@ VendorEntireInventoryOfNonCollectables() {
   ; faster than quickfill after patch 100
   ClickEntireInventory()
 } 
+
+; aux function
+MakeCobaltIngot(num_to_craft) {
+  GoToArmorerService()
+  LS()
+  HoverMouseThenClick(98, 275)  ; click cobalt
+  LS()
+
+  loop(num_to_craft) {
+    if (A_Index > 1)   ; sleep if on multi iteration, rather than always trailing sleep (faster)
+      LS()
+    HoverMouseThenClick(950, 900) ; click fill
+    LS()
+    HoverMouseThenClick(950, 975) ; click make
+  }
+}
+
+; aux function
+MakeCrystalFrostRing(num_to_craft) {
+  GoToAlchemistService()   ; comes up blank for some reason
+  VLS()
+  HoverMouseThenClick(490, 260)  ; click crystalfrostring
+  LS()
+
+  loop(num_to_craft) {
+    if (A_Index > 1)   ; sleep if on multi iteration, rather than always trailing sleep (faster)
+      LS()
+    HoverMouseThenClick(950, 900) ; click fill
+    LS()
+    HoverMouseThenClick(950, 975) ; click make
+  }
+}
+
 
 ; Sells your inventory with NO confirmation (Dangerous)
 ; this dumps your inventory to vendors
@@ -962,4 +987,21 @@ BuyGearOffMarketFromFile(filepath) {
 HaltGearBuying() {
   global
   haltBuyingFromMarket := true
+}
+
+; arena helper
+CraftACrystalFrostRingFromScratch() {
+  ; buy needed stuff
+  GoToMarketplace()
+  PurchaseFromMarket("frozen heart")
+  PurchaseFromMarket("cobalt ore")
+
+  ; make ore into ignot
+  MakeCobaltIngot(2)
+  
+  VLS()
+  
+  ; make ring
+  MakeCrystalFrostRing(1)
+
 }
