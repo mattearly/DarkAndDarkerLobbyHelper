@@ -33,8 +33,9 @@ global CockatriceLoc      := [1660, 900]
 
 ; other locations
 global SecondCharDownLoc   := [1600, 300]
-global OptionsLoc         := [219, 550]
+global OptionsLoc         := [213, 550]
 global QuickFillLoc       := [950, 930]
+global AudioOptionsLoc          := [938, 40]
 
 ; mini sleep
 MS() {
@@ -630,15 +631,15 @@ BuyOutGreenMeds() {
 
 ; press ESC first and then this
 SetVolumeToZero() {
+  global
     ; click options
-    MouseClick "left", optionsloc[1], optionsloc[2] 
+    MouseClick "left", OptionsLoc[1], OptionsLoc[2] 
     MS()
-    ; click audio 1030, 40
-    MouseClick "left", 1030, 40 
-    MS() 
+    MouseClick "left", AudioOptionsLoc[1], AudioOptionsLoc[2]
     MS()
-    ; click ONE area 890, 212
-    MouseClick "left", 909, 212 
+    MS()
+    ; click TWO out of ONE HUNDRED
+    MouseClick "left", 897, 232 
     MS() 
     MS()
     ; click apply
@@ -649,16 +650,16 @@ SetVolumeToZero() {
 
 ; press escape first and then this
 SetVolumeToFifty() {
+  global
     ; click options
-    MouseClick "left", optionsloc[1], optionsloc[2] 
+    MouseClick "left", OptionsLoc[1], OptionsLoc[2] 
     MS() 
     MS()
-    ; click audio 1030, 40
-    MouseClick "left", 1030, 40 
+    MouseClick "left",  AudioOptionsLoc[1], AudioOptionsLoc[2]
     MS() 
     MS()
-    ; click ONEHUNDRED area 998, 215
-    MouseClick "left", 1092, 215 
+    ; click FIFTY out of TWO HUNDRED
+    MouseClick "left", 985, 232 
     MS() 
     MS()
     ; click apply
