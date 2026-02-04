@@ -34,8 +34,9 @@ global CockatriceLoc      := [1660, 900]
 ; other locations
 global SecondCharDownLoc   := [1600, 300]
 global OptionsLoc         := [213, 550]
-global QuickFillLoc       := [950, 930]
+global QuickFillLoc       := [950, 830]
 global AudioOptionsLoc          := [938, 40]
+global FillAllLoc :=  [950, 830]
 
 ; mini sleep
 MS() {
@@ -355,9 +356,9 @@ ExpressmanExpress() {
   LS()
   MouseClick "left", 306, 1011  ; select all button
   SS()
-  MouseClick "left", 947, 896  ; fill all
+  MouseClick "left", FillAllLoc[1],FillAllLoc[2]  ; fill all
   SS()
-  MouseClick "left", 954, 964  ; get item
+  MouseClick "left", FillAllLoc[1],FillAllLoc[2]+60  ; get item
 }
 
 GetAllFromGoblin() {
