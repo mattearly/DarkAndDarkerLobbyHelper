@@ -162,6 +162,8 @@ GoToGoldSmith() {
   MouseClick "left", 982, 31  ; top merchant button
   SS()
   MouseClick "left", GoldsmithLoc[1], GoldsmithLoc[2]
+  SS()
+  MouseClick "left", 327, 205    ; location of "socket a gem"
 }
 
 GoToAlchemist() {
