@@ -4,7 +4,7 @@
 ; this is in development and made for my personal use and testing
 ;   as such - there are no warranties or gaurentees
 ;           - use at your own risk
-; file main use: define useful clicker functions and definitions
+; file main use: define useful functions and definitions
 ; written and maintained by matthewjearly@gmail.com
 ; ----------------------------------------------------------------------
 
@@ -162,6 +162,8 @@ GoToGoldSmith() {
   MouseClick "left", 982, 31  ; top merchant button
   SS()
   MouseClick "left", GoldsmithLoc[1], GoldsmithLoc[2]
+  SS()
+  MouseClick "left", 327, 205    ; location of "socket a gem"
 }
 
 GoToAlchemist() {
