@@ -992,20 +992,3 @@ HaltGearBuying() {
   global
   haltBuyingFromMarket := true
 }
-
-; arena helper
-CraftACrystalFrostRingFromScratch() {
-  ; buy needed stuff
-  GoToMarketplace()
-  PurchaseFromMarket("frozen heart")
-  PurchaseFromMarket("cobalt ore")
-
-  ; make ore into ignot
-  MakeCobaltIngot(2)
-  
-  VLS()
-  
-  ; make ring
-  MakeCrystalFrostRing(1)
-
-}
