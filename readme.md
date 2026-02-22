@@ -54,7 +54,7 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - O - Buy 6 Potions
     - 1 - Go To Squire Sets
     - K - Refill Squire Kit
-    - Alt+K - Full Squire Reset (DANGER: sells entire inventory and equipped kit)
+    - Alt+K - Refill Squire Right Side Bow, Left Side Potions
     - M - Go To Search Marketplace
     - Q - Insta-Queue
     - ALT+Q - ToolBelt Reset and Requeue (designed for arena)
