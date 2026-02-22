@@ -10,9 +10,8 @@
 
 
 ; all locations should probably be defined like this for ease of updating (todo)
-; merchant loc notes for their 1920x1080 grid:
-;    col1: 270, col2: 500, col3:730, col4:970, col5:1200, col6:1420, col7:1650
-;    row1: 300, row2: 600, row3: 900 
+
+global MerchantsTopMenuLoc     := [1036, 80]
 
 global AlchemistLoc       := [270, 300]
 global SurgeonLoc         := [490, 300]
@@ -71,6 +70,12 @@ HoverMouseThenClick(loc1, loc2) {
   MouseMove loc1, loc2
   LS()
   MouseClick "left", loc1, loc2
+}
+
+HoverMouseThenClickR(loc1, loc2) {
+  MouseMove loc1, loc2
+  LS()
+  MouseClick "right", loc1, loc2
 }
 
 ; aux function
@@ -277,30 +282,6 @@ GoToSquireAndFill() {
   MouseClick "left", 955, 992 ; click Equip Base Gear
   MS()
   MouseClick "left", 953, 991 ; click Equip Base Gear again (sometimes doesn't register first time)
-}
-
-FullSquireReset() {
-  ; get ride of inventory
-  DoubleSellInventoryFullConfirm()
-  
-  LS()
-
-  ; unequip kit 
-  GoToStash()
-  LS()
-  UnequipKit()
-
-  LS()
-
-  ; sell kit
-  VendorEntireInventoryOfNonCollectables()
-  LS()
-  MouseClick "left", 963, 992  ; click make deal
-
-  LS()
-  
-
-  GoToSquireAndFill()
 }
 
 GoToSellAtVendor() {
@@ -991,4 +972,25 @@ BuyGearOffMarketFromFile(filepath) {
 HaltGearBuying() {
   global
   haltBuyingFromMarket := true
+}
+
+ResetSquireRSBLSP() {
+  global
+  GlobalBack()
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
+  SS()
+  MouseClick "left", SquireLoc[1], SquireLoc[2]
+  SS()
+
+  ; unequip right side weapon slot, R clicking sheild or offhand slot
+  HoverMouseThenClickR(1825, 250)
+ 
+  ; unequip left side tool slots
+  HoverMouseThenClickR(1400,455)  ; hover click to help get around ironmace ui bug that happens here sometimes
+  MS()
+  MouseClick "right", 1400, 515
+  MS()
+  MouseClick "right", 1400, 575
+  SS()
+  HoverMouseThenClick(955, 992)  ; click Equip Base Gear
 }
