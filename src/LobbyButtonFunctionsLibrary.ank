@@ -155,6 +155,16 @@ HitPlay() {
   MouseClick "left", 780, 675  ; timmy yes button
 }
 
+ClearChatANDHitPlay() {
+  MouseClick "left", 238, 35  ; top play button
+  LS()
+  MouseClick "left", 730, 1050  ; clear chat button
+  MS()
+  MouseClick "left", 181, 981  ; start bottom left button
+  LS()
+  MouseClick "left", 780, 675  ; timmy yes button
+}
+
 GoToClassSpec() {
   GlobalBack()
   MouseClick "left", 720, 35  ; top class button
@@ -993,4 +1003,7 @@ ResetSquireRSBLSP() {
   MouseClick "right", 1400, 575
   SS()
   HoverMouseThenClick(955, 992)  ; click Equip Base Gear
+  SS()
+  ; and Requeue
+  ClearChatANDHitPlay()
 }
