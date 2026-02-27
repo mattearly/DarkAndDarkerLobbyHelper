@@ -35,7 +35,8 @@ global SecondCharDownLoc   := [1600, 300]
 global OptionsLoc         := [213, 550]
 global QuickFillLoc       := [950, 830]
 global AudioOptionsLoc          := [938, 40]
-global FillAllLoc :=  [950, 830]
+global RetrievalFillAllLoc :=  [950, 830]
+global BuyFillAllLoc       := [960, 910]
 
 ; mini sleep
 MS() {
@@ -116,7 +117,7 @@ MarketplaceBuyCheapest() {
 
 ; aux function
 FillAllMakeDeal() {
-  MouseClick "left", 966, 929  ; click on fill all from stash
+  MouseClick "left", BuyFillAllLoc[1], BuyFillAllLoc[2]  ; click on fill all from stash
   LS()
   MouseClick "left", 963, 992  ; click make deal
 }
@@ -156,6 +157,7 @@ HitPlay() {
 }
 
 ClearChatANDHitPlay() {
+  GlobalBack()
   MouseClick "left", 238, 35  ; top play button
   LS()
   MouseClick "left", 730, 1050  ; clear chat button
@@ -241,7 +243,7 @@ GoToGoblinBuy() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
   LS()
-  MouseClick "left", GoblinLoc[1], GoblinLoc[2]  ; goblin
+  MouseClick "left", GoblinLoc[1], GoblinLoc[2]
 }
 
 GoToCockatrice(){
@@ -349,9 +351,9 @@ ExpressmanExpress() {
   LS()
   MouseClick "left", 306, 1011  ; select all button
   SS()
-  MouseClick "left", FillAllLoc[1],FillAllLoc[2]  ; fill all
+  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]  ; fill all
   SS()
-  MouseClick "left", FillAllLoc[1],FillAllLoc[2]+60  ; get item
+  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item
 }
 
 GetAllFromGoblin() {
@@ -360,10 +362,11 @@ GetAllFromGoblin() {
   MouseClick "left", 296, 139  ; Service button
   LS()
   MouseClick "left", 306, 1011  ; select all button
+  LS()
   SS()
-  MouseClick "left", 947, 896  ; fill all
+  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]  ; fill all
   SS()
-  MouseClick "left", 954, 964  ; get item
+  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item
 }
 
 CockatriceGather() {
@@ -574,7 +577,7 @@ GoToSets() {
 ToolBeltAndRequeue() {
   GoToSquireAndFill()
   LS()
-  HitPlay()
+  ClearChatANDHitPlay()
 }
 
 ; invest from merchants function (level alch and surgeon first)
