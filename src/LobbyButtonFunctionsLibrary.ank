@@ -455,7 +455,7 @@ HotswapCharacters() {
   MouseClick "left",  237, 44   ; click play button
   LS()
   MouseClick "left", 1858, 1025  ; change class button
-  Loop 2 {
+  Loop 3 {
     VLS()
   }
   MouseClick "left", 1605, 280  ; click on 2nd character down
