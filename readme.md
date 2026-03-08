@@ -6,25 +6,25 @@ Improve the functionality and convenience of Dark and Darker's pre-game lobby.
 
 ## Fuctionality
 
-Use hotkeys to do common things in the pre-game lobby such as vendor treasure, transfer inventory, buy meds, execute buy list on market, ReSquire, go to common crafters, ... and much more.
+Use hotkeys to do common things in the pre-game lobby such as vendor treasure, transfer inventory, buy meds, execute buy list on market, ReSquire, go to common crafters, ... and much more. Functions are designed to work when logged into a character and in the pre-game lobby.
 
 ## Requirements
 
-  - This version is made for 1920x1080 screen res
+  - This version is made for 1920x1080 screen res.
   - Install auto-hotkey v2 productivity tool (this is just what I happend to code it in, but in theory could be done with any coding language).
-  - Functions are designed to work when logged into a character and in the pre-game lobby.
 
 ## How to Run
 
-  1. Clone/download this repo, Run the script "DarkAndDarkerLobbyHelper.ank"
-  2. Launch "Dark and Darker", Log into a character and be in the Pre-Game Lobby at 1920x1080p res (this doesn't work elsewhere)
+  0. Address requirements.
+  1. Clone/download this repo, Run the script "DarkAndDarkerLobbyHelper.ank".
+  2. Launch "Dark and Darker", Log into a character and be in the Pre-Game Lobby at 1920x1080p res (this doesn't work elsewhere).
 
 ## Default Keybinds
 
 These are set up in "src/Keybinds.ank". You can change them if you like in that code file.
   
   - **Left Cntrl** (Or Right Cntrl if there is no overlap (see Right Cntrl below)) +
-    - U - Set Volume to 1 (press Esc first)
+    - U - Set Volume to 2 (press Esc first)
     - numpad0 - Insta-Queue - a dangerous but speedy button
     - numpad2 - Hotswap Characters (go to prev character)
     - numpad3 - Go to Squire and fill
@@ -47,7 +47,7 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - 0 - Go to Weaponsmith Service
 
   - **Right Cntrl** + 
-    - U - Set Volume to 100 (press Esc first)
+    - U - Set Volume to 50 (press Esc first)
     - numpadSub - Buy 6 Bandages
     - numpadAdd - Buy 6 Potions
     - B - Buy 6 Bandages
