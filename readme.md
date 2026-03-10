@@ -61,10 +61,11 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - H - Hotswap characters (go to last selected character)
     - Alt+I - Invest in green pots and bandages (buy out, check availablity  first)
     - E - Gather All From Expressman
-    - G - Gather All From Goblin
-    - A - Go To Goldsmith
-    - Alt+G - Buy Kit Off Market from GearBuyingSettings File
-    - Alt+H - Halt(when buying) Stop the buying process on next iteration
+    - G - Gather All From Goblin Buyback
+    - Alt+G - Gather All Front Page Characters (6 most recent played) From Golbin Buyback & Expressmen (long routine for when you're going afk for a while and don't want to lose gear) (*long process)
+    - Alt+M - Buy Kit Off Market from GearBuyingSettings File (*long process)
+    - Alt+H - Halt long process - Stop the buying process on next iteration
+    - A - Go To Goldsmith (gem gear)
     - C - Gather All From Cockatrice
     - J - Go To Jewel Collector
     - X - Vendor All Collector Items (waits for confirm)

@@ -7,11 +7,14 @@
 ; file main use: define useful functions and definitions
 ; written and maintained by matthewjearly@gmail.com
 ; ----------------------------------------------------------------------
+; notes: 
+;   - aux functions are for subroutines and should not be hotkey'd too normally
+
 
 
 ; all locations should probably be defined like this for ease of updating (todo)
 
-global MerchantsTopMenuLoc     := [1036, 80]
+global MerchantsTopMenuLoc  := [1036, 80]
 
 global AlchemistLoc       := [270, 300]
 global SurgeonLoc         := [490, 300]
@@ -31,40 +34,31 @@ global FortuneTellerLoc   := [490, 900]
 global CockatriceLoc      := [1660, 900]
 
 ; other locations
-global SecondCharDownLoc   := [1600, 300]
-global OptionsLoc         := [213, 550]
-global QuickFillLoc       := [950, 830]
-global AudioOptionsLoc          := [938, 40]
-global RetrievalFillAllLoc :=  [950, 830]
-global BuyFillAllLoc       := [960, 910]
+global SecondCharDownLoc    := [1600, 300]
+global OptionsLoc           := [213, 550]
+global QuickFillLoc         := [950, 830]
+global AudioOptionsLoc      := [938, 40]
+global RetrievalFillAllLoc  := [950, 830]
+global BuyFillAllLoc        := [960, 910]
 
-; mini sleep
+; aux mini sleep
 MS() {
   sleep 23 ; to help with speeding up tool
 }
 
-; short sleep
+; aux short sleep
 SS() {
   sleep 179 ; probably needs to be higher 
 }
 
-; long sleep
+; aux long sleep
 LS() { 
   sleep 459  ; probably needs to be higher 
 }
 
-; very long sleep
+; aux very long sleep
 VLS() {
   sleep 1999
-}
-
-; aux function  : todo: this is not perfect and still bugs sometimes
-TripleOffsetLeftClick_dnd_ui_bug(loc1, loc2) {
-  MouseClick "left", loc1, loc2
-  MS()
-  MouseClick "left", loc1, loc2 - 1
-  MS()
-  MouseClick "left", loc1 - 1, loc2
 }
 
 HoverMouseThenClick(loc1, loc2) {
@@ -145,6 +139,24 @@ UnequipKit() {
   MouseClick "right", 960, 524   ; feet
 
     ; rings and ammy? leave it for now i guess
+}
+
+; aux functions
+SwapToLastCharacterOnFrontPage() {
+  GlobalBack()
+  ; log out of character
+  ; MouseClick "left",  237, 44   ; click play button  - dont need?
+  LS()
+  HoverMouseThenClick(1858, 1025)  ; change class button
+  Loop 4 {
+    VLS()   ; accounting for long loading times potentially
+  }
+  HoverMouseThenClick(1680, 780)  ; click on 6nd character down
+  LS()
+  HoverMouseThenClick(954, 979)  ; Enter the lobby button
+  Loop 6 {
+    VLS()  ; accounting for long loading times potentially
+  }
 }
 
 HitPlay() {
@@ -245,6 +257,43 @@ GoToGoblinBuy() {
   LS()
   MouseClick "left", GoblinLoc[1], GoblinLoc[2]
 }
+
+GetAllFromGoblin() {
+  GoToGoblinBuy()
+  LS()
+  MouseClick "left", 296, 139  ; Service button
+  LS()
+  MouseClick "left", 306, 1011  ; select all button
+  LS()
+  SS()
+  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]  ; fill all
+  SS()
+  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item
+}
+
+; a very long routine that gathers all expressman loot and all goblin buyback loot
+; from your last 6 played characters
+FrontPageOfCharactersGoblinBuybackAndExpressmanGather() { 
+  Loop 6 {
+    if (haltLongProcessFlag)
+      continue
+    GoToGoblinBuy()
+    LS()
+    MouseClick "left", 296, 139  ; Service button
+    LS()
+    MouseClick "left", 306, 1011  ; select all button
+    LS()
+    SS()
+    MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]  ; fill all
+    SS()
+    MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item 
+    LS()
+    ExpressmanExpress()
+    LS()
+    SwapToLastCharacterOnFrontPage()
+  } 
+}
+
 
 GoToCockatrice(){
   GlobalBack()
@@ -356,18 +405,7 @@ ExpressmanExpress() {
   MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item
 }
 
-GetAllFromGoblin() {
-  GoToGoblinBuy()
-  LS()
-  MouseClick "left", 296, 139  ; Service button
-  LS()
-  MouseClick "left", 306, 1011  ; select all button
-  LS()
-  SS()
-  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]  ; fill all
-  SS()
-  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item
-}
+
 
 CockatriceGather() {
   GoToCockatrice()
@@ -461,6 +499,7 @@ HotswapCharacters() {
   MouseClick "left", 1605, 280  ; click on 2nd character down
   LS()
   MouseClick "left", 954, 979  ; Enter the lobby button
+  LS()
 }
 
 VendorEntireInventoryOfCollectables() {
@@ -574,6 +613,32 @@ GoToSets() {
   SS()
 }
 
+; resets right side bow and left side potions, clears chat, hits play
+ResetSquireRSBLSP() {
+  global
+  GlobalBack()
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
+  SS()
+  MouseClick "left", SquireLoc[1], SquireLoc[2]
+  SS()
+
+  ; unequip right side weapon slot, R clicking sheild or offhand slot
+  HoverMouseThenClickR(1825, 250)
+ 
+  ; unequip left side tool slots
+  HoverMouseThenClickR(1400,455)  ; hover click to help get around ironmace ui bug that happens here sometimes
+  MS()
+  MouseClick "right", 1400, 515
+  MS()
+  MouseClick "right", 1400, 575
+  SS()
+  HoverMouseThenClick(955, 992)  ; click Equip Base Gear
+  SS()
+  ; and Requeue
+  ClearChatANDHitPlay()
+}
+
+; resets tool belt, clears chat, hits play
 ToolBeltAndRequeue() {
   GoToSquireAndFill()
   LS()
@@ -674,15 +739,15 @@ SetMarketPlaceSearchRarityLevel(itemrarity:=0) {
   switch itemrarity 
   {
     Case 1:
-      TripleOffsetLeftClick_dnd_ui_bug(294, 356) ; rare location
+      HoverMouseThenClick(294, 356) ; rare location
     Case 2:
-      TripleOffsetLeftClick_dnd_ui_bug(294, 382)  ; epic button
+      HoverMouseThenClick(294, 382)  ; epic button
     Case 3:
-      TripleOffsetLeftClick_dnd_ui_bug(294, 408)  ; legendary
+      HoverMouseThenClick(294, 408)  ; legendary
     Case 4:
-      TripleOffsetLeftClick_dnd_ui_bug(294, 434)  ; unique
+      HoverMouseThenClick(294, 434)  ; unique
     Case 5:
-      TripleOffsetLeftClick_dnd_ui_bug(294, 460)  ; artifact
+      HoverMouseThenClick(294, 460)  ; artifact
   }  
 }
 
@@ -888,10 +953,10 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
 
 ; Starter Func to buy from filepath
 ; halt buying gives us an option to stop an otherwise very long routine
-global haltBuyingFromMarket := false
+global haltLongProcessFlag := false
 BuyGearOffMarketFromFile(filepath) {
   global
-  haltBuyingFromMarket := false
+  haltLongProcessFlag := false
 
   ; these variables are for a repeated buy function if search is exact same
   lastSearchedItem := ""
@@ -908,7 +973,7 @@ BuyGearOffMarketFromFile(filepath) {
   Line := FileObj.ReadLine()
 
   ; TRADE FOR THIS LINE
-  While (0 = FileObj.AtEOF and haltBuyingFromMarket = false)
+  While (0 = FileObj.AtEOF and haltLongProcessFlag = false)
   {
     ; get next line in file
     NewLine := FileObj.ReadLine()
@@ -982,31 +1047,7 @@ BuyGearOffMarketFromFile(filepath) {
   FileObj.Close()
 }
 
-HaltGearBuying() {
+HaltLongProcess() {
   global
-  haltBuyingFromMarket := true
-}
-
-ResetSquireRSBLSP() {
-  global
-  GlobalBack()
-  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
-  SS()
-  MouseClick "left", SquireLoc[1], SquireLoc[2]
-  SS()
-
-  ; unequip right side weapon slot, R clicking sheild or offhand slot
-  HoverMouseThenClickR(1825, 250)
- 
-  ; unequip left side tool slots
-  HoverMouseThenClickR(1400,455)  ; hover click to help get around ironmace ui bug that happens here sometimes
-  MS()
-  MouseClick "right", 1400, 515
-  MS()
-  MouseClick "right", 1400, 575
-  SS()
-  HoverMouseThenClick(955, 992)  ; click Equip Base Gear
-  SS()
-  ; and Requeue
-  ClearChatANDHitPlay()
+  haltLongProcessFlag := true
 }
