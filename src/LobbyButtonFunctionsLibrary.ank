@@ -678,18 +678,22 @@ BuyOutGreenMeds() {
     MS()
   }
   FillAllMakeDeal()
-  LS()
-
-  ; PART 3, BUY LUCK POTION
-  ; GoToFortuneTeller()
-  ; LS()
-  ; MouseClick "left", 72, 290
-  ; LS()
-  ; FillAllMakeDeal()
-
-  ; bonus: end on gobbo
-  GoToGoblinBuy()
 }
+
+BuyOutPotionOfLuck() {
+  GoToFortuneTeller()
+  LS()
+  MouseClick "left", 72, 290
+  LS()
+  FillAllMakeDeal()
+}
+
+InvestInGreenMedsAndPotionOfLuck() {
+  BuyOutGreenMeds()
+  LS()
+  BuyOutPotionOfLuck()
+}
+
 
 ; press ESC first and then this
 SetVolumeToZero() {
