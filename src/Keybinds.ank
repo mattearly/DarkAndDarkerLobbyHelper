@@ -623,7 +623,7 @@ Unlock() {
   } else {
     Lock()
   }
-  BuyOutGreenMeds()
+  InvestInGreenMedsAndPotionOfLuck()
   Unlock()
 }
 
