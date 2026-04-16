@@ -615,6 +615,7 @@ Unlock() {
 
 ; [I]nvest- buys things from traders that have good resale value
 ;  - green potions and bandages and fortune potion
+;  - haltable process
 #HotIf WinActive("Dark and Darker")
 >^!i:: {
   global
@@ -623,7 +624,10 @@ Unlock() {
   } else {
     Lock()
   }
+  middleOfHaltableProcessFlag := true
   InvestInGreenMedsAndPotionOfLuck()
+  middleOfHaltableProcessFlag := false
+
   Unlock()
 }
 

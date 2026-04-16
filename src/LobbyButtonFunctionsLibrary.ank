@@ -41,6 +41,10 @@ global AudioOptionsLoc      := [938, 40]
 global RetrievalFillAllLoc  := [950, 830]
 global BuyFillAllLoc        := [960, 910]
 
+; halt buying gives us an option to stop an otherwise very long routine
+; long processes can use this to allow mid process canceling
+global haltLongProcessFlag := false
+
 ; aux mini sleep
 MS() {
   sleep 23 ; to help with speeding up tool
@@ -645,53 +649,64 @@ ToolBeltAndRequeue() {
   ClearChatANDHitPlay()
 }
 
-; invest from merchants function (level alch and surgeon first)
-BuyOutGreenMeds() {
+; level traders first (alch, surg, fortune teller)
+; long process haltable (right cntrl+alt+h default)
+InvestInGreenMedsAndPotionOfLuck() {
+  global
+  haltLongProcessFlag := false
   ; PART 1, BUY ALL GREEN POTIONS
   GoToAlchemist()
   LS()
   MouseClick "left", 281, 302 ; set of triple green potions
   LS()
+  ; stop point 1 
+  if haltLongProcessFlag
+    return
   FillAllMakeDeal()
   LS()
   MouseClick "left", 157, 302 ; set of single green potions
   LS()
   Loop 2 {  ; click increase
-    MouseClick "left", 1013, 604 
+    HoverMouseThenClick(1013, 604)
     MS()
   }
+  ; stop point 2
+  if haltLongProcessFlag
+    return
   FillAllMakeDeal()
   LS()
-
+  
   ; PART 2, BUY ALL GREEN BANDAGES
   GoToSurgeon()
   LS()
   MouseClick "left", 281, 302 ; set of triple green Bandages
   LS()
+  ; stop point 3
+  if haltLongProcessFlag
+    return
   FillAllMakeDeal()
   LS()
-
   MouseClick "left", 157, 302 ; set of single green Bandages
   LS()
   Loop 2 {  ; click increase
     MouseClick "left", 1013, 604 
     MS()
   }
+  ; stop point 4
+  if haltLongProcessFlag
+    return
   FillAllMakeDeal()
-}
+  LS()
 
-BuyOutPotionOfLuck() {
+  ; PART 3 - buy Greater Luck Potion
   GoToFortuneTeller()
   LS()
   MouseClick "left", 72, 290
   LS()
+  ; stop point 5
+  if haltLongProcessFlag
+    return
   FillAllMakeDeal()
-}
-
-InvestInGreenMedsAndPotionOfLuck() {
-  BuyOutGreenMeds()
-  LS()
-  BuyOutPotionOfLuck()
 }
 
 
@@ -956,8 +971,7 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
 }
 
 ; Starter Func to buy from filepath
-; halt buying gives us an option to stop an otherwise very long routine
-global haltLongProcessFlag := false
+; Long process haltable
 BuyGearOffMarketFromFile(filepath) {
   global
   haltLongProcessFlag := false
