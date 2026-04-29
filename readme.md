@@ -34,7 +34,6 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - numpad7 - Sell at Collector
     - numpad8 - Sell at Vendor
     - numpad9 - Go To Marketplace Search
-    - numpadSub - Buy 15 Bandages
     - numpadAdd - Buy 15 Potions
     - B - Buy 15 Bandages
     - O - Buy 15 Potions
@@ -48,9 +47,7 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
 
   - **Right Cntrl** + 
     - U - Set Volume to 50 (press Esc first)
-    - numpadSub - Buy 6 Bandages
     - numpadAdd - Buy 6 Potions
-    - B - Buy 6 Bandages
     - O - Buy 6 Potions
     - 1 - Go To Squire Sets
     - K - Refill Squire Kit
@@ -59,18 +56,17 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - Q - Insta-Queue
     - ALT+Q - ToolBelt Reset and Requeue (designed for arena)
     - H - Hotswap characters (go to last selected character)
-    - Alt+I - Invest in green pots and bandages (buy out, check availablity  first)
+    - Alt+I - Invest (season 9 only buys luck potion for now)
     - E - Gather All From Expressman
     - G - Gather All From Goblin Buyback
     - Alt+G - Gather All Front Page Characters (6 most recent played) From Golbin Buyback & Expressmen (long routine for when you're going afk for a while and don't want to lose gear) (*long process)
-    - Alt+M - Buy Kit Off Market from GearBuyingSettings File (*long process)
+    - Alt+M - disabled- Buy Kit Off Market from GearBuyingSettings File (*long process)
     - Alt+H - Halt long process - Stop the buying process on next iteration
     - A - Go To Goldsmith (gem gear)
     - C - Gather All From Cockatrice
     - J - Go To Jewel Collector
-    - X - Vendor All Collector Items (waits for confirm)
+    - X - Vendor All Inventory Items (soft - waits for confirm)
     - V - Go To Vendor
-    - Z - Vender All Non-Collector Items (waits for confirm)
     - T - Move All Inventory To Stash Routine
 
 ## Known Issues

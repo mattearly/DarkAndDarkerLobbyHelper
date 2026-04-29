@@ -295,7 +295,7 @@ Unlock() {
   } else {
     Lock()
   }
-  BuyALotOfBandages()
+ ; BuyALotOfBandages()
   Unlock()
 }
 
@@ -309,7 +309,7 @@ Unlock() {
   } else {
     Lock()
   }
-  BuyBandages()
+ ; BuyBandages()
   Unlock()
 }
 
@@ -448,7 +448,7 @@ Unlock() {
   } else {
     Lock()
   }
-  BuyALotOfBandages()
+;  BuyALotOfBandages()
   Unlock()
 }
 
@@ -462,7 +462,7 @@ Unlock() {
   } else {
     Lock()
   }
-  BuyBandages()
+ ; BuyBandages()
   Unlock()
 }
 
@@ -522,7 +522,7 @@ Unlock() {
   Unlock()
 }
 
-; Vender All Collectables - Soft Non Destructive
+; Vender INVENTORY - Soft Non Destructive
 #HotIf WinActive("Dark and Darker")
 >^x::
 {
@@ -532,21 +532,7 @@ Unlock() {
   } else {
     Lock()
   }
-  VendorEntireInventoryOfCollectables()
-  Unlock()
-}
-
-; Vender All Non-Collectables - Soft Non Destructive
-#HotIf WinActive("Dark and Darker")
->^z::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  VendorEntireInventoryOfNonCollectables()
+  SetupVenderEntireInventory()
   Unlock()
 }
 
@@ -632,20 +618,20 @@ Unlock() {
 }
 
 ; Gear Up from Market Search: RightControl+Alt+m
-; in testing DON'T USE YET
-#HotIf WinActive("Dark and Darker")
->^!m:: {
-  global
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  middleOfHaltableProcessFlag := true
-  BuyGearOffMarketFromFile("GearBuyingSettings.txt")
-  middleOfHaltableProcessFlag := false
-  Unlock()
-}
+; disabled for ssf
+; #HotIf WinActive("Dark and Darker")
+; >^!m:: {
+;   global
+;   if isBusy {
+;     return
+;   } else {
+;     Lock()
+;   }
+;   middleOfHaltableProcessFlag := true
+;   BuyGearOffMarketFromFile("GearBuyingSettings.txt")
+;   middleOfHaltableProcessFlag := false
+;   Unlock()
+; }
 
 ; stop buying gear from market
 #HotIf WinActive("Dark and Darker")

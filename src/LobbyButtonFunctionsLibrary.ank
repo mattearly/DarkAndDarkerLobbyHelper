@@ -10,30 +10,22 @@
 ; notes: 
 ;   - aux functions are for subroutines and should not be hotkey'd too normally
 
-
-
-; all locations should probably be defined like this for ease of updating (todo)
-
+; (todo) all locations should probably be defined like the following for ease of updating
 global MerchantsTopMenuLoc  := [1036, 80]
-
+; merchant submenu locations
 global AlchemistLoc       := [270, 300]
-global SurgeonLoc         := [490, 300]
 global CollectorLoc       := [730, 300]
 global SquireLoc          := [950, 300]
 global ExpressmanLoc      := [1200, 300]
-global GoblinLoc          := [1650, 300]
-
-global ArmourerLoc        := [270, 600]
-global SmithLoc           := [490, 600]
-global WoodsmanLoc        := [730, 600]
-global TailorLoc          := [970, 600]
-global LeathersmithLoc    := [1200, 600]
-
-global GoldsmithLoc       := [270, 900]
-global FortuneTellerLoc   := [490, 900]
-global CockatriceLoc      := [1660, 900]
-
-; other locations
+global GoblinLoc          := [1430, 300]
+global ArmourerLoc        := [1650, 300]
+global SmithLoc           := [270, 600]
+global WoodsmanLoc        := [500, 600]
+global TailorLoc          := [730, 600]
+global LeathersmithLoc    := [960, 600]
+global GoldsmithLoc       := [1430, 600]
+global CockatriceLoc      := [270, 900]
+; other various locations
 global SecondCharDownLoc    := [1600, 300]
 global OptionsLoc           := [213, 550]
 global QuickFillLoc         := [950, 830]
@@ -42,7 +34,7 @@ global RetrievalFillAllLoc  := [950, 830]
 global BuyFillAllLoc        := [960, 910]
 
 ; halt buying gives us an option to stop an otherwise very long routine
-; long processes can use this to allow mid process canceling
+; long processes use this boolean to allow mid process canceling
 global haltLongProcessFlag := false
 
 ; aux mini sleep
@@ -206,13 +198,6 @@ GoToAlchemist() {
   MouseClick "left", AlchemistLoc[1], AlchemistLoc[2]
 }
 
-GoToFortuneTeller() {
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
-  SS()
-  MouseClick "left", FortuneTellerLoc[1], FortuneTellerLoc[2]
-}
-
 GoToLeatherSmithService() { 
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
@@ -260,42 +245,6 @@ GoToGoblinBuy() {
   MouseClick "left", 982, 31  ; top merchant button
   LS()
   MouseClick "left", GoblinLoc[1], GoblinLoc[2]
-}
-
-GetAllFromGoblin() {
-  GoToGoblinBuy()
-  LS()
-  MouseClick "left", 296, 139  ; Service button
-  LS()
-  MouseClick "left", 306, 1011  ; select all button
-  LS()
-  SS()
-  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]  ; fill all
-  SS()
-  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item
-}
-
-; a very long routine that gathers all expressman loot and all goblin buyback loot
-; from your last 6 played characters
-FrontPageOfCharactersGoblinBuybackAndExpressmanGather() { 
-  Loop 6 {
-    if (haltLongProcessFlag)
-      continue
-    GoToGoblinBuy()
-    LS()
-    MouseClick "left", 296, 139  ; Service button
-    LS()
-    MouseClick "left", 306, 1011  ; select all button
-    LS()
-    SS()
-    MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]  ; fill all
-    SS()
-    MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item 
-    LS()
-    ExpressmanExpress()
-    LS()
-    SwapToLastCharacterOnFrontPage()
-  } 
 }
 
 
@@ -356,11 +305,40 @@ GoToSellAtVendor() {
   HoverMouseThenClick(333, 205)   ; sell tab button location
 }
 
-GoToSurgeon() {
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+GetAllFromGoblin() {
+  GoToGoblinBuy()
   LS()
-  MouseClick "left", SurgeonLoc[1], SurgeonLoc[2]
+  MouseClick "left", 296, 139  ; Service button
+  LS()
+  MouseClick "left", 306, 1011  ; select all button
+  LS()
+  SS()
+  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]  ; fill all
+  SS()
+  MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item
+}
+
+; a very long routine that gathers all expressman loot and all goblin buyback loot
+; from your last 6 played characters
+FrontPageOfCharactersGoblinBuybackAndExpressmanGather() { 
+  Loop 6 {
+    if (haltLongProcessFlag)
+      continue
+    GoToGoblinBuy()
+    LS()
+    MouseClick "left", 296, 139  ; Service button
+    LS()
+    MouseClick "left", 306, 1011  ; select all button
+    LS()
+    SS()
+    MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]  ; fill all
+    SS()
+    MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item 
+    LS()
+    ExpressmanExpress()
+    LS()
+    SwapToLastCharacterOnFrontPage()
+  } 
 }
 
 GoToMarketplaceSearch() {
@@ -383,7 +361,6 @@ GoToMarketplace() {
   MouseClick "left", 1191, 247  ; marketplace button location
 }
 
-
 GoToWoodsman() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
@@ -391,6 +368,7 @@ GoToWoodsman() {
   MouseClick "left", WoodsmanLoc[1], WoodsmanLoc[2]
 }
 
+;unused
 GoToStash() {
   GlobalBack()
   MouseClick "left", 877, 44  ; top stash button
@@ -409,8 +387,6 @@ ExpressmanExpress() {
   MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item
 }
 
-
-
 CockatriceGather() {
   GoToCockatrice()
   LS()
@@ -423,6 +399,7 @@ CockatriceGather() {
   MouseClick "left", 954, 964  ; get item
 }
 
+;unused
 BuyPickaxe() { 
   GoToWoodsman()
   LS()
@@ -431,42 +408,15 @@ BuyPickaxe() {
   FillAllMakeDeal()
 }
 
-BuyBandages() {
-  GoToSurgeon()
-  LS()
-  MouseClick "left", 70, 300  ; click triple grey bandage
-  LS()
-  Loop 5 {   ; buy this+1
-    MouseClick "left", 1013, 604  ; click on increase
-    MS()
-  }
-  SS()
-  FillAllMakeDeal()
-}
-
-BuyALotOfBandages() {
-  GoToSurgeon()
-  LS()
-  MouseClick "left", 70, 300  ; click triple grey bandage
-  LS()
-  Loop 8 {   ; buy this+1
-    MouseClick "left", 1013, 604  ; click on increase
-    MS()
-  }
-  Loop 2 { 
-    SS()
-    FillAllMakeDeal()
-  }
-}
 
 BuyPotions() {
   GoToAlchemist()
   LS()
 
-  ; default set to buy 6 grey quality potions
+  ; default set to buy 9 grey quality potions
   MouseClick "left", 70, 300  ; click low quality potion
   LS()
-  Loop 5 {  ; click increase
+  Loop 8 {  ; click increase
     MouseClick "left", 1013, 604 
     MS()
   }
@@ -476,14 +426,14 @@ BuyPotions() {
 BuyALotOfPotions() {
   GoToAlchemist()
   LS()
-  ; default set to buy 12 grey quality potions
+  ; default set to buy 15 grey quality potions
   MouseClick "left", 70, 300  ; click low quality potion
   LS()
-  Loop 8 {   ; buy this+1
+  Loop 4 {   ; buy this+1
     MouseClick "left", 1013, 604  ; click on increase
     MS()
   }
-  Loop 2 {
+  Loop 3 {   ; x3
     SS()
     FillAllMakeDeal()
   }
@@ -506,25 +456,11 @@ HotswapCharacters() {
   LS()
 }
 
-VendorEntireInventoryOfCollectables() {
-  GoToCollector()  ; starts with GlobalBack
+SetupVenderEntireInventory() {
+  GoToSellAtVendor() 
   SS()
-
-  ; HoverMouseThenClick(QuickFillLoc[1],QuickFillLoc[2])
-
-  ; faster than quickfill after patch 100
   ClickEntireInventory()
 }
-
-VendorEntireInventoryOfNonCollectables() {
-  GoToSellAtVendor()
-  SS()
-  
-  ; HoverMouseThenClick(QuickFillLoc[1],QuickFillLoc[2])
-
-  ; faster than quickfill after patch 100
-  ClickEntireInventory()
-} 
 
 ; aux function
 MakeCobaltIngot(num_to_craft) {
@@ -559,21 +495,6 @@ MakeCrystalFrostRing(num_to_craft) {
 }
 
 
-; Sells your inventory with NO confirmation (Dangerous)
-; this dumps your inventory to vendors
-; does not process silver
-DoubleSellInventoryFullConfirm() {
-  ; step 1: get rid of collectables
-  VendorEntireInventoryOfCollectables()
-  LS()
-  MouseClick "left", 963, 992  ; click make deal
-  LS()
-  
-  ; step 2: get ride of everything else
-  VendorEntireInventoryOfNonCollectables()
-  LS()
-  MouseClick "left", 963, 992  ; click make deal
-}
 
 ; use when in stash to move entire inventory in one go
 TransferInventory() {
@@ -652,56 +573,57 @@ ToolBeltAndRequeue() {
 ; level traders first (alch, surg, fortune teller)
 ; long process haltable (right cntrl+alt+h default)
 InvestInGreenMedsAndPotionOfLuck() {
-  global
-  haltLongProcessFlag := false
-  ; PART 1, BUY ALL GREEN POTIONS
-  GoToAlchemist()
-  LS()
-  MouseClick "left", 281, 302 ; set of triple green potions
-  LS()
-  ; stop point 1 
-  if haltLongProcessFlag
-    return
-  FillAllMakeDeal()
-  LS()
-  MouseClick "left", 157, 302 ; set of single green potions
-  LS()
-  Loop 2 {  ; click increase
-    HoverMouseThenClick(1013, 604)
-    MS()
-  }
-  ; stop point 2
-  if haltLongProcessFlag
-    return
-  FillAllMakeDeal()
-  LS()
-  
-  ; PART 2, BUY ALL GREEN BANDAGES
-  GoToSurgeon()
-  LS()
-  MouseClick "left", 281, 302 ; set of triple green Bandages
-  LS()
-  ; stop point 3
-  if haltLongProcessFlag
-    return
-  FillAllMakeDeal()
-  LS()
-  MouseClick "left", 157, 302 ; set of single green Bandages
-  LS()
-  Loop 2 {  ; click increase
-    MouseClick "left", 1013, 604 
-    MS()
-  }
-  ; stop point 4
-  if haltLongProcessFlag
-    return
-  FillAllMakeDeal()
-  LS()
+    global
+    haltLongProcessFlag := false
+    ; PART 1, BUY ALL GREEN POTIONS
+   
+;    GoToAlchemist()
+;    LS()
+;    MouseClick "left", 281, 302 ; set of triple green potions
+;    LS()
+;    ; stop point 1 
+;    if haltLongProcessFlag
+;      return
+;    FillAllMakeDeal()
+;    LS()
+;    MouseClick "left", 157, 302 ; set of single green potions
+;    LS()
+;    Loop 2 {  ; click increase
+;      HoverMouseThenClick(1013, 604)
+;      MS()
+;    }
+;    ; stop point 2
+;    if haltLongProcessFlag
+;      return
+;    FillAllMakeDeal()
+;    LS()
+;    
+;    ; PART 2, BUY ALL GREEN BANDAGES
+;    GoToSurgeon()
+;    LS()
+;    MouseClick "left", 281, 302 ; set of triple green Bandages
+;    LS()
+;    ; stop point 3
+;    if haltLongProcessFlag
+;      return
+;    FillAllMakeDeal()
+;    LS()
+;    MouseClick "left", 157, 302 ; set of single green Bandages
+;    LS()
+;    Loop 2 {  ; click increase
+;      MouseClick "left", 1013, 604 
+;      MS()
+;    }
+;    ; stop point 4
+;    if haltLongProcessFlag
+;      return
+;    FillAllMakeDeal()
+;    LS()
 
   ; PART 3 - buy Greater Luck Potion
-  GoToFortuneTeller()
+  GoToAlchemist()
   LS()
-  MouseClick "left", 72, 290
+  MouseClick "left", 242, 290
   LS()
   ; stop point 5
   if haltLongProcessFlag
