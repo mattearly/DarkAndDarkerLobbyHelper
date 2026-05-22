@@ -162,6 +162,19 @@ Unlock() {
   Unlock()
 }
 
+#HotIf WinActive("Dark and Darker")
+>^E::
+{
+  global
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  ExpressmanExpress()
+  Unlock()
+}
+
 ; Keybind setup for HitPlay (file structure follows this pattern)
 #HotIf WinActive("Dark and Darker")
 ^Numpad0::
@@ -219,46 +232,6 @@ Unlock() {
 }
 
 #HotIf WinActive("Dark and Darker")
->^E::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  ExpressmanExpress()
-  Unlock()
-}
-
-#HotIf WinActive("Dark and Darker")
->^C::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  CockatriceGather()
-  Unlock()
-}
-
-; COLLECTOR
-#HotIf WinActive("Dark and Darker")
-^Numpad7::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToCollector()
-  Unlock()
-}
-
-#HotIf WinActive("Dark and Darker")
 ^Numpad8::
 {
   global
@@ -267,23 +240,22 @@ Unlock() {
   } else {
     Lock()
   }
-  GoToSellAtVendor()
   Unlock()
 }
 
 ; TRADE
-#HotIf WinActive("Dark and Darker")
-^Numpad9::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToMarketplaceSearch()
-  Unlock()
-}
+; #HotIf WinActive("Dark and Darker")
+; ^Numpad9::
+; {
+;   global
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   GoToMarketplaceSearch()
+;   Unlock()
+; }
 
 ; PURCHASE BANDAGES
 #HotIf WinActive("Dark and Darker")
@@ -396,9 +368,9 @@ Unlock() {
   Unlock()
 }
 
-; GO TO COLLECTOR
+; GO TO THE NEWER WORKSHOP
 #HotIf WinActive("Dark and Darker")
->^j::
+>^w::
 {
   global
   if isBusy { 
@@ -406,21 +378,7 @@ Unlock() {
   } else {
     Lock()
   }
-  GoToCollector()
-  Unlock()
-}
-
-; GO TO VENDOR
-#HotIf WinActive("Dark and Darker")
->^v::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToSellAtVendor()
+  GoToWorkshopScrap()
   Unlock()
 }
 
@@ -618,20 +576,19 @@ Unlock() {
 }
 
 ; Gear Up from Market Search: RightControl+Alt+m
-; disabled for ssf
-; #HotIf WinActive("Dark and Darker")
-; >^!m:: {
-;   global
-;   if isBusy {
-;     return
-;   } else {
-;     Lock()
-;   }
-;   middleOfHaltableProcessFlag := true
-;   BuyGearOffMarketFromFile("GearBuyingSettings.txt")
-;   middleOfHaltableProcessFlag := false
-;   Unlock()
-; }
+#HotIf WinActive("Dark and Darker")
+>^!m:: {
+  global
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  middleOfHaltableProcessFlag := true
+  BuyGearOffMarketFromFile("GearBuyingSettings.txt")
+  middleOfHaltableProcessFlag := false
+  Unlock()
+}
 
 ; stop buying gear from market
 #HotIf WinActive("Dark and Darker")

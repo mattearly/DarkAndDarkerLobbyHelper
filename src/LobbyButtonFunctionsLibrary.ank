@@ -24,14 +24,15 @@ global WoodsmanLoc        := [500, 600]
 global TailorLoc          := [730, 600]
 global LeathersmithLoc    := [960, 600]
 global GoldsmithLoc       := [1430, 600]
-global CockatriceLoc      := [270, 900]
 ; other various locations
 global SecondCharDownLoc    := [1600, 300]
 global OptionsLoc           := [213, 550]
-global QuickFillLoc         := [950, 830]
+global QuickFillLoc         := [960, 790]
 global AudioOptionsLoc      := [938, 40]
 global RetrievalFillAllLoc  := [950, 830]
 global BuyFillAllLoc        := [960, 910]
+global FirstVendorSlot       := [70, 300]
+global WorkshopHeaderLoc   := [1111, 123]
 
 ; halt buying gives us an option to stop an otherwise very long routine
 ; long processes use this boolean to allow mid process canceling
@@ -54,7 +55,7 @@ LS() {
 
 ; aux very long sleep
 VLS() {
-  sleep 1999
+  sleep 2199
 }
 
 HoverMouseThenClick(loc1, loc2) {
@@ -74,10 +75,12 @@ GlobalBack() {
   global
   Loop 2 {
     MouseClick "left", 200, 40   ; play or leave trade button, twice to double back some menus
-    LS()
+    SS()
+    SS()
   }
   MouseClick "left", 858, 617  ; click 'are you sure' market button (or some merchant possibly)
-  LS()
+  SS()
+  SS()
 }
 
 ; aux function 
@@ -107,9 +110,9 @@ MarketplaceBuyCheapest() {
 
 ; aux function
 FillAllMakeDeal() {
-  MouseClick "left", BuyFillAllLoc[1], BuyFillAllLoc[2]  ; click on fill all from stash
-  LS()
-  MouseClick "left", 963, 992  ; click make deal
+  HoverMouseThenClick(BuyFillAllLoc[1], BuyFillAllLoc[2])
+  MS()
+  HoverMouseThenClick(960,990) ; click make deal
 }
 
 ; aux function
@@ -189,6 +192,17 @@ GoToGoldSmith() {
   MouseClick "left", 327, 205    ; location of "socket a gem"
 }
 
+GoToWorkshopScrap() {
+  GlobalBack()
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
+  SS()
+  HoverMouseThenClick(WorkshopHeaderLoc[1], WorkshopHeaderLoc[2])
+  SS()
+  HoverMouseThenClick(265, 344)
+  SS()
+  HoverMouseThenClick(365, 204)
+}
+
 GoToAlchemist() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
@@ -245,21 +259,6 @@ GoToGoblinBuy() {
   MouseClick "left", GoblinLoc[1], GoblinLoc[2]
 }
 
-
-GoToCockatrice(){
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
-  LS()
-  MouseClick "left", CockatriceLoc[1], CockatriceLoc[2] 
-}
-
-GoToCollector() {
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
-  LS()
-  MouseClick "left", CollectorLoc[1], CollectorLoc[2]
-}
-
 GoToSquireAndFill() {
   GlobalBack()
   MouseClick "left", 982, 31  ; top merchant button
@@ -296,11 +295,18 @@ GoToSquireAndFill() {
   MouseClick "left", 953, 991 ; click Equip Base Gear again (sometimes doesn't register first time)
 }
 
-GoToSellAtVendor() {
+GoToCollector() {
   GlobalBack()
-  GoToAlchemist()
+  HoverMouseThenClick(982,31) ; top merchant button
   SS()
-  HoverMouseThenClick(333, 205)   ; sell tab button location
+  SS()
+  HoverMouseThenClick(CollectorLoc[1],CollectorLoc[2])
+}
+
+GoToSellAtVendor() {
+  GoToCollector()
+  SS()
+  HoverMouseThenClick(QuickFillLoc[1], QuickFillLoc[2])   ; sell tab button location
 }
 
 GetAllFromGoblin() {
@@ -385,18 +391,6 @@ ExpressmanExpress() {
   MouseClick "left", RetrievalFillAllLoc[1],RetrievalFillAllLoc[2]+60  ; get item
 }
 
-CockatriceGather() {
-  GoToCockatrice()
-  LS()
-  MouseClick "left", 296, 139  ; Service button
-  LS()
-  MouseClick "left", 306, 1011  ; select all button
-  SS()
-  MouseClick "left", 947, 896  ; fill all
-  SS()
-  MouseClick "left", 954, 964  ; get item
-}
-
 ;unused
 BuyPickaxe() { 
   GoToWoodsman()
@@ -406,34 +400,34 @@ BuyPickaxe() {
   FillAllMakeDeal()
 }
 
-
 BuyPotions() {
+  global
   GoToAlchemist()
   LS()
-
   ; default set to buy 9 grey quality potions
-  MouseClick "left", 70, 300  ; click low quality potion
+  HoverMouseThenClick(FirstVendorSlot[1],FirstVendorSlot[2])
   LS()
-  Loop 8 {  ; click increase
-    MouseClick "left", 1013, 604 
+  Loop 8 {   ; buy this+1
+    MouseClick "left", 1013, 604  ; click on increase
     MS()
   }
   FillAllMakeDeal()
 }
 
 BuyALotOfPotions() {
+  global
   GoToAlchemist()
   LS()
-  ; default set to buy 15 grey quality potions
-  MouseClick "left", 70, 300  ; click low quality potion
+  ; default set to buy 18 grey quality potions
+  HoverMouseThenClick(FirstVendorSlot[1],FirstVendorSlot[2])
   LS()
-  Loop 4 {   ; buy this+1
+  Loop 8 {   ; buy this+1
     MouseClick "left", 1013, 604  ; click on increase
     MS()
   }
-  Loop 3 {   ; x3
-    SS()
+  Loop 4 {   ;  multiplier
     FillAllMakeDeal()
+    MS()
   }
 }
 
@@ -457,8 +451,7 @@ HotswapCharacters() {
 SetupVenderEntireInventory() {
   GoToSellAtVendor() 
   SS()
-  ; ClickEntireInventory()
-  HoverMouseThenClick(960,790)
+  HoverMouseThenClick(QuickFillLoc[1], QuickFillLoc[2])
 }
 
 ; aux function
@@ -670,6 +663,7 @@ SetVolumeToFifty() {
     MS()
 }
 
+; AUX FUNCTION FOR MARKET
 ; 0 no preference, 1 rare, 2 epic, 3 legendary, 4 unique, 5 artifact
 SetMarketPlaceSearchRarityLevel(itemrarity:=0) {
   MouseClick "left", 365, 203  ; search rarity button
@@ -701,6 +695,7 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   if (isMidBuyCycleFromFile) {
     MouseClick "left", 1800, 200  ; Click 'Reset Filters'
     SS()
+    SS()
   }
   else {
     GoToMarketplace()
@@ -710,6 +705,7 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   ; STEP 2 - Set Rarity (optional)
   if (itemrarity > 0){ 
     SetMarketPlaceSearchRarityLevel(itemrarity)
+    MS()
     MS()
   }
 
@@ -773,12 +769,12 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
     SS()
   }
 
-  MouseClick "left", 1790, 277  ; search button
+  HoverMouseThenClick(1790, 277)  ; search button
   VLS()     ; wait on search lag
 
   MarketplaceBuyCheapest()
   VLS()    ; cancel time for user delay
-  MouseClick "left", 959, 843  ; complete trade button
+  HoverMouseThenClick(959, 843)  ; complete trade button
   SS()
 
 
@@ -787,8 +783,7 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   ; base case correction
   MS()
   MouseClick "left", 1054, 611  ; press no to leave trade button
-  
-  LS()   ; wait on completion lag
+  VLS()   ; wait on completion lag
 }
 
 ; a subroutine to buy another of the same item you are already on in the trade
@@ -953,6 +948,7 @@ BuyGearOffMarketFromFile(filepath) {
       PartOfLine[1] == "warlock" or 
       PartOfLine[1] == "druid" or 
       PartOfLine[1] == "sorcerer") {       ; CLASS CASE
+      SS()
 
       ; format should be: class_name, slot_name, item_rarity, static_stat, modifier1, modifier2
       if (size = 6) 
@@ -965,6 +961,7 @@ BuyGearOffMarketFromFile(filepath) {
         continue
 
     } else {          ; ITEM NAME CASE
+      SS()
 
       ; format should be: item_name, name_offset, item_rarity, modifier1, modifier2
       if (size = 5)
