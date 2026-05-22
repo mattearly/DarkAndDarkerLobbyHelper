@@ -25,18 +25,7 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
   
   - **Left Cntrl** (Or Right Cntrl if there is no overlap (see Right Cntrl below)) +
     - U - Set Volume to 2 (press Esc first)
-    - numpad0 - Insta-Queue - a dangerous but speedy button
-    - numpad2 - Hotswap Characters (go to prev character)
-    - numpad3 - Go to Squire and fill
-    - numpad4 - Go to Stash
-    - numpad5 - Gather all from expressman
-    - numpad6 - Gather all from goblin
-    - numpad7 - Sell at Collector
-    - numpad8 - Sell at Vendor
-    - numpad9 - Go To Marketplace Search
-    - numpadAdd - Buy 15 Potions
-    - B - Buy 15 Bandages
-    - O - Buy 15 Potions
+    - O - Buy 18 Potions
     - P - Go To Class Spec
     - 5 - Go To Goblin Purchase
     - 6 - Go To Alchemist Service
@@ -44,11 +33,21 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - 8 - Go to Armourer Service
     - 9 - Go to Tailoring Service
     - 0 - Go to Weaponsmith Service
+    - numpad0 - Insta-Queue - a dangerous but speedy button
+    - numpad2 - Hotswap Characters (go to prev character)
+    - numpad3 - Go to Squire and fill
+    - numpad4 - Go to Stash
+    - numpad5 - Gather all from Expressman
+    - numpad6 - Gather all from Goblin Buyback
+    - numpad7 - not assigned
+    - numpad8 - Sell at Vendor
+    - numpad9 - Go To Marketplace Search - disabled for ssf
+    - numpadAdd - Buy 18 Potions
 
   - **Right Cntrl** + 
     - U - Set Volume to 50 (press Esc first)
-    - numpadAdd - Buy 6 Potions
-    - O - Buy 6 Potions
+    - numpadAdd - Buy 9 Potions
+    - O - Buy 9 Potions
     - 1 - Go To Squire Sets
     - K - Refill Squire Kit
     - Alt+K - Refill Squire Right Side Bow, Left Side Potions
@@ -60,13 +59,12 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - E - Gather All From Expressman
     - G - Gather All From Goblin Buyback
     - Alt+G - Gather All Front Page Characters (6 most recent played) From Golbin Buyback & Expressmen (long routine for when you're going afk for a while and don't want to lose gear) (*long process)
-    - Alt+M - disabled- Buy Kit Off Market from GearBuyingSettings File (*long process)
+    - Alt+M - Buy Kit Off Market from GearBuyingSettings File (*long process) - disabled for ssf
     - Alt+H - Halt long process - Stop the buying process on next iteration
-    - A - Go To Goldsmith (gem gear)
+    - A - Go To Goldsmith To Gem Gear
+    - W - Go to Workshop Scrap
     - C - Gather All From Cockatrice
-    - J - Go To Jewel Collector
-    - X - Vendor All Inventory Items (soft - waits for confirm)
-    - V - Go To Vendor
+    - X - Go to Vendor and Quickfill (waits for confirm)
     - T - Move All Inventory To Stash Routine
 
 ## Known Issues
