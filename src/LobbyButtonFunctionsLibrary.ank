@@ -567,60 +567,52 @@ ToolBeltAndRequeue() {
 InvestInGreenMedsAndPotionOfLuck() {
     global
     haltLongProcessFlag := false
-    ; PART 1, BUY ALL GREEN POTIONS
-   
-;    GoToAlchemist()
-;    LS()
-;    MouseClick "left", 281, 302 ; set of triple green potions
-;    LS()
-;    ; stop point 1 
-;    if haltLongProcessFlag
-;      return
-;    FillAllMakeDeal()
-;    LS()
-;    MouseClick "left", 157, 302 ; set of single green potions
-;    LS()
-;    Loop 2 {  ; click increase
-;      HoverMouseThenClick(1013, 604)
-;      MS()
-;    }
-;    ; stop point 2
-;    if haltLongProcessFlag
-;      return
-;    FillAllMakeDeal()
-;    LS()
-;    
-;    ; PART 2, BUY ALL GREEN BANDAGES
-;    GoToSurgeon()
-;    LS()
-;    MouseClick "left", 281, 302 ; set of triple green Bandages
-;    LS()
-;    ; stop point 3
-;    if haltLongProcessFlag
-;      return
-;    FillAllMakeDeal()
-;    LS()
-;    MouseClick "left", 157, 302 ; set of single green Bandages
-;    LS()
-;    Loop 2 {  ; click increase
-;      MouseClick "left", 1013, 604 
-;      MS()
-;    }
-;    ; stop point 4
-;    if haltLongProcessFlag
-;      return
-;    FillAllMakeDeal()
-;    LS()
 
-  ; PART 3 - buy Greater Luck Potion
-  GoToAlchemist()
-  LS()
-  MouseClick "left", 242, 290
-  LS()
-  ; stop point 5
-  if haltLongProcessFlag
-    return
-  FillAllMakeDeal()
+    ; PART 1, BUY LUCK (we must start right side of the new alchemist for positioning sake)
+    GoToAlchemist()
+    SS()
+    MouseClick "left", 69, 335
+    SS()
+
+    if haltLongProcessFlag    ; stop point 1
+      return
+    FillAllMakeDeal()
+
+    ; PART  2, GREEN BANDOS
+    SS()
+    MouseClick "left", 532, 302 ; set of triple green Bandages
+    SS()
+    if haltLongProcessFlag    ; stop point 2
+      return
+    FillAllMakeDeal()
+    ;    SS()
+    MouseClick "left", 401, 302 ; set of single green Bandages
+    SS()
+    Loop 2 {  ; click increase
+      MouseClick "left", 1013, 604 
+      MS()
+    }
+    if haltLongProcessFlag      ; stop point 3
+      return
+    FillAllMakeDeal()
+
+    ; PART 3/3, GREEN POTS
+    SS()
+    MouseClick "left", 285, 302 ; set of triple green potions
+    SS()
+    if haltLongProcessFlag    ; stop point 4 
+      return
+    FillAllMakeDeal()
+    SS()
+    MouseClick "left", 157, 302 ; set of single green potions
+    SS()
+    Loop 2 {  ; click increase
+      HoverMouseThenClick(1013, 604)
+      MS()
+    }
+    if haltLongProcessFlag    ; stop point 5
+      return
+    FillAllMakeDeal()
 }
 
 
