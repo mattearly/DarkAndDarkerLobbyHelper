@@ -55,12 +55,12 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - Q - Insta-Queue
     - ALT+Q - ToolBelt Reset and Requeue (designed for arena)
     - H - Hotswap characters (go to last selected character)
-    - Alt+I - Invest (season 9 only buys luck potion for now)
+    - Alt+I - Invest In Consumables (green potions, green bandages, greater luck)
     - E - Gather All From Expressman
     - G - Gather All From Goblin Buyback
     - Alt+G - Gather All Front Page Characters (6 most recent played) From Golbin Buyback & Expressmen (long routine for when you're going afk for a while and don't want to lose gear) (*long process)
     - Alt+M - Buy Kit Off Market from GearBuyingSettings File (*long process) - disabled for ssf
-    - Alt+H - Halt long process - Stop the buying process on next iteration
+    - Alt+H - Halt long process - Stop the current process on next stop point
     - A - Go To Goldsmith To Gem Gear
     - W - Go to Workshop Scrap
     - C - Gather All From Cockatrice

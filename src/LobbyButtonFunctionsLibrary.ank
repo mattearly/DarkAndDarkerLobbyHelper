@@ -40,22 +40,22 @@ global haltLongProcessFlag := false
 
 ; aux mini sleep
 MS() {
-  sleep 23 ; to help with speeding up tool
+  sleep 25 ; to help with speeding up tool
 }
 
 ; aux short sleep
 SS() {
-  sleep 179 ; probably needs to be higher 
+  sleep 183 ; probably needs to be higher 
 }
 
 ; aux long sleep
 LS() { 
-  sleep 459  ; probably needs to be higher 
+  sleep 455  ; probably needs to be higher 
 }
 
 ; aux very long sleep
 VLS() {
-  sleep 2199
+  sleep 2191
 }
 
 HoverMouseThenClick(loc1, loc2) {
@@ -573,31 +573,30 @@ InvestInGreenMedsAndPotionOfLuck() {
     SS()
     MouseClick "left", 69, 335
     SS()
-
     if haltLongProcessFlag    ; stop point 1
       return
     FillAllMakeDeal()
+    SS()
 
     ; PART  2, GREEN BANDOS
-    SS()
     MouseClick "left", 532, 302 ; set of triple green Bandages
     SS()
     if haltLongProcessFlag    ; stop point 2
       return
     FillAllMakeDeal()
-    ;    SS()
+    SS()
     MouseClick "left", 401, 302 ; set of single green Bandages
     SS()
     Loop 2 {  ; click increase
-      MouseClick "left", 1013, 604 
+      HoverMouseThenClick(1009, 590)
       MS()
     }
     if haltLongProcessFlag      ; stop point 3
       return
     FillAllMakeDeal()
+    SS()
 
     ; PART 3/3, GREEN POTS
-    SS()
     MouseClick "left", 285, 302 ; set of triple green potions
     SS()
     if haltLongProcessFlag    ; stop point 4 
@@ -607,7 +606,7 @@ InvestInGreenMedsAndPotionOfLuck() {
     MouseClick "left", 157, 302 ; set of single green potions
     SS()
     Loop 2 {  ; click increase
-      HoverMouseThenClick(1013, 604)
+      HoverMouseThenClick(1009, 590)
       MS()
     }
     if haltLongProcessFlag    ; stop point 5
