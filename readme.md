@@ -41,7 +41,7 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - numpad6 - Gather all from Goblin Buyback
     - numpad7 - not assigned
     - numpad8 - Sell at Vendor
-    - numpad9 - Go To Marketplace Search - disabled for ssf
+    - numpad9 - Go To Marketplace Search - disabled if ssf
     - numpadAdd - Buy 18 Potions
 
   - **Right Cntrl** + 
@@ -58,9 +58,10 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - Alt+I - Invest In Consumables (green potions, green bandages, greater luck)
     - E - Gather All From Expressman
     - G - Gather All From Goblin Buyback
-    - Alt+G - Gather All Front Page Characters (6 most recent played) From Golbin Buyback & Expressmen (long routine for when you're going afk for a while and don't want to lose gear) (*long process)
-    - Alt+M - Buy Kit Off Market from GearBuyingSettings File (*long process) - disabled for ssf
     - Alt+H - Halt long process - Stop the current process on next stop point
+    - Alt+G - Gather All Front Page Characters (6 most recent played) From Goblin Buyback & Expressmen (long routine for when afk) (long process)
+    - Alt+P - MARKET POST from PosterSettings.txt File (long process) - disabled if ssf
+    - Alt+M - MARKET BUY from GearBuyingSettings File (long process) - disabled if ssf
     - A - Go To Goldsmith To Gem Gear
     - W - Go to Workshop Scrap
     - C - Gather All From Cockatrice
