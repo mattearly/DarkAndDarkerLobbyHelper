@@ -26,13 +26,15 @@ global LeathersmithLoc    := [960, 600]
 global GoldsmithLoc       := [1430, 600]
 ; other various locations
 global SecondCharDownLoc    := [1600, 300]
-global OptionsLoc           := [213, 550]
+global OptionsLoc           := [220, 550]
 global QuickFillLoc         := [960, 790]
-global AudioOptionsLoc      := [938, 40]
+global AudioOptionsLoc      := [930, 40]
 global RetrievalFillAllLoc  := [950, 830]
 global BuyFillAllLoc        := [960, 910]
 global FirstVendorSlot       := [70, 300]
-global WorkshopHeaderLoc   := [1111, 123]
+global WorkshopHeaderLoc   := [1100, 130]
+global TradeHeadLoc        := [1200, 30]
+global MarketPlaceChannelLoc     := [1200, 250]
 
 ; halt buying gives us an option to stop an otherwise very long routine
 ; long processes use this boolean to allow mid process canceling
@@ -40,22 +42,22 @@ global haltLongProcessFlag := false
 
 ; aux mini sleep
 MS() {
-  sleep 23 ; to help with speeding up tool
+  sleep 25 ; to help with speeding up tool
 }
 
 ; aux short sleep
 SS() {
-  sleep 179 ; probably needs to be higher 
+  sleep 183 ; probably needs to be higher 
 }
 
 ; aux long sleep
 LS() { 
-  sleep 459  ; probably needs to be higher 
+  sleep 455  ; probably needs to be higher 
 }
 
 ; aux very long sleep
 VLS() {
-  sleep 2199
+  sleep 2191
 }
 
 HoverMouseThenClick(loc1, loc2) {
@@ -102,8 +104,8 @@ ClickEntireInventory() {
 ; aux function
 MarketplaceBuyCheapest() {
   MouseClick "left", 1789, 350  ; buy first (cheapest) item
-  Loop 2 {
-    LS()
+  Loop 3 {
+    MS()
   }
   MouseClick "left", 954, 763  ; fill all button
 }
@@ -305,8 +307,6 @@ GoToCollector() {
 
 GoToSellAtVendor() {
   GoToCollector()
-  SS()
-  HoverMouseThenClick(QuickFillLoc[1], QuickFillLoc[2])   ; sell tab button location
 }
 
 GetAllFromGoblin() {
@@ -357,8 +357,16 @@ GoToMarketplaceSearch() {
   MouseClick "left", 117, 203  ; search dropdown button
 }
 
+GoToMarketplaceTrade() {
+  GlobalBack()
+  HoverMouseThenClick(TradeHeadLoc[1], TradeHeadLoc[2])
+  SS()
+     HoverMouseThenClick(MarketPlaceChannelLoc[1], MarketPlaceChannelLoc[2])
+  LS()
+  HoverMouseThenClick(1046, 125) ; My Listings Loc
+}
+
 GoToMarketplace() {
-  global
   GlobalBack()
   MouseClick "left", 1192, 31  ; top trade button
   LS()
@@ -570,44 +578,43 @@ InvestInGreenMedsAndPotionOfLuck() {
 
     ; PART 1, BUY LUCK (we must start right side of the new alchemist for positioning sake)
     GoToAlchemist()
-    SS()
-    MouseClick "left", 69, 335
-    SS()
-
+    LS()
+    HoverMouseThenClick(69, 335)
+    MS()
     if haltLongProcessFlag    ; stop point 1
       return
     FillAllMakeDeal()
+    MS()
 
     ; PART  2, GREEN BANDOS
-    SS()
     MouseClick "left", 532, 302 ; set of triple green Bandages
-    SS()
+    MS()
     if haltLongProcessFlag    ; stop point 2
       return
     FillAllMakeDeal()
-    ;    SS()
+    MS()
     MouseClick "left", 401, 302 ; set of single green Bandages
-    SS()
+    MS()
     Loop 2 {  ; click increase
-      MouseClick "left", 1013, 604 
+      HoverMouseThenClick(1009, 590)
       MS()
     }
     if haltLongProcessFlag      ; stop point 3
       return
     FillAllMakeDeal()
+    MS()
 
     ; PART 3/3, GREEN POTS
-    SS()
     MouseClick "left", 285, 302 ; set of triple green potions
-    SS()
+    MS()
     if haltLongProcessFlag    ; stop point 4 
       return
     FillAllMakeDeal()
-    SS()
+    MS()
     MouseClick "left", 157, 302 ; set of single green potions
-    SS()
+    MS()
     Loop 2 {  ; click increase
-      HoverMouseThenClick(1013, 604)
+      HoverMouseThenClick(1009, 590)
       MS()
     }
     if haltLongProcessFlag    ; stop point 5
@@ -762,10 +769,11 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   }
 
   HoverMouseThenClick(1790, 277)  ; search button
-  VLS()     ; wait on search lag
+  LS()     ; wait on search lag
+  LS()
 
   MarketplaceBuyCheapest()
-  VLS()    ; cancel time for user delay
+  LS()    ; cancel time for user delay
   HoverMouseThenClick(959, 843)  ; complete trade button
   SS()
 
@@ -775,7 +783,8 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   ; base case correction
   MS()
   MouseClick "left", 1054, 611  ; press no to leave trade button
-  VLS()   ; wait on completion lag
+  LS()   ; wait on completion lag
+  LS()   ; wait on completion lag
 }
 
 ; a subroutine to buy another of the same item you are already on in the trade
@@ -862,20 +871,20 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
   }
 
   MouseClick "left", 1790, 277  ; search button
-  VLS()     ; wait on search lag
+  LS()     ; wait on search lag
+  LS()
 
   MarketplaceBuyCheapest()
-  VLS()    ; cancel time for user delay
+  SS()
   MouseClick "left", 959, 843  ; complete trade button
   LS()
 
-  ; todo, case of non-avaiable item and it not autobacking
   MouseClick "left", 246, 35   ; back button(good) or leave trade button(bad)
-  ; base case correction
   SS()
   MouseClick "left", 1054, 611  ; press no to leave trade button
   
-  VLS()   ; wait on completion lag
+  LS()   ; wait on completion lag
+  LS()   ; wait on completion lag
 }
 
 ; Starter Func to buy from filepath
@@ -978,4 +987,72 @@ BuyGearOffMarketFromFile(filepath) {
 HaltLongProcess() {
   global
   haltLongProcessFlag := true
+}
+
+PostItems(count,price) {
+  global
+  haltLongProcessFlag := false
+
+
+  GoToMarketplaceTrade()
+  SS()
+
+  if (haltLongProcessFlag)
+    return
+  
+  processcount := count
+  limit := 10   ; MAX 10 UNTIL UPGRADED (TODO)
+  if (processcount > limit)
+    processcount := limit
+
+  Loop processcount {  
+    HoverMouseThenClick(1420 + (A_Index * 40), 640)       ; click inventory slot start 1460, 640
+    HoverMouseThenClick(1028, 622)    ;click price area
+    MS()
+    Send(price)
+    MS()
+    HoverMouseThenClick(942,960)   ; click create listing
+    MS()
+    HoverMouseThenClick(852,614)  ;click yes
+    if (haltLongProcessFlag)
+      return
+    SS()  ; go next
+  }
+}
+
+PostFromFile(filepath) {
+
+  try
+    FileObj := FileOpen(filepath, "r")
+  catch as Err
+  {
+    MsgBox "Can't open '" filepath "' for reading." "`n`n" Type(Err) ": " Err.Message
+    return
+  }
+
+  ; EAT TITLE LINE  
+  Line := FileObj.ReadLine()
+
+  ; POST (Only process one line)
+  While (0 = FileObj.AtEOF)
+  {
+    NewLine := FileObj.ReadLine()                         ; get next line in file
+    if (NewLine = "")                                     ; skip to next line if this one was blank
+      continue
+
+    NewStringLowerCase := StrLower(NewLine)               ; make it all lower case
+    PartOfLine := StrSplit(NewStringLowerCase, ",")       ; split to parts for processing
+    size := PartOfLine.Length
+
+    if (size = 0)                                         ; skip to next iteration if nothing
+      continue
+
+    if (size = 2) {                                       ; only process 2 variables
+      count := PartOfLine[1]
+      price := PartOfLine[2]
+      PostItems(count,price)
+    }
+
+    break   ; forced only process one line
+  }
 }

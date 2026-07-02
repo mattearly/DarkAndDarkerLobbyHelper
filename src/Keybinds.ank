@@ -611,3 +611,19 @@ Unlock() {
   ResetSquireRSBLSP()
   Unlock()
 }
+
+
+; Post items to Market : RightControl+Alt+P
+#HotIf WinActive("Dark and Darker")
+>^!p:: {
+  global
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  middleOfHaltableProcessFlag := true
+  PostFromFile("PosterSettings.txt")
+  middleOfHaltableProcessFlag := false
+  Unlock()
+}
