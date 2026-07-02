@@ -1001,12 +1001,21 @@ PostItems(count,price) {
     return
   
   processcount := count
-  limit := 10   ; MAX 10 UNTIL UPGRADED (TODO)
+  limit := 20   ; MAX 20 UNTIL UPGRADED (TODO)
   if (processcount > limit)
     processcount := limit
 
-  Loop processcount {  
-    HoverMouseThenClick(1420 + (A_Index * 40), 640)       ; click inventory slot start 1460, 640
+  Loop processcount {
+    if (A_Index < 6)                                       ; column 1 click inventory slot start 1460, 640
+      HoverMouseThenClick(1460, 600 + (A_Index * 40))      
+    else if (A_Index < 11)                                 ; column 2
+      HoverMouseThenClick(1500, 600 + ((A_Index - 5) * 40))
+    else if (A_Index < 16)                                 ; column 3
+      HoverMouseThenClick(1540, 600 + ((A_Index - 10) * 40))
+    else                                                   ; column 4
+      HoverMouseThenClick(1580, 600 + ((A_index - 15) * 40))
+
+    
     HoverMouseThenClick(1028, 622)    ;click price area
     MS()
     Send(price)
