@@ -622,6 +622,8 @@ Unlock() {
   } else {
     Lock()
   }
+  middleOfHaltableProcessFlag := true
   PostFromFile("PosterSettings.txt")
+  middleOfHaltableProcessFlag := false
   Unlock()
 }
