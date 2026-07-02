@@ -102,8 +102,8 @@ ClickEntireInventory() {
 ; aux function
 MarketplaceBuyCheapest() {
   MouseClick "left", 1789, 350  ; buy first (cheapest) item
-  Loop 2 {
-    LS()
+  Loop 3 {
+    MS()
   }
   MouseClick "left", 954, 763  ; fill all button
 }
@@ -305,8 +305,6 @@ GoToCollector() {
 
 GoToSellAtVendor() {
   GoToCollector()
-  SS()
-  HoverMouseThenClick(QuickFillLoc[1], QuickFillLoc[2])   ; sell tab button location
 }
 
 GetAllFromGoblin() {
@@ -761,10 +759,11 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   }
 
   HoverMouseThenClick(1790, 277)  ; search button
-  VLS()     ; wait on search lag
+  LS()     ; wait on search lag
+  LS()
 
   MarketplaceBuyCheapest()
-  VLS()    ; cancel time for user delay
+  LS()    ; cancel time for user delay
   HoverMouseThenClick(959, 843)  ; complete trade button
   SS()
 
@@ -774,7 +773,8 @@ PurchaseFromMarket(itemname:="", searchoffset:=0, itemrarity:=0, modifier1:="", 
   ; base case correction
   MS()
   MouseClick "left", 1054, 611  ; press no to leave trade button
-  VLS()   ; wait on completion lag
+  LS()   ; wait on completion lag
+  LS()   ; wait on completion lag
 }
 
 ; a subroutine to buy another of the same item you are already on in the trade
@@ -861,20 +861,20 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
   }
 
   MouseClick "left", 1790, 277  ; search button
-  VLS()     ; wait on search lag
+  LS()     ; wait on search lag
+  LS()
 
   MarketplaceBuyCheapest()
-  VLS()    ; cancel time for user delay
+  SS()
   MouseClick "left", 959, 843  ; complete trade button
   LS()
 
-  ; todo, case of non-avaiable item and it not autobacking
   MouseClick "left", 246, 35   ; back button(good) or leave trade button(bad)
-  ; base case correction
   SS()
   MouseClick "left", 1054, 611  ; press no to leave trade button
   
-  VLS()   ; wait on completion lag
+  LS()   ; wait on completion lag
+  LS()   ; wait on completion lag
 }
 
 ; Starter Func to buy from filepath
