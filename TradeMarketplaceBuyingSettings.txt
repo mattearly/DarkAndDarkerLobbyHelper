@@ -1,4 +1,2 @@
-ignore
-ruby,0,2
-ruby,0,2
-ruby,0,2
+ignored line - see guide
+lockpick

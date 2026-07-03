@@ -60,8 +60,8 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - G - Gather All From Goblin Buyback
     - Alt+H - Halt long process - Stop the current process on next stop point
     - Alt+G - Gather All Front Page Characters (6 most recent played) From Goblin Buyback & Expressmen (long routine for when afk) (long process)
-    - Alt+P - MARKET POST from PosterSettings.txt File (long process) - disabled if ssf
-    - Alt+M - MARKET BUY from GearBuyingSettings File (long process) - disabled if ssf
+    - Alt+P - MARKET POST from TradeMarketplaceListingsSettings.txt File (long process) - disabled if ssf
+    - Alt+M - MARKET BUY from TradeMarketplaceBuyingSettings.txt File (long process) - disabled if ssf
     - A - Go To Goldsmith To Gem Gear
     - W - Go to Workshop Scrap
     - C - Gather All From Cockatrice

@@ -575,7 +575,7 @@ Unlock() {
   Unlock()
 }
 
-; Buy from BuyingSettings.txt : RightControl+Alt+m
+; Buy from TradeMarketplaceBuyingSettings.txt : RightControl+Alt+m
 #HotIf WinActive("Dark and Darker")
 >^!m:: {
   global
@@ -590,7 +590,7 @@ Unlock() {
   Unlock()
 }
 
-; stop buying gear from market  : RightControl+Alt+H
+; halt any long process : RightControl+Alt+H
 #HotIf WinActive("Dark and Darker")
 >^!h:: {
   global
@@ -613,7 +613,7 @@ Unlock() {
 }
 
 
-; Post items to Market : RightControl+Alt+P
+; Post items to Market based on TradeMarketplaceBuyingSettings.txt : RightControl+Alt+P
 #HotIf WinActive("Dark and Darker")
 >^!p:: {
   global
