@@ -665,10 +665,9 @@ SetVolumeToFifty() {
 ; AUX FUNCTION FOR MARKET
 ; 0 no preference, 1 rare, 2 epic, 3 legendary, 4 unique, 5 artifact
 SetMarketPlaceSearchRarityLevel(itemrarity:=0) {
-  MouseClick "left", 365, 203  ; search rarity button
-  Loop 3 {
-    SS()
-  }
+  HoverMouseThenClick(365, 203)  ; search rarity button
+  Loop 2
+    MS()
   switch itemrarity 
   {
     Case 1:

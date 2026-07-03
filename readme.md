@@ -6,7 +6,7 @@ Improve the functionality and convenience of Dark and Darker's pre-game lobby.
 
 ## Fuctionality
 
-Use hotkeys to do common things in the pre-game lobby such as vendor treasure, transfer inventory, buy meds, execute buy list on market, ReSquire, go to common crafters, ... and much more. Functions are designed to work when logged into a character and in the pre-game lobby.
+Use hotkeys to do common things in the pre-game lobby such as vendor treasure, transfer inventory, buy meds, execute buy list on market, ReSquire, go to common crafters, list multiple same item to market, ... and much more. Functions are designed to work when logged into a character and in the pre-game lobby.
 
 ## Requirements
 

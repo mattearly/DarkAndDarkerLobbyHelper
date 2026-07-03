@@ -575,7 +575,7 @@ Unlock() {
   Unlock()
 }
 
-; Gear Up from Market Search: RightControl+Alt+m
+; Buy from BuyingSettings.txt : RightControl+Alt+m
 #HotIf WinActive("Dark and Darker")
 >^!m:: {
   global
@@ -585,12 +585,12 @@ Unlock() {
     Lock()
   }
   middleOfHaltableProcessFlag := true
-  BuyGearOffMarketFromFile("GearBuyingSettings.txt")
+  BuyGearOffMarketFromFile("TradeMarketplaceBuyingSettings.txt")
   middleOfHaltableProcessFlag := false
   Unlock()
 }
 
-; stop buying gear from market
+; stop buying gear from market  : RightControl+Alt+H
 #HotIf WinActive("Dark and Darker")
 >^!h:: {
   global
@@ -623,7 +623,7 @@ Unlock() {
     Lock()
   }
   middleOfHaltableProcessFlag := true
-  PostFromFile("PosterSettings.txt")
+  PostFromFile("TradeMarketplaceListingsSettings.txt")
   middleOfHaltableProcessFlag := false
   Unlock()
 }
