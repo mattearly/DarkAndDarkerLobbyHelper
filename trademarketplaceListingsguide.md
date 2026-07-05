@@ -1,4 +1,4 @@
-# about the PosterSettigns.txt file
+# about the TradeMarketplaceListingsSettings.txt file
 
 Fill each line with a syntax. Market will post based on these settings with the ruleset as follows.
 

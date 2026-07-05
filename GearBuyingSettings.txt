@@ -1,2 +1,0 @@
-guide: see gearbuyingguide.md
-lockpick

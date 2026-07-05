@@ -1,4 +1,4 @@
-# about the GearBuyingSettings.txt file
+# about the TradeMarketplaceBuyingSettings.txt file
 
 Fill each line with a syntax. Market search and purchase based on these settings will be performed.
 
