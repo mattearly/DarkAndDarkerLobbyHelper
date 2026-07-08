@@ -42,24 +42,24 @@ Fill each line with a syntax. Market search and purchase based on these settings
 
 `*ring,0,0,action,add phys`
 
-- buys cheapest ring with action speed and add physical damage
+- Buys cheapest ring with action speed and add physical damage.
 
 `*neck,0,0,action`
 
-- buys cheapest amulet with action speed
+- Buys cheapest any amulet with action speed.
 
  `frost am,0,2`
 
-- buys the cheapest epic frost amulet
+- Buys the cheapest epic frost amulet
 
 `fighter,hand,0,dex,action`
 
-- buys cheapest fighter gloves with static dex stat and action speed enchant
+- Class detected, mode 2. Buys cheapest fighter gloves with static dex stat and action speed enchant.
 
 `fighter,ches,0,vig,agil`
 
-- buys cheapest fighter chestpiece with white vigor stat and agility enchant
+- Class detected, mode 2. Buys cheapest fighter chestpiece with white vigor stat and agility enchant.
 
 `sturdy boots,0,2`
 
-- buys the cheapest epic sturdy boots
+- Buys the cheapest epic sturdy boots.

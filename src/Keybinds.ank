@@ -8,7 +8,6 @@
 ; written and maintained by matthewjearly@gmail.com
 ; ----------------------------------------------------------------------
 
-
 #include LobbyButtonFunctionsLibrary.ank
 
 global isBusy := false
@@ -569,7 +568,7 @@ Unlock() {
     Lock()
   }
   middleOfHaltableProcessFlag := true
-  InvestInGreenMedsAndPotionOfLuck()
+  BuyoutGreenMedsAndLuck()
   middleOfHaltableProcessFlag := false
 
   Unlock()
