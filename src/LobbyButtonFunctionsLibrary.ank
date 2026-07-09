@@ -428,7 +428,7 @@ BuyALotOfPotions() {
   LS()
   ; default set to buy 18 grey quality potions
   HoverMouseThenClick(FirstVendorSlot[1],FirstVendorSlot[2])
-  LS()
+  SS()
   Loop 8 {   ; buy this+1
     MouseClick "left", 1013, 604  ; click on increase
     MS()
@@ -572,7 +572,7 @@ ToolBeltAndRequeue() {
 
 ; level traders first (alch, surg, fortune teller)
 ; long process haltable (right cntrl+alt+h default)
-InvestInGreenMedsAndPotionOfLuck() {
+BuyoutGreenMedsAndLuck() {
     global
     haltLongProcessFlag := false
 
