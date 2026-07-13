@@ -824,6 +824,7 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
   ; STEP 3 - Set Class
   MouseClick "left", 688, 203
   SS()
+  SS()
   Send class_name
   SS()
   HoverMouseThenClick(531, 277)
@@ -988,6 +989,7 @@ HaltLongProcess() {
   haltLongProcessFlag := true
 }
 
+; marketplace post x items at y price
 PostItems(count,price) {
   global
   haltLongProcessFlag := false
@@ -1015,19 +1017,122 @@ PostItems(count,price) {
       HoverMouseThenClick(1580, 600 + ((A_index - 15) * 40))
 
     
-    HoverMouseThenClick(1028, 622)    ;click price area
+    HoverMouseThenClick(1028, 622)    ; click price area
     MS()
     Send(price)
     MS()
     HoverMouseThenClick(942,960)   ; click create listing
     MS()
-    HoverMouseThenClick(852,614)  ;click yes
+    HoverMouseThenClick(852,614)  ; click yes
     if (haltLongProcessFlag)
       return
     SS()  ; go next
   }
 }
 
+; newer improved version - testing
+PostItemsToMarketplace(count,price,width,height) {
+  global
+  haltLongProcessFlag := false
+
+
+
+  GoToMarketplaceTrade()
+  SS()
+
+  if (haltLongProcessFlag)
+    return
+  
+  processcount := count
+
+  ; limit adjustments
+  limit := 20   ; default max 20 1x1 items
+  if (width = 2 and height = 2)
+    limit := 10   ; max 10 2x2 items
+  if (width = 2 and height = 3)
+    limit := 5    ; max 5 2x3 items
+
+  
+  if (processcount > limit)
+    processcount := limit
+
+
+  if (limit = 20) {      ; process 1x1 items
+    Loop processcount {
+      if (A_Index < 6)                                       ; column 1 click inventory slot start 1460, 640
+        HoverMouseThenClick(1460, 600 + (A_Index * 40))      
+      else if (A_Index < 11)                                 ; column 2
+        HoverMouseThenClick(1500, 600 + ((A_Index - 5) * 40))
+      else if (A_Index < 16)                                 ; column 3
+        HoverMouseThenClick(1540, 600 + ((A_Index - 10) * 40))
+      else                                                   ; column 4
+        HoverMouseThenClick(1580, 600 + ((A_index - 15) * 40))
+
+      HoverMouseThenClick(1028, 622)    ; click price area
+      MS()
+      Send(price)
+      MS()
+      HoverMouseThenClick(942,960)   ; click create listing
+      MS()
+      HoverMouseThenClick(852,614)  ; click yes
+      if (haltLongProcessFlag)
+        return
+      SS()  ; go next
+    }
+  }
+  else if (limit = 10) { ; process 2x2 items
+    Loop processcount {
+      if (A_Index < 3)                                       ; column 1 click inventory slot start 1460, 640
+        HoverMouseThenClick(1460, 600 + (A_Index * 80))      
+      else if (A_Index < 5)                                 ; column 2 
+        HoverMouseThenClick(1540, 600 + ((A_Index - 2) * 80))
+      else if (A_Index < 7)                                 ; column 3
+        HoverMouseThenClick(1620, 600 + ((A_Index - 4) * 80))
+      else if (A_Index < 9)                                 ; column 4
+        HoverMouseThenClick(1700, 600 + ((A_index - 6) * 80))
+      else                                                  ; column 5
+        HoverMouseThenClick(1780, 600 + ((A_index - 8) * 80))
+
+      HoverMouseThenClick(1028, 622)    ; click price area
+      MS()
+      Send(price)
+      MS()
+      HoverMouseThenClick(942,960)   ; click create listing
+      MS()
+      HoverMouseThenClick(852,614)  ; click yes
+      if (haltLongProcessFlag)
+        return
+      SS()  ; go next
+    }
+  }
+  else if (limit = 5) {     ; process 2x3 items
+      Loop processcount {
+      if (A_Index < 2)                                       ; column 1 click inventory slot start 1460, 640
+        HoverMouseThenClick(1460, 600 + (A_Index * 80))      
+      else if (A_Index < 3)                                 ; column 2 
+        HoverMouseThenClick(1540, 600 + ((A_Index - 1) * 80))
+      else if (A_Index < 4)                                 ; column 3
+        HoverMouseThenClick(1620, 600 + ((A_Index - 2) * 80))
+      else if (A_Index < 5)                                 ; column 4
+        HoverMouseThenClick(1700, 600 + ((A_index - 3) * 80))
+      else                                                  ; column 5
+        HoverMouseThenClick(1780, 600 + ((A_index - 4) * 80))
+      
+      HoverMouseThenClick(1028, 622)    ;click price area
+      MS()
+      Send(price)
+      MS()
+      HoverMouseThenClick(942,960)   ; click create listing
+      MS()
+      HoverMouseThenClick(852,614)  ;click yes
+      if (haltLongProcessFlag)
+        return
+      SS()  ; go next
+    }
+  }
+}
+
+; try posting from the config file current settings (TradeMarketplaceListingsSettings.txt)
 PostFromFile(filepath) {
 
   try
@@ -1059,6 +1164,9 @@ PostFromFile(filepath) {
       count := PartOfLine[1]
       price := PartOfLine[2]
       PostItems(count,price)
+    } else if (size = 4) {
+      ; count, price, width, height
+      PostItemsToMarketplace(PartOfLine[1],PartOfLine[2],PartOfLine[3],PartOfLine[4])
     }
 
     break   ; forced only process one line
