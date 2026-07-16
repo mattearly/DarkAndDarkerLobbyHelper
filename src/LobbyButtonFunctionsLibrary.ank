@@ -62,13 +62,15 @@ VLS() {
 
 HoverMouseThenClick(loc1, loc2) {
   MouseMove loc1, loc2
-  LS()
+  Loop 2 
+    SS()
   MouseClick "left", loc1, loc2
 }
 
 HoverMouseThenClickR(loc1, loc2) {
   MouseMove loc1, loc2
-  LS()
+  Loop 2 
+    SS()
   MouseClick "right", loc1, loc2
 }
 
@@ -993,14 +995,9 @@ HaltLongProcess() {
 PostItems(count,price) {
   global
   haltLongProcessFlag := false
-
-
   GoToMarketplaceTrade()
-  SS()
+  LS()
 
-  if (haltLongProcessFlag)
-    return
-  
   processcount := count
   limit := 20   ; MAX 20 UNTIL UPGRADED (TODO)
   if (processcount > limit)
@@ -1016,17 +1013,19 @@ PostItems(count,price) {
     else                                                   ; column 4
       HoverMouseThenClick(1580, 600 + ((A_index - 15) * 40))
 
-    
+    if (haltLongProcessFlag)
+      return
+      
     HoverMouseThenClick(1028, 622)    ; click price area
-    MS()
+    SS()
     Send(price)
-    MS()
+    SS()
     HoverMouseThenClick(942,960)   ; click create listing
-    MS()
+    SS()
     HoverMouseThenClick(852,614)  ; click yes
     if (haltLongProcessFlag)
       return
-    SS()  ; go next
+    LS()  ; go next
   }
 }
 
@@ -1034,28 +1033,19 @@ PostItems(count,price) {
 PostItemsToMarketplace(count,price,width,height) {
   global
   haltLongProcessFlag := false
-
-
-
   GoToMarketplaceTrade()
-  SS()
-
-  if (haltLongProcessFlag)
-    return
-  
-  processcount := count
+  LS()
 
   ; limit adjustments
+  processcount := count
   limit := 20   ; default max 20 1x1 items
   if (width = 2 and height = 2)
     limit := 10   ; max 10 2x2 items
   if (width = 2 and height = 3)
     limit := 5    ; max 5 2x3 items
 
-  
   if (processcount > limit)
     processcount := limit
-
 
   if (limit = 20) {      ; process 1x1 items
     Loop processcount {
@@ -1068,16 +1058,17 @@ PostItemsToMarketplace(count,price,width,height) {
       else                                                   ; column 4
         HoverMouseThenClick(1580, 600 + ((A_index - 15) * 40))
 
-      HoverMouseThenClick(1028, 622)    ; click price area
-      MS()
-      Send(price)
-      MS()
-      HoverMouseThenClick(942,960)   ; click create listing
-      MS()
-      HoverMouseThenClick(852,614)  ; click yes
       if (haltLongProcessFlag)
         return
-      SS()  ; go next
+
+      HoverMouseThenClick(1028, 622)    ; click price area
+      SS()
+      Send(price)
+      SS()
+      HoverMouseThenClick(942,960)   ; click create listing
+      SS()
+      HoverMouseThenClick(852,614)  ; click yes
+      LS()  ; go next
     }
   }
   else if (limit = 10) { ; process 2x2 items
@@ -1093,16 +1084,17 @@ PostItemsToMarketplace(count,price,width,height) {
       else                                                  ; column 5
         HoverMouseThenClick(1780, 600 + ((A_index - 8) * 80))
 
-      HoverMouseThenClick(1028, 622)    ; click price area
-      MS()
-      Send(price)
-      MS()
-      HoverMouseThenClick(942,960)   ; click create listing
-      MS()
-      HoverMouseThenClick(852,614)  ; click yes
       if (haltLongProcessFlag)
         return
-      SS()  ; go next
+
+      HoverMouseThenClick(1028, 622)    ; click price area
+      SS()
+      Send(price)
+      SS()
+      HoverMouseThenClick(942,960)   ; click create listing
+      SS()
+      HoverMouseThenClick(852,614)  ; click yes
+      LS()  ; go next
     }
   }
   else if (limit = 5) {     ; process 2x3 items
@@ -1118,16 +1110,17 @@ PostItemsToMarketplace(count,price,width,height) {
       else                                                  ; column 5
         HoverMouseThenClick(1780, 600 + ((A_index - 4) * 80))
       
-      HoverMouseThenClick(1028, 622)    ;click price area
-      MS()
-      Send(price)
-      MS()
-      HoverMouseThenClick(942,960)   ; click create listing
-      MS()
-      HoverMouseThenClick(852,614)  ;click yes
       if (haltLongProcessFlag)
         return
-      SS()  ; go next
+
+      HoverMouseThenClick(1028, 622)    ;click price area
+      SS()
+      Send(price)
+      SS()
+      HoverMouseThenClick(942,960)   ; click create listing
+      SS()
+      HoverMouseThenClick(852,614)  ;click yes
+      LS()  ; go next
     }
   }
 }
@@ -1171,4 +1164,11 @@ PostFromFile(filepath) {
 
     break   ; forced only process one line
   }
+}
+
+AFKMoneyPrinter() {
+  ; every 15 minutes buy green meds and luck
+  ; list all at some very cheap price that will sell
+  ; repeat 5 times
+  ; gather all
 }
