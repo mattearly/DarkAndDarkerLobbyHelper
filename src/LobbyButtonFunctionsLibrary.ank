@@ -8,7 +8,7 @@
 ; written and maintained by matthewjearly@gmail.com
 ; ----------------------------------------------------------------------
 ; notes: 
-;   - aux functions are for subroutines and should not be hotkey'd too normally
+;   - aux functions are for subroutines and should not be hotkey'd
 
 ; (todo) all locations should probably be defined like the following for ease of updating
 global MerchantsTopMenuLoc  := [1036, 80]
