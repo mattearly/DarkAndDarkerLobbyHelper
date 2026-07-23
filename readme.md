@@ -67,6 +67,7 @@ These are set up in "src/Keybinds.ank". You can change them if you like in that 
     - C - Gather All From Cockatrice
     - X - Go to Vendor and Quickfill (waits for confirm)
     - T - Move All Inventory To Stash Routine
+    - Alt+U - Ultimate Inventory Clearer (Scrap, Sell, Stash ALL)
 
 ## Known Issues
 
