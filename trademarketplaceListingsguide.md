@@ -1,6 +1,10 @@
 # about the TradeMarketplaceListingsSettings.txt file
 
-Fill each line with a syntax. Market will post based on these settings with the ruleset as follows.
+Feature disabled during SSF.
+
+Fill each line with a syntax.
+
+Market will post based on these settings with the ruleset as follows.
 
 Items must be in your characters inventory to the left as they autosort(columns of 5 height). Assumed 1x1 slot items by default, limit at 20.
 Supports sizes 2x2, limit at 10, and size 2x3, limit at 5.

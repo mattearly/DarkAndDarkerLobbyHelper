@@ -1,5 +1,7 @@
 # about the TradeMarketplaceBuyingSettings.txt file
 
+Feature disabled during SSF.
+
 Fill each line with a syntax. Market search and purchase based on these settings will be performed.
 
 ## mode 1 - by name

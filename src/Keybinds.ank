@@ -256,34 +256,6 @@ Unlock() {
 ;   Unlock()
 ; }
 
-; PURCHASE BANDAGES
-#HotIf WinActive("Dark and Darker")
-<^NumpadSub::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
- ; BuyALotOfBandages()
-  Unlock()
-}
-
-; PURCHASE LESS BANDAGES
-#HotIf WinActive("Dark and Darker")
->^NumpadSub::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
- ; BuyBandages()
-  Unlock()
-}
-
 ; PURCHASE POTIONS
 #HotIf WinActive("Dark and Darker")
 <^NumpadAdd::
@@ -325,7 +297,7 @@ Unlock() {
   Unlock()
 }
 
-; Keybind setup for HitPlay (file structure follows this pattern)
+; Keybind setup for HitPlay
 #HotIf WinActive("Dark and Darker")
 >^q::
 {
@@ -367,7 +339,7 @@ Unlock() {
   Unlock()
 }
 
-; GO TO THE NEWER WORKSHOP
+; GO TO THE WORKSHOP SCRAPDOWN
 #HotIf WinActive("Dark and Darker")
 >^w::
 {
@@ -394,34 +366,6 @@ Unlock() {
 ;   GoToMarketplaceSearch()
 ;   Unlock()
 ; }
-
-; PURCHASE BANDAGES
-#HotIf WinActive("Dark and Darker")
-<^b::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-;  BuyALotOfBandages()
-  Unlock()
-}
-
-; PURCHASE LESS BANDAGES
-#HotIf WinActive("Dark and Darker")
->^b::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
- ; BuyBandages()
-  Unlock()
-}
 
 ; PURCHASE POTIONS
 #HotIf WinActive("Dark and Darker")
@@ -493,6 +437,7 @@ Unlock() {
   Unlock()
 }
 
+; remove toolbelt items, resquire, queue
 #HotIf WinActive("Dark and Darker")
 >^!q::
 {
@@ -506,6 +451,7 @@ Unlock() {
   Unlock()
 }
 
+; while in stash, transfers entire inventory over to stash
 #HotIf WinActive("Dark and Darker")
 >^T:: {
   global
@@ -517,7 +463,6 @@ Unlock() {
   TransferInventory()
   Unlock()
 }
-
 
 #HotIf WinActive("Dark and Darker")
 >^1:: {
@@ -556,38 +501,39 @@ Unlock() {
   Unlock()
 }
 
-; [I]nvest- buys things from traders that have good resale value
+; [RightControl]+[Alt]+[I]nvest- buys things from traders that have good resale value
 ;  - green potions and bandages and fortune potion
 ;  - haltable process
-#HotIf WinActive("Dark and Darker")
->^!i:: {
-  global
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  middleOfHaltableProcessFlag := true
-  BuyoutGreenMedsAndLuck()
-  middleOfHaltableProcessFlag := false
+;  - disabled early wipe
+; #HotIf WinActive("Dark and Darker")
+; >^!i:: {
+;   global
+;   if isBusy {
+;     return
+;   } else {
+;     Lock()
+;   }
+;   middleOfHaltableProcessFlag := true
+;   BuyoutGreenMedsAndLuck()
+;   middleOfHaltableProcessFlag := false
+;   Unlock()
+; }
 
-  Unlock()
-}
-
-; Buy from TradeMarketplaceBuyingSettings.txt : RightControl+Alt+m
-#HotIf WinActive("Dark and Darker")
->^!m:: {
-  global
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  middleOfHaltableProcessFlag := true
-  BuyGearOffMarketFromFile("TradeMarketplaceBuyingSettings.txt")
-  middleOfHaltableProcessFlag := false
-  Unlock()
-}
+; Buy from TradeMarketplaceBuyingSettings.txt : RightControl+Alt+M
+;  - disabled early wipe
+; #HotIf WinActive("Dark and Darker")
+; >^!m:: {
+;   global
+;   if isBusy {
+;     return
+;   } else {
+;     Lock()
+;   }
+;   middleOfHaltableProcessFlag := true
+;   BuyGearOffMarketFromFile("TradeMarketplaceBuyingSettings.txt")
+;   middleOfHaltableProcessFlag := false
+;   Unlock()
+; }
 
 ; halt any long process : RightControl+Alt+H
 #HotIf WinActive("Dark and Darker")
@@ -613,8 +559,24 @@ Unlock() {
 
 
 ; Post items to Market based on TradeMarketplaceBuyingSettings.txt : RightControl+Alt+P
+;  - disabled early wipe
+; #HotIf WinActive("Dark and Darker")
+; >^!p:: {
+;   global
+;   if isBusy {
+;     return
+;   } else {
+;     Lock()
+;   }
+;   middleOfHaltableProcessFlag := true
+;   PostFromFile("TradeMarketplaceListingsSettings.txt")
+;   middleOfHaltableProcessFlag := false
+;   Unlock()
+; }
+
+; the ultimate scrapdown inventory reset -  RightControl+Alt+U
 #HotIf WinActive("Dark and Darker")
->^!p:: {
+>^!u:: {
   global
   if isBusy {
     return
@@ -622,7 +584,7 @@ Unlock() {
     Lock()
   }
   middleOfHaltableProcessFlag := true
-  PostFromFile("TradeMarketplaceListingsSettings.txt")
+  ScrapSellTransferAll()
   middleOfHaltableProcessFlag := false
   Unlock()
 }
