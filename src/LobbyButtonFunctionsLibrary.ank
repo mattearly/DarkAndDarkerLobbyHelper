@@ -382,7 +382,6 @@ GoToWoodsman() {
   MouseClick "left", WoodsmanLoc[1], WoodsmanLoc[2]
 }
 
-;unused
 GoToStash() {
   GlobalBack()
   MouseClick "left", 877, 44  ; top stash button
@@ -1171,4 +1170,82 @@ AFKMoneyPrinter() {
   ; list all at some very cheap price that will sell
   ; repeat 5 times
   ; gather all
+}
+
+
+; aux function for ScrapSellTransferAll() func
+ScrapingLoop() {
+
+;  method option 1: verbose click every cell
+;  ; click every cell
+;  BeforeFirstCell := [1420, 600]
+;  CellSize := 41
+;  Loop 10 {
+;    val1 := BeforeFirstCell[1] + A_Index * CellSize
+;    Loop 5 {
+;      val2 := BeforeFirstCell[2] + A_Index * CellSize
+;      MouseClick "left", val1, val2   ; cell location
+;      MS()
+;      ; press fill
+;      HoverMouseThenClick(950,935)
+;      MS()
+;      ; press scrap
+;      HoverMouseThenClick(950,1000)
+;      MS()
+;    }
+;  }
+
+  ; method option 2: click 2x2 items cells (faster)
+  Loop 10 {
+    if (A_Index < 3)                                       ; column 1 click inventory slot start 1460, 640
+      HoverMouseThenClick(1460, 600 + (A_Index * 80))      
+    else if (A_Index < 5)                                 ; column 2 
+      HoverMouseThenClick(1540, 600 + ((A_Index - 2) * 80))
+    else if (A_Index < 7)                                 ; column 3
+      HoverMouseThenClick(1620, 600 + ((A_Index - 4) * 80))
+    else if (A_Index < 9)                                 ; column 4
+      HoverMouseThenClick(1700, 600 + ((A_index - 6) * 80))
+    else                                                  ; column 5
+      HoverMouseThenClick(1780, 600 + ((A_index - 8) * 80))
+    MS()
+    ; press fill
+    HoverMouseThenClick(950,935)
+    MS()
+    ; press scrap
+    HoverMouseThenClick(950,1000)
+    MS()
+  }
+}
+
+
+
+; ScrapSellTransferAll: a function to scrap your inventory, sell all, and then transfer everything to your stash
+; the idea for this is to use ScrapSellTransferAll after acquiring goods and stashing everything important
+;   (from a dungeon run or retrieving a large expressman ie)
+ScrapSellTransferAll() {
+  global
+  haltLongProcessFlag := false
+  GoToWorkshopScrap()
+  SS()
+  if (haltLongProcessFlag)
+    return
+  ScrapingLoop()                   ; click entire inventory one by one and hit scrap button
+  SS()
+  if (haltLongProcessFlag)
+    return
+  SetupVenderEntireInventory()
+  SS()
+  if (haltLongProcessFlag)
+    return
+
+  ; click sell button
+  HoverMouseThenClick(950,1000)
+  SS()
+  if (haltLongProcessFlag)
+    return
+  GoToStash()
+  SS()
+  if (haltLongProcessFlag)
+    return
+  TransferInventory()            ; transfer all to stash
 }

@@ -573,3 +573,18 @@ Unlock() {
 ;   middleOfHaltableProcessFlag := false
 ;   Unlock()
 ; }
+
+; the ultimate scrapdown inventory reset -  RightControl+Alt+U
+#HotIf WinActive("Dark and Darker")
+>^!u:: {
+  global
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  middleOfHaltableProcessFlag := true
+  ScrapSellTransferAll()
+  middleOfHaltableProcessFlag := false
+  Unlock()
+}
