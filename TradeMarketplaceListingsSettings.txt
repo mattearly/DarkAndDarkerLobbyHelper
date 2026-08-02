@@ -1,2 +1,2 @@
 this line is ignored - syntax: count,price
-8,499,2,2
+0,0
