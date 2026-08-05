@@ -813,8 +813,10 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
   }
   else {
     GoToMarketplace()
+    SS()
   }
   LS()
+
 
   ; STEP 2 - Set Rarity (optional)
   if (item_rarity > 0) {
@@ -914,6 +916,12 @@ BuyGearOffMarketFromFile(filepath) {
     ; get next line in file
     NewLine := FileObj.ReadLine()
 
+    Haystack := Newline
+    Needle := ";"
+    FoundPos := InStr(Haystack, Needle)
+    if (FoundPos != 0)  ; comment detected 
+      continue
+
     ; skip to next line if this one was blank
     if (NewLine = "")   
       continue
@@ -938,6 +946,7 @@ BuyGearOffMarketFromFile(filepath) {
     ; skip to next line if there is nothing to process (might be redundant)
     if (size = 0) 
       continue
+
 
     if (  
       PartOfLine[1] == "fighter" or
