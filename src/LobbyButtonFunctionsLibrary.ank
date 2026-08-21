@@ -825,13 +825,17 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
   }
 
   ; STEP 3 - Set Class
-  MouseClick "left", 688, 203
-  SS()
-  SS()
-  Send class_name
-  SS()
-  HoverMouseThenClick(531, 277)
-  SS()
+  if (class_name == "anyclass") {
+    ; do nothing here
+  } else { 
+    MouseClick "left", 688, 203
+    SS()
+    SS()
+    Send class_name
+    SS()
+    HoverMouseThenClick(531, 277)
+    SS()
+  }
 
   ; STEP 4 - Set Slot
   MouseClick "left", 921, 203
@@ -958,7 +962,8 @@ BuyGearOffMarketFromFile(filepath) {
       PartOfLine[1] == "bard" or 
       PartOfLine[1] == "warlock" or 
       PartOfLine[1] == "druid" or 
-      PartOfLine[1] == "sorcerer") {       ; CLASS CASE
+      PartOfLine[1] == "sorcerer" or
+      PartOfLine[1] == "anyclass") {       ; CLASS CASE
       SS()
 
       ; format should be: class_name, slot_name, item_rarity, static_stat, modifier1, modifier2

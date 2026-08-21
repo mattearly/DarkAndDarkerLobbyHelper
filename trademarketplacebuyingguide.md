@@ -15,6 +15,8 @@ Fill each line with a syntax. Market search and purchase based on these settings
 `class_name,slot_name,item_rarity,static_stat,modifier1,modifier2`
 
 - class name must be spelled out to activate mode 2
+- legal options are:
+  - fighter, barbarian, rogue, ranger, wizard, cleric, bard, warlock, druid, sorcerer, anyclass
 
 ## definitions
 
