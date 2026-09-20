@@ -577,15 +577,17 @@ BuyoutGreenMedsAndLuck() {
     global
     haltLongProcessFlag := false
 
-    ; PART 1, BUY LUCK (we must start right side of the new alchemist for positioning sake)
     GoToAlchemist()
     LS()
-    HoverMouseThenClick(69, 335)
-    MS()
-    if haltLongProcessFlag    ; stop point 1
-      return
-    FillAllMakeDeal()
-    MS()
+
+    ; PART 1, BUY LUCK (we must start right side of the new alchemist for positioning sake)
+    ; disabled - luck potions not allowed rn
+;    HoverMouseThenClick(69, 335)
+;    MS()
+;    if haltLongProcessFlag    ; stop point 1
+;      return
+;    FillAllMakeDeal()
+;    MS()
 
     ; PART  2, GREEN BANDOS
     MouseClick "left", 532, 302 ; set of triple green Bandages
