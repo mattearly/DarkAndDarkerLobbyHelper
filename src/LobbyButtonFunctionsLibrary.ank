@@ -11,30 +11,33 @@
 ;   - aux functions are for subroutines and should not be hotkey'd
 
 ; (todo) all locations should probably be defined like the following for ease of updating
-global MerchantsTopMenuLoc  := [1036, 80]
+
+global MerchantsTopMenuLoc  := [1200, 40]
 ; merchant submenu locations
 global AlchemistLoc       := [270, 300]
 global CollectorLoc       := [730, 300]
 global SquireLoc          := [950, 300]
 global ExpressmanLoc      := [1200, 300]
 global GoblinLoc          := [1430, 300]
-global ArmourerLoc        := [1650, 300]
-global SmithLoc           := [270, 600]
-global WoodsmanLoc        := [500, 600]
-global TailorLoc          := [730, 600]
-global LeathersmithLoc    := [960, 600]
-global GoldsmithLoc       := [1430, 600]
+global ArmourerLoc        := [270, 600]
+global SmithLoc           := [500, 600]
+global WoodsmanLoc        := [730, 600]
+global TailorLoc          := [960, 600]
+global LeathersmithLoc    := [1200, 600]
+global GoldsmithLoc       := [270, 900]
+
 ; other various locations
-global SecondCharDownLoc    := [1600, 300]
-global OptionsLoc           := [220, 550]
-global QuickFillLoc         := [960, 790]
-global AudioOptionsLoc      := [930, 40]
-global RetrievalFillAllLoc  := [950, 830]
-global BuyFillAllLoc        := [960, 910]
-global FirstVendorSlot       := [70, 300]
-global WorkshopHeaderLoc   := [1100, 130]
-global TradeHeadLoc        := [1200, 30]
-global MarketPlaceChannelLoc     := [1200, 250]
+global SecondCharDownLoc       := [1600, 300]
+global OptionsLoc              := [220, 630]
+global QuickFillLoc            := [960, 790]
+global AudioOptionsLoc         := [940, 45]
+global RetrievalFillAllLoc     := [950, 830]
+global BuyFillAllLoc           := [960, 910]
+global FirstVendorSlot         := [70, 300]
+global WorkshopHeaderLoc       := [1100, 130]
+global TradeHeadLoc            := [1350, 40]
+global MarketPlaceChannelLoc   := [1200, 250]
+global SkillsLoc               := [880, 40]     ; top class skills button
 
 ; halt buying gives us an option to stop an otherwise very long routine
 ; long processes use this boolean to allow mid process canceling
@@ -42,12 +45,12 @@ global haltLongProcessFlag := false
 
 ; aux mini sleep
 MS() {
-  sleep 25 ; to help with speeding up tool
+  sleep 28
 }
 
 ; aux short sleep
 SS() {
-  sleep 183 ; probably needs to be higher 
+  sleep 187 ; probably needs to be higher 
 }
 
 ; aux long sleep
@@ -57,20 +60,20 @@ LS() {
 
 ; aux very long sleep
 VLS() {
-  sleep 2191
+  sleep 2291
 }
 
 HoverMouseThenClick(loc1, loc2) {
   MouseMove loc1, loc2
-  Loop 2 
-    SS()
+  Loop 2 {
+     SS() 
+     }
   MouseClick "left", loc1, loc2
 }
 
 HoverMouseThenClickR(loc1, loc2) {
   MouseMove loc1, loc2
-  Loop 2 
-    SS()
+  SS()
   MouseClick "right", loc1, loc2
 }
 
@@ -184,12 +187,12 @@ ClearChatANDHitPlay() {
 
 GoToClassSpec() {
   GlobalBack()
-  MouseClick "left", 720, 35  ; top class button
+  MouseClick "left", SkillsLoc[1], SkillsLoc[2] 
 }
 
 GoToGoldSmith() {
   GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   SS()
   MouseClick "left", GoldsmithLoc[1], GoldsmithLoc[2]
   SS()
@@ -209,14 +212,14 @@ GoToWorkshopScrap() {
 
 GoToAlchemist() {
   GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   SS()
   MouseClick "left", AlchemistLoc[1], AlchemistLoc[2]
 }
 
 GoToLeatherSmithService() { 
   GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   LS()
   MouseClick "left", LeathersmithLoc[1], LeathersmithLoc[2]
   SS()
@@ -231,7 +234,7 @@ GoToAlchemistService() {
 
 GoToTailorService() { 
   GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   LS()
   MouseClick "left", TailorLoc[1], TailorLoc[2]
   SS()
@@ -240,7 +243,7 @@ GoToTailorService() {
 
 GoToWeaponsmithService() { 
   GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   LS()
   MouseClick "left", SmithLoc[1], SmithLoc[2]
   SS()
@@ -249,7 +252,7 @@ GoToWeaponsmithService() {
 
 GoToArmorerService() { 
   GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   LS()
   MouseClick "left", ArmourerLoc[1], ArmourerLoc[2]
   SS()
@@ -258,14 +261,14 @@ GoToArmorerService() {
 
 GoToGoblinBuy() {
   GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   LS()
   MouseClick "left", GoblinLoc[1], GoblinLoc[2]
 }
 
 GoToSquireAndFill() {
   GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   LS()
   MouseClick "left", SquireLoc[1], SquireLoc[2]
   LS()
@@ -301,7 +304,7 @@ GoToSquireAndFill() {
 
 GoToCollector() {
   GlobalBack()
-  HoverMouseThenClick(982,31) ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   SS()
   SS()
   HoverMouseThenClick(CollectorLoc[1],CollectorLoc[2])
@@ -350,7 +353,7 @@ FrontPageOfCharactersGoblinBuybackAndExpressmanGather() {
 GoToMarketplaceSearch() {
   global
   GlobalBack()
-  MouseClick "left", 1192, 31  ; top trade button
+  MouseClick "left", TradeHeadLoc[1], TradeHeadLoc[2]
   LS()
   MouseClick "left", 1191, 247  ; marketplace button location
   Loop 2 {
@@ -377,7 +380,7 @@ GoToMarketplace() {
 
 GoToWoodsman() {
   GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   LS()
   MouseClick "left", WoodsmanLoc[1], WoodsmanLoc[2]
 }
@@ -389,7 +392,7 @@ GoToStash() {
 
 ExpressmanExpress() {
   GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   LS()
   MouseClick "left", ExpressmanLoc[1], ExpressmanLoc[2]  ; expressman button
   LS()
@@ -479,24 +482,6 @@ MakeCobaltIngot(num_to_craft) {
   }
 }
 
-; aux function
-MakeCrystalFrostRing(num_to_craft) {
-  GoToAlchemistService()   ; comes up blank for some reason
-  VLS()
-  HoverMouseThenClick(490, 260)  ; click crystalfrostring
-  LS()
-
-  loop(num_to_craft) {
-    if (A_Index > 1)   ; sleep if on multi iteration, rather than always trailing sleep (faster)
-      LS()
-    HoverMouseThenClick(950, 900) ; click fill
-    LS()
-    HoverMouseThenClick(950, 975) ; click make
-  }
-}
-
-
-
 ; use when in stash to move entire inventory in one go
 TransferInventory() {
   ; click every cell
@@ -577,47 +562,53 @@ BuyoutGreenMedsAndLuck() {
     global
     haltLongProcessFlag := false
 
-    ; PART 1, BUY LUCK (we must start right side of the new alchemist for positioning sake)
     GoToAlchemist()
     LS()
-    HoverMouseThenClick(69, 335)
-    MS()
-    if haltLongProcessFlag    ; stop point 1
-      return
-    FillAllMakeDeal()
-    MS()
+
+    ; PART 1, BUY LUCK (we must start right side of the new alchemist for positioning sake)
+    ; disabled - luck potions not allowed rn
+;    HoverMouseThenClick(69, 335)
+;    MS()
+;    if haltLongProcessFlag    ; stop point 1
+;      return
+;    FillAllMakeDeal()
+;    MS()
 
     ; PART  2, GREEN BANDOS
-    MouseClick "left", 532, 302 ; set of triple green Bandages
+    HoverMouseThenClick(532, 302)   ; set of triple green Bandages
     MS()
+
     if haltLongProcessFlag    ; stop point 2
       return
     FillAllMakeDeal()
     MS()
-    MouseClick "left", 401, 302 ; set of single green Bandages
-    MS()
+    HoverMouseThenClick(401, 302)   ; set of single green Bandages
     Loop 2 {  ; click increase
       HoverMouseThenClick(1009, 590)
       MS()
     }
+
     if haltLongProcessFlag      ; stop point 3
       return
     FillAllMakeDeal()
     MS()
 
     ; PART 3/3, GREEN POTS
-    MouseClick "left", 285, 302 ; set of triple green potions
+    HoverMouseThenClick(285, 302) ; set of triple green potions
     MS()
+
     if haltLongProcessFlag    ; stop point 4 
       return
     FillAllMakeDeal()
+
     MS()
-    MouseClick "left", 157, 302 ; set of single green potions
+    HoverMouseThenClick(157, 302) ; set of single green potions
     MS()
     Loop 2 {  ; click increase
       HoverMouseThenClick(1009, 590)
       MS()
     }
+
     if haltLongProcessFlag    ; stop point 5
       return
     FillAllMakeDeal()
@@ -825,13 +816,17 @@ PurchasClassSpecific(class_name:="",slot_name:="",item_rarity:="",static_stat:="
   }
 
   ; STEP 3 - Set Class
-  MouseClick "left", 688, 203
-  SS()
-  SS()
-  Send class_name
-  SS()
-  HoverMouseThenClick(531, 277)
-  SS()
+  if (class_name == "anyclass") {
+    ; do nothing here
+  } else { 
+    MouseClick "left", 688, 203
+    SS()
+    SS()
+    Send class_name
+    SS()
+    HoverMouseThenClick(531, 277)
+    SS()
+  }
 
   ; STEP 4 - Set Slot
   MouseClick "left", 921, 203
@@ -958,7 +953,8 @@ BuyGearOffMarketFromFile(filepath) {
       PartOfLine[1] == "bard" or 
       PartOfLine[1] == "warlock" or 
       PartOfLine[1] == "druid" or 
-      PartOfLine[1] == "sorcerer") {       ; CLASS CASE
+      PartOfLine[1] == "sorcerer" or
+      PartOfLine[1] == "anyclass") {       ; CLASS CASE
       SS()
 
       ; format should be: class_name, slot_name, item_rarity, static_stat, modifier1, modifier2
@@ -1021,9 +1017,6 @@ PostItems(count,price) {
     else                                                   ; column 4
       HoverMouseThenClick(1580, 600 + ((A_index - 15) * 40))
 
-    if (haltLongProcessFlag)
-      return
-      
     HoverMouseThenClick(1028, 622)    ; click price area
     SS()
     Send(price)
@@ -1174,14 +1167,6 @@ PostFromFile(filepath) {
   }
 }
 
-AFKMoneyPrinter() {
-  ; every 15 minutes buy green meds and luck
-  ; list all at some very cheap price that will sell
-  ; repeat 5 times
-  ; gather all
-}
-
-
 ; aux function for ScrapSellTransferAll() func
 ScrapingLoop() {
 
@@ -1216,13 +1201,16 @@ ScrapingLoop() {
       HoverMouseThenClick(1700, 600 + ((A_index - 6) * 80))
     else                                                  ; column 5
       HoverMouseThenClick(1780, 600 + ((A_index - 8) * 80))
-    MS()
+    Loop 2
+      MS()
     ; press fill
     HoverMouseThenClick(950,935)
-    MS()
+    Loop 2
+      MS()
     ; press scrap
     HoverMouseThenClick(950,1000)
-    MS()
+    Loop 2
+      MS()
   }
 }
 

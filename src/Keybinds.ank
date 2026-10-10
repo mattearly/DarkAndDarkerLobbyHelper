@@ -48,34 +48,36 @@ Unlock() {
 }
 
 ; GOBLIN RETRIEVAL
-#HotIf WinActive("Dark and Darker")
-^Numpad6::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GetAllFromGoblin()
-  Unlock()
-}
+; disabled for now
+; #HotIf WinActive("Dark and Darker")
+; ^Numpad6::
+; {
+;   global
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   GetAllFromGoblin()
+;   Unlock()
+; }
 
 ; GOBLIN & EXPRESSMAN RETRIEVAL ACCOUNT WIDE (6 RECENT CHARACTERS)
-#HotIf WinActive("Dark and Darker")
->^!g::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  middleOfHaltableProcessFlag := true
-  FrontPageOfCharactersGoblinBuybackAndExpressmanGather()
-  middleOfHaltableProcessFlag := false
-  Unlock()
-}
+; disabled for now
+; #HotIf WinActive("Dark and Darker")
+; >^!g::
+; {
+;   global
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   middleOfHaltableProcessFlag := true
+;   FrontPageOfCharactersGoblinBuybackAndExpressmanGather()
+;   middleOfHaltableProcessFlag := false
+;   Unlock()
+; }
 
 
 #HotIf WinActive("Dark and Darker")
@@ -230,18 +232,6 @@ Unlock() {
   Unlock()
 }
 
-#HotIf WinActive("Dark and Darker")
-^Numpad8::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  Unlock()
-}
-
 ; TRADE
 ; #HotIf WinActive("Dark and Darker")
 ; ^Numpad9::
@@ -257,31 +247,33 @@ Unlock() {
 ; }
 
 ; PURCHASE POTIONS
-#HotIf WinActive("Dark and Darker")
-<^NumpadAdd::
-{
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  BuyALotOfPotions()
-  Unlock()
-}
+; disabled for now
+; #HotIf WinActive("Dark and Darker")
+; <^NumpadAdd::
+; {
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   BuyALotOfPotions()
+;   Unlock()
+; }
 
 ; PURCHASE LESS POTIONS
-#HotIf WinActive("Dark and Darker")
->^NumpadAdd::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  BuyPotions()
-  Unlock()
-}
+; disabled for now
+; #HotIf WinActive("Dark and Darker")
+; >^NumpadAdd::
+; {
+;   global
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   BuyPotions()
+;   Unlock()
+; }
 
 ; CLASS SPEC
 #HotIf WinActive("Dark and Darker")
@@ -340,60 +332,64 @@ Unlock() {
 }
 
 ; GO TO THE WORKSHOP SCRAPDOWN
-#HotIf WinActive("Dark and Darker")
->^w::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToWorkshopScrap()
-  Unlock()
-}
+; DISABLED - SDF REMOVED IT
+; #HotIf WinActive("Dark and Darker")
+; >^w::
+; {
+;   global
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   GoToWorkshopScrap()
+;   Unlock()
+; }
 
 ; GO TO MARKETPLACE
-#HotIf WinActive("Dark and Darker")
->^m::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToMarketplaceSearch()
-  Unlock()
-}
+; disabled until market open
+; #HotIf WinActive("Dark and Darker")
+; >^m::
+; {
+;   global
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   GoToMarketplaceSearch()
+;   Unlock()
+; }
 
 ; PURCHASE POTIONS
-#HotIf WinActive("Dark and Darker")
-<^o::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  BuyALotOfPotions()
-  Unlock()
-}
+; disabled for now
+; #HotIf WinActive("Dark and Darker")
+; <^o::
+; {
+;   global
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   BuyALotOfPotions()
+;   Unlock()
+; }
 
 ; PURCHASE LESS POTIONS
-#HotIf WinActive("Dark and Darker")
->^o::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  BuyPotions()
-  Unlock()
-}
+; disabled for now
+; #HotIf WinActive("Dark and Darker")
+; >^o::
+; {
+;   global
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   BuyPotions()
+;   Unlock()
+; }
 
 ; CLASS SPEC
 #HotIf WinActive("Dark and Darker")
@@ -410,18 +406,19 @@ Unlock() {
 }
 
 ; Go To Goldsmith - Right Control + a
-#HotIf WinActive("Dark and Darker")
->^a::
-{
-  global
-  if isBusy { 
-    return 
-  } else {
-    Lock()
-  }
-  GoToGoldSmith()
-  Unlock()
-}
+; he's gone
+; #HotIf WinActive("Dark and Darker")
+; >^a::
+; {
+;   global
+;   if isBusy { 
+;     return 
+;   } else {
+;     Lock()
+;   }
+;   GoToGoldSmith()
+;   Unlock()
+; }
 
 ; Vender INVENTORY - Soft Non Destructive
 #HotIf WinActive("Dark and Darker")
@@ -521,19 +518,19 @@ Unlock() {
 
 ; Buy from TradeMarketplaceBuyingSettings.txt : RightControl+Alt+M
 ;  - disabled early wipe
-#HotIf WinActive("Dark and Darker")
->^!m:: {
-  global
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  middleOfHaltableProcessFlag := true
-  BuyGearOffMarketFromFile("TradeMarketplaceBuyingSettings.txt")
-  middleOfHaltableProcessFlag := false
-  Unlock()
-}
+; #HotIf WinActive("Dark and Darker")
+; >^!m:: {
+;   global
+;   if isBusy {
+;     return
+;   } else {
+;     Lock()
+;   }
+;   middleOfHaltableProcessFlag := true
+;   BuyGearOffMarketFromFile("TradeMarketplaceBuyingSettings.txt")
+;   middleOfHaltableProcessFlag := false
+;   Unlock()
+; }
 
 ; halt any long process : RightControl+Alt+H
 #HotIf WinActive("Dark and Darker")
@@ -560,31 +557,31 @@ Unlock() {
 
 ; Post items to Market based on TradeMarketplaceBuyingSettings.txt : RightControl+Alt+P
 ;  - disabled early wipe
-#HotIf WinActive("Dark and Darker")
->^!p:: {
-  global
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  middleOfHaltableProcessFlag := true
-  PostFromFile("TradeMarketplaceListingsSettings.txt")
-  middleOfHaltableProcessFlag := false
-  Unlock()
-}
+; #HotIf WinActive("Dark and Darker")
+; >^!p:: {
+;   global
+;   if isBusy {
+;     return
+;   } else {
+;     Lock()
+;   }
+;   middleOfHaltableProcessFlag := true
+;   PostFromFile("TradeMarketplaceListingsSettings.txt")
+;   middleOfHaltableProcessFlag := false
+;   Unlock()
+; }
 
 ; the ultimate scrapdown inventory reset -  RightControl+Alt+U
-#HotIf WinActive("Dark and Darker")
->^!u:: {
-  global
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  middleOfHaltableProcessFlag := true
-  ScrapSellTransferAll()
-  middleOfHaltableProcessFlag := false
-  Unlock()
-}
+; #HotIf WinActive("Dark and Darker")
+; >^!u:: {
+;   global
+;   if isBusy {
+;     return
+;   } else {
+;     Lock()
+;   }
+;   middleOfHaltableProcessFlag := true
+;   ScrapSellTransferAll()
+;   middleOfHaltableProcessFlag := false
+;   Unlock()
+; }
