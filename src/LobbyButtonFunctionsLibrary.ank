@@ -266,11 +266,15 @@ GoToGoblinBuy() {
   MouseClick "left", GoblinLoc[1], GoblinLoc[2]
 }
 
-GoToSquireAndFill() {
-  GlobalBack()
+GoToSquire() {
+ GlobalBack()
   HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
   LS()
   MouseClick "left", SquireLoc[1], SquireLoc[2]
+}
+
+GoToSquireAndFill() {
+  GoToSquire()
   LS()
   MouseClick "left", 1125, 992  ; click to the right of equip base gear button first (on nothing), because sometimes it bugs and the equip base gear button will not register until you click somewhere else on the screen
   SS()
@@ -514,11 +518,8 @@ FullGamble() {
 }
 
 ; squire sets
-GoToSets() {
-  GlobalBack()
-  MouseClick "left", 982, 31  ; top merchant button
-  LS()
-  MouseClick "left", SquireLoc[1], SquireLoc[2]
+GoToSquireKits() {
+  GoToSquire()
   LS()
   MouseClick "left", 420, 201  ; click My Gear Sets area
   SS()

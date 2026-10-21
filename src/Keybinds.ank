@@ -469,7 +469,7 @@ Unlock() {
   } else {
     Lock()
   }
-  GoToSets()
+  GoToSquireKits()
   Unlock()
 }
 
