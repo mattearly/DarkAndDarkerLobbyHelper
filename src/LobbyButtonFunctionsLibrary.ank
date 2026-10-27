@@ -28,7 +28,7 @@ global GoldsmithLoc       := [270, 900]
 
 ; other various locations
 global SecondCharDownLoc       := [1600, 300]
-global OptionsLoc              := [220, 630]
+global OptionsLoc              := [205, 630]
 global QuickFillLoc            := [960, 790]
 global AudioOptionsLoc         := [940, 45]
 global RetrievalFillAllLoc     := [950, 830]
@@ -626,7 +626,7 @@ SetVolumeToZero() {
     MS()
     MS()
     ; click TWO out of ONE HUNDRED
-    MouseClick "left", 897, 232 
+    MouseClick "left", 896, 230
     MS() 
     MS()
     ; click apply
@@ -646,7 +646,7 @@ SetVolumeToFifty() {
     MS() 
     MS()
     ; click FIFTY out of TWO HUNDRED
-    MouseClick "left", 985, 232 
+    MouseClick "left", 984, 230 
     MS() 
     MS()
     ; click apply
@@ -1220,30 +1220,30 @@ ScrapingLoop() {
 ; ScrapSellTransferAll: a function to scrap your inventory, sell all, and then transfer everything to your stash
 ; the idea for this is to use ScrapSellTransferAll after acquiring goods and stashing everything important
 ;   (from a dungeon run or retrieving a large expressman ie)
-ScrapSellTransferAll() {
-  global
-  haltLongProcessFlag := false
-  GoToWorkshopScrap()
-  SS()
-  if (haltLongProcessFlag)
-    return
-  ScrapingLoop()                   ; click entire inventory one by one and hit scrap button
-  SS()
-  if (haltLongProcessFlag)
-    return
-  SetupVenderEntireInventory()
-  SS()
-  if (haltLongProcessFlag)
-    return
-
-  ; click sell button
-  HoverMouseThenClick(950,1000)
-  SS()
-  if (haltLongProcessFlag)
-    return
-  GoToStash()
-  SS()
-  if (haltLongProcessFlag)
-    return
-  TransferInventory()            ; transfer all to stash
-}
+;ScrapSellTransferAll() {
+;  global
+;  haltLongProcessFlag := false
+;  GoToWorkshopScrap()
+;  SS()
+;  if (haltLongProcessFlag)
+;    return
+;  ScrapingLoop()                   ; click entire inventory one by one and hit scrap button
+;  SS()
+;  if (haltLongProcessFlag)
+;    return
+;  SetupVenderEntireInventory()
+;  SS()
+;  if (haltLongProcessFlag)
+;    return
+;
+;  ; click sell button
+;  HoverMouseThenClick(950,1000)
+;  SS()
+;  if (haltLongProcessFlag)
+;    return
+;  GoToStash()
+;  SS()
+;  if (haltLongProcessFlag)
+;    return
+;  TransferInventory()            ; transfer all to stash
+;}
