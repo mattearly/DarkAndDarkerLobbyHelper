@@ -348,18 +348,18 @@ Unlock() {
 
 ; GO TO MARKETPLACE
 ; disabled until market open
-; #HotIf WinActive("Dark and Darker")
-; >^m::
-; {
-;   global
-;   if isBusy { 
-;     return 
-;   } else {
-;     Lock()
-;   }
-;   GoToMarketplaceSearch()
-;   Unlock()
-; }
+#HotIf WinActive("Dark and Darker")
+>^m::
+{
+  global
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToMarketplaceSearch()
+  Unlock()
+}
 
 ; PURCHASE POTIONS
 ; disabled for now
@@ -406,19 +406,18 @@ Unlock() {
 }
 
 ; Go To Goldsmith - Right Control + a
-; he's gone
-; #HotIf WinActive("Dark and Darker")
-; >^a::
-; {
-;   global
-;   if isBusy { 
-;     return 
-;   } else {
-;     Lock()
-;   }
-;   GoToGoldSmith()
-;   Unlock()
-; }
+#HotIf WinActive("Dark and Darker")
+>^a::
+{
+  global
+  if isBusy { 
+    return 
+  } else {
+    Lock()
+  }
+  GoToGoldSmith()
+  Unlock()
+}
 
 ; Vender INVENTORY - Soft Non Destructive
 #HotIf WinActive("Dark and Darker")
@@ -469,7 +468,7 @@ Unlock() {
   } else {
     Lock()
   }
-  GoToSets()
+  GoToSquireKits()
   Unlock()
 }
 
@@ -518,19 +517,19 @@ Unlock() {
 
 ; Buy from TradeMarketplaceBuyingSettings.txt : RightControl+Alt+M
 ;  - disabled early wipe
-; #HotIf WinActive("Dark and Darker")
-; >^!m:: {
-;   global
-;   if isBusy {
-;     return
-;   } else {
-;     Lock()
-;   }
-;   middleOfHaltableProcessFlag := true
-;   BuyGearOffMarketFromFile("TradeMarketplaceBuyingSettings.txt")
-;   middleOfHaltableProcessFlag := false
-;   Unlock()
-; }
+#HotIf WinActive("Dark and Darker")
+>^!m:: {
+  global
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  middleOfHaltableProcessFlag := true
+  BuyGearOffMarketFromFile("TradeMarketplaceBuyingSettings.txt")
+  middleOfHaltableProcessFlag := false
+  Unlock()
+}
 
 ; halt any long process : RightControl+Alt+H
 #HotIf WinActive("Dark and Darker")
@@ -557,19 +556,19 @@ Unlock() {
 
 ; Post items to Market based on TradeMarketplaceBuyingSettings.txt : RightControl+Alt+P
 ;  - disabled early wipe
-; #HotIf WinActive("Dark and Darker")
-; >^!p:: {
-;   global
-;   if isBusy {
-;     return
-;   } else {
-;     Lock()
-;   }
-;   middleOfHaltableProcessFlag := true
-;   PostFromFile("TradeMarketplaceListingsSettings.txt")
-;   middleOfHaltableProcessFlag := false
-;   Unlock()
-; }
+#HotIf WinActive("Dark and Darker")
+>^!p:: {
+  global
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  middleOfHaltableProcessFlag := true
+  PostFromFile("TradeMarketplaceListingsSettings.txt")
+  middleOfHaltableProcessFlag := false
+  Unlock()
+}
 
 ; the ultimate scrapdown inventory reset -  RightControl+Alt+U
 ; #HotIf WinActive("Dark and Darker")
