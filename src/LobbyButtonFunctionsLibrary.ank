@@ -25,6 +25,7 @@ global WoodsmanLoc        := [730, 600]
 global TailorLoc          := [960, 600]
 global LeathersmithLoc    := [1200, 600]
 global GoldsmithLoc       := [270, 900]
+global FortuneTellerLoc   := [500, 900]
 
 ; other various locations
 global SecondCharDownLoc       := [1600, 300]
@@ -35,7 +36,7 @@ global RetrievalFillAllLoc     := [950, 830]
 global BuyFillAllLoc           := [960, 910]
 global FirstVendorSlot         := [70, 300]
 global WorkshopHeaderLoc       := [1100, 130]
-global TradeHeadLoc            := [1350, 40]
+global TradeHeadLoc            := [1356, 40]
 global MarketPlaceChannelLoc   := [1200, 250]
 global SkillsLoc               := [880, 40]     ; top class skills button
 
@@ -259,6 +260,13 @@ GoToArmorerService() {
   MouseClick "left", 303, 141  ; service button
 }
 
+GoToFortuneTeller() {
+  GlobalBack()
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
+  LS()
+  MouseClick "left", FortuneTellerLoc[1], FortuneTellerLoc[2]
+}
+
 GoToGoblinBuy() {
   GlobalBack()
   HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
@@ -359,27 +367,27 @@ GoToMarketplaceSearch() {
   GlobalBack()
   MouseClick "left", TradeHeadLoc[1], TradeHeadLoc[2]
   LS()
-  MouseClick "left", 1191, 247  ; marketplace button location
+  HoverMouseThenClick(MarketPlaceChannelLoc[1], MarketPlaceChannelLoc[2])
   Loop 2 {
     LS()
   }
   MouseClick "left", 117, 203  ; search dropdown button
 }
 
-GoToMarketplaceTrade() {
+GoToMarketplaceMyListings() {
   GlobalBack()
   HoverMouseThenClick(TradeHeadLoc[1], TradeHeadLoc[2])
   SS()
-     HoverMouseThenClick(MarketPlaceChannelLoc[1], MarketPlaceChannelLoc[2])
+  HoverMouseThenClick(MarketPlaceChannelLoc[1], MarketPlaceChannelLoc[2])
   LS()
   HoverMouseThenClick(1046, 125) ; My Listings Loc
 }
 
 GoToMarketplace() {
   GlobalBack()
-  MouseClick "left", 1192, 31  ; top trade button
+  HoverMouseThenClick(TradeHeadLoc[1], TradeHeadLoc[2])
   LS()
-  MouseClick "left", 1191, 247  ; marketplace button location
+  HoverMouseThenClick(MarketPlaceChannelLoc[1], MarketPlaceChannelLoc[2])
 }
 
 GoToWoodsman() {
@@ -559,60 +567,61 @@ ToolBeltAndRequeue() {
 
 ; level traders first (alch, surg, fortune teller)
 ; long process haltable (right cntrl+alt+h default)
+; invest
 BuyoutGreenMedsAndLuck() {
     global
     haltLongProcessFlag := false
 
-    GoToAlchemist()
-    LS()
 
     ; PART 1, BUY LUCK (we must start right side of the new alchemist for positioning sake)
     ; disabled - luck potions not allowed rn
-;    HoverMouseThenClick(69, 335)
+    GoToFortuneTeller()
+    MS()
+    HoverMouseThenClick(69, 295)
+    SS()
+    if haltLongProcessFlag    ; stop point 1
+      return
+    FillAllMakeDeal()
+    SS()
+
+;    ; PART  2, GREEN BANDOS
+;    HoverMouseThenClick(532, 302)   ; set of triple green Bandages
 ;    MS()
-;    if haltLongProcessFlag    ; stop point 1
+;    if haltLongProcessFlag    ; stop point 2
 ;      return
 ;    FillAllMakeDeal()
 ;    MS()
-
-    ; PART  2, GREEN BANDOS
-    HoverMouseThenClick(532, 302)   ; set of triple green Bandages
-    MS()
-
-    if haltLongProcessFlag    ; stop point 2
-      return
-    FillAllMakeDeal()
-    MS()
-    HoverMouseThenClick(401, 302)   ; set of single green Bandages
-    Loop 2 {  ; click increase
-      HoverMouseThenClick(1009, 590)
-      MS()
-    }
-
-    if haltLongProcessFlag      ; stop point 3
-      return
-    FillAllMakeDeal()
-    MS()
+;    HoverMouseThenClick(401, 302)   ; set of single green Bandages
+;    Loop 2 {  ; click increase
+;      HoverMouseThenClick(1009, 590)
+;      MS()
+;    }
+;
+;    if haltLongProcessFlag      ; stop point 3
+;      return
+;    FillAllMakeDeal()
+;    MS()
+;
 
     ; PART 3/3, GREEN POTS
-    HoverMouseThenClick(285, 302) ; set of triple green potions
+    GoToAlchemist()
     MS()
-
+    HoverMouseThenClick(275, 295) ; set of triple green potions
+    MS()
     if haltLongProcessFlag    ; stop point 4 
       return
     FillAllMakeDeal()
-
     MS()
-    HoverMouseThenClick(157, 302) ; set of single green potions
+    HoverMouseThenClick(155, 295) ; set of single green potions
     MS()
     Loop 2 {  ; click increase
       HoverMouseThenClick(1009, 590)
       MS()
     }
-
     if haltLongProcessFlag    ; stop point 5
       return
     FillAllMakeDeal()
+
 }
 
 
@@ -1000,7 +1009,7 @@ HaltLongProcess() {
 PostItems(count,price) {
   global
   haltLongProcessFlag := false
-  GoToMarketplaceTrade()
+  GoToMarketplaceMyListings()
   LS()
 
   processcount := count
@@ -1035,7 +1044,7 @@ PostItems(count,price) {
 PostItemsToMarketplace(count,price,width,height) {
   global
   haltLongProcessFlag := false
-  GoToMarketplaceTrade()
+  GoToMarketplaceMyListings()
   LS()
 
   ; limit adjustments
