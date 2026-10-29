@@ -501,19 +501,19 @@ Unlock() {
 ;  - green potions and bandages and fortune potion
 ;  - haltable process
 ;  - disabled early wipe
-; #HotIf WinActive("Dark and Darker")
-; >^!i:: {
-;   global
-;   if isBusy {
-;     return
-;   } else {
-;     Lock()
-;   }
-;   middleOfHaltableProcessFlag := true
-;   BuyoutGreenMedsAndLuck()
-;   middleOfHaltableProcessFlag := false
-;   Unlock()
-; }
+#HotIf WinActive("Dark and Darker")
+>^!i:: {
+  global
+  if isBusy {
+    return
+  } else {
+    Lock()
+  }
+  middleOfHaltableProcessFlag := true
+  BuyoutGreenMedsAndLuck()
+  middleOfHaltableProcessFlag := false
+  Unlock()
+}
 
 ; Buy from TradeMarketplaceBuyingSettings.txt : RightControl+Alt+M
 ;  - disabled early wipe
