@@ -26,6 +26,7 @@ global TailorLoc          := [960, 600]
 global LeathersmithLoc    := [1200, 600]
 global GoldsmithLoc       := [270, 900]
 global FortuneTellerLoc   := [500, 900]
+global SurgeonLoc         := [500, 300]
 
 ; other various locations
 global SecondCharDownLoc       := [1600, 300]
@@ -84,6 +85,7 @@ GlobalBack() {
   Loop 2 {
     MouseClick "left", 242, 40   ; play or leave trade button, twice to double back some menus
     SS()
+    MouseClick "left", 127, 40   ; esc or nothing
     SS()
   }
   MouseClick "left", 858, 617  ; click 'are you sure' market button (or some merchant possibly)
@@ -217,6 +219,15 @@ GoToAlchemist() {
   SS()
   MouseClick "left", AlchemistLoc[1], AlchemistLoc[2]
 }
+
+GoToSurgeon() {
+  GlobalBack()
+  HoverMouseThenClick(MerchantsTopMenuLoc[1], MerchantsTopMenuLoc[2])
+  SS()
+  MouseClick "left", SurgeonLoc[1], SurgeonLoc[2]
+
+}
+
 
 GoToLeatherSmithService() { 
   GlobalBack()
@@ -584,24 +595,25 @@ BuyoutGreenMedsAndLuck() {
     FillAllMakeDeal()
     SS()
 
-;    ; PART  2, GREEN BANDOS
-;    HoverMouseThenClick(532, 302)   ; set of triple green Bandages
-;    MS()
-;    if haltLongProcessFlag    ; stop point 2
-;      return
-;    FillAllMakeDeal()
-;    MS()
-;    HoverMouseThenClick(401, 302)   ; set of single green Bandages
-;    Loop 2 {  ; click increase
-;      HoverMouseThenClick(1009, 590)
-;      MS()
-;    }
-;
-;    if haltLongProcessFlag      ; stop point 3
-;      return
-;    FillAllMakeDeal()
-;    MS()
-;
+    ; PART  2, GREEN BANDOS
+    GoToSurgeon()
+    MS()
+    HoverMouseThenClick(275, 295) ; set of triple green bandos
+    MS()
+    if haltLongProcessFlag    ; stop point 4 
+      return
+    FillAllMakeDeal()
+    MS()
+    HoverMouseThenClick(155, 295) ; set of single green bandos
+    MS()
+    Loop 2 {  ; click increase
+      HoverMouseThenClick(1009, 590)
+      MS()
+    }
+    if haltLongProcessFlag    ; stop point 5
+      return
+    FillAllMakeDeal()
+
 
     ; PART 3/3, GREEN POTS
     GoToAlchemist()
