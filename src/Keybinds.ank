@@ -472,31 +472,6 @@ Unlock() {
   Unlock()
 }
 
-; LEFT SHIFT + U - set volume to zero (u must have menu open, press esc first)
-#HotIf WinActive("Dark and Darker")
-<^u:: {
-  global
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  SetVolumeToZero()
-  Unlock()
-}
-
-#HotIf WinActive("Dark and Darker")
->^u:: {
-  global
-  if isBusy {
-    return
-  } else {
-    Lock()
-  }
-  SetVolumeToFifty()
-  Unlock()
-}
-
 ; [RightControl]+[Alt]+[I]nvest- buys things from traders that have good resale value
 ;  - green potions and bandages and fortune potion
 ;  - haltable process
